@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="1620" viewBox="0 0 2560 1620" role="img">
+<title>Conceptual ER model, contract 1.0.0-draft.2</title>
+<rect width="100%" height="100%" fill="#f5f7fb"/>
+<line x1="1000" y1="490" x2="630" y2="490" stroke="#667a94" stroke-width="3"/>
+<line x1="260" y1="490" x2="630" y2="490" stroke="#667a94" stroke-width="3"/>
+<line x1="1830" y1="490" x2="1415" y2="490" stroke="#667a94" stroke-width="3"/>
+<line x1="1000" y1="490" x2="1415" y2="490" stroke="#667a94" stroke-width="3"/>
+<line x1="1830" y1="1180" x2="1830" y2="840" stroke="#667a94" stroke-width="3"/>
+<line x1="1830" y1="490" x2="1830" y2="840" stroke="#667a94" stroke-width="3"/>
+<line x1="1000" y1="490" x2="1000" y2="845" stroke="#667a94" stroke-width="3"/>
+<line x1="1000" y1="1200" x2="1000" y2="845" stroke="#667a94" stroke-width="3"/>
+<line x1="260" y1="350" x2="260" y2="490" stroke="#667a94" stroke-width="2"/>
+<line x1="1000" y1="330" x2="1000" y2="490" stroke="#667a94" stroke-width="2"/>
+<line x1="770" y1="340" x2="1000" y2="490" stroke="#667a94" stroke-width="2"/>
+<line x1="650" y1="230" x2="770" y2="340" stroke="#667a94" stroke-width="2"/>
+<line x1="870" y1="220" x2="770" y2="340" stroke="#667a94" stroke-width="2"/>
+<line x1="1240" y1="340" x2="1000" y2="490" stroke="#667a94" stroke-width="2"/>
+<line x1="1130" y1="230" x2="1240" y2="340" stroke="#667a94" stroke-width="2"/>
+<line x1="1310" y1="230" x2="1240" y2="340" stroke="#667a94" stroke-width="2"/>
+<line x1="1830" y1="325" x2="1830" y2="490" stroke="#667a94" stroke-width="2"/>
+<line x1="2070" y1="340" x2="1830" y2="490" stroke="#667a94" stroke-width="2"/>
+<line x1="1620" y1="340" x2="1830" y2="490" stroke="#667a94" stroke-width="2"/>
+<line x1="1530" y1="220" x2="1620" y2="340" stroke="#667a94" stroke-width="2"/>
+<line x1="1730" y1="220" x2="1620" y2="340" stroke="#667a94" stroke-width="2"/>
+<line x1="2250" y1="435" x2="1830" y2="490" stroke="#667a94" stroke-width="2"/>
+<line x1="2270" y1="545" x2="1830" y2="490" stroke="#667a94" stroke-width="2"/>
+<line x1="2170" y1="655" x2="1830" y2="490" stroke="#667a94" stroke-width="2"/>
+<line x1="2090" y1="1065" x2="1830" y2="1180" stroke="#667a94" stroke-width="2"/>
+<line x1="1650" y1="1320" x2="1830" y2="1180" stroke="#667a94" stroke-width="2"/>
+<line x1="1520" y1="1430" x2="1650" y2="1320" stroke="#667a94" stroke-width="2"/>
+<line x1="1720" y1="1505" x2="1650" y2="1320" stroke="#667a94" stroke-width="2"/>
+<line x1="2250" y1="1170" x2="1830" y2="1180" stroke="#667a94" stroke-width="2"/>
+<line x1="2260" y1="1275" x2="1830" y2="1180" stroke="#667a94" stroke-width="2"/>
+<line x1="1930" y1="1430" x2="1830" y2="1180" stroke="#667a94" stroke-width="2"/>
+<line x1="2190" y1="1375" x2="1830" y2="1180" stroke="#667a94" stroke-width="2"/>
+<line x1="730" y1="1115" x2="1000" y2="1200" stroke="#667a94" stroke-width="2"/>
+<line x1="660" y1="1230" x2="1000" y2="1200" stroke="#667a94" stroke-width="2"/>
+<line x1="690" y1="1340" x2="1000" y2="1200" stroke="#667a94" stroke-width="2"/>
+<line x1="1080" y1="1380" x2="1000" y2="1200" stroke="#667a94" stroke-width="2"/>
+<line x1="1290" y1="1410" x2="1000" y2="1200" stroke="#667a94" stroke-width="2"/>
+<line x1="870" y1="1465" x2="1000" y2="1200" stroke="#667a94" stroke-width="2"/>
+<line x1="730" y1="1545" x2="870" y2="1465" stroke="#667a94" stroke-width="2"/>
+<line x1="1000" y1="1550" x2="870" y2="1465" stroke="#667a94" stroke-width="2"/>
+<line x1="1270" y1="810" x2="1000" y2="845" stroke="#667a94" stroke-width="2"/>
+<line x1="1290" y1="915" x2="1000" y2="845" stroke="#667a94" stroke-width="2"/>
+<rect x="95.0" y="452.0" width="330.0" height="76.0" fill="#17375c" stroke="#17375c" stroke-width="2"/>
+<text x="260" y="498" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700" fill="white" text-anchor="middle">TOWN</text>
+<rect x="835.0" y="452.0" width="330.0" height="76.0" fill="#17375c" stroke="#17375c" stroke-width="2"/>
+<text x="1000" y="498" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700" fill="white" text-anchor="middle">HDB BUILDING</text>
+<rect x="1665.0" y="444.0" width="330.0" height="92.0" fill="#17375c" stroke="#17375c" stroke-width="2"/>
+<text x="1830" y="490" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700" fill="white" text-anchor="middle">HDB FLAT</text>
+<text x="1830" y="517" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#d6e0ee" text-anchor="middle">observed flat profile</text>
+<rect x="1665.0" y="1142.0" width="330.0" height="76.0" fill="#17375c" stroke="#17375c" stroke-width="2"/>
+<text x="1830" y="1188" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700" fill="white" text-anchor="middle">RESALE TRANSACTION</text>
+<rect x="835.0" y="1162.0" width="330.0" height="76.0" fill="#17375c" stroke="#17375c" stroke-width="2"/>
+<text x="1000" y="1208" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700" fill="white" text-anchor="middle">HAWKER CENTRE</text>
+<polygon points="630,428.0 750.0,490 630,552.0 510.0,490" fill="#e7eef8" stroke="#17375c" stroke-width="2.5"/>
+<text x="630" y="497" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" fill="#17375c" text-anchor="middle">LOCATED IN</text>
+<polygon points="1415,428.0 1535.0,490 1415,552.0 1295.0,490" fill="#e7eef8" stroke="#17375c" stroke-width="2.5"/>
+<text x="1415" y="497" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" fill="#17375c" text-anchor="middle">IN BUILDING</text>
+<polygon points="1830,778.0 1950.0,840 1830,902.0 1710.0,840" fill="#e7eef8" stroke="#17375c" stroke-width="2.5"/>
+<text x="1830" y="847" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" fill="#17375c" text-anchor="middle">SOLD AS</text>
+<polygon points="1000,783.0 1120.0,845 1000,907.0 880.0,845" fill="#e7eef8" stroke="#17375c" stroke-width="2.5"/>
+<text x="1000" y="852" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" fill="#17375c" text-anchor="middle">IS NEAR</text>
+<ellipse cx="260" cy="350" rx="61.31" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="260" y="356" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#1b2d45" text-anchor="middle" text-decoration="underline">town_name</text>
+<ellipse cx="1000" cy="330" rx="70.49000000000001" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="1000" y="336" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#1b2d45" text-anchor="middle" text-decoration="underline">building_id</text>
+<ellipse cx="770" cy="340" rx="79.67" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="770" y="346" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">address  (AK)</text>
+<ellipse cx="650" cy="230" rx="55.0" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="650" y="236" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">block</text>
+<ellipse cx="870" cy="220" rx="70.49000000000001" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="870" y="226" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">street_name</text>
+<ellipse cx="1240" cy="340" rx="56.72" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="1240" y="346" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">location</text>
+<ellipse cx="1130" cy="230" rx="56.72" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="1130" y="236" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">latitude</text>
+<ellipse cx="1310" cy="230" rx="61.31" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="1310" y="236" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">longitude</text>
+<ellipse cx="1830" cy="325" rx="55.0" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="1830" y="331" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#1b2d45" text-anchor="middle" text-decoration="underline">flat_id</text>
+<ellipse cx="2070" cy="340" rx="61.31" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="2070" y="346" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">flat_type</text>
+<ellipse cx="1620" cy="340" rx="75.08000000000001" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="1620" y="346" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">storey_range</text>
+<ellipse cx="1530" cy="220" rx="75.08000000000001" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="1530" y="226" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">storey_lower</text>
+<ellipse cx="1730" cy="220" rx="75.08000000000001" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="1730" y="226" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">storey_upper</text>
+<ellipse cx="2250" cy="435" rx="84.26" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="2250" y="441" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">floor_area_sqm</text>
+<ellipse cx="2270" cy="545" rx="65.9" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="2270" y="551" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">flat_model</text>
+<ellipse cx="2170" cy="655" rx="107.21000000000001" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="2170" y="661" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">lease_commence_year</text>
+<ellipse cx="2090" cy="1065" rx="84.26" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="2090" y="1071" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#1b2d45" text-anchor="middle" text-decoration="underline">transaction_id</text>
+<ellipse cx="1650" cy="1320" rx="107.21000000000001" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="1650" y="1326" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">source_record  (AK)</text>
+<ellipse cx="1520" cy="1430" rx="84.26" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="1520" y="1436" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">source_dataset</text>
+<ellipse cx="1720" cy="1505" rx="65.9" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="1720" y="1511" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">source_row</text>
+<ellipse cx="2250" cy="1170" rx="65.9" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="2250" y="1176" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">sale_month</text>
+<ellipse cx="2260" cy="1275" rx="75.08000000000001" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="2260" y="1281" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">resale_price</text>
+<ellipse cx="1930" cy="1430" rx="120.98" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="1930" y="1436" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">remaining_lease_months</text>
+<ellipse cx="2190" cy="1375" rx="70.49000000000001" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="2190" y="1381" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">lease_basis</text>
+<ellipse cx="730" cy="1115" rx="61.31" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="730" y="1121" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#1b2d45" text-anchor="middle" text-decoration="underline">hawker_id</text>
+<ellipse cx="660" cy="1230" rx="70.49000000000001" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="660" y="1236" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">centre_name</text>
+<ellipse cx="690" cy="1340" rx="55.0" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="690" y="1346" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">address</text>
+<ellipse cx="1080" cy="1380" rx="116.39" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="1080" y="1386" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">market_produce_stalls</text>
+<ellipse cx="1290" cy="1410" rx="93.44" ry="24.0" fill="white" stroke="#667a94" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="1290" y="1416" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">has_fresh_market</text>
+<ellipse cx="870" cy="1465" rx="56.72" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="870" y="1471" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">location</text>
+<ellipse cx="730" cy="1545" rx="56.72" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="730" y="1551" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">latitude</text>
+<ellipse cx="1000" cy="1550" rx="61.31" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="1000" y="1556" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">longitude</text>
+<ellipse cx="1270" cy="810" rx="65.9" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="1270" y="816" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">distance_m</text>
+<ellipse cx="1290" cy="915" rx="88.85000000000001" ry="24.0" fill="white" stroke="#667a94" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="1290" y="921" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">proximity_level</text>
+<text x="797.0" y="472.0" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#b3261e" text-anchor="middle">(1,1)</text>
+<text x="463.0" y="520.0" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#b3261e" text-anchor="middle">(0,N)</text>
+<text x="1627.0" y="472.0" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#b3261e" text-anchor="middle">(1,1)</text>
+<text x="1203.0" y="520.0" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#b3261e" text-anchor="middle">(0,N)</text>
+<text x="1854.0" y="1110.0" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#b3261e" text-anchor="middle">(1,1)</text>
+<text x="1806.0" y="580.0" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#b3261e" text-anchor="middle">(0,N)</text>
+<text x="976.0" y="572.0" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#b3261e" text-anchor="middle">(0,N)</text>
+<text x="1024.0" y="1130.0" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#b3261e" text-anchor="middle">(0,N)</text>
+<text x="1135.8999682000954" y="446.4399491201526" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#53677f" text-anchor="middle">(0,1)</text>
+<text x="1907.8543007265578" y="1299.8582797093768" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#53677f" text-anchor="middle">(0,1)</text>
+<text x="961.9336823042769" y="1351.7127498096452" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#53677f" text-anchor="middle">(0,1)</text>
+<text x="40" y="52" font-family="Arial,Helvetica,sans-serif" font-size="32" font-weight="700" fill="#1b2d45" text-anchor="start">HDB resale and hawker centres - conceptual ER model</text>
+<text x="40" y="90" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="400" fill="#53677f" text-anchor="start">Chen notation with (min,max) participation | contract 1.0.0-draft.2 | no tables or foreign keys at this level; mapping in task1_report.md</text>
+<text x="1290" y="620" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#53677f" text-anchor="start">HDB FLAT alternate key: its HDB BUILDING + all six profile attributes</text>
+<text x="1180" y="1155" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#53677f" text-anchor="start">HAWKER CENTRE alternate key: (centre_name, address)</text>
+<rect x="40" y="680" width="520" height="900" rx="10" fill="white" stroke="#c4cfdd" stroke-width="1.5"/>
+<text x="60" y="718" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="700" fill="#1b2d45" text-anchor="start">Notation</text>
+<rect x="65.0" y="742.0" width="110" height="40" fill="#17375c" stroke="#17375c" stroke-width="2"/>
+<text x="120" y="770" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700" fill="white" text-anchor="middle">ENTITY</text>
+<text x="190" y="769" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="start">entity type</text>
+<polygon points="120,797.0 180.0,825 120,853.0 60.0,825" fill="#e7eef8" stroke="#17375c" stroke-width="2.5"/>
+<text x="120" y="832" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" fill="#17375c" text-anchor="middle">REL</text>
+<text x="190" y="832" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="start">relationship type</text>
+<ellipse cx="120" cy="890" rx="61.31" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="120" y="896" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">attribute</text>
+<text x="190" y="896" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="start">attribute</text>
+<ellipse cx="120" cy="948" rx="55.0" ry="24.0" fill="white" stroke="#667a94" stroke-width="2"/>
+<text x="120" y="954" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#1b2d45" text-anchor="middle" text-decoration="underline">id</text>
+<text x="190" y="954" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="start">identifier (primary key)</text>
+<ellipse cx="120" cy="1006" rx="55.0" ry="24.0" fill="white" stroke="#667a94" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="120" y="1012" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="middle">derived</text>
+<text x="190" y="1012" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#1b2d45" text-anchor="start">derived attribute (computed, not stored)</text>
+<text x="60" y="1070" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#17375c" text-anchor="start">(min,max)</text>
+<text x="170" y="1070" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#1b2d45" text-anchor="start">on an entity-relationship line: how many</text>
+<text x="170" y="1096" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#1b2d45" text-anchor="start">instances of that relationship ONE entity</text>
+<text x="170" y="1122" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#1b2d45" text-anchor="start">instance takes part in; N = many.</text>
+<text x="60" y="1148" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#17375c" text-anchor="start">(0,1)</text>
+<text x="170" y="1148" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#1b2d45" text-anchor="start">on an attribute line: optional attribute.</text>
+<text x="60" y="1174" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#17375c" text-anchor="start">(AK)</text>
+<text x="170" y="1174" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#1b2d45" text-anchor="start">alternate (candidate) key; composite ovals</text>
+<text x="170" y="1200" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#1b2d45" text-anchor="start">list their components.</text>
+<text x="60" y="1252" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#17375c" text-anchor="start">Proximity</text>
+<text x="170" y="1252" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#1b2d45" text-anchor="start">IS NEAR links a building to a hawker</text>
+<text x="170" y="1278" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#1b2d45" text-anchor="start">centre with distance_m (straight-line</text>
+<text x="170" y="1304" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#1b2d45" text-anchor="start">Haversine, metres). proximity_level:</text>
+<text x="170" y="1330" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#1b2d45" text-anchor="start">near [0,500) | medium [500,1000) |</text>
+<text x="170" y="1356" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#1b2d45" text-anchor="start">far [1000, +inf) metres</text>
+<text x="170" y="1382" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#1b2d45" text-anchor="start">(contract 1.0.0-draft.2; under team review)</text>
+<text x="60" y="1434" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#17375c" text-anchor="start">Flat</text>
+<text x="170" y="1434" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#1b2d45" text-anchor="start">A flat takes part in exactly one IN BUILDING</text>
+<text x="170" y="1460" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#1b2d45" text-anchor="start">(1,1), so its proximity is its building&#x27;s.</text>
+<text x="60" y="1512" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#17375c" text-anchor="start">Fresh market</text>
+<text x="170" y="1512" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#1b2d45" text-anchor="start">has_fresh_market = market_produce_stalls &gt; 0</text>
+<text x="170" y="1538" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#1b2d45" text-anchor="start">(NEA produce-stall count).</text>
+</svg>
