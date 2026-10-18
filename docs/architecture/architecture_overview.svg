@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="810" viewBox="0 0 1500 810" role="img">
+<title>Architecture and module handoffs</title>
+<rect width="100%" height="100%" fill="#f5f7fb"/>
+<text x="40" y="50" font-family="Arial,Helvetica,sans-serif" font-size="32" font-weight="700" fill="#1b2d45" text-anchor="start">Architecture and module handoffs</text>
+<text x="40" y="90" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="400" fill="#1b2d45" text-anchor="start">One versioned schema contract; no implementation in teammates&#x27; owned modules</text>
+<polyline points="750,250 750,305 310,305 310,365" fill="none" stroke="#667a94" stroke-width="3"/>
+<polyline points="750,305 1180,305 1180,365" fill="none" stroke="#667a94" stroke-width="3"/>
+<polyline points="310,520 310,580 750,580 750,625" fill="none" stroke="#667a94" stroke-width="3"/>
+<polyline points="1180,520 1180,580 750,580" fill="none" stroke="#667a94" stroke-width="3"/>
+<rect x="480" y="140" width="540" height="110" rx="12" fill="white" stroke="#8fa2ba" stroke-width="2"/>
+<rect x="481" y="141" width="538" height="52" rx="11" fill="#17375c"/>
+<text x="498" y="175" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700" fill="white" text-anchor="start">Task 1 - Schema and contract</text>
+<text x="498" y="224" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="400" fill="#1b2d45" text-anchor="start">DDL / ER / identity / spatial rules / validation</text>
+<rect x="40" y="365" width="540" height="155" rx="12" fill="white" stroke="#8fa2ba" stroke-width="2"/>
+<rect x="41" y="366" width="538" height="52" rx="11" fill="#17375c"/>
+<text x="58" y="400" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700" fill="white" text-anchor="start">HE - HDB ETL</text>
+<text x="58" y="449" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="400" fill="#1b2d45" text-anchor="start">Town / Building core / Flat profile / Resale CSVs</text>
+<text x="58" y="477" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="400" fill="#1b2d45" text-anchor="start">Stable source-record identity; five source files</text>
+<rect x="900" y="365" width="550" height="155" rx="12" fill="white" stroke="#8fa2ba" stroke-width="2"/>
+<rect x="901" y="366" width="548" height="52" rx="11" fill="#17375c"/>
+<text x="918" y="400" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700" fill="white" text-anchor="start">Chen - Spatial ETL</text>
+<text x="918" y="449" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="400" fill="#1b2d45" text-anchor="start">Enriched Building / Hawker / Distance-pair CSVs</text>
+<text x="918" y="477" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="400" fill="#1b2d45" text-anchor="start">Prescribed hdb.csv and NTULearn hawker_geo.csv</text>
+<rect x="480" y="625" width="540" height="120" rx="12" fill="white" stroke="#8fa2ba" stroke-width="2"/>
+<rect x="481" y="626" width="538" height="52" rx="11" fill="#17375c"/>
+<text x="498" y="660" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700" fill="white" text-anchor="start">Sun - Load and validate</text>
+<text x="498" y="709" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="400" fill="#1b2d45" text-anchor="start">Six base tables -&gt; LI queries -&gt; Sun timings</text>
+<text x="498" y="737" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="400" fill="#1b2d45" text-anchor="start">Lu indexes / analysis / report -&gt; final technical review</text>
+<text x="40" y="790" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="400" fill="#1b2d45" text-anchor="start">Solid lines: data/contract handoffs. Real-data validation and team approval are pending.</text>
+</svg>
