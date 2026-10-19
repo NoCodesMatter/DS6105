@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "checked_utc": "2026-10-18T14:08:50.603872+00:00",
+  "tests_run": 40,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "scope": [
+    "source-code newline portability",
+    "PostgreSQL NUL rejection",
+    "profiling failure rollback",
+    "external snapshot defaults",
+    "locked snapshot recovery and download failure handling",
+    "all previous HDB transformation and key regressions"
+  ],
+  "integration_report": "review_three_source_validation.json",
+  "postgresql_import_executed": false
+}

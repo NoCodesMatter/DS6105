@@ -1,0 +1,816 @@
+{
+  "address_town_conflicts": [],
+  "buildings_with_multiple_lease_years": [
+    {
+      "block": "114",
+      "lease_commence_years": [
+        1981,
+        1982
+      ],
+      "source_examples": [
+        {
+          "dataset_id": "d_2d5ff9ea31397b66239f245f57751537",
+          "source_record": {
+            "block": "114",
+            "flat_model": "New Generation",
+            "flat_type": "4 ROOM",
+            "floor_area_sqm": "93",
+            "lease_commence_date": "1981",
+            "month": "2014-03",
+            "resale_price": "425000",
+            "storey_range": "04 TO 06",
+            "street_name": "JURONG EAST ST 13",
+            "town": "JURONG EAST"
+          },
+          "source_row": 38786
+        },
+        {
+          "dataset_id": "d_8b84c4ee58e3cfc0ece0d773c8ca6abc",
+          "source_record": {
+            "block": "114",
+            "flat_model": "New Generation",
+            "flat_type": "3 ROOM",
+            "floor_area_sqm": "84.00",
+            "lease_commence_date": "1982",
+            "month": "2025-12",
+            "remaining_lease": "55 years 11 months",
+            "resale_price": "480000",
+            "storey_range": "04 TO 06",
+            "street_name": "JURONG EAST ST 13",
+            "town": "JURONG EAST"
+          },
+          "source_row": 206366
+        }
+      ],
+      "street_name": "JURONG EAST ST 13"
+    },
+    {
+      "block": "21",
+      "lease_commence_years": [
+        1978,
+        2013
+      ],
+      "source_examples": [
+        {
+          "dataset_id": "d_ebc5ab87086db484f88045b47411ebc5",
+          "source_record": {
+            "block": "21",
+            "flat_model": "IMPROVED",
+            "flat_type": "3 ROOM",
+            "floor_area_sqm": "74",
+            "lease_commence_date": "1978",
+            "month": "1990-01",
+            "resale_price": "32760",
+            "storey_range": "04 TO 06",
+            "street_name": "TEBAN GDNS RD",
+            "town": "JURONG EAST"
+          },
+          "source_row": 773
+        },
+        {
+          "dataset_id": "d_8b84c4ee58e3cfc0ece0d773c8ca6abc",
+          "source_record": {
+            "block": "21",
+            "flat_model": "Model A",
+            "flat_type": "4 ROOM",
+            "floor_area_sqm": "92",
+            "lease_commence_date": "2013",
+            "month": "2017-02",
+            "remaining_lease": "95 years 07 months",
+            "resale_price": "460000",
+            "storey_range": "25 TO 27",
+            "street_name": "TEBAN GDNS RD",
+            "town": "JURONG EAST"
+          },
+          "source_row": 1630
+        }
+      ],
+      "street_name": "TEBAN GDNS RD"
+    },
+    {
+      "block": "37",
+      "lease_commence_years": [
+        1966,
+        1981
+      ],
+      "source_examples": [
+        {
+          "dataset_id": "d_2d5ff9ea31397b66239f245f57751537",
+          "source_record": {
+            "block": "37",
+            "flat_model": "Improved",
+            "flat_type": "3 ROOM",
+            "floor_area_sqm": "67",
+            "lease_commence_date": "1966",
+            "month": "2013-04",
+            "resale_price": "311000",
+            "storey_range": "04 TO 06",
+            "street_name": "TEBAN GDNS RD",
+            "town": "JURONG EAST"
+          },
+          "source_row": 24489
+        },
+        {
+          "dataset_id": "d_8b84c4ee58e3cfc0ece0d773c8ca6abc",
+          "source_record": {
+            "block": "37",
+            "flat_model": "Improved",
+            "flat_type": "3 ROOM",
+            "floor_area_sqm": "67.00",
+            "lease_commence_date": "1981",
+            "month": "2025-01",
+            "remaining_lease": "40 years 01 month",
+            "resale_price": "350000",
+            "storey_range": "04 TO 06",
+            "street_name": "TEBAN GDNS RD",
+            "town": "JURONG EAST"
+          },
+          "source_row": 206482
+        }
+      ],
+      "street_name": "TEBAN GDNS RD"
+    }
+  ],
+  "contract_version": "1.0.0-draft.2",
+  "coordinate_dependency_checked": false,
+  "distinct_canonical_addresses": 10024,
+  "sources": [
+    {
+      "bounds": {
+        "floor_area_sqm": {
+          "max": "307.00",
+          "min": "28.00"
+        },
+        "lease_commence_year": {
+          "max": "1997",
+          "min": "1967"
+        },
+        "resale_price": {
+          "max": "900000.00",
+          "min": "5000.00"
+        },
+        "storey_lower": {
+          "max": "25",
+          "min": "1"
+        },
+        "storey_upper": {
+          "max": "27",
+          "min": "3"
+        }
+      },
+      "dataset_id": "d_ebc5ab87086db484f88045b47411ebc5",
+      "header": [
+        "month",
+        "town",
+        "flat_type",
+        "block",
+        "street_name",
+        "storey_range",
+        "floor_area_sqm",
+        "flat_model",
+        "lease_commence_date",
+        "resale_price"
+      ],
+      "identical_raw_records_sha256_excess": 826,
+      "issues": {
+        "estimated_lease_out_of_range": 36,
+        "transaction_before_lease_commencement_year": 36
+      },
+      "label": "1990_1999",
+      "lease_basis_counts": {
+        "estimated_years": 287160,
+        "unknown": 36
+      },
+      "missing_values": {},
+      "month_count": 120,
+      "month_max": "1999-12",
+      "month_min": "1990-01",
+      "normalizable_rows": 287196,
+      "raw_flat_models": {
+        "2-ROOM": 21,
+        "APARTMENT": 9901,
+        "IMPROVED": 73589,
+        "IMPROVED-MAISONETTE": 44,
+        "MAISONETTE": 12215,
+        "MODEL A": 70381,
+        "MODEL A-MAISONETTE": 982,
+        "MULTI GENERATION": 279,
+        "NEW GENERATION": 78898,
+        "PREMIUM APARTMENT": 6,
+        "SIMPLIFIED": 23258,
+        "STANDARD": 17375,
+        "TERRACE": 247
+      },
+      "raw_flat_types": {
+        "1 ROOM": 827,
+        "2 ROOM": 4140,
+        "3 ROOM": 113102,
+        "4 ROOM": 98521,
+        "5 ROOM": 48206,
+        "EXECUTIVE": 22121,
+        "MULTI GENERATION": 279
+      },
+      "raw_storey_ranges": {
+        "01 TO 03": 60965,
+        "04 TO 06": 75455,
+        "07 TO 09": 69393,
+        "10 TO 12": 58442,
+        "13 TO 15": 13692,
+        "16 TO 18": 4391,
+        "19 TO 21": 2609,
+        "22 TO 24": 1713,
+        "25 TO 27": 536
+      },
+      "rows": 287196,
+      "sha256": "2e064923f41cc96536db04c978901695aa0191022829895cf4ce177e42afad57",
+      "towns": [
+        "ANG MO KIO",
+        "BEDOK",
+        "BISHAN",
+        "BUKIT BATOK",
+        "BUKIT MERAH",
+        "BUKIT PANJANG",
+        "BUKIT TIMAH",
+        "CENTRAL AREA",
+        "CHOA CHU KANG",
+        "CLEMENTI",
+        "GEYLANG",
+        "HOUGANG",
+        "JURONG EAST",
+        "JURONG WEST",
+        "KALLANG/WHAMPOA",
+        "LIM CHU KANG",
+        "MARINE PARADE",
+        "PASIR RIS",
+        "QUEENSTOWN",
+        "SEMBAWANG",
+        "SENGKANG",
+        "SERANGOON",
+        "TAMPINES",
+        "TOA PAYOH",
+        "WOODLANDS",
+        "YISHUN"
+      ],
+      "transformations": {
+        "formatted_floor_area_sqm": 287196,
+        "formatted_resale_price": 287196,
+        "lease_estimated_years": 287160,
+        "lease_unknown": 36,
+        "month_to_first_day_marker": 287196,
+        "storey_range_split": 287196
+      }
+    },
+    {
+      "bounds": {
+        "floor_area_sqm": {
+          "max": "297.00",
+          "min": "28.00"
+        },
+        "lease_commence_year": {
+          "max": "2012",
+          "min": "1966"
+        },
+        "resale_price": {
+          "max": "903000.00",
+          "min": "28000.00"
+        },
+        "storey_lower": {
+          "max": "40",
+          "min": "1"
+        },
+        "storey_upper": {
+          "max": "42",
+          "min": "3"
+        }
+      },
+      "dataset_id": "d_43f493c6c50d54243cc1eab0df142d6a",
+      "header": [
+        "month",
+        "town",
+        "flat_type",
+        "block",
+        "street_name",
+        "storey_range",
+        "floor_area_sqm",
+        "flat_model",
+        "lease_commence_date",
+        "resale_price"
+      ],
+      "identical_raw_records_sha256_excess": 513,
+      "issues": {
+        "estimated_lease_out_of_range": 15,
+        "transaction_before_lease_commencement_year": 15
+      },
+      "label": "2000_2012_02",
+      "lease_basis_counts": {
+        "estimated_years": 369636,
+        "unknown": 15
+      },
+      "missing_values": {},
+      "month_count": 146,
+      "month_max": "2012-02",
+      "month_min": "2000-01",
+      "normalizable_rows": 369651,
+      "raw_flat_models": {
+        "2-room": 16,
+        "Adjoined flat": 799,
+        "Apartment": 15274,
+        "Improved": 100441,
+        "Improved-Maisonette": 46,
+        "Maisonette": 9839,
+        "Model A": 106147,
+        "Model A-Maisonette": 626,
+        "Model A2": 6696,
+        "Multi Generation": 160,
+        "New Generation": 71685,
+        "Premium Apartment": 18300,
+        "Premium Maisonette": 66,
+        "Simplified": 22370,
+        "Standard": 16894,
+        "Terrace": 292
+      },
+      "raw_flat_types": {
+        "1 ROOM": 355,
+        "2 ROOM": 3554,
+        "3 ROOM": 114661,
+        "4 ROOM": 142171,
+        "5 ROOM": 81675,
+        "EXECUTIVE": 27075,
+        "MULTI-GENERATION": 160
+      },
+      "raw_storey_ranges": {
+        "01 TO 03": 76806,
+        "04 TO 06": 95136,
+        "07 TO 09": 84673,
+        "10 TO 12": 71215,
+        "13 TO 15": 24521,
+        "16 TO 18": 9018,
+        "19 TO 21": 4209,
+        "22 TO 24": 2521,
+        "25 TO 27": 1032,
+        "28 TO 30": 434,
+        "31 TO 33": 31,
+        "34 TO 36": 20,
+        "37 TO 39": 23,
+        "40 TO 42": 12
+      },
+      "rows": 369651,
+      "sha256": "5f6a72bd7b9120281863beb1fc4c89aa5f4923f00b0f6c52494c4347363f2c36",
+      "towns": [
+        "ANG MO KIO",
+        "BEDOK",
+        "BISHAN",
+        "BUKIT BATOK",
+        "BUKIT MERAH",
+        "BUKIT PANJANG",
+        "BUKIT TIMAH",
+        "CENTRAL AREA",
+        "CHOA CHU KANG",
+        "CLEMENTI",
+        "GEYLANG",
+        "HOUGANG",
+        "JURONG EAST",
+        "JURONG WEST",
+        "KALLANG/WHAMPOA",
+        "MARINE PARADE",
+        "PASIR RIS",
+        "PUNGGOL",
+        "QUEENSTOWN",
+        "SEMBAWANG",
+        "SENGKANG",
+        "SERANGOON",
+        "TAMPINES",
+        "TOA PAYOH",
+        "WOODLANDS",
+        "YISHUN"
+      ],
+      "transformations": {
+        "canonicalized_flat_model": 369651,
+        "formatted_floor_area_sqm": 369651,
+        "formatted_resale_price": 369585,
+        "lease_estimated_years": 369636,
+        "lease_unknown": 15,
+        "mapped_MULTI-GENERATION": 160,
+        "month_to_first_day_marker": 369651,
+        "storey_range_split": 369651
+      }
+    },
+    {
+      "bounds": {
+        "floor_area_sqm": {
+          "max": "266.00",
+          "min": "31.00"
+        },
+        "lease_commence_year": {
+          "max": "2012",
+          "min": "1966"
+        },
+        "resale_price": {
+          "max": "1088888.00",
+          "min": "195000.00"
+        },
+        "storey_lower": {
+          "max": "40",
+          "min": "1"
+        },
+        "storey_upper": {
+          "max": "42",
+          "min": "3"
+        }
+      },
+      "dataset_id": "d_2d5ff9ea31397b66239f245f57751537",
+      "header": [
+        "month",
+        "town",
+        "flat_type",
+        "block",
+        "street_name",
+        "storey_range",
+        "floor_area_sqm",
+        "flat_model",
+        "lease_commence_date",
+        "resale_price"
+      ],
+      "identical_raw_records_sha256_excess": 248,
+      "issues": {},
+      "label": "2012_03_2014",
+      "lease_basis_counts": {
+        "estimated_years": 52203
+      },
+      "missing_values": {},
+      "month_count": 34,
+      "month_max": "2014-12",
+      "month_min": "2012-03",
+      "normalizable_rows": 52203,
+      "raw_flat_models": {
+        "Adjoined flat": 84,
+        "Apartment": 2150,
+        "DBSS": 72,
+        "Improved": 13744,
+        "Improved-Maisonette": 6,
+        "Maisonette": 1443,
+        "Model A": 14430,
+        "Model A-Maisonette": 75,
+        "Model A2": 792,
+        "Multi Generation": 21,
+        "New Generation": 9598,
+        "Premium Apartment": 4514,
+        "Premium Maisonette": 4,
+        "Simplified": 3092,
+        "Standard": 2144,
+        "Terrace": 33,
+        "Type S1": 1
+      },
+      "raw_flat_types": {
+        "1 ROOM": 40,
+        "2 ROOM": 581,
+        "3 ROOM": 15372,
+        "4 ROOM": 20150,
+        "5 ROOM": 11845,
+        "EXECUTIVE": 4194,
+        "MULTI-GENERATION": 21
+      },
+      "raw_storey_ranges": {
+        "01 TO 03": 9692,
+        "01 TO 05": 2700,
+        "04 TO 06": 11456,
+        "06 TO 10": 2474,
+        "07 TO 09": 9878,
+        "10 TO 12": 8370,
+        "11 TO 15": 1259,
+        "13 TO 15": 3304,
+        "16 TO 18": 1319,
+        "16 TO 20": 265,
+        "19 TO 21": 605,
+        "21 TO 25": 92,
+        "22 TO 24": 351,
+        "25 TO 27": 183,
+        "26 TO 30": 39,
+        "28 TO 30": 115,
+        "31 TO 33": 23,
+        "31 TO 35": 2,
+        "34 TO 36": 32,
+        "36 TO 40": 7,
+        "37 TO 39": 26,
+        "40 TO 42": 11
+      },
+      "rows": 52203,
+      "sha256": "6a16e2dc78f70048ec1a522b59a9727581c36e45e02022641c53e755a7657c72",
+      "towns": [
+        "ANG MO KIO",
+        "BEDOK",
+        "BISHAN",
+        "BUKIT BATOK",
+        "BUKIT MERAH",
+        "BUKIT PANJANG",
+        "BUKIT TIMAH",
+        "CENTRAL AREA",
+        "CHOA CHU KANG",
+        "CLEMENTI",
+        "GEYLANG",
+        "HOUGANG",
+        "JURONG EAST",
+        "JURONG WEST",
+        "KALLANG/WHAMPOA",
+        "MARINE PARADE",
+        "PASIR RIS",
+        "PUNGGOL",
+        "QUEENSTOWN",
+        "SEMBAWANG",
+        "SENGKANG",
+        "SERANGOON",
+        "TAMPINES",
+        "TOA PAYOH",
+        "WOODLANDS",
+        "YISHUN"
+      ],
+      "transformations": {
+        "canonicalized_flat_model": 52131,
+        "formatted_floor_area_sqm": 52203,
+        "formatted_resale_price": 52191,
+        "lease_estimated_years": 52203,
+        "mapped_MULTI-GENERATION": 21,
+        "month_to_first_day_marker": 52203,
+        "storey_range_split": 52203
+      }
+    },
+    {
+      "bounds": {
+        "floor_area_sqm": {
+          "max": "280.00",
+          "min": "31.00"
+        },
+        "lease_commence_year": {
+          "max": "2013",
+          "min": "1966"
+        },
+        "resale_price": {
+          "max": "1150000.00",
+          "min": "190000.00"
+        },
+        "storey_lower": {
+          "max": "49",
+          "min": "1"
+        },
+        "storey_upper": {
+          "max": "51",
+          "min": "3"
+        }
+      },
+      "dataset_id": "d_ea9ed51da2787afaf8e51f827c304208",
+      "header": [
+        "month",
+        "town",
+        "flat_type",
+        "block",
+        "street_name",
+        "storey_range",
+        "floor_area_sqm",
+        "flat_model",
+        "lease_commence_date",
+        "remaining_lease",
+        "resale_price"
+      ],
+      "identical_raw_records_sha256_excess": 24,
+      "issues": {},
+      "label": "2015_2016",
+      "lease_basis_counts": {
+        "reported_years": 37153
+      },
+      "missing_values": {},
+      "month_count": 24,
+      "month_max": "2016-12",
+      "month_min": "2015-01",
+      "normalizable_rows": 37153,
+      "raw_flat_models": {
+        "2-room": 1,
+        "Adjoined flat": 50,
+        "Apartment": 1422,
+        "DBSS": 205,
+        "Improved": 9511,
+        "Improved-Maisonette": 4,
+        "Maisonette": 1036,
+        "Model A": 11143,
+        "Model A-Maisonette": 70,
+        "Model A2": 576,
+        "Multi Generation": 5,
+        "New Generation": 6328,
+        "Premium Apartment": 3526,
+        "Premium Apartment Loft": 5,
+        "Premium Maisonette": 2,
+        "Simplified": 1872,
+        "Standard": 1181,
+        "Terrace": 24,
+        "Type S1": 137,
+        "Type S2": 55
+      },
+      "raw_flat_types": {
+        "1 ROOM": 14,
+        "2 ROOM": 348,
+        "3 ROOM": 10021,
+        "4 ROOM": 15190,
+        "5 ROOM": 8735,
+        "EXECUTIVE": 2840,
+        "MULTI-GENERATION": 5
+      },
+      "raw_storey_ranges": {
+        "01 TO 03": 7050,
+        "04 TO 06": 8961,
+        "07 TO 09": 8220,
+        "10 TO 12": 7048,
+        "13 TO 15": 3176,
+        "16 TO 18": 1300,
+        "19 TO 21": 514,
+        "22 TO 24": 369,
+        "25 TO 27": 189,
+        "28 TO 30": 119,
+        "31 TO 33": 53,
+        "34 TO 36": 55,
+        "37 TO 39": 54,
+        "40 TO 42": 27,
+        "43 TO 45": 8,
+        "46 TO 48": 8,
+        "49 TO 51": 2
+      },
+      "rows": 37153,
+      "sha256": "4ff7ce4a4f642fb384d2b75a42e75b0477e50005f4aaa9989591a7a92507d185",
+      "towns": [
+        "ANG MO KIO",
+        "BEDOK",
+        "BISHAN",
+        "BUKIT BATOK",
+        "BUKIT MERAH",
+        "BUKIT PANJANG",
+        "BUKIT TIMAH",
+        "CENTRAL AREA",
+        "CHOA CHU KANG",
+        "CLEMENTI",
+        "GEYLANG",
+        "HOUGANG",
+        "JURONG EAST",
+        "JURONG WEST",
+        "KALLANG/WHAMPOA",
+        "MARINE PARADE",
+        "PASIR RIS",
+        "PUNGGOL",
+        "QUEENSTOWN",
+        "SEMBAWANG",
+        "SENGKANG",
+        "SERANGOON",
+        "TAMPINES",
+        "TOA PAYOH",
+        "WOODLANDS",
+        "YISHUN"
+      ],
+      "transformations": {
+        "canonicalized_flat_model": 36948,
+        "formatted_floor_area_sqm": 37153,
+        "formatted_resale_price": 37144,
+        "lease_reported_years": 37153,
+        "mapped_MULTI-GENERATION": 5,
+        "month_to_first_day_marker": 37153,
+        "storey_range_split": 37153
+      }
+    },
+    {
+      "bounds": {
+        "floor_area_sqm": {
+          "max": "366.70",
+          "min": "31.00"
+        },
+        "lease_commence_year": {
+          "max": "2023",
+          "min": "1966"
+        },
+        "resale_price": {
+          "max": "1728000.00",
+          "min": "140000.00"
+        },
+        "storey_lower": {
+          "max": "49",
+          "min": "1"
+        },
+        "storey_upper": {
+          "max": "51",
+          "min": "3"
+        }
+      },
+      "dataset_id": "d_8b84c4ee58e3cfc0ece0d773c8ca6abc",
+      "header": [
+        "month",
+        "town",
+        "flat_type",
+        "block",
+        "street_name",
+        "storey_range",
+        "floor_area_sqm",
+        "flat_model",
+        "lease_commence_date",
+        "remaining_lease",
+        "resale_price"
+      ],
+      "identical_raw_records_sha256_excess": 318,
+      "issues": {},
+      "label": "2017_onwards",
+      "lease_basis_counts": {
+        "reported_months": 242955
+      },
+      "missing_values": {},
+      "month_count": 118,
+      "month_max": "2026-10",
+      "month_min": "2017-01",
+      "normalizable_rows": 242955,
+      "raw_flat_models": {
+        "2-room": 520,
+        "3Gen": 85,
+        "Adjoined flat": 416,
+        "Apartment": 8677,
+        "DBSS": 3848,
+        "Improved": 59338,
+        "Improved-Maisonette": 33,
+        "Maisonette": 6639,
+        "Model A": 87639,
+        "Model A-Maisonette": 423,
+        "Model A2": 2722,
+        "Multi Generation": 92,
+        "New Generation": 29411,
+        "Premium Apartment": 26535,
+        "Premium Apartment Loft": 141,
+        "Premium Maisonette": 22,
+        "Simplified": 9264,
+        "Standard": 6434,
+        "Terrace": 123,
+        "Type S1": 394,
+        "Type S2": 199
+      },
+      "raw_flat_types": {
+        "1 ROOM": 89,
+        "2 ROOM": 5106,
+        "3 ROOM": 57634,
+        "4 ROOM": 103245,
+        "5 ROOM": 59485,
+        "EXECUTIVE": 17304,
+        "MULTI-GENERATION": 92
+      },
+      "raw_storey_ranges": {
+        "01 TO 03": 42584,
+        "04 TO 06": 55726,
+        "07 TO 09": 50923,
+        "10 TO 12": 45352,
+        "13 TO 15": 23487,
+        "16 TO 18": 11002,
+        "19 TO 21": 4772,
+        "22 TO 24": 3325,
+        "25 TO 27": 2074,
+        "28 TO 30": 1364,
+        "31 TO 33": 747,
+        "34 TO 36": 657,
+        "37 TO 39": 534,
+        "40 TO 42": 261,
+        "43 TO 45": 76,
+        "46 TO 48": 52,
+        "49 TO 51": 19
+      },
+      "rows": 242955,
+      "sha256": "d401fc2e7d2a083576dd388b5ea3d170c2027d2503542de32a84656651ebe947",
+      "towns": [
+        "ANG MO KIO",
+        "BEDOK",
+        "BISHAN",
+        "BUKIT BATOK",
+        "BUKIT MERAH",
+        "BUKIT PANJANG",
+        "BUKIT TIMAH",
+        "CENTRAL AREA",
+        "CHOA CHU KANG",
+        "CLEMENTI",
+        "GEYLANG",
+        "HOUGANG",
+        "JURONG EAST",
+        "JURONG WEST",
+        "KALLANG/WHAMPOA",
+        "MARINE PARADE",
+        "PASIR RIS",
+        "PUNGGOL",
+        "QUEENSTOWN",
+        "SEMBAWANG",
+        "SENGKANG",
+        "SERANGOON",
+        "TAMPINES",
+        "TOA PAYOH",
+        "WOODLANDS",
+        "YISHUN"
+      ],
+      "transformations": {
+        "canonicalized_flat_model": 239107,
+        "formatted_floor_area_sqm": 116676,
+        "formatted_resale_price": 242891,
+        "lease_reported_months": 242955,
+        "mapped_MULTI-GENERATION": 92,
+        "month_to_first_day_marker": 242955,
+        "storey_range_split": 242955
+      }
+    }
+  ],
+  "total_source_records": 989158
+}

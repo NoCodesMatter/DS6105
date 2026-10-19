@@ -1,0 +1,281 @@
+{
+  "checked_utc": "2026-10-18T14:23:11.775790+00:00",
+  "client_version": "psql (PostgreSQL) 15.19",
+  "constraint_probes": {
+    "canonical_text": {
+      "expected_sqlstate": "23514",
+      "observed_sqlstate": "23514",
+      "status": "passed"
+    },
+    "coordinate_pair": {
+      "expected_sqlstate": "23514",
+      "observed_sqlstate": "23514",
+      "status": "passed"
+    },
+    "duplicate_primary_key": {
+      "expected_sqlstate": "23505",
+      "observed_sqlstate": "23505",
+      "status": "passed"
+    },
+    "foreign_key": {
+      "expected_sqlstate": "23503",
+      "observed_sqlstate": "23503",
+      "status": "passed"
+    },
+    "invalid_calendar_date": {
+      "expected_sqlstate": "22008",
+      "observed_sqlstate": "22008",
+      "status": "passed"
+    },
+    "lease_range": {
+      "expected_sqlstate": "23514",
+      "observed_sqlstate": "23514",
+      "status": "passed"
+    },
+    "month_day": {
+      "expected_sqlstate": "23514",
+      "observed_sqlstate": "23514",
+      "status": "passed"
+    },
+    "numeric_overflow": {
+      "expected_sqlstate": "22003",
+      "observed_sqlstate": "22003",
+      "status": "passed"
+    },
+    "price_null": {
+      "expected_sqlstate": "23502",
+      "observed_sqlstate": "23502",
+      "status": "passed"
+    },
+    "source_ordinal": {
+      "expected_sqlstate": "23514",
+      "observed_sqlstate": "23514",
+      "status": "passed"
+    },
+    "unknown_lease_nonnull": {
+      "expected_sqlstate": "23514",
+      "observed_sqlstate": "23514",
+      "status": "passed"
+    },
+    "year_lease_precision": {
+      "expected_sqlstate": "23514",
+      "observed_sqlstate": "23514",
+      "status": "passed"
+    },
+    "zero_price": {
+      "expected_sqlstate": "23514",
+      "observed_sqlstate": "23514",
+      "status": "passed"
+    }
+  },
+  "contract_version": "1.0.0-draft.2",
+  "csv_tables": {
+    "hdb_building": {
+      "bytes": 683147,
+      "rows": 10024,
+      "sha256": "c5b633a4a1d07113ce072a9f6eb9d34a33268f20dbd00e6735eb13f3ac2722a1"
+    },
+    "hdb_flat": {
+      "bytes": 15888814,
+      "rows": 147045,
+      "sha256": "eb2049d1a9f53ba8cbc1b9497afa47d622d84c2d8963952dd2d3db18493045c1"
+    },
+    "resale_transaction": {
+      "bytes": 155233168,
+      "rows": 989158,
+      "sha256": "13499076a9ee124176c2912bf251cf84fa8d6443223b670b5ce0200261b27e7f"
+    },
+    "town": {
+      "bytes": 297,
+      "rows": 27,
+      "sha256": "9a2e9b193ccb127dbe1fbb76065699f086cd5ee3372a5a2684bf26e1f9515b46"
+    }
+  },
+  "database": "hdb_all_five_verified_20261018",
+  "database_retained": true,
+  "full_project_acceptance_executed": false,
+  "full_value_roundtrip": {
+    "hdb_building": {
+      "columns_compared": 6,
+      "comparison": "all parsed strings, matched by primary key; order and CSV line endings ignored",
+      "rows_compared": 10024,
+      "status": "passed"
+    },
+    "hdb_flat": {
+      "columns_compared": 8,
+      "comparison": "all parsed strings, matched by primary key; order and CSV line endings ignored",
+      "rows_compared": 147045,
+      "status": "passed"
+    },
+    "resale_transaction": {
+      "columns_compared": 8,
+      "comparison": "all parsed strings, matched by primary key; order and CSV line endings ignored",
+      "rows_compared": 989158,
+      "status": "passed"
+    },
+    "town": {
+      "columns_compared": 1,
+      "comparison": "all parsed strings, matched by primary key; order and CSV line endings ignored",
+      "rows_compared": 27,
+      "status": "passed"
+    }
+  },
+  "postgresql_import_executed": true,
+  "preflight": {
+    "contract_version": "1.0.0-draft.2",
+    "csv_counts": {
+      "hdb_building": 10024,
+      "hdb_flat": 147045,
+      "resale_transaction": 989158,
+      "town": 27
+    },
+    "csv_hashes_verified": true,
+    "duplicate_primary_or_natural_keys": 0,
+    "lease_basis_counts": {
+      "estimated_years": 708999,
+      "reported_months": 242955,
+      "reported_years": 37153,
+      "unknown": 51
+    },
+    "orphan_foreign_keys": 0,
+    "postgresql_import_executed": false,
+    "scope": "Four HDB CSVs before spatial enrichment; not full six-table project acceptance",
+    "source_dataset_counts": {
+      "d_2d5ff9ea31397b66239f245f57751537": 52203,
+      "d_43f493c6c50d54243cc1eab0df142d6a": 369651,
+      "d_8b84c4ee58e3cfc0ece0d773c8ca6abc": 242955,
+      "d_ea9ed51da2787afaf8e51f827c304208": 37153,
+      "d_ebc5ab87086db484f88045b47411ebc5": 287196
+    },
+    "source_hashes_verified": true,
+    "source_records_reconciled": 989158,
+    "stage": "postgres_all_five",
+    "status": "passed"
+  },
+  "schema_sha256": "c4718d962b5816def439bb0b2371d9809fc99814b2c156a842d50653f634e106",
+  "schema_utf8_lf_sha256": "000b2c9f9da0111ce239dd664c1ad5855a463549ef8f218250260bb74c450932",
+  "scope": "Four HDB tables before geocoding; no hawker/spatial completeness claim",
+  "server": {
+    "version": "PostgreSQL 15.19, compiled by Visual C++ build 1944, 64-bit",
+    "version_num": 150019
+  },
+  "source_snapshots": [
+    {
+      "dataset_id": "d_2d5ff9ea31397b66239f245f57751537",
+      "label": "2012_03_2014",
+      "path": "data/raw/hdb/d_2d5ff9ea31397b66239f245f57751537.csv",
+      "rows": 52203,
+      "sha256": "6a16e2dc78f70048ec1a522b59a9727581c36e45e02022641c53e755a7657c72",
+      "snapshot_utc": "2026-10-18T12:00:42.864523+00:00",
+      "source_url": "https://data.gov.sg/datasets/d_2d5ff9ea31397b66239f245f57751537/view"
+    },
+    {
+      "dataset_id": "d_43f493c6c50d54243cc1eab0df142d6a",
+      "label": "2000_2012_02",
+      "path": "data/raw/hdb/d_43f493c6c50d54243cc1eab0df142d6a.csv",
+      "rows": 369651,
+      "sha256": "5f6a72bd7b9120281863beb1fc4c89aa5f4923f00b0f6c52494c4347363f2c36",
+      "snapshot_utc": "2026-10-18T12:00:05.029925+00:00",
+      "source_url": "https://data.gov.sg/datasets/d_43f493c6c50d54243cc1eab0df142d6a/view"
+    },
+    {
+      "dataset_id": "d_8b84c4ee58e3cfc0ece0d773c8ca6abc",
+      "label": "2017_onwards",
+      "path": "data/raw/hdb/d_8b84c4ee58e3cfc0ece0d773c8ca6abc.csv",
+      "rows": 242955,
+      "sha256": "d401fc2e7d2a083576dd388b5ea3d170c2027d2503542de32a84656651ebe947",
+      "snapshot_utc": "2026-10-18T12:02:02.095869+00:00",
+      "source_url": "https://data.gov.sg/datasets/d_8b84c4ee58e3cfc0ece0d773c8ca6abc/view"
+    },
+    {
+      "dataset_id": "d_ea9ed51da2787afaf8e51f827c304208",
+      "label": "2015_2016",
+      "path": "data/raw/hdb/d_ea9ed51da2787afaf8e51f827c304208.csv",
+      "rows": 37153,
+      "sha256": "4ff7ce4a4f642fb384d2b75a42e75b0477e50005f4aaa9989591a7a92507d185",
+      "snapshot_utc": "2026-10-18T12:01:21.815933+00:00",
+      "source_url": "https://data.gov.sg/datasets/d_ea9ed51da2787afaf8e51f827c304208/view"
+    },
+    {
+      "dataset_id": "d_ebc5ab87086db484f88045b47411ebc5",
+      "label": "1990_1999",
+      "path": "data/raw/hdb/d_ebc5ab87086db484f88045b47411ebc5.csv",
+      "rows": 287196,
+      "sha256": "2e064923f41cc96536db04c978901695aa0191022829895cf4ce177e42afad57",
+      "snapshot_utc": "2026-10-18T11:59:28.757700+00:00",
+      "source_url": "https://data.gov.sg/datasets/d_ebc5ab87086db484f88045b47411ebc5/view"
+    }
+  ],
+  "sql_checks": {
+    "expected_null_counts": {
+      "buildings_with_null_coordinates": 10024,
+      "unknown_lease_rows": 51
+    },
+    "lease_basis_counts": {
+      "estimated_years": 708999,
+      "reported_months": 242955,
+      "reported_years": 37153,
+      "unknown": 51
+    },
+    "source_dataset_counts": {
+      "d_2d5ff9ea31397b66239f245f57751537": 52203,
+      "d_43f493c6c50d54243cc1eab0df142d6a": 369651,
+      "d_8b84c4ee58e3cfc0ece0d773c8ca6abc": 242955,
+      "d_ea9ed51da2787afaf8e51f827c304208": 37153,
+      "d_ebc5ab87086db484f88045b47411ebc5": 287196
+    },
+    "status": "passed",
+    "table_counts": {
+      "hdb_building": 10024,
+      "hdb_flat": 147045,
+      "resale_transaction": 989158,
+      "town": 27
+    },
+    "violations": {
+      "duplicate_building_addresses": 0,
+      "duplicate_flat_profiles": 0,
+      "duplicate_source_keys": 0,
+      "hdb_building_duplicate_primary_keys": 0,
+      "hdb_building_unexpected_nulls": 0,
+      "hdb_flat_duplicate_primary_keys": 0,
+      "hdb_flat_unexpected_nulls": 0,
+      "invalid_estimated_lease_formula": 0,
+      "invalid_lease_nulls": 0,
+      "invalid_lease_ranges": 0,
+      "invalid_lease_year_precision": 0,
+      "invalid_months": 0,
+      "invalid_prices": 0,
+      "invalid_source_ordinals": 0,
+      "orphan_buildings": 0,
+      "orphan_flats": 0,
+      "orphan_transactions": 0,
+      "resale_transaction_duplicate_primary_keys": 0,
+      "resale_transaction_unexpected_nulls": 0,
+      "town_duplicate_primary_keys": 0,
+      "town_unexpected_nulls": 0,
+      "unexpected_coordinates": 0,
+      "unvalidated_constraints": 0
+    }
+  },
+  "stage": "postgres_all_five",
+  "stage_manifest_sha256": "68f805753b91d1272d810e6ef6593b58bef05add5716ca66a683e2cd4f2acbb8",
+  "status": "passed",
+  "transaction_rollback_probe": {
+    "counts_after_rollback": {
+      "hdb_building": 0,
+      "hdb_flat": 0,
+      "resale_transaction": 0,
+      "town": 0
+    },
+    "failed_table": "resale_transaction",
+    "rejection": {
+      "constraint": "transaction_positive_price",
+      "psql_exit": 3,
+      "sqlstate": "23514"
+    },
+    "same_import_transaction_builder": true,
+    "status": "passed"
+  },
+  "verification_code_hash_mode": "utf8-lf-v1",
+  "verification_code_sha256": "efbdf9d16151025bff467fdc1a410fdbc94f4dc18fa8d33674484e247adb8ff5"
+}
