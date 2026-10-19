@@ -1,0 +1,761 @@
+{
+  "collection_url": "https://data.gov.sg/collections/189/view",
+  "sources": [
+    {
+      "dataset_id": "d_ebc5ab87086db484f88045b47411ebc5",
+      "label": "1990_1999",
+      "source_url": "https://data.gov.sg/datasets/d_ebc5ab87086db484f88045b47411ebc5/view",
+      "download_object_url": "https://s3.ap-southeast-1.amazonaws.com/table-downloads-ingest.data.gov.sg/d_ebc5ab87086db484f88045b47411ebc5/8b4a7028ccf21534dc7a258692e0570d692d98793f3cf485a97ac3ec5d9ee13c.csv",
+      "snapshot_utc": "2026-10-18T11:59:28.757700+00:00",
+      "path": "data/raw/hdb/d_ebc5ab87086db484f88045b47411ebc5.csv",
+      "sha256": "2e064923f41cc96536db04c978901695aa0191022829895cf4ce177e42afad57",
+      "bytes": 22635623,
+      "rows": 287196,
+      "header": [
+        "month",
+        "town",
+        "flat_type",
+        "block",
+        "street_name",
+        "storey_range",
+        "floor_area_sqm",
+        "flat_model",
+        "lease_commence_date",
+        "resale_price"
+      ],
+      "metadata": {
+        "datasetId": "d_ebc5ab87086db484f88045b47411ebc5",
+        "createdAt": "2016-12-08T17:02:43+08:00",
+        "name": "Resale Flat Prices (Based on Approval Date), 1990 - 1999",
+        "collectionIds": [
+          "189"
+        ],
+        "description": "Notes:\r\n\r\n1. The approximate floor area includes any recess area purchased, space adding item under HDB’s upgrading programmes, roof terrace, etc.\r\n\r\n2. The transactions exclude resale transactions that may not reflect the full market price such as resale between relatives and resale of part shares.\r\n\r\n3. Resale prices should be taken as indicative only as the resale prices agreed between buyers and sellers are dependent on many factors.",
+        "format": "CSV",
+        "lastUpdatedAt": "2024-08-28T14:26:27+08:00",
+        "managedBy": "Housing & Development Board",
+        "coverageStart": "1990-01-01T08:00:00+08:00",
+        "coverageEnd": "1999-12-01T08:00:00+08:00",
+        "contactEmails": [
+          "LAU_Pei_Wen@hdb.gov.sg"
+        ],
+        "datasetSize": 22635623,
+        "columnMetadata": {
+          "order": [
+            "c_8w8wmcur0n6j13t1ajfoqp91l",
+            "c_8s14ya5yhse2tk7aoa9bjebto",
+            "c_9ufrld0mcwmquudcdsff43fhd",
+            "c_afg8okfrc5k8g9inz61nxioh0",
+            "c_163anbadqp0fd08i1tvw1ecr2",
+            "c_dr0obj6oi9fg8vlkf5nomdjmk",
+            "c_81qr28d8pus6ii41djhzvjka8",
+            "c_bbg7r5zr9u0lxcylalil9y0on",
+            "c_20h97ern601qffreruokc3z6i",
+            "c_3xsqrb6r2k3vb5tl64qry6t9j"
+          ],
+          "map": {
+            "c_8w8wmcur0n6j13t1ajfoqp91l": "month",
+            "c_8s14ya5yhse2tk7aoa9bjebto": "town",
+            "c_9ufrld0mcwmquudcdsff43fhd": "flat_type",
+            "c_afg8okfrc5k8g9inz61nxioh0": "block",
+            "c_163anbadqp0fd08i1tvw1ecr2": "street_name",
+            "c_dr0obj6oi9fg8vlkf5nomdjmk": "storey_range",
+            "c_81qr28d8pus6ii41djhzvjka8": "floor_area_sqm",
+            "c_bbg7r5zr9u0lxcylalil9y0on": "flat_model",
+            "c_20h97ern601qffreruokc3z6i": "lease_commence_date",
+            "c_3xsqrb6r2k3vb5tl64qry6t9j": "resale_price"
+          },
+          "metaMapping": {
+            "c_8w8wmcur0n6j13t1ajfoqp91l": {
+              "name": "month",
+              "columnTitle": "Month",
+              "dataType": "Month (YYYY-MM)",
+              "description": "Month of sale",
+              "index": "0",
+              "isCategorical": true
+            },
+            "c_8s14ya5yhse2tk7aoa9bjebto": {
+              "name": "town",
+              "columnTitle": "Town",
+              "dataType": "Text",
+              "description": "Designated residential area with its own amenities, infrastructure, and community facilities",
+              "index": "1",
+              "isCategorical": true
+            },
+            "c_9ufrld0mcwmquudcdsff43fhd": {
+              "name": "flat_type",
+              "columnTitle": "Flat Type",
+              "dataType": "Text",
+              "description": "Classification of units by room size. They range from 2 to 5 rooms, 3Gen units, and Executive units.",
+              "index": "2",
+              "isCategorical": true
+            },
+            "c_afg8okfrc5k8g9inz61nxioh0": {
+              "name": "block",
+              "columnTitle": "Block",
+              "dataType": "Text",
+              "description": "A HDB building comprising multiple flats or apartments",
+              "index": "3",
+              "isCategorical": true
+            },
+            "c_163anbadqp0fd08i1tvw1ecr2": {
+              "name": "street_name",
+              "columnTitle": "Street Name",
+              "dataType": "Text",
+              "description": "Name of the road the HDB flat is located along",
+              "index": "4",
+              "isCategorical": true
+            },
+            "c_dr0obj6oi9fg8vlkf5nomdjmk": {
+              "name": "storey_range",
+              "columnTitle": "Storey Range",
+              "dataType": "Text",
+              "description": "Estimated range of floors the unit sold was located on",
+              "index": "5",
+              "isCategorical": true
+            },
+            "c_81qr28d8pus6ii41djhzvjka8": {
+              "name": "floor_area_sqm",
+              "columnTitle": "Floor Area ",
+              "dataType": "Numeric",
+              "description": "Total interior space within the unit, measured in square meters",
+              "index": "6",
+              "isCategorical": true
+            },
+            "c_bbg7r5zr9u0lxcylalil9y0on": {
+              "name": "flat_model",
+              "columnTitle": "Flat Model",
+              "dataType": "Text",
+              "description": "Classification of units by generation of which the flat was made, ranging from New Generation, DBSS, Improved, Apartment",
+              "index": "7",
+              "isCategorical": true
+            },
+            "c_20h97ern601qffreruokc3z6i": {
+              "name": "lease_commence_date",
+              "columnTitle": "Lease Commence Date",
+              "dataType": "Year (YYYY)",
+              "description": "Starting point of a lease agreement, marking the beginning of the lease term during which the tenant has the right to use and occupy the leased property",
+              "index": "8",
+              "isCategorical": true
+            },
+            "c_3xsqrb6r2k3vb5tl64qry6t9j": {
+              "name": "resale_price",
+              "columnTitle": "Resale Price",
+              "dataType": "Numeric",
+              "description": "Cost of the flat sold",
+              "index": "9",
+              "isCategorical": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset_id": "d_43f493c6c50d54243cc1eab0df142d6a",
+      "label": "2000_2012_02",
+      "source_url": "https://data.gov.sg/datasets/d_43f493c6c50d54243cc1eab0df142d6a/view",
+      "download_object_url": "https://s3.ap-southeast-1.amazonaws.com/table-downloads-ingest.data.gov.sg/d_43f493c6c50d54243cc1eab0df142d6a/98c951482dad320aa1f84a66961b1d885acc1e5a50e923d797e32a5988d14b75.csv",
+      "snapshot_utc": "2026-10-18T12:00:05.029925+00:00",
+      "path": "data/raw/hdb/d_43f493c6c50d54243cc1eab0df142d6a.csv",
+      "sha256": "5f6a72bd7b9120281863beb1fc4c89aa5f4923f00b0f6c52494c4347363f2c36",
+      "bytes": 29369945,
+      "rows": 369651,
+      "header": [
+        "month",
+        "town",
+        "flat_type",
+        "block",
+        "street_name",
+        "storey_range",
+        "floor_area_sqm",
+        "flat_model",
+        "lease_commence_date",
+        "resale_price"
+      ],
+      "metadata": {
+        "datasetId": "d_43f493c6c50d54243cc1eab0df142d6a",
+        "createdAt": "2016-01-25T11:21:40+08:00",
+        "name": "Resale Flat Prices (Based on Approval Date), 2000 - Feb 2012",
+        "collectionIds": [
+          "189"
+        ],
+        "description": "Notes:\r\n\r\n1. The approximate floor area includes any recess area purchased, space adding item under HDB’s upgrading programmes, roof terrace, etc.\r\n\r\n2. The transactions exclude resale transactions that may not reflect the full market price such as resale between relatives and resale of part shares.\r\n\r\n3. Resale prices should be taken as indicative only as the resale prices agreed between buyers and sellers are dependent on many factors.",
+        "format": "CSV",
+        "lastUpdatedAt": "2024-08-28T14:06:52+08:00",
+        "managedBy": "Housing & Development Board",
+        "coverageStart": "2000-01-01T08:00:00+08:00",
+        "coverageEnd": "2012-02-01T08:00:00+08:00",
+        "contactEmails": [
+          "LAU_Pei_Wen@hdb.gov.sg"
+        ],
+        "datasetSize": 29369945,
+        "columnMetadata": {
+          "order": [
+            "c_cfve0o1f26g5kg04uc7pi90mw",
+            "c_acikyfph7mvboipchgndxefql",
+            "c_eddsk5oio2i5ggw6y8elcdzdg",
+            "c_7kn05bh25td31vrh8rn0t7de6",
+            "c_9cp5egfqb4kll681sf9odtfoj",
+            "c_108z5bi4aehkaz9uq717poqf6",
+            "c_9l876chg01zbfkn5zd62whbgk",
+            "c_a3zf3djjzst8ifujj0vdn7r61",
+            "c_58r9kepcpljon6h1gqxk5hg9c",
+            "c_2v9w68qvjglodmfwzdb25pu1j"
+          ],
+          "map": {
+            "c_cfve0o1f26g5kg04uc7pi90mw": "month",
+            "c_acikyfph7mvboipchgndxefql": "town",
+            "c_eddsk5oio2i5ggw6y8elcdzdg": "flat_type",
+            "c_7kn05bh25td31vrh8rn0t7de6": "block",
+            "c_9cp5egfqb4kll681sf9odtfoj": "street_name",
+            "c_108z5bi4aehkaz9uq717poqf6": "storey_range",
+            "c_9l876chg01zbfkn5zd62whbgk": "floor_area_sqm",
+            "c_a3zf3djjzst8ifujj0vdn7r61": "flat_model",
+            "c_58r9kepcpljon6h1gqxk5hg9c": "lease_commence_date",
+            "c_2v9w68qvjglodmfwzdb25pu1j": "resale_price"
+          },
+          "metaMapping": {
+            "c_cfve0o1f26g5kg04uc7pi90mw": {
+              "name": "month",
+              "columnTitle": "Month",
+              "dataType": "Month (YYYY-MM)",
+              "description": "Month of sale",
+              "index": "0",
+              "isCategorical": true
+            },
+            "c_acikyfph7mvboipchgndxefql": {
+              "name": "town",
+              "columnTitle": "Town",
+              "dataType": "Text",
+              "description": "Designated residential area with its own amenities, infrastructure, and community facilities",
+              "index": "1",
+              "isCategorical": true
+            },
+            "c_eddsk5oio2i5ggw6y8elcdzdg": {
+              "name": "flat_type",
+              "columnTitle": "Flat Type",
+              "dataType": "Text",
+              "description": "Classification of units by room size. They range from 2 to 5 rooms, 3Gen units, and Executive units.",
+              "index": "2",
+              "isCategorical": true
+            },
+            "c_7kn05bh25td31vrh8rn0t7de6": {
+              "name": "block",
+              "columnTitle": "Block",
+              "dataType": "Text",
+              "description": "A HDB building comprising multiple flats or apartments",
+              "index": "3",
+              "isCategorical": true
+            },
+            "c_9cp5egfqb4kll681sf9odtfoj": {
+              "name": "street_name",
+              "columnTitle": "Street Name",
+              "dataType": "Text",
+              "description": "Name of the road the HDB flat is located along",
+              "index": "4",
+              "isCategorical": true
+            },
+            "c_108z5bi4aehkaz9uq717poqf6": {
+              "name": "storey_range",
+              "columnTitle": "Storey Range",
+              "dataType": "Text",
+              "description": "Estimated range of floors the unit sold was located on",
+              "index": "5",
+              "isCategorical": true
+            },
+            "c_9l876chg01zbfkn5zd62whbgk": {
+              "name": "floor_area_sqm",
+              "columnTitle": "Floor Area",
+              "dataType": "Numeric",
+              "description": "Total interior space within the unit, measured in square meters",
+              "index": "6",
+              "isCategorical": true
+            },
+            "c_a3zf3djjzst8ifujj0vdn7r61": {
+              "name": "flat_model",
+              "columnTitle": "Flat Model",
+              "dataType": "Text",
+              "description": "Classification of units by generation of which the flat was made, ranging from New Generation, DBSS, Improved, Apartment",
+              "index": "7",
+              "isCategorical": true
+            },
+            "c_58r9kepcpljon6h1gqxk5hg9c": {
+              "name": "lease_commence_date",
+              "columnTitle": "Lease Commence Date",
+              "dataType": "Year (YYYY)",
+              "description": "Remaining years left on lease. ",
+              "index": "8",
+              "isCategorical": true
+            },
+            "c_2v9w68qvjglodmfwzdb25pu1j": {
+              "name": "resale_price",
+              "columnTitle": "Resale Price",
+              "dataType": "Numeric",
+              "description": "Cost of the flat sold",
+              "index": "9",
+              "isCategorical": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset_id": "d_2d5ff9ea31397b66239f245f57751537",
+      "label": "2012_03_2014",
+      "source_url": "https://data.gov.sg/datasets/d_2d5ff9ea31397b66239f245f57751537/view",
+      "download_object_url": "https://s3.ap-southeast-1.amazonaws.com/table-downloads-ingest.data.gov.sg/d_2d5ff9ea31397b66239f245f57751537/89c9b958f7e52a1c0ad9763e0e0e63f06d777007346366bc293e3c395e552bd7.csv",
+      "snapshot_utc": "2026-10-18T12:00:42.864523+00:00",
+      "path": "data/raw/hdb/d_2d5ff9ea31397b66239f245f57751537.csv",
+      "sha256": "6a16e2dc78f70048ec1a522b59a9727581c36e45e02022641c53e755a7657c72",
+      "bytes": 4160771,
+      "rows": 52203,
+      "header": [
+        "month",
+        "town",
+        "flat_type",
+        "block",
+        "street_name",
+        "storey_range",
+        "floor_area_sqm",
+        "flat_model",
+        "lease_commence_date",
+        "resale_price"
+      ],
+      "metadata": {
+        "datasetId": "d_2d5ff9ea31397b66239f245f57751537",
+        "createdAt": "2016-02-12T18:46:58+08:00",
+        "name": "Resale Flat Prices (Based on Registration Date), From Mar 2012 to Dec 2014",
+        "collectionIds": [
+          "189"
+        ],
+        "description": "Notes:\r\n\r\n1. The approximate floor area includes any recess area purchased, space adding item under HDB’s upgrading programmes, roof terrace, etc.\r\n\r\n2. The transactions exclude resale transactions that may not reflect the full market price such as resale between relatives and resale of part shares.\r\n\r\n3. Resale prices should be taken as indicative only as the resale prices agreed between buyers and sellers are dependent on many factors.",
+        "format": "CSV",
+        "lastUpdatedAt": "2024-08-28T13:56:45+08:00",
+        "managedBy": "Housing & Development Board",
+        "coverageStart": "2012-03-01T08:00:00+08:00",
+        "coverageEnd": "2014-12-01T08:00:00+08:00",
+        "contactEmails": [
+          "LAU_Pei_Wen@hdb.gov.sg"
+        ],
+        "datasetSize": 4160771,
+        "columnMetadata": {
+          "order": [
+            "c_5kmja0f4v5s7y7oy186r94vk4",
+            "c_dwjsfmwht8hueyeo04yvxvvvw",
+            "c_2j45xgsc0upwp7oqyyh27pgpg",
+            "c_d7g0dtl0ist2xutmba1phxiom",
+            "c_2t1nvztm9lla0kzgkb65336t6",
+            "c_30tfj1x7r2onwkokq1w3jsx82",
+            "c_bzv2g5hbganyqy3pcbv5ttyml",
+            "c_cygxrycezx6nha6wun6cslgvd",
+            "c_8aohb8ci3fs2wl0g24yoqro8k",
+            "c_3vcvt9w4w73kgkk4d5uhzf4ed"
+          ],
+          "map": {
+            "c_5kmja0f4v5s7y7oy186r94vk4": "month",
+            "c_dwjsfmwht8hueyeo04yvxvvvw": "town",
+            "c_2j45xgsc0upwp7oqyyh27pgpg": "flat_type",
+            "c_d7g0dtl0ist2xutmba1phxiom": "block",
+            "c_2t1nvztm9lla0kzgkb65336t6": "street_name",
+            "c_30tfj1x7r2onwkokq1w3jsx82": "storey_range",
+            "c_bzv2g5hbganyqy3pcbv5ttyml": "floor_area_sqm",
+            "c_cygxrycezx6nha6wun6cslgvd": "flat_model",
+            "c_8aohb8ci3fs2wl0g24yoqro8k": "lease_commence_date",
+            "c_3vcvt9w4w73kgkk4d5uhzf4ed": "resale_price"
+          },
+          "metaMapping": {
+            "c_5kmja0f4v5s7y7oy186r94vk4": {
+              "name": "month",
+              "columnTitle": "Month",
+              "dataType": "Month (YYYY-MM)",
+              "description": "Month of sale",
+              "index": "0",
+              "isCategorical": true
+            },
+            "c_dwjsfmwht8hueyeo04yvxvvvw": {
+              "name": "town",
+              "columnTitle": "Town",
+              "dataType": "Text",
+              "description": "Designated residential area with its own amenities, infrastructure, and community facilities",
+              "index": "1",
+              "isCategorical": true
+            },
+            "c_2j45xgsc0upwp7oqyyh27pgpg": {
+              "name": "flat_type",
+              "columnTitle": "Flat Type",
+              "dataType": "Text",
+              "description": "Classification of units by room size. They range from 2 to 5 rooms, 3Gen units, and Executive units.",
+              "index": "2",
+              "isCategorical": true
+            },
+            "c_d7g0dtl0ist2xutmba1phxiom": {
+              "name": "block",
+              "columnTitle": "Block",
+              "dataType": "Text",
+              "description": "A HDB building comprising multiple flats or apartments",
+              "index": "3",
+              "isCategorical": true
+            },
+            "c_2t1nvztm9lla0kzgkb65336t6": {
+              "name": "street_name",
+              "columnTitle": "Street Name",
+              "dataType": "Text",
+              "description": "Name of the road the HDB flat is located along",
+              "index": "4",
+              "isCategorical": true
+            },
+            "c_30tfj1x7r2onwkokq1w3jsx82": {
+              "name": "storey_range",
+              "columnTitle": "Storey Range",
+              "dataType": "Text",
+              "description": "Estimated range of floors the unit sold was located on",
+              "index": "5",
+              "isCategorical": true
+            },
+            "c_bzv2g5hbganyqy3pcbv5ttyml": {
+              "name": "floor_area_sqm",
+              "columnTitle": "Floor Area",
+              "dataType": "Numeric",
+              "description": "Total interior space within the unit, measured in square meters",
+              "index": "6",
+              "isCategorical": true
+            },
+            "c_cygxrycezx6nha6wun6cslgvd": {
+              "name": "flat_model",
+              "columnTitle": "Flat Model",
+              "dataType": "Text",
+              "description": "Classification of units by generation of which the flat was made, ranging from New Generation, DBSS, Improved, Apartment",
+              "index": "7",
+              "isCategorical": true
+            },
+            "c_8aohb8ci3fs2wl0g24yoqro8k": {
+              "name": "lease_commence_date",
+              "columnTitle": "Lease Commence Date",
+              "dataType": "Year (YYYY)",
+              "description": "Starting point of a lease agreement, marking the beginning of the lease term during which the tenant has the right to use and occupy the leased property",
+              "index": "8",
+              "isCategorical": true
+            },
+            "c_3vcvt9w4w73kgkk4d5uhzf4ed": {
+              "name": "resale_price",
+              "columnTitle": "Resale Price",
+              "dataType": "Numeric",
+              "description": "Cost of the flat sold",
+              "index": "9",
+              "isCategorical": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset_id": "d_ea9ed51da2787afaf8e51f827c304208",
+      "label": "2015_2016",
+      "source_url": "https://data.gov.sg/datasets/d_ea9ed51da2787afaf8e51f827c304208/view",
+      "download_object_url": "https://s3.ap-southeast-1.amazonaws.com/table-downloads-ingest.data.gov.sg/d_ea9ed51da2787afaf8e51f827c304208/256c84a6d38a8666e7bd72fbdd36fae6c641aa088852dcd4004941f3d648094e.csv",
+      "snapshot_utc": "2026-10-18T12:01:21.815933+00:00",
+      "path": "data/raw/hdb/d_ea9ed51da2787afaf8e51f827c304208.csv",
+      "sha256": "4ff7ce4a4f642fb384d2b75a42e75b0477e50005f4aaa9989591a7a92507d185",
+      "bytes": 3070924,
+      "rows": 37153,
+      "header": [
+        "month",
+        "town",
+        "flat_type",
+        "block",
+        "street_name",
+        "storey_range",
+        "floor_area_sqm",
+        "flat_model",
+        "lease_commence_date",
+        "remaining_lease",
+        "resale_price"
+      ],
+      "metadata": {
+        "datasetId": "d_ea9ed51da2787afaf8e51f827c304208",
+        "createdAt": "2017-12-15T15:14:32+08:00",
+        "name": "Resale Flat Prices (Based on Registration Date), From Jan 2015 to Dec 2016",
+        "collectionIds": [
+          "189"
+        ],
+        "description": "Notes:\r\n\r\n1. The approximate floor area includes any recess area purchased, space adding item under HDB’s upgrading programmes, roof terrace, etc.\r\n\r\n2. The transactions exclude resale transactions that may not reflect the full market price such as resale between relatives and resale of part shares.\r\n\r\n3. Resale prices should be taken as indicative only as the resale prices agreed between buyers and sellers are dependent on many factors.\r\n\r\n4. \"Remaining lease\" is the number of years left before the lease ends. This information is computed as at the resale flat application.",
+        "format": "CSV",
+        "lastUpdatedAt": "2024-08-28T13:41:10+08:00",
+        "managedBy": "Housing & Development Board",
+        "coverageStart": "2015-01-01T08:00:00+08:00",
+        "coverageEnd": "2016-12-01T08:00:00+08:00",
+        "contactEmails": [
+          "LAU_Pei_Wen@hdb.gov.sg"
+        ],
+        "datasetSize": 3070924,
+        "columnMetadata": {
+          "order": [
+            "c_btsi3rr0vdd52mhwjxdho817g",
+            "c_2fexo1cenios7gpd6f1jiiwly",
+            "c_ejx0bhbd8qoy9c044xksc6q22",
+            "c_c2xruq5w9vjj14wmljfgow25t",
+            "c_3gyqnbr8w6xi7sw2n1epli7zs",
+            "c_dxe9rzoxhvjx2zwq0b21zwtrs",
+            "c_5t1z61fhv60r7b2iqhh5ce6s6",
+            "c_68mq2sm5tpop9l5b1tgq3xdua",
+            "c_2gdextoyimdjmm6oyvftkkigl",
+            "c_edwtgwjeo8k6x467qryy57qzg",
+            "c_4cdeu7qbs10d406hadg21s9um"
+          ],
+          "map": {
+            "c_btsi3rr0vdd52mhwjxdho817g": "month",
+            "c_2fexo1cenios7gpd6f1jiiwly": "town",
+            "c_ejx0bhbd8qoy9c044xksc6q22": "flat_type",
+            "c_c2xruq5w9vjj14wmljfgow25t": "block",
+            "c_3gyqnbr8w6xi7sw2n1epli7zs": "street_name",
+            "c_dxe9rzoxhvjx2zwq0b21zwtrs": "storey_range",
+            "c_5t1z61fhv60r7b2iqhh5ce6s6": "floor_area_sqm",
+            "c_68mq2sm5tpop9l5b1tgq3xdua": "flat_model",
+            "c_2gdextoyimdjmm6oyvftkkigl": "lease_commence_date",
+            "c_edwtgwjeo8k6x467qryy57qzg": "remaining_lease",
+            "c_4cdeu7qbs10d406hadg21s9um": "resale_price"
+          },
+          "metaMapping": {
+            "c_btsi3rr0vdd52mhwjxdho817g": {
+              "name": "month",
+              "columnTitle": "Month",
+              "dataType": "Month (YYYY-MM)",
+              "description": "Month of sale",
+              "index": "0",
+              "isCategorical": true
+            },
+            "c_2fexo1cenios7gpd6f1jiiwly": {
+              "name": "town",
+              "columnTitle": "Town",
+              "dataType": "Text",
+              "description": "Designated residential area with its own amenities, infrastructure, and community facilities",
+              "index": "1",
+              "isCategorical": true
+            },
+            "c_ejx0bhbd8qoy9c044xksc6q22": {
+              "name": "flat_type",
+              "columnTitle": "Flat Type",
+              "dataType": "Text",
+              "description": "Classification of units by room size. They range from 2 to 5 rooms, 3Gen units, and Executive units.",
+              "index": "2",
+              "isCategorical": true
+            },
+            "c_c2xruq5w9vjj14wmljfgow25t": {
+              "name": "block",
+              "columnTitle": "Block",
+              "dataType": "Text",
+              "description": "A HDB building comprising multiple flats or apartments",
+              "index": "3",
+              "isCategorical": true
+            },
+            "c_3gyqnbr8w6xi7sw2n1epli7zs": {
+              "name": "street_name",
+              "columnTitle": "Street Name",
+              "dataType": "Text",
+              "description": "Name of the road the HDB flat is located along",
+              "index": "4",
+              "isCategorical": true
+            },
+            "c_dxe9rzoxhvjx2zwq0b21zwtrs": {
+              "name": "storey_range",
+              "columnTitle": "Storey Range",
+              "dataType": "Text",
+              "description": "Estimated range of floors the unit sold was located on",
+              "index": "5",
+              "isCategorical": true
+            },
+            "c_5t1z61fhv60r7b2iqhh5ce6s6": {
+              "name": "floor_area_sqm",
+              "columnTitle": "Floor Area",
+              "dataType": "Numeric",
+              "description": "Total interior space within the unit, measured in square meters",
+              "index": "6",
+              "isCategorical": true
+            },
+            "c_68mq2sm5tpop9l5b1tgq3xdua": {
+              "name": "flat_model",
+              "columnTitle": "Flat Model",
+              "dataType": "Text",
+              "description": "Classification of units by generation of which the flat was made, ranging from New Generation, DBSS, Improved, Apartment",
+              "index": "7",
+              "isCategorical": true
+            },
+            "c_2gdextoyimdjmm6oyvftkkigl": {
+              "name": "lease_commence_date",
+              "columnTitle": "Lease Commencement Date",
+              "dataType": "Year (YYYY)",
+              "description": "Starting point of a lease agreement, marking the beginning of the lease term during which the tenant has the right to use and occupy the leased property",
+              "index": "8",
+              "isCategorical": true
+            },
+            "c_edwtgwjeo8k6x467qryy57qzg": {
+              "name": "remaining_lease",
+              "columnTitle": "Remaining Lease",
+              "dataType": "Text",
+              "description": "Remaining time left on the lease of flat. ",
+              "index": "9",
+              "isCategorical": true
+            },
+            "c_4cdeu7qbs10d406hadg21s9um": {
+              "name": "resale_price",
+              "columnTitle": "Resale Price",
+              "dataType": "Numeric",
+              "description": "Cost of the flat sold",
+              "index": "10",
+              "isCategorical": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset_id": "d_8b84c4ee58e3cfc0ece0d773c8ca6abc",
+      "label": "2017_onwards",
+      "source_url": "https://data.gov.sg/datasets/d_8b84c4ee58e3cfc0ece0d773c8ca6abc/view",
+      "download_object_url": "https://s3.ap-southeast-1.amazonaws.com/table-downloads-ingest.data.gov.sg/d_8b84c4ee58e3cfc0ece0d773c8ca6abc/6f8109f7bce05c219b3825a999cc7f3a02cbc19fe536138a5eaf86bfe6d8711f.csv",
+      "snapshot_utc": "2026-10-18T12:02:02.095869+00:00",
+      "path": "data/raw/hdb/d_8b84c4ee58e3cfc0ece0d773c8ca6abc.csv",
+      "sha256": "d401fc2e7d2a083576dd388b5ea3d170c2027d2503542de32a84656651ebe947",
+      "bytes": 24032414,
+      "rows": 242955,
+      "header": [
+        "month",
+        "town",
+        "flat_type",
+        "block",
+        "street_name",
+        "storey_range",
+        "floor_area_sqm",
+        "flat_model",
+        "lease_commence_date",
+        "remaining_lease",
+        "resale_price"
+      ],
+      "metadata": {
+        "datasetId": "d_8b84c4ee58e3cfc0ece0d773c8ca6abc",
+        "createdAt": "2021-07-28T10:37:00+08:00",
+        "name": "Resale flat prices based on registration date from Jan-2017 onwards",
+        "collectionIds": [
+          "189"
+        ],
+        "description": "Notes:\n\n1. The approximate floor area includes any recess area purchased, space adding item under HDB’s upgrading programmes, roof terrace, etc.\n\n2. The transactions exclude resale transactions that may not reflect the full market price such as resale between relatives and resale of part shares.\n\n3. Resale prices should be taken as indicative only as the resale prices agreed between buyers and sellers are dependent on many factors.",
+        "format": "CSV",
+        "lastUpdatedAt": "2026-10-18T02:10:18+08:00",
+        "managedBy": "Housing & Development Board",
+        "coverageStart": "2017-01-01T08:00:00+08:00",
+        "coverageEnd": "2026-10-01T08:00:00+08:00",
+        "contactEmails": [
+          "lau_pei_wen@hdb.gov.sg"
+        ],
+        "datasetSize": 24033547,
+        "columnMetadata": {
+          "order": [
+            "c_dilqdowenjab3a2cwsj3qj13t",
+            "c_ajuyp50lvbqx08g2eqs7m1jf8",
+            "c_6r5chdi9y6yfn82zjhzpbv5xx",
+            "c_vb0tmiflk7hovz9p1t8ywjgw",
+            "c_2ph4q4eaak6nurp6077misjkg",
+            "c_3qu9r0hrr360737lclq97vlcx",
+            "c_47kme0bmk0lhl7jz7qrxb8rnk",
+            "c_15lo09m5ntd9skbzdbq0knggy",
+            "c_cu3l0ltobguwlq7lsmuyfh972",
+            "c_8mx0via3v27ni48n4qdgixbe",
+            "c_57phfsqfwmklcnjaqr9j6ggdh"
+          ],
+          "map": {
+            "c_dilqdowenjab3a2cwsj3qj13t": "month",
+            "c_ajuyp50lvbqx08g2eqs7m1jf8": "town",
+            "c_6r5chdi9y6yfn82zjhzpbv5xx": "flat_type",
+            "c_vb0tmiflk7hovz9p1t8ywjgw": "block",
+            "c_2ph4q4eaak6nurp6077misjkg": "street_name",
+            "c_3qu9r0hrr360737lclq97vlcx": "storey_range",
+            "c_47kme0bmk0lhl7jz7qrxb8rnk": "floor_area_sqm",
+            "c_15lo09m5ntd9skbzdbq0knggy": "flat_model",
+            "c_cu3l0ltobguwlq7lsmuyfh972": "lease_commence_date",
+            "c_8mx0via3v27ni48n4qdgixbe": "remaining_lease",
+            "c_57phfsqfwmklcnjaqr9j6ggdh": "resale_price"
+          },
+          "metaMapping": {
+            "c_dilqdowenjab3a2cwsj3qj13t": {
+              "name": "month",
+              "columnTitle": "Month",
+              "dataType": "Month (YYYY-MM)",
+              "index": "0",
+              "isCategorical": true
+            },
+            "c_ajuyp50lvbqx08g2eqs7m1jf8": {
+              "name": "town",
+              "columnTitle": "Town",
+              "dataType": "Text",
+              "index": "1",
+              "isCategorical": true
+            },
+            "c_6r5chdi9y6yfn82zjhzpbv5xx": {
+              "name": "flat_type",
+              "columnTitle": "Flat Type",
+              "dataType": "Text",
+              "index": "2",
+              "isCategorical": true
+            },
+            "c_vb0tmiflk7hovz9p1t8ywjgw": {
+              "name": "block",
+              "columnTitle": "Block",
+              "dataType": "Text",
+              "index": "3",
+              "isCategorical": true
+            },
+            "c_2ph4q4eaak6nurp6077misjkg": {
+              "name": "street_name",
+              "columnTitle": "Street Name",
+              "dataType": "Text",
+              "index": "4",
+              "isCategorical": true
+            },
+            "c_3qu9r0hrr360737lclq97vlcx": {
+              "name": "storey_range",
+              "columnTitle": "Storey Range",
+              "dataType": "Text",
+              "index": "5",
+              "isCategorical": true
+            },
+            "c_47kme0bmk0lhl7jz7qrxb8rnk": {
+              "name": "floor_area_sqm",
+              "columnTitle": "Floor Area Sqm",
+              "dataType": "Text",
+              "index": "6",
+              "isCategorical": true
+            },
+            "c_15lo09m5ntd9skbzdbq0knggy": {
+              "name": "flat_model",
+              "columnTitle": "Flat Model",
+              "dataType": "Text",
+              "index": "7",
+              "isCategorical": true
+            },
+            "c_cu3l0ltobguwlq7lsmuyfh972": {
+              "name": "lease_commence_date",
+              "columnTitle": "Lease Commence Date",
+              "dataType": "Text",
+              "index": "8",
+              "isCategorical": true
+            },
+            "c_8mx0via3v27ni48n4qdgixbe": {
+              "name": "remaining_lease",
+              "columnTitle": "Remaining Lease",
+              "dataType": "Text",
+              "index": "9",
+              "isCategorical": true
+            },
+            "c_57phfsqfwmklcnjaqr9j6ggdh": {
+              "name": "resale_price",
+              "columnTitle": "Resale Price",
+              "dataType": "Numeric",
+              "index": "10",
+              "isCategorical": true
+            }
+          }
+        }
+      }
+    }
+  ]
+}

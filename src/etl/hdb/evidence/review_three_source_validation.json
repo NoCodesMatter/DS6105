@@ -1,0 +1,28 @@
+{
+  "contract_version": "1.0.0-draft.2",
+  "csv_counts": {
+    "hdb_building": 9827,
+    "hdb_flat": 116466,
+    "resale_transaction": 332311,
+    "town": 26
+  },
+  "csv_hashes_verified": true,
+  "duplicate_primary_or_natural_keys": 0,
+  "lease_basis_counts": {
+    "estimated_years": 52203,
+    "reported_months": 242955,
+    "reported_years": 37153
+  },
+  "orphan_foreign_keys": 0,
+  "postgresql_import_executed": false,
+  "scope": "Four HDB CSVs before spatial enrichment; not full six-table project acceptance",
+  "source_dataset_counts": {
+    "d_2d5ff9ea31397b66239f245f57751537": 52203,
+    "d_8b84c4ee58e3cfc0ece0d773c8ca6abc": 242955,
+    "d_ea9ed51da2787afaf8e51f827c304208": 37153
+  },
+  "source_hashes_verified": true,
+  "source_records_reconciled": 332311,
+  "stage": "review_three_source_smoke",
+  "status": "passed"
+}

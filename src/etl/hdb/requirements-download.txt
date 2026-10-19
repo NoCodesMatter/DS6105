@@ -1,0 +1,2 @@
+# ETL and profiling use only Python's standard library; only download.py needs this.
+requests>=2.31,<3

@@ -1,0 +1,59 @@
+{
+  "code_hash_mode": "utf8-lf-v1",
+  "files": {
+    "diagnostics.csv": {
+      "before_review_sha256": "7edac81ff1bc216a68cb9043fa6c4d48a41b79a164c8293f248b346c6c32287f",
+      "repeat_sha256": "7edac81ff1bc216a68cb9043fa6c4d48a41b79a164c8293f248b346c6c32287f",
+      "sha256": "7edac81ff1bc216a68cb9043fa6c4d48a41b79a164c8293f248b346c6c32287f"
+    },
+    "hdb_building.csv": {
+      "before_review_sha256": "30e1e9c1d418c43cf786d648efd76945143856a56d93777bc4e287187641e333",
+      "repeat_sha256": "30e1e9c1d418c43cf786d648efd76945143856a56d93777bc4e287187641e333",
+      "sha256": "30e1e9c1d418c43cf786d648efd76945143856a56d93777bc4e287187641e333"
+    },
+    "hdb_flat.csv": {
+      "before_review_sha256": "feb83c8a4cb25e244b6ade41c40fd262d48e15a22e696def33da99399af605be",
+      "repeat_sha256": "feb83c8a4cb25e244b6ade41c40fd262d48e15a22e696def33da99399af605be",
+      "sha256": "feb83c8a4cb25e244b6ade41c40fd262d48e15a22e696def33da99399af605be"
+    },
+    "resale_transaction.csv": {
+      "before_review_sha256": "1608c4bed95dc9b6fbe4c3d22b884deefe5e34fcdcbd0019dc4aca3cc411d890",
+      "repeat_sha256": "1608c4bed95dc9b6fbe4c3d22b884deefe5e34fcdcbd0019dc4aca3cc411d890",
+      "sha256": "1608c4bed95dc9b6fbe4c3d22b884deefe5e34fcdcbd0019dc4aca3cc411d890"
+    },
+    "town.csv": {
+      "before_review_sha256": "8322af7c5649eba646c5e2fa87718c4712ef443d949ca38d3a92c4661817b6d4",
+      "repeat_sha256": "8322af7c5649eba646c5e2fa87718c4712ef443d949ca38d3a92c4661817b6d4",
+      "sha256": "8322af7c5649eba646c5e2fa87718c4712ef443d949ca38d3a92c4661817b6d4"
+    }
+  },
+  "manifest_exceptions": [
+    "created_utc",
+    "stage"
+  ],
+  "repeat_validation": {
+    "contract_version": "1.0.0-draft.2",
+    "csv_counts": {
+      "hdb_building": 7921,
+      "hdb_flat": 28725,
+      "resale_transaction": 37153,
+      "town": 26
+    },
+    "csv_hashes_verified": true,
+    "duplicate_primary_or_natural_keys": 0,
+    "lease_basis_counts": {
+      "reported_years": 37153
+    },
+    "orphan_foreign_keys": 0,
+    "postgresql_import_executed": false,
+    "scope": "Four HDB CSVs before spatial enrichment; not full six-table project acceptance",
+    "source_dataset_counts": {
+      "d_ea9ed51da2787afaf8e51f827c304208": 37153
+    },
+    "source_hashes_verified": true,
+    "source_records_reconciled": 37153,
+    "stage": "stage1_repeat",
+    "status": "passed"
+  },
+  "status": "passed"
+}

@@ -1,0 +1,79 @@
+{
+  "status": "passed_hdb_import",
+  "checked_utc": "2026-10-18T14:24:13.766146+00:00",
+  "postgresql_import_executed": true,
+  "postgresql_version": "psql (PostgreSQL) 15.19",
+  "cases": {
+    "first_source": {
+      "report": "postgres_stage1_validation.json",
+      "table_counts": {
+        "hdb_building": 7921,
+        "hdb_flat": 28725,
+        "resale_transaction": 37153,
+        "town": 26
+      },
+      "all_values_roundtrip": "passed"
+    },
+    "all_five_sources": {
+      "report": "postgres_all_five_validation.json",
+      "table_counts": {
+        "hdb_building": 10024,
+        "hdb_flat": 147045,
+        "resale_transaction": 989158,
+        "town": 27
+      },
+      "all_values_roundtrip": "passed"
+    }
+  },
+  "constraint_probes_per_database": 13,
+  "failed_copy_atomic_rollback": "passed_in_both_databases",
+  "unit_regression_tests": {
+    "tests_run": 53,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "command": "python -m unittest discover -s src/etl/hdb/tests -v"
+  },
+  "shared_schema_modified": false,
+  "scope_check": {
+    "full_project_acceptance_executed": true,
+    "full_project_acceptance_passed": false,
+    "expected_blocker": "Hawker/geocoding/distance data have not been supplied for the HDB-only handoff",
+    "observed_rejection": {
+      "sqlstate": "P0001",
+      "constraint": "No geocoded hawkers: Q4/Q5 cannot be accepted",
+      "psql_exit": 3
+    },
+    "database_diagnostics": {
+      "buildings_with_multiple_lease_years": 3,
+      "transactions_before_lease_commencement": 51,
+      "unknown_lease_rows": 51,
+      "hawker_rows": 0,
+      "distance_pair_rows": 0,
+      "first_sale_month": "1990-01-01",
+      "last_sale_month": "2026-10-01"
+    }
+  },
+  "runtime_source": {
+    "source_page": "https://www.postgresql.org/download/windows/",
+    "provider_page": "https://www.enterprisedb.com/download-postgresql-binaries",
+    "archive_url": "https://get.enterprisedb.com/postgresql/postgresql-15.19-5-windows-x64-binaries.zip",
+    "bytes": 371120384,
+    "archive_sha256": "49e0690194d9fe2bb4d7d6587fdddaa85a3eaaafe2fd5480e0916fcb25d0143e"
+  },
+  "local_test_runtime": {
+    "server_stopped_after_validation": true,
+    "stop_confirmed_by": "pg_ctl status returned 3 (no server running)",
+    "listen_address": "127.0.0.1",
+    "port": 55432,
+    "authentication": "scram-sha-256",
+    "windows_service_installed": false,
+    "data_retained_for_inspection": true,
+    "runtime_directory": ".hdb-qa/postgres_runtime"
+  },
+  "fixed_during_verification": "Explicitly close temporary SQLite comparison connections on Windows; HDB data and shared schema unchanged",
+  "remaining_work": [
+    "Hawker/geocoding/distance integration and six-table acceptance",
+    "Complete five-stage performance benchmark series"
+  ]
+}
