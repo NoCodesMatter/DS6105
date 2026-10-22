@@ -1,0 +1,91 @@
+{
+  "description": "Frozen inputs of src/etl/spatial; do not edit hashes by hand",
+  "sources": [
+    {
+      "acquisition": "data.gov.sg public download API (initiate-download, poll-download)",
+      "bytes": 9067,
+      "dataset_id": "d_68a42f09f350881996d83f9cd73ab02f",
+      "header": [
+        "name_of_centre",
+        "location_of_centre",
+        "type_of_centre",
+        "owner",
+        "no_of_stalls",
+        "no_of_cooked_food_stalls",
+        "no_of_mkt_produce_stalls"
+      ],
+      "label": "nea_hawker_centres",
+      "path": "data/raw/spatial/d_68a42f09f350881996d83f9cd73ab02f.csv",
+      "rows": 107,
+      "sha256": "12e9eb62bff4869f5e9aa93c99a859d9eeb22bb55086a8c546e17e2128effcd6",
+      "snapshot_utc": "2026-10-22T16:27:41+00:00",
+      "source_url": "https://data.gov.sg/datasets/d_68a42f09f350881996d83f9cd73ab02f/view"
+    },
+    {
+      "acquisition": "GitHub raw file pinned to a commit; only hdb.csv is used, as the brief requires",
+      "bytes": 2913579,
+      "download_url": "https://raw.githubusercontent.com/BlueSkyLT/siteselect_sg/567427f447e62465ffd248fb70138e7e1f352e1b/dataset/hdb.csv",
+      "header": [
+        "",
+        "blk_no",
+        "street",
+        "max_floor_lvl",
+        "year_completed",
+        "residential",
+        "commercial",
+        "market_hawker",
+        "miscellaneous",
+        "multistorey_carpark",
+        "precinct_pavilion",
+        "bldg_contract_town",
+        "total_dwelling_units",
+        "1room_sold",
+        "2room_sold",
+        "3room_sold",
+        "4room_sold",
+        "5room_sold",
+        "exec_sold",
+        "multigen_sold",
+        "studio_apartment_sold",
+        "1room_rental",
+        "2room_rental",
+        "3room_rental",
+        "other_room_rental",
+        "lat",
+        "lng",
+        "building",
+        "addr",
+        "postal",
+        "SUBZONE_NO",
+        "SUBZONE_N",
+        "SUBZONE_C",
+        "PLN_AREA_N",
+        "PLN_AREA_C",
+        "REGION_N",
+        "REGION_C"
+      ],
+      "label": "hdb_geo",
+      "path": "data/raw/spatial/hdb.csv",
+      "rows": 12442,
+      "sha256": "451c4fc467e32d8fc0663ecfbc290a58382a9f7134b60b935ca76676afeea8be",
+      "snapshot_utc": "2026-10-22T16:27:04+00:00",
+      "source_url": "https://github.com/BlueSkyLT/siteselect_sg/blob/567427f447e62465ffd248fb70138e7e1f352e1b/dataset/hdb.csv"
+    },
+    {
+      "acquisition": "manual download from NTULearn; not publicly downloadable",
+      "bytes": 15603,
+      "header": [
+        "longitude",
+        "latitude",
+        "NAME",
+        "ADDRESS_MYENV"
+      ],
+      "label": "hawker_geo",
+      "path": "data/raw/spatial/hawker_geo.csv",
+      "rows": 129,
+      "sha256": "c04a56cea3dc39fdb66b998242f7ead00c4c3c05b19eff4b66b57f779ebba166",
+      "snapshot_utc": "2026-10-22T16:19:48+00:00",
+      "source_url": "NTULearn course page: hawker_geo.csv (extracted from data.gov.sg Hawker Centres GEOJSON)"
+    }
+  ]
+}

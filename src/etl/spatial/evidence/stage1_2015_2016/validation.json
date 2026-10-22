@@ -1,0 +1,23 @@
+{
+  "building_hawker_pairs": 821912,
+  "buildings": 7921,
+  "buildings_geocoded": 7903,
+  "checks": [
+    "manifest hashes",
+    "exact headers",
+    "building IDs/towns/addresses unchanged",
+    "coordinate pairs complete, finite, inside Singapore, canonical float text",
+    "no coordinate pair shared by two buildings",
+    "hawker IDs recomputed from contract",
+    "canonical text and unique centre name/address",
+    "complete matrix in key order",
+    "distances within 0.001 m of an independent haversine form"
+  ],
+  "contract_version": "1.0.0-draft.2",
+  "fresh_market_hawkers_geocoded": 81,
+  "hawkers": 107,
+  "hawkers_geocoded": 104,
+  "max_distance_difference_m": 2.7284841053187847e-11,
+  "stage": "stage1_2015_2016",
+  "status": "passed"
+}
