@@ -1,0 +1,3 @@
+block,street_name,decision,reason
+1,BEACH RD,reject,"hdb.csv geocoded this block to Raffles Hotel (addr '1 BEACH ROAD RAFFLES HOTEL SINGAPORE 189673'), a hotel that shares the address 1 Beach Road, not an HDB block; the postcode does not end with the block number as HDB postcodes do. Block and road match, so the automatic address check cannot catch it"
+3,BEACH RD,reject,"hdb.csv geocoded this block to Raffles Hotel (addr '3 BEACH ROAD RAFFLES HOTEL SINGAPORE SINGAPORE 189674'), a hotel that shares the address 3 Beach Road, not an HDB block; the postcode does not end with the block number as HDB postcodes do. Block and road match, so the automatic address check cannot catch it"

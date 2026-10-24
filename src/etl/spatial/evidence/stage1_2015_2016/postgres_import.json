@@ -1,0 +1,69 @@
+{
+  "checked_utc": "2026-10-23T11:24:04+00:00",
+  "docker_image": "postgres@sha256:b8faeff7712663c2773a190181e1246e37e364b887611c04658c28b44e2408fe",
+  "load": "six \\copy imports in contract load order inside one transaction, FORMAT csv, HEADER match, NULL ''",
+  "postgresql": "PostgreSQL 17.11 (Debian 17.11-1.pgdg13+2) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+  "roundtrip": [
+    "hdb_building: csv 7921 rows, database 7921 rows, differing 0",
+    "hawker_centre: csv 107 rows, database 107 rows, differing 0",
+    "building_hawker: csv 821912 rows, database 821912 rows, differing 0"
+  ],
+  "schema": "db/schema/001_schema.sql, unchanged",
+  "sql_queries": {
+    "q1": {
+      "exit_code": 0,
+      "rows": 52
+    },
+    "q2": {
+      "exit_code": 0,
+      "rows": 53
+    },
+    "q3": {
+      "exit_code": 0,
+      "rows": 20
+    },
+    "q4": {
+      "exit_code": 0,
+      "rows": 45
+    },
+    "q5": {
+      "exit_code": 0,
+      "rows": 24
+    },
+    "q6": {
+      "exit_code": 0,
+      "rows": 60
+    }
+  },
+  "status": "passed",
+  "table_rows": {
+    "building_hawker": 821912,
+    "hawker_centre": 107,
+    "hdb_building": 7921,
+    "hdb_flat": 28725,
+    "resale_transaction": 37153,
+    "town": 26
+  },
+  "validate_loaded_data": {
+    "diagnostics": {
+      "buildings_without_coordinates": 18,
+      "fd_probe_buildings_with_multiple_lease_years": 0,
+      "fd_probe_coordinate_pairs_shared_by_buildings": 0,
+      "hawkers_without_coordinates": 3,
+      "transactions_before_lease_commencement_year": 0,
+      "transactions_with_unknown_lease": 0,
+      "transactions_without_spatial_coverage": 96
+    },
+    "exit_code": 0,
+    "nearest_hawker_buildings": {
+      "far": 4446,
+      "medium": 1235,
+      "near": 2222
+    },
+    "nearest_market_hawker_buildings": {
+      "far": 4452,
+      "medium": 1258,
+      "near": 2193
+    }
+  }
+}

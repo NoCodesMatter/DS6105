@@ -1,0 +1,49 @@
+entity,entity_id,key,severity,issue,detail
+hawker_centre,389cb84c-88aa-5035-81c2-9406da0ce3ca,BLK 4A WOODLANDS CENTRE ROAD,warning,no_hawker_geo_record,no hawker_geo.csv record in the reviewed crosswalk
+hawker_centre,18233c44-0c5f-5a4e-8287-8c68a58fe7bb,BLKS 1A/ 2A/ 3A COMMONWEALTH DRIVE,warning,no_hawker_geo_record,no hawker_geo.csv record in the reviewed crosswalk
+hawker_centre,8e5c76c3-87e5-5ce2-b798-b1bbc7002ef5,MARKET STREET FOOD CENTRE,warning,no_hawker_geo_record,no hawker_geo.csv record in the reviewed crosswalk
+hawker_geo,,Anchorvale Village Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Buangkok Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Bukit Batok West Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Bukit Canberra Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Bukit Panjang Hawker Centre,info,geo_record_not_in_nea_inventory,"2 Bukit Panjang Ring Road, Singapore 679947"
+hawker_geo,,Bukit Timah Interim Hawker Centre and Market,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Chong Pang Hawker Centre & Market,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Ci Yuan Hawker Centre,info,geo_record_not_in_nea_inventory,"51 Hougang Avenue 9, Singapore 538776"
+hawker_geo,,Fernvale Hawker Centre & Market,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Hawker Centre @ Our Tampines Hub,info,geo_record_not_in_nea_inventory,"1 Tampines Walk, Singapore 528523"
+hawker_geo,,Jurong West Hawker Centre,info,geo_record_not_in_nea_inventory,"Blk 50, Jurong West St 61, Singapore 648202"
+hawker_geo,,Kampung Admiralty Hawker Centre,info,geo_record_not_in_nea_inventory,"Blk 676, Woodlands Drive 71, Singapore 730676"
+hawker_geo,,Margaret Drive Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Market Street Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Marsiling Mall Hawker Centre,info,geo_record_not_in_nea_inventory,"Blk 4,Woodlands St 12,Singapore 738623"
+hawker_geo,,One Punggol Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Pasir Ris Central Hawker Centre,info,geo_record_not_in_nea_inventory,"Blk 110, Pasir Ris Central, Singapore 519641"
+hawker_geo,,Punggol Coast Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Senja Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Tampines North Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Tanglin Halt Hawker Centre & Market,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Telok Blangah Hawker Centre & Market,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Woodleigh Village Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Yew Tee Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Yishun Park Hawker Centre,info,geo_record_not_in_nea_inventory,"Blk 51, Yishun Avenue 11, Singapore 768867"
+hdb_building,1726dbd8-9e7f-57ca-b389-5cc666a5edcc,1 EVERTON PK,warning,geocoded_to_other_address,hdb.csv addr is '1 CANTONMENT ROAD DBS EVERTON PARK SINGAPORE 080001'
+hdb_building,1220e370-ff86-5303-9c1c-4f2680a0e8e5,1 ST. GEORGE'S RD,warning,geocoded_to_other_address,"hdb.csv addr is ""1 SAINT GEORGE'S LANE RESIDENCE @ ST GEORGE SINGAPORE 328047"""
+hdb_building,5a376364-9030-53da-b768-332701b464e5,165 YISHUN RING RD,warning,geocoded_to_other_address,hdb.csv addr is '165B YISHUN RING ROAD CHONG PANG 165 HARD COURT SINGAPORE 762165'
+hdb_building,79f4f199-c3e1-548f-934b-f237787ace4c,18 ST. GEORGE'S RD,warning,geocoded_to_other_address,"hdb.csv addr is ""18A SAINT GEORGE'S ROAD SAINT GEORGE'S EAST GARDENS SINGAPORE 322018"""
+hdb_building,7bddbd46-1eab-5bb6-a181-1ed24e70207a,2 BEACH RD,warning,geocoded_to_other_address,hdb.csv addr is '2 ANDOVER ROAD CHANGI BEACH CLUB SINGAPORE 509984'
+hdb_building,76a5df27-92ff-5c19-aad3-4072fd0700dd,2 HOLLAND AVE,warning,geocoded_to_other_address,hdb.csv addr is '2 FORD AVENUE URBAN EDGE @ HOLLAND V SINGAPORE 268686'
+hdb_building,1c213bd3-07c5-5e1b-aa63-b8c1df94b5e0,208 BT BATOK ST 21,warning,geocoded_to_other_address,hdb.csv addr is '208 JURONG EAST STREET 21 PCF SPARKLETOTS PRESCHOOL @ BUKIT BATOK EAST 208 (CC) SINGAPORE 600208'
+hdb_building,36798aee-39e6-5bba-8d39-0d9c0fe8cb37,21 HOUGANG AVE 3,warning,geocoded_to_other_address,hdb.csv addr is '211 HOUGANG STREET 21 OCBC HOUGANG AVE 3 - CHEERS SINGAPORE 530211'
+hdb_building,41b83b77-976e-5b9a-9f4f-d419520f7acf,215 CHOA CHU KANG CTRL,warning,geocoded_to_other_address,hdb.csv addr is 'BLK 216 AND 215 CHOA CHU KANG CENTRAL'
+hdb_building,3ae3123f-bd0b-59e1-ab93-aced20707b47,39 JLN TIGA,warning,geocoded_to_other_address,hdb.csv addr is '39 JALAN BINTANG TIGA OPERA ESTATE SINGAPORE 457778'
+hdb_building,7f9380ae-f722-5a67-ab26-fc9c7a469263,436D FERNVALE RD,warning,geocoded_to_other_address,hdb.csv addr is '436A FERNVALE ROAD PCF SPARKLETOTS PRESCHOOL @ SENGKANG WEST BLK 436D (KN) SINGAPORE 791436'
+hdb_building,0092d3d6-e307-5309-9e94-058ae7f66d21,5 BOON KENG RD,warning,geocoded_to_other_address,hdb.csv addr is '5 UPPER BOON KENG ROAD OCBC UPPER BOON KENG ROAD - FAIRPRICE SINGAPORE 380005'
+hdb_building,cf5062c3-1d8c-54e7-83e1-02106fe1a0f8,52 KENT RD,warning,geocoded_to_other_address,hdb.csv addr is '52 SOUTH BUONA VISTA ROAD KENT RIDGE HILL RESIDENCES SINGAPORE 118168'
+hdb_building,0c348bf5-0bdd-560b-b84e-af0d17ff4b40,54 KENT RD,warning,geocoded_to_other_address,hdb.csv addr is '54 SOUTH BUONA VISTA ROAD KENT RIDGE HILL RESIDENCES SINGAPORE 118169'
+hdb_building,c13dfbe9-9a0a-5b38-84a4-875ca505948b,556 WOODLANDS DR 53,warning,geocoded_to_other_address,hdb.csv addr is '557 WOODLANDS DRIVE 53 PCF SPARKLETOTS PRESCHOOL @ ADMIRALTY BLK 556 (KN) SINGAPORE 730557'
+hdb_building,c1b0106b-7af4-5d67-b30c-6ef22abbc0ce,8 BOON KENG RD,warning,geocoded_to_other_address,hdb.csv addr is '8 UPPER BOON KENG ROAD PCF SPARKLETOTS PRESCHOOL@KOLAM AYER BLK 8 (DS) SINGAPORE 380008'
+hdb_building,2a11bc1e-3e6c-5f19-8569-6f8466b13963,15 BEACH RD,warning,isolated_from_town,"nearest other KALLANG/WHAMPOA building is 1144 m away; point kept, review"
+hdb_building,06eac670-766f-568f-9cdb-872c51fe266b,464 UPP SERANGOON RD,warning,isolated_from_town,"nearest other HOUGANG building is 1263 m away; point kept, review"
+hdb_building,8c54b508-1291-5867-a477-5b021543e4ff,1 BEACH RD,warning,rejected_by_coordinate_review,"hdb.csv geocoded this block to Raffles Hotel (addr '1 BEACH ROAD RAFFLES HOTEL SINGAPORE 189673'), a hotel that shares the address 1 Beach Road, not an HDB block; the postcode does not end with the block number as HDB postcodes do. Block and road match, so the automatic address check cannot catch it"
+hdb_building,17f5416d-bfd1-51e3-8caf-c58fc8b52b83,3 BEACH RD,warning,rejected_by_coordinate_review,"hdb.csv geocoded this block to Raffles Hotel (addr '3 BEACH ROAD RAFFLES HOTEL SINGAPORE SINGAPORE 189674'), a hotel that shares the address 3 Beach Road, not an HDB block; the postcode does not end with the block number as HDB postcodes do. Block and road match, so the automatic address check cannot catch it"

@@ -1,0 +1,224 @@
+entity,entity_id,key,severity,issue,detail
+hawker_centre,389cb84c-88aa-5035-81c2-9406da0ce3ca,BLK 4A WOODLANDS CENTRE ROAD,warning,no_hawker_geo_record,no hawker_geo.csv record in the reviewed crosswalk
+hawker_centre,18233c44-0c5f-5a4e-8287-8c68a58fe7bb,BLKS 1A/ 2A/ 3A COMMONWEALTH DRIVE,warning,no_hawker_geo_record,no hawker_geo.csv record in the reviewed crosswalk
+hawker_centre,8e5c76c3-87e5-5ce2-b798-b1bbc7002ef5,MARKET STREET FOOD CENTRE,warning,no_hawker_geo_record,no hawker_geo.csv record in the reviewed crosswalk
+hawker_geo,,Anchorvale Village Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Buangkok Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Bukit Batok West Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Bukit Canberra Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Bukit Panjang Hawker Centre,info,geo_record_not_in_nea_inventory,"2 Bukit Panjang Ring Road, Singapore 679947"
+hawker_geo,,Bukit Timah Interim Hawker Centre and Market,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Chong Pang Hawker Centre & Market,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Ci Yuan Hawker Centre,info,geo_record_not_in_nea_inventory,"51 Hougang Avenue 9, Singapore 538776"
+hawker_geo,,Fernvale Hawker Centre & Market,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Hawker Centre @ Our Tampines Hub,info,geo_record_not_in_nea_inventory,"1 Tampines Walk, Singapore 528523"
+hawker_geo,,Jurong West Hawker Centre,info,geo_record_not_in_nea_inventory,"Blk 50, Jurong West St 61, Singapore 648202"
+hawker_geo,,Kampung Admiralty Hawker Centre,info,geo_record_not_in_nea_inventory,"Blk 676, Woodlands Drive 71, Singapore 730676"
+hawker_geo,,Margaret Drive Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Market Street Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Marsiling Mall Hawker Centre,info,geo_record_not_in_nea_inventory,"Blk 4,Woodlands St 12,Singapore 738623"
+hawker_geo,,One Punggol Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Pasir Ris Central Hawker Centre,info,geo_record_not_in_nea_inventory,"Blk 110, Pasir Ris Central, Singapore 519641"
+hawker_geo,,Punggol Coast Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Senja Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Tampines North Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Tanglin Halt Hawker Centre & Market,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Telok Blangah Hawker Centre & Market,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Woodleigh Village Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Yew Tee Hawker Centre,info,geo_record_not_in_nea_inventory,
+hawker_geo,,Yishun Park Hawker Centre,info,geo_record_not_in_nea_inventory,"Blk 51, Yishun Avenue 11, Singapore 768867"
+hdb_building,1726dbd8-9e7f-57ca-b389-5cc666a5edcc,1 EVERTON PK,warning,geocoded_to_other_address,hdb.csv addr is '1 CANTONMENT ROAD DBS EVERTON PARK SINGAPORE 080001'
+hdb_building,1220e370-ff86-5303-9c1c-4f2680a0e8e5,1 ST. GEORGE'S RD,warning,geocoded_to_other_address,"hdb.csv addr is ""1 SAINT GEORGE'S LANE RESIDENCE @ ST GEORGE SINGAPORE 328047"""
+hdb_building,08827983-495e-5391-b53f-e2e0a148564b,1 UPP ALJUNIED LANE,warning,geocoded_to_other_address,hdb.csv addr is '1 UPPER ALJUNIED LINK DBS UPPER ALJUNIED LANE 1 SINGAPORE 367901'
+hdb_building,5a376364-9030-53da-b768-332701b464e5,165 YISHUN RING RD,warning,geocoded_to_other_address,hdb.csv addr is '165B YISHUN RING ROAD CHONG PANG 165 HARD COURT SINGAPORE 762165'
+hdb_building,79f4f199-c3e1-548f-934b-f237787ace4c,18 ST. GEORGE'S RD,warning,geocoded_to_other_address,"hdb.csv addr is ""18A SAINT GEORGE'S ROAD SAINT GEORGE'S EAST GARDENS SINGAPORE 322018"""
+hdb_building,7bddbd46-1eab-5bb6-a181-1ed24e70207a,2 BEACH RD,warning,geocoded_to_other_address,hdb.csv addr is '2 ANDOVER ROAD CHANGI BEACH CLUB SINGAPORE 509984'
+hdb_building,76a5df27-92ff-5c19-aad3-4072fd0700dd,2 HOLLAND AVE,warning,geocoded_to_other_address,hdb.csv addr is '2 FORD AVENUE URBAN EDGE @ HOLLAND V SINGAPORE 268686'
+hdb_building,1c213bd3-07c5-5e1b-aa63-b8c1df94b5e0,208 BT BATOK ST 21,warning,geocoded_to_other_address,hdb.csv addr is '208 JURONG EAST STREET 21 PCF SPARKLETOTS PRESCHOOL @ BUKIT BATOK EAST 208 (CC) SINGAPORE 600208'
+hdb_building,36798aee-39e6-5bba-8d39-0d9c0fe8cb37,21 HOUGANG AVE 3,warning,geocoded_to_other_address,hdb.csv addr is '211 HOUGANG STREET 21 OCBC HOUGANG AVE 3 - CHEERS SINGAPORE 530211'
+hdb_building,41b83b77-976e-5b9a-9f4f-d419520f7acf,215 CHOA CHU KANG CTRL,warning,geocoded_to_other_address,hdb.csv addr is 'BLK 216 AND 215 CHOA CHU KANG CENTRAL'
+hdb_building,9254fcd6-5e87-531c-a0c7-f00d8825761d,216 CHOA CHU KANG CTRL,warning,geocoded_to_other_address,hdb.csv addr is 'BLK 216 AND 215 CHOA CHU KANG CENTRAL'
+hdb_building,e5926adb-476b-5189-90d3-760014ab3492,308B PUNGGOL WALK,warning,geocoded_to_other_address,hdb.csv addr is '308 PUNGGOL WALK PCF SPARKLETOTS PRESCHOOL @ PUNGGOL WEST BLK 308B (DS) SINGAPORE 820308'
+hdb_building,3ae3123f-bd0b-59e1-ab93-aced20707b47,39 JLN TIGA,warning,geocoded_to_other_address,hdb.csv addr is '39 JALAN BINTANG TIGA OPERA ESTATE SINGAPORE 457778'
+hdb_building,7f9380ae-f722-5a67-ab26-fc9c7a469263,436D FERNVALE RD,warning,geocoded_to_other_address,hdb.csv addr is '436A FERNVALE ROAD PCF SPARKLETOTS PRESCHOOL @ SENGKANG WEST BLK 436D (KN) SINGAPORE 791436'
+hdb_building,0092d3d6-e307-5309-9e94-058ae7f66d21,5 BOON KENG RD,warning,geocoded_to_other_address,hdb.csv addr is '5 UPPER BOON KENG ROAD OCBC UPPER BOON KENG ROAD - FAIRPRICE SINGAPORE 380005'
+hdb_building,cf5062c3-1d8c-54e7-83e1-02106fe1a0f8,52 KENT RD,warning,geocoded_to_other_address,hdb.csv addr is '52 SOUTH BUONA VISTA ROAD KENT RIDGE HILL RESIDENCES SINGAPORE 118168'
+hdb_building,0c348bf5-0bdd-560b-b84e-af0d17ff4b40,54 KENT RD,warning,geocoded_to_other_address,hdb.csv addr is '54 SOUTH BUONA VISTA ROAD KENT RIDGE HILL RESIDENCES SINGAPORE 118169'
+hdb_building,c13dfbe9-9a0a-5b38-84a4-875ca505948b,556 WOODLANDS DR 53,warning,geocoded_to_other_address,hdb.csv addr is '557 WOODLANDS DRIVE 53 PCF SPARKLETOTS PRESCHOOL @ ADMIRALTY BLK 556 (KN) SINGAPORE 730557'
+hdb_building,c1b0106b-7af4-5d67-b30c-6ef22abbc0ce,8 BOON KENG RD,warning,geocoded_to_other_address,hdb.csv addr is '8 UPPER BOON KENG ROAD PCF SPARKLETOTS PRESCHOOL@KOLAM AYER BLK 8 (DS) SINGAPORE 380008'
+hdb_building,2a11bc1e-3e6c-5f19-8569-6f8466b13963,15 BEACH RD,warning,isolated_from_town,"nearest other KALLANG/WHAMPOA building is 1144 m away; point kept, review"
+hdb_building,06eac670-766f-568f-9cdb-872c51fe266b,464 UPP SERANGOON RD,warning,isolated_from_town,"nearest other HOUGANG building is 1263 m away; point kept, review"
+hdb_building,79937630-98fd-5902-acf7-57f499f3d5f4,1 EAST COAST RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,f4194445-9584-5cbb-98f0-b8fd67a49dca,1 JLN PASAR BARU,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,940dff90-60f7-52d6-8cfd-8ca354e51ea8,1 REDHILL CL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,cca8a0fe-bff8-5606-b546-bbde4f1cff59,1 ROCHOR RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,bdb50f01-790d-5a54-81a0-95abbe532fea,1 SELETAR WEST FARMWAY 6,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,74d09c06-ffa4-51e6-8f8d-b3b7357e883e,1 TIONG BAHRU RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,e26fa642-3698-5001-9ff4-7914f67e5608,10 GHIM MOH RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,3e358979-01f3-5bc7-ae17-d448e92e8840,10 REDHILL CL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,b851092a-571b-5b4a-aa41-40ef39183760,10 TEBAN GDNS RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,efd756c4-f7a5-566c-966d-c88980d64119,10 UPP BOON KENG RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,e8cd1988-c182-5b48-8d57-8c32daa9da13,10 YUNG KUANG RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,53192dd9-4bf0-5264-a4f0-b2ed30a498cb,103 DEPOT RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,6ed32839-1c01-5628-9016-1368d674c754,107 DEPOT RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,18bdd49c-3bea-5369-a329-d25cc212e4be,11 GHIM MOH RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,2294ea7c-dc42-5ce9-aef1-bcd28aa8607e,11 REDHILL CL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,454e5691-c2d5-595a-8547-2977371718dc,11 SHORT ST,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,78d79763-9d7c-5e6d-8c58-ae23896cbdb3,110 BT MERAH VIEW,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,6d8e139d-e9ff-5eb9-b8d6-67231f7fbfcd,111 BT MERAH VIEW,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,05b06ff6-d8cd-552d-846a-6fc44e2b363b,113 BT MERAH VIEW,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,e20e7a6f-7e40-5147-aa16-ecdfe1b38d56,114 BT MERAH VIEW,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,5a6b44e3-b32a-5121-8287-a3abf68a24e6,12 REDHILL CL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,e94ec897-896b-57aa-888c-ff5ad62e67eb,12 SHORT ST,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,928d3096-b2a4-58ee-bc75-f7cbd7bd5016,13 REDHILL CL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,fad1099b-061d-5d53-909d-35a481d56a04,13 SHORT ST,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,d41adb6c-f6cb-5958-9a57-b3ea3333cbd5,13 TEBAN GDNS RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,a12dc8be-fba9-5b7c-bf5e-113202b668de,137 ALEXANDRA RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,5d9e0e3f-30f1-5378-89ce-3ecd063e38a1,138 ALEXANDRA RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,1d76e48d-5761-5a44-bff8-59af0f93bdee,14 REDHILL CL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,2fa8017a-e9c7-50ac-8ef3-ef0a1ba715fb,14 TEBAN GDNS RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,d308ab29-1892-5fd9-acf1-075dc605083d,142 HU CHING RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,54d1c8d0-2b76-5291-b499-f0b78a212558,142 TIONG BAHRU RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,ef0c61e2-418c-52db-a5cf-244eeaff564c,145 HU CHING RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,05429f27-dcff-506a-8e26-2fe7e558184e,15 HOLLAND DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,04c60b02-76d1-5d69-a211-8b4194a90e9d,15 REDHILL CL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,e18a8f7a-8405-5651-9acb-6b2b39480e4b,16 HOLLAND DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,51c0c777-994a-5ac4-b9a4-0d6ca2418bcd,16 OUTRAM HILL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,ff07d601-e4b3-5ce5-8e77-72305db90f52,16 REDHILL CL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,7dc6da9b-e0fc-532e-9086-12f7ee506407,166 LOR 1 TOA PAYOH,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,d5623c62-f917-5b91-b3f1-2a964c782c5f,167 BOON LAY DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,6ff58263-75a9-5bbd-8de3-874b71248191,167 LOR 1 TOA PAYOH,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,c14b8b6c-50b5-5e59-8752-4309e151fbf6,168 BOON LAY DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,85691648-0573-510f-b406-42df358ef168,169 BOON LAY DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,d78409e6-0cd0-5e2e-82fc-d6ef075a95ee,17 HOLLAND DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,dbae4375-6051-55b2-aa8e-fc9c68663b53,17 REDHILL CL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,96796915-2821-5149-86f6-dbf4f314ff60,170 BOON LAY DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,7255b055-620d-59b8-8dd6-d4766a1efafc,171 BOON LAY DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,db7e516a-5f25-5b80-a7ad-b1356f8564ef,172 BOON LAY DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,bc161584-b768-50dc-923a-55ac3a81be08,172 STIRLING RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,159c1f7a-05f3-595f-8b81-8594f7761e98,173 STIRLING RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,e42f97aa-4de4-5fd6-807a-e333fa6f48ec,18 KG BAHRU HILL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,5e023aa0-26e6-544c-a167-1b68f8207e3d,18 REDHILL CL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,a86e1c63-832e-5efb-a66a-f02badb8f685,19 KG BAHRU HILL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,30048d08-7255-5d68-a2b9-be62fca73550,19 REDHILL CL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,02a0afef-c490-5309-99f0-ba9d2bfe663a,1A WOODLANDS CTR RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,69605481-b14c-5ecf-ac03-071b121db762,2 EAST COAST RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,19d739dd-e477-5384-8491-ff5e82ca6c6c,2 HILLVIEW AVE,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,ffc6fe0c-6d56-5161-befc-4c57f2f5f940,2 REDHILL CL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,f0a9c8c8-caac-562a-918f-8f0057e99e13,2 ROCHOR RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,d4009b31-ac9e-5279-8245-8cc87384e3b3,2 SELETAR WEST FARMWAY 6,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,abe06297-36c1-56b4-91c3-809090077c95,20 REDHILL CL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,70058521-53fa-5304-ae01-a80f757b5079,20 UPP BOON KENG RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,dd27832f-68c7-58dd-8e74-fe3cd74a5a87,21 OUTRAM PK,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,eb10f84c-91db-538e-a2a0-c6b2382b79f3,21 REDHILL CL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,d867a60a-bcf7-59b9-a0c2-dc9a835e984c,219 BOON LAY AVE,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,c650715e-a8aa-50b8-90dd-696bac8cd193,22 KG BAHRU HILL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,b73e3d9e-7479-5c87-bf6b-a92cc6b37d5d,22 OUTRAM PK,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,f022bf52-f339-5120-9d2a-17705f4206ae,22 REDHILL CL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,f507aef6-cf54-5d29-8797-a3902dd0b5b1,220 BOON LAY AVE,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,1cc64e1d-9ab0-5586-8e2a-62325d70dab6,23 KG BAHRU HILL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,1184e7a1-8316-5115-8b91-a59dfc8199c3,24 DOVER CRES,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,6266a274-ec85-5f27-8389-1049c64f3386,24 JLN MEMBINA BARAT,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,615593c5-eaa6-5158-9bc0-59bd3765bc24,24 KG BAHRU HILL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,52aafddb-93be-5fea-a05f-ab1e21b054c5,247 ANG MO KIO AVE 3,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,0f5ee534-01b9-54a8-83a8-c5a13d39cd14,248 ANG MO KIO AVE 2,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,9434505d-ec22-5057-b00e-1e1b0020b1ff,252 ANG MO KIO AVE 4,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,90ca156b-9a8a-5420-87b7-7e96cc34dff5,27A C'WEALTH AVE,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,e1ed4d59-002c-53ae-8f94-20bca13d324c,29 HAVELOCK RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,3817b074-4e38-5970-b116-6384dcb7f1bb,2A WOODLANDS CTR RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,c6243183-cbe5-5304-aab7-4aa22617e463,3 EAST COAST RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,c46f86f3-5dcf-5de7-91f4-dad567ca60c4,3 LIM CHU KANG RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,db8f4781-048d-58b2-937b-f3c280919b3f,3 REDHILL CL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,4604c350-7b0f-5254-90e7-fe77450ec0b7,3 ROCHOR RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,63c566ed-55a8-54a4-98cc-858052bfcf2c,3 TEBAN GDNS RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,b8e13f9a-a56b-5b70-9edc-7ccadb18680b,3 TIONG BAHRU RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,af19b8f3-d3c5-51e2-a680-b70ad3cb6f17,30 LOR 5 TOA PAYOH,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,27c5fded-e1eb-56ba-aef5-8b8b03658ae8,307 ANG MO KIO AVE 1,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,12465769-fab4-57de-b33c-6ad16b575ba0,308 ANG MO KIO AVE 1,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,3e9e5280-2177-5f71-a134-8e089296e8b7,309 ANG MO KIO AVE 1,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,e32f7066-0687-573a-b4b5-01b63aa2e3db,31 DOVER RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,68454ef5-f8a5-5240-89ff-93597d97e8d7,31 TAMAN HO SWEE,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,56b88eb7-efad-5e48-8a9a-127f6bde1586,313 CLEMENTI AVE 4,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,a3273346-d680-56a2-8f9a-f02f5011ebb5,314 CLEMENTI AVE 4,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,ee43f027-8cf4-5e08-89d8-797fdd4c86d6,316 ANG MO KIO AVE 1,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,61f2abf7-a950-5c72-b0d7-e7e6a6fdc76e,32 LOWER DELTA RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,2ccd048a-5fb8-59fa-a5fa-97bea6316bd3,321 CLEMENTI AVE 5,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,e0e5db96-de42-5b03-8f57-a55d86d105bf,322 CLEMENTI AVE 5,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,8f446b8e-5804-50b9-af22-bab4600a6c7e,323 CLEMENTI AVE 5,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,085bbb29-4af5-529c-9cbb-69a5d54e977a,33 TAMAN HO SWEE,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,1b801455-e53a-58f4-b7bd-28dc82c902ba,35 DOVER RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,ecca3f53-5128-5ed2-8bdd-0e99c67fdb2e,36 DOVER RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,41188940-ecdc-53dc-8b31-e41ea133eb5e,38 DOVER RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,a62d52df-c825-5fbd-ae46-60e31e873ee6,39A C'WEALTH AVE,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,8adbcb2a-00c9-5d5e-9b1a-b0ec0476b436,4 HILLVIEW AVE,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,c3621573-ce56-5d5c-a1bb-404ce5eb2c00,4 LIM CHU KANG RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,7ce94833-a110-5c1f-918d-61ad1e6933c2,4 ROCHOR RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,d2d2370f-62ac-566c-8c8a-b0b265e00211,401 CLEMENTI AVE 1,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,1cdae481-c1ce-5009-a1fb-09bad043eaaf,402 CLEMENTI AVE 1,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,4dc651a2-4046-5ee8-9d20-5e8292964f5a,403 CLEMENTI AVE 1,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,af6784c9-2ca5-5dae-9dcf-a2c6bc452888,407 CLEMENTI AVE 1,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,7f61b30b-ddc4-5819-a5e9-4ff5f7bfa0a1,409 CLEMENTI AVE 1,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,85c19972-4fbc-5914-ae31-b02dc254c9d1,454 ANG MO KIO AVE 10,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,7e09e98e-6653-5aa4-aad7-60e984b51782,455 ANG MO KIO AVE 10,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,19f90e42-1a90-58ac-ae1d-e8837324cf31,46 BEDOK STH AVE 3,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,401fe580-e141-5523-bd1d-6fb0a96140a1,464B CLEMENTI AVE 1,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,0552eadf-c6c9-5357-89c5-f52ddf2c37a8,5 BUANGKOK STH FARMWAY 1,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,455feb07-c531-50f0-829b-c20c19e82b81,5 REDHILL CL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,bb3126af-51e2-5fb7-8918-82a004bc2d35,5 SELETAR WEST FARMWAY 6,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,eb1957ae-76c8-5507-9076-2f845d791d1e,5 SEMBAWANG RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,61c8853d-309e-5c4f-a5d1-70e296c10ecb,5 TEBAN GDNS RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,e9cc6447-732a-52a9-8fb0-c6ace40f5d58,5 TIONG BAHRU RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,4092ea07-44c4-5582-b267-53bd9e4cb362,5 YUNG PING RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,cafa6c6d-8cf2-5bad-9dfa-76dcc76dd784,51 NILE RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,ddf428bf-9026-5c97-8b32-a2986a06add5,51 TANGLIN HALT RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,72bc5192-ebc8-5379-84ad-39c3a812b52a,52 TANGLIN HALT RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,f059624e-11af-52ca-99ae-9991248e6c56,53 TANGLIN HALT RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,a09f666f-7cc2-5902-987e-5354333e70ff,54 NILE RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,ead1a102-6fb8-5c2c-990d-176e3aa54b93,54 SIMS DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,b8a9df11-7fcd-5aaf-9197-1e4e7ee956e6,54 TANGLIN HALT RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,239489d3-7fdd-545e-80ba-7186975e8459,57 C'WEALTH DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,9a9c9a21-5009-59e6-9375-ec28c0d17f23,59 SIMS DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,4c4ca8b0-d3f2-5985-a93e-2d9f530b3b5f,6 HILLVIEW AVE,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,8e90419b-639b-5680-b80e-d8d186b5c478,6 REDHILL CL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,05d4394f-d089-5175-a106-8742ac978632,6 SELETAR WEST FARMWAY 6,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,f006000d-0e0c-5f50-b478-5efe4e62697d,6 TEBAN GDNS RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,4842b028-1063-5e87-ac03-eb0cbd8171fc,6 UPP BOON KENG RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,6c3998c7-d3d2-5464-a956-68d4ae6cf627,6 YUNG PING RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,7056d25b-4db0-5690-98ee-0b0dbbc09d55,61 C'WEALTH DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,63a02b01-a60d-5f58-98ce-fad190af94c9,62 SIMS DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,a3041fc0-4a8b-5251-b999-86faaf8b919b,67 C'WEALTH DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,6c787622-5647-586e-a6b2-75a7d60e6fac,68 C'WEALTH DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,708f762d-8561-54ab-9ac0-36745b21ed5d,68 DAKOTA CRES,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,1950fb17-d002-564d-8a23-176f24e1bd99,69 C'WEALTH DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,46c260ef-fa98-5d0c-bc80-09360ba96d96,7 HILLVIEW AVE,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,2f60e184-be6b-5eac-8f5e-ecb7b3dab70e,7 REDHILL CL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,c5abeb23-2eb2-501e-8a88-8bae58f79455,7 SELETAR WEST FARMWAY 6,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,9faf8cb8-f15c-5ed9-a992-abfab4b124eb,7 TEBAN GDNS RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,c897b2d3-5254-557f-8006-beb40265a81d,7 TIONG BAHRU RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,5ac46460-ba1d-5e48-b638-5e4e2ab594c3,7 YUNG KUANG RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,90d5f33a-ce7d-5f9c-908a-3fe5e447ba05,70 C'WEALTH DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,c39157b5-3057-5011-8392-2044a7d10d5b,71 C'WEALTH DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,a912c25d-3e99-5dd8-9c96-081bddfd9de2,72 C'WEALTH DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,e932dee6-2790-5b2a-9cda-96cbead67593,73 C'WEALTH DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,8bbf97e6-6d26-5c7a-a075-223bb35cdd66,74 C'WEALTH DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,4c8c90a7-ca8a-5786-9ba9-da7c921556fb,75 C'WEALTH DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,d3f8aedc-8928-5f4a-89b2-0fac5507ee5d,76 C'WEALTH DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,ddafd606-4491-5be3-8793-60d2fcaafc6f,77 C'WEALTH DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,2f70d7f5-1814-531c-9f75-c413491291e9,78 C'WEALTH DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,25239db0-aabd-56ed-b40b-f80fc7817a83,79 C'WEALTH DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,956749d1-b062-59ad-b925-11f65c9d54cf,79 TOA PAYOH CTRL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,f6091f17-1b1c-5c5a-a53f-8f6cf946231e,8 HILLVIEW AVE,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,d646dfaf-1579-5627-a1b5-55b635ad5984,8 REDHILL CL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,07133a4f-0a05-5709-8ee6-0558afc86a22,8 YUNG KUANG RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,38d553b9-50b7-56ed-a29a-07e40348c520,80 C'WEALTH DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,299d2499-e1bd-5de8-a205-0fd5ae28fa6d,83 BEDOK NTH RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,9e1d2a36-316d-5330-b4e0-17ca09535b32,88 ZION RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,b626f0aa-6f2f-53f1-982c-a6e55ac0ce4a,89 LOR 2 TOA PAYOH,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,3d56d1ec-3cac-5df6-ae04-5815281f8ec6,89 ZION RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,e8469d86-1849-58dc-9742-04c3dd4f1c3e,9 REDHILL CL,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,7cf5cdcb-cb2e-5577-9778-c4d83f558603,9 TIONG BAHRU RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,e5d7f6ad-90ad-5960-89bc-d67ea2e60c34,90 ZION RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,62c78c0b-7c2e-5109-9246-cc95e3c7b2a3,91 ZION RD,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,653a8905-aaa1-57a6-885a-a89db0f13fc3,96 MARGARET DR,warning,no_hdb_geo_record,no hdb.csv record for this block and street
+hdb_building,8c54b508-1291-5867-a477-5b021543e4ff,1 BEACH RD,warning,rejected_by_coordinate_review,"hdb.csv geocoded this block to Raffles Hotel (addr '1 BEACH ROAD RAFFLES HOTEL SINGAPORE 189673'), a hotel that shares the address 1 Beach Road, not an HDB block; the postcode does not end with the block number as HDB postcodes do. Block and road match, so the automatic address check cannot catch it"
+hdb_building,17f5416d-bfd1-51e3-8caf-c58fc8b52b83,3 BEACH RD,warning,rejected_by_coordinate_review,"hdb.csv geocoded this block to Raffles Hotel (addr '3 BEACH ROAD RAFFLES HOTEL SINGAPORE SINGAPORE 189674'), a hotel that shares the address 3 Beach Road, not an HDB block; the postcode does not end with the block number as HDB postcodes do. Block and road match, so the automatic address check cannot catch it"
