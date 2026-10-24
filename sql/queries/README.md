@@ -4,6 +4,12 @@
 **Target Schema Contract:** `1.0.0-draft.2` (`db/schema/001_schema.sql`)  
 **Assignment Scope:** Task 3.1 SQL Queries (`Q1`–`Q6`), semantic correctness validation, business analysis insights, and Task 3/4 benchmark handoffs for Sun NengKe (`ops/`) and Lu Wenrui (`sql/indexes/`).
 
+> [!IMPORTANT]
+> **Key Module Deliverables & Handoff Navigation:**
+> - 📄 **Formal Handoff Report:** [`handoff.md`](handoff.md) — Complete English technical documentation, 6-table integrity proofs, zero fan-out verification, Stage 1 empirical results, and analytical business insights.
+> - 🖼️ **Terminal Result Screenshots:** [`evidence/screenshots/`](evidence/screenshots/) — Professional, high-resolution execution screenshots for Q1–Q6 (`q1_result.png` to `q6_result.png`).
+> - 📊 **Execution Metrics & Summary:** [`evidence/stage1_query_summary.json`](evidence/stage1_query_summary.json) — Structured query execution metrics, row counts, and Proposal F-03 sensitivity analysis.
+
 ---
 
 ## 1. Module Overview & Responsibilities
@@ -21,9 +27,9 @@ As defined in `.context_ref/Task_Allocation.md` §3.4 and `docs/architecture/com
 
 | Query | File | Base Tables & Views Used | Primary Analytical Objective | Output Schema |
 |:---|:---|:---|:---|:---|
-| **Q1** | `q1.sql` | `resale_transaction`, `hdb_flat`, `hdb_building` | Average unit price (SGD/sqm) across towns for 4-Room and 5-Room flats within a 3-year window. | `town, flat_type, transaction_count, avg_price_per_sqm, area_weighted_price_per_sqm` |
+| **Q1** | `q1.sql` | `resale_transaction`, `hdb_flat`, `hdb_building` | Average unit price (SGD/sqm) across towns for 4-Room and 5-Room flats within a 3-year window. | `town, flat_type, avg_price_per_sqm, transaction_volume, town_avg_price_per_sqm` |
 | **Q2** | `q2.sql` | `resale_transaction`, `hdb_flat`, `hdb_building` | Resale price and transaction volume grouped by town and remaining-lease buckets, with exact median price. | `town, remaining_lease_bucket, median_resale_price, avg_price_per_sqm, total_transaction_volume` |
-| **Q3** | `q3.sql` | `hdb_flat`, `hdb_building`, `resale_transaction` | Identify top 10 towns by average floor area of 3-Room profiles, then retrieve annual maximum resale prices in those towns. | `town, avg_3room_floor_area_sqm, transaction_year, highest_resale_price, transaction_count` |
+| **Q3** | `q3.sql` | `hdb_flat`, `hdb_building`, `resale_transaction` | Identify top 10 towns by average floor area of 3-Room profiles, then retrieve annual maximum resale prices in those towns. | `town, rank_by_avg_area, avg_floor_area_sqm, resale_year, max_resale_price` |
 | **Q4** | `q4.sql` | `resale_transaction`, `hdb_flat`, `hdb_building`, `nearest_hawker` | Compare average prices between 'near' (<500m) and 'far' (>=1000m) nearest-hawker proximity classes by town and flat type. | `town, flat_type, avg_price_near_hawker, avg_price_far_hawker, price_diff_percentage` |
 | **Q5** | `q5.sql` | `resale_transaction`, `hdb_flat`, `hdb_building`, `nearest_market_hawker` | Resale prices per proximity class for hawkers with fresh-market stalls (`market_produce_stalls > 0`), filtered by a budget limit (> SGD 450,000) that retains a non-empty proper subset of towns. | `town, proximity_class, avg_resale_price, transaction_count, town_avg_resale_price` |
 | **Q6** | `q6.sql` | `town`, `hdb_building`, `hdb_flat`, `resale_transaction`, `building_hawker`, `hawker_centre` | Comprehensive 6-table spatial amenity & valuation analysis: assesses unit price, median price, remaining lease, and 1km hawker/produce stall density per town and proximity class. | `town, proximity_class, transaction_volume, geocoded_buildings_sold, avg_resale_price, median_resale_price, avg_price_per_sqm, avg_remaining_lease_years, avg_hawkers_within_1km, avg_fresh_market_hawkers_within_1km, avg_market_stalls_within_1km` |
