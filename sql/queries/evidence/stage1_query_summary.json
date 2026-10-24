@@ -1,0 +1,95 @@
+{
+  "stage": "stage1_2015_2016",
+  "generated_utc": "2026-10-24T14:30:00Z",
+  "schema_contract": "1.0.0-draft.2",
+  "database": "sd6105_stage1_full",
+  "engine": "PostgreSQL 15.17 on x86_64-pc-windows-msvc, 64-bit",
+  "table_row_counts": {
+    "housing.town": 26,
+    "housing.hdb_building": 7921,
+    "housing.hdb_flat": 28725,
+    "housing.resale_transaction": 37153,
+    "housing.hawker_centre": 107,
+    "housing.building_hawker": 821912
+  },
+  "spatial_matrix": {
+    "geocoded_buildings": 7903,
+    "ungeocoded_buildings": 18,
+    "geocoded_hawkers": 104,
+    "ungeocoded_hawkers": 3,
+    "cartesian_pairs": 821912,
+    "isolation_warnings": 2
+  },
+  "contract_mode": {
+    "description": "Baseline Schema Contract 1.0.0-draft.2 (housing.proximity_class with unbounded far >= 1000m)",
+    "queries": {
+      "q1": {
+        "title": "4-Room and 5-Room avg price per sqm across towns (2014-2016 window)",
+        "rows": 52,
+        "columns": ["town", "flat_type", "avg_price_per_sqm", "transaction_volume", "town_avg_price_per_sqm"],
+        "execution_time_ms": 271.45,
+        "status": "passed"
+      },
+      "q2": {
+        "title": "Remaining lease buckets (<50, 50-70, >70 yrs, unknown) median price and price/sqm",
+        "rows": 53,
+        "columns": ["town", "lease_bucket", "median_resale_price", "avg_price_per_sqm", "transaction_count"],
+        "execution_time_ms": 265.12,
+        "transaction_volume_conservation": 37153,
+        "status": "passed"
+      },
+      "q3": {
+        "title": "Top 10 towns by 3-Room avg floor area with annual max price (2015 & 2016)",
+        "rows": 20,
+        "columns": ["town", "rank_by_avg_area", "avg_floor_area_sqm", "resale_year", "max_resale_price"],
+        "execution_time_ms": 245.30,
+        "status": "passed"
+      },
+      "q4": {
+        "title": "Price differential between near (<500m) and far (>=1000m) hawker classes",
+        "rows": 45,
+        "columns": ["town", "flat_type", "avg_price_near_hawker", "avg_price_far_hawker", "price_diff_percentage"],
+        "execution_time_ms": 697.10,
+        "status": "passed"
+      },
+      "q5": {
+        "title": "Avg resale price per proximity class for fresh market hawkers (budget > $450k)",
+        "rows": 24,
+        "columns": ["town", "proximity_class", "avg_resale_price", "transaction_count", "town_avg_resale_price"],
+        "qualifying_towns_count": 8,
+        "execution_time_ms": 639.40,
+        "status": "passed"
+      },
+      "q6": {
+        "title": "6-table building-aggregated spatial hawker density and housing metrics",
+        "rows": 60,
+        "columns": [
+          "town",
+          "proximity_class",
+          "transaction_volume",
+          "geocoded_buildings_sold",
+          "avg_resale_price",
+          "median_resale_price",
+          "avg_price_per_sqm",
+          "avg_remaining_lease_years",
+          "avg_hawkers_within_1km",
+          "avg_fresh_market_hawkers_within_1km",
+          "avg_market_stalls_within_1km"
+        ],
+        "execution_time_ms": 460.25,
+        "status": "passed"
+      }
+    }
+  },
+  "proposal_f03_mode": {
+    "description": "Proposal F-03 (housing.proximity_class far bounded to [1000m, 2000m], > 2000m is NULL)",
+    "queries": {
+      "q1": { "rows": 52, "execution_time_ms": 270.15 },
+      "q2": { "rows": 53, "execution_time_ms": 264.80 },
+      "q3": { "rows": 20, "execution_time_ms": 250.10 },
+      "q4": { "rows": 43, "execution_time_ms": 696.40, "row_delta": -2 },
+      "q5": { "rows": 22, "execution_time_ms": 666.20, "row_delta": -2 },
+      "q6": { "rows": 55, "execution_time_ms": 458.70, "row_delta": -5 }
+    }
+  }
+}
