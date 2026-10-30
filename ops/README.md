@@ -217,5 +217,5 @@ so Windows/Linux checkout does not invalidate frozen SQL or measurement CSV hash
 
 ## Further reading
 
-The [report contribution](report.md) contains the experimental method, findings and an example
-plotting command for preparing the final report.
+The [task analysis report](report.md) contains the experimental method, findings and limitations.
+For plotting commands and dependencies, see the [performance analysis guide](../analysis/README.md).

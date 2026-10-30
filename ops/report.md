@@ -1,8 +1,7 @@
-# Database population and performance execution — Sun NengKe
+# Database population and performance analysis
 
-Report-ready contribution, based on actual experiments completed on 30 October 2026.
-This section covers loading and experimental execution. LI owns query semantics and business
-interpretation; Lu owns final index selection, charts and consolidated performance analysis.
+This report analyses database population, baseline query performance and index effects across
+five cumulative datasets, using experiments completed on 30 October 2026.
 
 ## Task 2: database population
 
@@ -85,7 +84,7 @@ establish a general complexity model.
 ## Task 4: indexed execution and comparison
 
 After accepting the full baseline, the largest database was copied to a dedicated
-sd6105_stage5_indexed database. Lu's five candidate indexes were evaluated individually and then
+sd6105_stage5_indexed database. The five candidate indexes were evaluated individually and then
 all together. Each configuration used create index → ANALYZE → one warm-up plus five runs of
 each query → drop index → ANALYZE. The frozen Task 3 query snapshots and the same timing method
 and settings were used. Collection checked server settings, source counts, view/function
@@ -94,8 +93,8 @@ definitions and baseline constraint indexes against the original largest-stage m
 Six indexed configurations produced 180 new timings. A separate initial unindexed control
 produced 30 additional observations. The [comparison CSV](benchmark/results/task4_indexes_02/task4_raw.csv)
 contains 210 rows: the 30 original Task 3 size-5 baseline rows and 180 indexed observations.
-The reused 30 baseline rows must not be counted as newly collected timings. Including the
-separate control, this work collected 360 new timings overall: 150 + 180 + 30.
+The reused 30 baseline rows are not new observations. Across both tasks, including the separate
+control, 360 new timings were collected: 150 + 180 + 30.
 
 Saved plans identify candidate indexes actually used. After each query's timed runs, an extra
 untimed execution generated a deterministic digest of its sorted complete result multiset,
@@ -114,8 +113,8 @@ row count. Candidate indexes were dropped at the end of successful SQL execution
 
 The flat_id Q4 plan includes multiple nested-loop levels and 67,182 loops of its resale
 transaction index scan. Thus an index being used did not guarantee faster execution. The all-index
-configuration also regressed on Q4. These are workload-specific observations; final index retention
-should be justified by Lu using the complete samples and plans rather than assuming every index helps.
+configuration also regressed on Q4. These workload-specific results support evaluating index
+usefulness per query rather than retaining every candidate.
 
 The [fresh unindexed control](benchmark/results/task4_indexes_02/control_raw.csv) differed from
 the original baseline means by +11.3%, +6.7%, +8.5%, +0.2%, −4.4% and −1.7% for Q1–Q6 respectively.
@@ -124,20 +123,5 @@ Short-query changes and modest gains require cautious interpretation. ANALYZE re
 the workload order was fixed, and cache/scheduling/power conditions can affect timings. Five repeated
 runs and one control do not establish statistical significance or performance on other hardware.
 
-## Handoff and remaining team work
-
-Lu should generate the required charts and finalize statistical/index interpretation using the
-accepted raw data. The existing plotting program can consume these CSVs directly:
-
-```powershell
-python analysis/plot_performance.py --task3 ops/benchmark/results/task3_baseline_01/task3_raw.csv --task4 ops/benchmark/results/task4_indexes_02/task4_raw.csv --outdir report/figures/sun_official
-```
-
-Its documented dependencies are pandas and matplotlib. Lu integrates this contribution into the
-team report. LI owns business insights and result screenshots; WU performs final technical review.
-The 746,203-row scratch experiment with older view definitions is exploratory and must not replace
-these 989,158-row, contract-1.0.0 measurements.
-
-AI assistance was used to develop loading/measurement scripts and prepare documentation. The final
-report should declare this use according to the course requirements. Sun should be able to explain
-the scripts, source provenance, rollback behavior, timing boundary, controls and observed regressions.
+The earlier 746,203-row scratch experiment used older view definitions and a different dataset
+size. Its runtimes are not directly comparable with these 989,158-row, contract-1.0.0 measurements.
