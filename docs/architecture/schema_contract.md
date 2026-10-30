@@ -1,22 +1,24 @@
 # Schema / data contract
 
-**Version: 1.0.0-draft.2. Status: executable proposal; not a team-approved freeze.**
+**Version: 1.0.0. Status: frozen at Gate 0 (2026-10-30) for the Task 3 baseline and Task 4 experiments.**
 
 ### Change log
 
 | Version | Change | Compatibility |
 |---|---|---|
+| **1.0.0 (2026-10-30)** | Gate 0 decisions (Chen, LI, WU). **F-02:** Option A, inventory = the 107 NEA centres; the 25 geo-only centres are not loaded. **F-03:** Option B, `far` is bounded at a 2,000 m maximum effective distance and `proximity_class` returns NULL beyond it. **Crosswalk:** 104 matches approved by Chen (2026-10-23); the 3 unmatched centres keep NULL coordinates. **Views:** `nearest_hawker` and `nearest_market_hawker` compute the class after `DISTINCT ON` (Lu's rewrite: identical rows, faster). `validate_loaded_data.sql` also reports buildings beyond 2,000 m. | No table, column, CSV header, key or UUID changed; existing CSVs stay valid. **Query results change:** Q4/Q5 classes beyond 2 km become NULL. Rebuild the database with 1.0.0 before any official Task 3 timing. |
 | 1.0.0-draft.2 (2026-10-18) | DDL now **enforces** the existing rule "no zero-coordinate sentinels". New CHECKs `building_not_zero_sentinel` and `hawker_not_zero_sentinel` reject the (0,0) pair. `validate_loaded_data.sql` adds three reported, never-fatal dependency probes. A conceptual ER model ([conceptual_er.png](conceptual_er.png), editable [conceptual_er.drawio](conceptual_er.drawio)) is added. | No table, column, CSV header, key, UUID serialisation or proximity rule changed. Any CSV valid under draft.1 that obeyed the written contract is still valid. UUIDs are unchanged: the UUID namespace is versionless. |
 | 1.0.0-draft.1 (2026-10-15) | Initial executable proposal | — |
 
-Open proposals that are **not** part of this contract:
-- [F-02 hawker coverage](proposals/F02_hawker_coverage.md)
-- [F-03 proximity semantics](proposals/F03_proximity_semantics.md)
+Decision records: [F-02 hawker coverage](proposals/F02_hawker_coverage.md) (Option A adopted) and
+[F-03 proximity semantics](proposals/F03_proximity_semantics.md) (Option B adopted, D_max = 2,000 m).
+
 Owner: WU JUDNE. Runtime: PostgreSQL 15+ (developed on PostgreSQL 17.4),
 Python 3.10+ for shared ID helpers and verification. Namespace: `housing`.
 Authoritative definitions: `db/schema/001_schema.sql` and `db/schema/contract.py`.
 Changes to names, grain, keys, boundaries, CSV columns or ID serialization require
-a version change and affected-owner review before reuse of old outputs.
+a version change and affected-owner review before reuse of old outputs. After the freeze, any
+change also invalidates Task 3/4 measurements taken on the previous version.
 
 ## Grain, keys and relations
 
@@ -129,16 +131,17 @@ Use NEA `name_of_centre` and `location_of_centre` for canonical `centre_name`,
 `NAME`/`ADDRESS_MYENV` are matching evidence and must not overwrite those key
 inputs. **17 raw addresses are blank**; that does not make the NEA entity address
 nullable. Retain unmatched NEA entities with both coordinates NULL, not an
-invented address/zero coordinate or zero stall count. Do not add geo-only centres
-without authoritative attributes and an approved inventory decision.
+invented address/zero coordinate or zero stall count. Geo-only centres are not loaded
+(decision F-02, Option A); report them as a coverage limitation.
 
 The frozen 107-entity NEA reference yields 17 exact name/postcode matches,
-87 postcode-only candidates and three unresolved centres. These are unapproved
-diagnostic candidates; postcode overlap is not proof of identity or historical
-location. Extract all six-digit tokens from compound postcodes, normalize NBSP
+87 postcode-only candidates and three unresolved centres. Chen reviewed the candidates
+and **approved the 104 matches** (`approved_for_production = True`, 2026-10-23); the
+three unresolved centres stay unmatched with NULL coordinates. Postcode overlap alone is
+not proof of identity. Extract all six-digit tokens from compound postcodes, normalize NBSP
 for matching, hold ambiguous/conflicting/multiple-claim matches, and let Chen
 review the final crosswalk. Preserve source hashes and row ordinals in evidence,
-not in permanent entity keys. Candidates: [verification/hawker_geo_validation_results.crosswalk.csv](verification/hawker_geo_validation_results.crosswalk.csv) (all unapproved).
+not in permanent entity keys. Approved crosswalk: [verification/hawker_geo_validation_results.crosswalk.csv](verification/hawker_geo_validation_results.crosswalk.csv).
 
 **Contract Change: none.** Version, table/CSV structure, identity serialization,
 constraints and proximity definitions remain unchanged. This is a clarification
@@ -190,16 +193,19 @@ implementation: `housing.haversine_m(lat1,lon1,lat2,lon2)`; clamp the intermedia
 Haversine quantity to [0,1] to avoid floating-point endpoint errors. It assumes
 valid coordinates; table constraints and Chen's validation check its inputs.
 
-Exactly three classes: **near [0,500)**, **medium [500,1000)**, **far [1000,+infinity)**
-within the valid Earth-distance domain. Thus exactly 500 m is medium and exactly
-1,000 m is far. Unknown coordinates mean unclassified, never far. These thresholds
-are a draft choice, not values required by the brief or validated by real distances.
-The far class has no upper bound. A bounded alternative is proposed, not adopted, in
-[proposals/F03_proximity_semantics.md](proposals/F03_proximity_semantics.md).
+Exactly three classes: **near [0,500)**, **medium [500,1000)**, **far [1000,2000]** metres.
+Exactly 500 m is medium, exactly 1,000 m is far and exactly 2,000 m is far. **Beyond 2,000 m**
+(the maximum effective distance) there is **no proximity relationship**: `proximity_class`
+returns NULL, and such sales are excluded from Q4's near/far averages and from Q5. Unknown
+coordinates also mean unclassified, never far. The 500/1000 m thresholds were checked by Chen
+against real nearest distances. 2,000 m follows the F-03 rule (p95 of the nearest
+fresh-market distance, 5.1–5.3 km, capped at 2,000 m). Cost: about 29% of transactions across
+the five files have no class ([decision F-03](proposals/F03_proximity_semantics.md)).
 
 `building_hawker_proximity` derives class per pair. `nearest_hawker` selects one
 minimum-distance centre per building for Q4. `nearest_market_hawker` first filters
-produce stalls >0, then selects one nearest eligible centre for Q5. Ties use
+produce stalls >0, then selects one nearest eligible centre for Q5. Both views choose the
+centre with `DISTINCT ON` first and compute the class afterwards, once per building. Ties use
 ascending hawker UUID. These are plain views, **not extra base tables**; no CSV
 is needed for them. Zero eligible/geocoded centres means no row, not a fake match.
 All flat profiles in one building inherit its relationships. Coordinate changes
@@ -208,7 +214,8 @@ require recomputing the distance matrix and rerunning `validate_loaded_data.sql`
 Q4 compares sales in near and far **nearest-centre** classes; it does not compare
 the nearest centre against the geographically most distant centre. Q5 groups each
 sale by distance to its nearest **fresh-market** centre, which may differ from its
-nearest unrestricted centre. This interpretation needs Chen/LI review. The matrix
+nearest unrestricted centre (confirmed by LI and Chen at Gate 0). Queries that group by
+`proximity_class` must exclude NULL classes. The matrix
 also retains every other pair, so another justified association interpretation can
 be implemented without changing base tables. Any change must define transaction
 weighting and freeze semantics before benchmarks.
@@ -250,7 +257,10 @@ reported for explicit review. Since draft.2 it also reports three dependency pro
 - `fd_probe_coordinate_pairs_shared_by_buildings`;
 - `transactions_before_lease_commencement_year`.
 
-They are evidence for or against the Pending-Validation dependencies in
+Since 1.0.0 it also reports `buildings_nearest_hawker_beyond_2000m` and
+`buildings_nearest_market_beyond_2000m` (no proximity level). They are reported, never fatal.
+
+The dependency probes are evidence for or against the Pending-Validation dependencies in
 design_decisions.md D2, never load failures. Passing these checks does **not** establish source
 matching correctness, row-count reconciliation, acceptable coverage or final query
 correctness. HE/Chen/Sun must supply those source-aware checks and manifests.

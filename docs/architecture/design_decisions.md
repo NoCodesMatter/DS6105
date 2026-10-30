@@ -95,9 +95,17 @@ centres. A complete matrix at those counts is **1,331,294 pairs**, independent o
 the transaction count. Two UUIDs plus a float8 are 40 bytes of logical payload
 per row (~50.8 MiB); PostgreSQL row, page and PK-index overhead is additional.
 A full-size synthetic matrix (12,442 x 107) measured **187 MB** (heap 87 MB +
-PK index 100 MB). The nearest-centre views took about 0.6 s on one laptop. These are
-synthetic, single-machine figures, not Task 3 measurements; Sun/Lu must interpret Q4/Q5
-runtimes with this fixed spatial cost in mind.
+PK index 100 MB). These are synthetic, single-machine figures, not Task 3 measurements;
+Sun/Lu must interpret Q4/Q5 runtimes with this fixed spatial cost in mind.
+
+**View rewrite (1.0.0, from Lu's Task 4 analysis).** The nearest views first pick one
+centre per building with `DISTINCT ON` and only then call `proximity_class`. Before, the
+STRICT (non-inlinable) function ran on every pair before de-duplication. The rows are
+identical. On the same synthetic matrix `SELECT * FROM nearest_hawker` went from about
+985 ms to about 640 ms, and to about 140–180 ms with the Task 4 candidate index
+`building_hawker(building_id, distance_m, hawker_id)`. Lu measured 1,362 → 459 → 156 ms on
+real Stage 1–4 data. The rewrite is part of the frozen schema, so the Task 3 baseline and the
+Task 4 runs use the same view definition.
 Generate only for buildings actually loaded and centres actually geocoded. Newer
 HDB data may include buildings absent from this historical geolocation snapshot.
 
@@ -116,13 +124,15 @@ documentation](https://www.postgresql.org/docs/17/ddl-constraints.html).
 
 ## D4: spatial classes and sample weighting
 
-Near [0,500 m), medium [500 m,1000 m), far [1000 m,infinity). Boundaries are
-mutually exclusive and exhaustive for valid distances. 500/1000 m are simple
-interpretable proposed thresholds, not empirically justified cut points yet.
-Inspect real class counts and geographic coverage with Chen before freezing them.
-The third class has no upper bound. The contract is
-**unchanged** pending team review; the alternatives and a recommendation are in
-[proposals/F03_proximity_semantics.md](proposals/F03_proximity_semantics.md).
+Near [0,500 m), medium [500 m,1000 m), far [1000 m,2000 m]; beyond 2,000 m there is no
+proximity level (NULL). Boundaries are mutually exclusive. Every distance up to the 2,000 m
+maximum effective distance has exactly one class.
+
+- **500/1000 m:** Chen checked these against real nearest distances and they are kept.
+- **2,000 m:** follows the rule in [decision F-03](proposals/F03_proximity_semantics.md):
+  the p95 of the nearest fresh-market distance (5.1–5.3 km), capped at 2,000 m.
+- **Cost:** about 29% of transactions across the five files have no class. They stay in all
+  non-spatial queries.
 
 Q4 uses nearest among all geocoded prescribed centres. Q5 uses nearest among
 centres with market_produce_stalls >0. Thus a sale has at most one class per query.
@@ -168,16 +178,17 @@ Local checks cannot validate actual
 address matches, completeness against raw files or source row provenance. Those
 are ETL/loader reconciliation obligations, not guarantees claimed for the DDL.
 
-## Decisions awaiting team review
+## Decision log (Gate 0, 2026-10-30)
 
-| Item | Reviewer / dependency | Status |
+| Item | Owners | Status |
 |---|---|---|
-| Observed-profile grain; address -> town assumption; stable serialization | HE, LI | Proposal; review real five-file conflicts |
-| Full matrix, radius, thresholds, unrounded boundaries, missing-coverage policy | Chen, Sun, LI | Proposal; actual distance distribution unavailable |
-| Market-produce count -> fresh market, source/geolocation crosswalk | Chen | Count field verified; 17/87/3 candidates unapproved; see [F-02 proposal](proposals/F02_hawker_coverage.md) |
-| Hawker inventory (25 geo-only centres, 3 NEA centres without coordinates) | Chen, LI | Open; options in F-02 proposal |
-| Bounded third proximity class / maximum effective distance | Chen, LI | Open; options in [F-03 proposal](proposals/F03_proximity_semantics.md) |
+| Observed-profile grain; address -> town assumption; stable serialization | HE, LI | Adopted. HE's pipeline uses them for all five files. |
+| Full matrix, thresholds, unrounded boundaries, missing-coverage policy | Chen, Sun, LI | Adopted. Full matrix kept; 500/1000 m confirmed on real distances. |
+| Market-produce count -> fresh market, source/geolocation crosswalk | Chen | Adopted. 104 matches approved by Chen (2026-10-23); 3 unmatched. |
+| Hawker inventory (25 geo-only centres, 3 NEA centres without coordinates) | Chen, LI, WU | **Decided: Option A** (NEA 107 only). See [F-02](proposals/F02_hawker_coverage.md). |
+| Bounded third proximity class / maximum effective distance | Chen, LI, WU | **Decided: Option B, D_max = 2,000 m.** See [F-03](proposals/F03_proximity_semantics.md). |
 | building -> lease_commence_year (BCNF of hdb_flat) | HE (data), WU | Pending Validation; probe in validate_loaded_data.sql |
-| Q3 profile weighting; Q4 nearest; Q5 nearest eligible and budget meaning | LI | Proposed; no final query parameters chosen |
-| Final building CSV enrichment handoff and six-table load order | HE, Chen, Sun | Defined interface; module integration absent |
+| Q3 profile weighting; Q4 nearest; Q5 nearest eligible and budget meaning | LI | Adopted in LI's frozen `sql/queries/` (Q3 profile-weighted; Q4 near vs far; Q5 excludes NULL class). The Q5 budget must be checked at every stage. |
+| Final building CSV enrichment handoff and six-table load order | HE, Chen, Sun | Working: Stage 1 loaded with Chen's geocoded `hdb_building.csv`. Sun's official loader is pending. |
+| Nearest-view rewrite (class computed after `DISTINCT ON`) | Lu, WU | **Adopted in 1.0.0**, before the Task 3 baseline |
 | Official timings, source-aware results, schema/index compatibility | Sun, LI, Lu | Future G2-G5 review; do not sign off without evidence |

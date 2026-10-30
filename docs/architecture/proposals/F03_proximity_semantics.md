@@ -1,9 +1,27 @@
-# Proposal F-03: proximity semantics and maximum effective distance
+# Decision F-03: proximity semantics and maximum effective distance
 
-**Status: PROPOSAL, not adopted.** The formal contract stays as `1.0.0-draft.2`:
-near [0, 500) m, medium [500, 1000) m, far [1000 m, ∞). `housing.proximity_class` is unchanged.
-**Decision owners:** Chen (spatial data, thresholds), LI (Q4/Q5 SQL). WU updates the contract,
-function and ER diagrams after agreement.
+**Status: DECIDED at Gate 0 (2026-10-30): Option B with D_max = 2,000 m.** Agreed by Chen,
+LI and WU, and implemented in contract `1.0.0`.
+
+- **Classes:** near [0, 500) m, medium [500, 1000) m, far [1000, 2000] m.
+- **Beyond 2,000 m:** no proximity level; `housing.proximity_class` returns NULL.
+
+The analysis below is kept as the decision record.
+
+**Evidence used for the decision:**
+- **Chen, real data:** the 500/1000 m thresholds hold. The nearest fresh-market distance has
+  p95 = 5.1–5.3 km, so the rule "p95, capped at 2,000 m" gives 2,000 m. About 29% of
+  transactions across the five files get no class.
+- **LI, Stage 1, frozen `sql/queries/`, no code change:**
+
+  | Query | Rows without cap | Rows with cap |
+  |---|---:|---:|
+  | Q4 | 45 | 43 |
+  | Q5 | 24 | 22 |
+  | Q6 | 60 | 55 |
+
+  Q5 still keeps 8 towns above the SGD 450k budget. Q4 compares only `near`/`far`, and Q5
+  excludes NULL classes.
 
 ## 1. What the brief requires
 
@@ -64,26 +82,27 @@ nearest centre has no market, and neither multiplies transactions.
 | Case | Handling |
 |---|---|
 | Building without coordinates | No IS NEAR pairs → no class. Counted in `transactions_without_spatial_coverage`. |
-| Nearest centre beyond D_max | Class NULL ("beyond"). Excluded from Q4 near/far averages and Q5. Counted in a new diagnostic `buildings_beyond_max_effective_distance`. |
+| Nearest centre beyond D_max | Class NULL ("beyond"). Excluded from Q4 near/far averages and Q5. Counted by `buildings_nearest_hawker_beyond_2000m` and `buildings_nearest_market_beyond_2000m` in `validate_loaded_data.sql`. |
 | No fresh-market centre geocoded | No `nearest_market_hawker` row (existing behaviour) |
 | Distance exactly 500 / 1000 / D_max | Half-open intervals; D_max is the inclusive upper limit of far. |
 | Ties | Unchanged: smallest hawker_id wins; the class does not depend on the tie |
 | Implausible coordinates (outside Singapore) | Chen's ETL flags them before the matrix is built; the DDL still forbids (0,0) and NaN/∞ |
 
-## 6. Impact if Option B is adopted
+## 6. Impact of adopting Option B (implemented in 1.0.0)
 
 | Layer | Change |
 |---|---|
 | ER diagrams | `proximity_level` rule text becomes "near [0,500) \| medium [500,1000) \| far [1000, D_max]; beyond D_max → no level". The IS NEAR relationship and its (0,N)/(0,N) participations are unchanged. |
-| DDL | `proximity_class`: `WHEN distance_m <= D_max THEN 'far' ELSE NULL`. Views unchanged (NULL class propagates). Optionally `nearest_*` could skip NULL classes; recommendation: keep the views and filter in queries, so coverage stays visible. |
+| DDL | `proximity_class` returns NULL above 2,000 m. The nearest views keep NULL classes visible, so coverage can be counted; queries filter them. In the same release, the views compute the class after `DISTINCT ON` (Lu's rewrite: identical rows, faster). |
 | CSV / ETL | None for the full-matrix contract. Optionally Chen may prune pairs beyond D_max (that **is** a CSV/matrix contract change and would need the completeness check in `validate_loaded_data.sql` rewritten). Not recommended now. |
-| Queries (LI) | Q4: `WHERE proximity_class IN ('near','far')` (unchanged in effect). Q5: add `proximity_class IS NOT NULL`, which now has meaning. Report beyond-D_max counts. |
-| Task 3/4 | No change in table sizes; runtime unchanged (the function is evaluated after the sort). |
+| Queries (LI) | Already in LI's frozen SQL: Q4 `WHERE proximity_class IN ('near','far')`; Q5 `WHERE proximity_class IS NOT NULL`. Report beyond-2,000 m counts. |
+| Task 3/4 | No change in table sizes. The database must be rebuilt with 1.0.0 before official Task 3 timing. |
 
-## 7. Data dependency (explicit)
+## 7. Data dependency (resolved by Chen's real-data check)
 
-No threshold here is validated. Validation needs canonical HDB buildings (HE) with hdb.csv
-coordinates (Chen) and the approved hawker inventory (F-02). Then, for every canonical building:
+Resolved: Chen ran the analysis below on the canonical geocoded buildings and the approved
+inventory. Result: 500/1000 m kept; nearest fresh-market p95 = 5.1–5.3 km, so D_max = 2,000 m.
+Method used, for every canonical building:
 
 1. compute the distance to its nearest centre and to its nearest fresh-market centre;
 2. report the percentiles (p50, p75, p90, p95, p99, max) of both distributions;

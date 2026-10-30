@@ -1,12 +1,12 @@
 # Task 1: Conceptual modelling, logical design and implementation
 
 **Contribution:** WU JUDNE, Database Architect and Technical Lead.
-**Contract:** `1.0.0-draft.2`, an executable proposal pending team approval (Gate 0).
+**Contract:** `1.0.0`, frozen at Gate 0 (2026-10-30) with Chen, LI and WU's agreement.
 **Status:**
 - The conceptual ER, the relational schema and the DDL describe the same model; the mapping
   is in Section 4.
-- Decisions that need Chen/LI are marked **[team decision]**.
-- Facts that need real HDB data are marked **[Pending Validation]**.
+- Facts that still need confirmation on the full five-file data are marked
+  **[Pending Validation]**.
 
 ## 1. Modelling assumptions
 
@@ -52,28 +52,34 @@ dependency flat → building → distance. The flat-level view is therefore deri
 - Under the current contract, every geocoded building is paired with every geocoded centre, which
   is consistent with (0,N) on both sides.
 
-## 3. Proximity definition (current contract)
+## 3. Proximity definition
 
 | Element | Definition |
 |---|---|
 | Distance | Straight-line great-circle (Haversine) distance in metres between WGS84 coordinates. Mean Earth radius R = 6,371,008.8 m. |
 | Formula | a = sin²(Δφ/2) + cos φ₁ · cos φ₂ · sin²(Δλ/2); d = 2R · asin(√clamp(a, 0, 1)). Angles in radians. |
-| Coordinates | Buildings: prescribed `hdb.csv`. Centres: `hawker_geo.csv`, through a reviewed crosswalk. |
-| Three levels | **near** 0 ≤ d < 500 m; **medium** 500 ≤ d < 1000 m; **far** d ≥ 1000 m. Exactly 500 m is medium; exactly 1000 m is far. Distances are never rounded before classification. Missing coordinates mean *unclassified*, never far. |
+| Coordinates | Buildings: prescribed `hdb.csv`. Centres: `hawker_geo.csv`, through the crosswalk approved by Chen (104 of the 107 NEA centres). |
+| Three levels | **near** 0 ≤ d < 500 m; **medium** 500 ≤ d < 1000 m; **far** 1000 ≤ d ≤ 2000 m. Exactly 500 m is medium; exactly 1000 m and exactly 2000 m are far. Distances are never rounded before classification. |
+| Maximum effective distance | Beyond **2,000 m** there is no proximity relationship: the class is NULL, and the sale is excluded from Q4's near/far averages and from Q5. Missing coordinates also mean *unclassified*, never far. |
 | Q4 | A sale takes the class of its building's **nearest** geocoded centre. |
 | Q5 | A sale takes the class of its building's nearest centre **with produce stalls > 0**. |
 | Ties | The smallest centre UUID wins. The class does not depend on which centre wins the tie. |
 | Double counting | One centre is chosen per building *before* sales are joined, so no sale is counted twice. |
 
-Open points:
-- **[team decision]** The far class has no upper bound. Q5's phrase "in proximity to" therefore
-  excludes no flat. The bounded alternative ("maximum effective distance") and its impact are in
-  [proposals/F03_proximity_semantics.md](proposals/F03_proximity_semantics.md). The contract above
-  stays in force until Chen/LI decide.
-- **[Pending Validation]** The 500/1000 m thresholds have not been checked against the real
-  nearest-distance distribution, because canonical geocoded buildings do not exist yet.
-- **[team decision]** The hawker inventory (25 geo-only centres, 3 NEA centres without coordinates)
-  is analysed in [proposals/F02_hawker_coverage.md](proposals/F02_hawker_coverage.md).
+How the thresholds were chosen ([decision F-03](proposals/F03_proximity_semantics.md)):
+- **500 m and 1,000 m:** walking-scale distances, confirmed by Chen against the real
+  nearest-centre distances.
+- **The 2,000 m cap:** gives Q5's "in proximity to a hawker with fresh market stalls" a real
+  meaning. Without it, a flat 20 km away would still count as `far`. It follows the agreed rule:
+  the 95th percentile of the nearest fresh-market distance (5.1–5.3 km), capped at 2,000 m.
+- **The cost:** about 29% of the transactions in the five files have no proximity class. They
+  remain in all other queries.
+
+Hawker inventory ([decision F-02](proposals/F02_hawker_coverage.md)):
+- Only the 107 NEA centres are used. The NEA list dates from 2016 and about 75% of transactions
+  are earlier, so adding the 25 newer centres from `hawker_geo.csv` would compare older sales with
+  centres that did not yet exist.
+- Three NEA centres could not be matched and have no coordinates.
 
 ## 4. Logical relational schema and mapping
 
@@ -109,9 +115,9 @@ building_hawker(building_id → hdb_building, hawker_id → hawker_centre, dista
 | (0,N) on the 1 side | No constraint needed: a parent may have no children | — |
 | M:N relationship IS NEAR | Associative table `building_hawker` with composite PK of both FKs | PK + 2 FKs |
 | Relationship attribute `distance_m` | NOT NULL column of the associative table | CHECK 0 … 20,015,115 m |
-| Derived `proximity_level` | Not stored. `housing.proximity_class(distance_m)` and view `building_hawker_proximity`. | IMMUTABLE function |
+| Derived `proximity_level` | Not stored. `housing.proximity_class(distance_m)` (NULL beyond 2,000 m) and view `building_hawker_proximity`. | IMMUTABLE function |
 | Derived `has_fresh_market` | Not stored. Predicate `market_produce_stalls > 0` in view `nearest_market_hawker`. | View |
-| Q4/Q5 "nearest" semantics | Query-level views `nearest_hawker`, `nearest_market_hawker`, not ER constructs | Views |
+| Q4/Q5 "nearest" semantics | Query-level views `nearest_hawker`, `nearest_market_hawker`, not ER constructs. They pick one centre per building with `DISTINCT ON`, then compute its class. | Views |
 
 The full IS NEAR population (every geocoded building × every geocoded centre) and the agreement of
 `distance_m` with the stored coordinates are cross-table facts. They are verified by the read-only
@@ -129,7 +135,7 @@ All dependencies are classified in [design_decisions.md §D2](design_decisions.m
   1. **building → lease_commence_year.** If it holds, `hdb_flat` is **3NF but not BCNF**. It stays
      3NF because `lease_commence_year` is part of the profile key, so it is prime. The BCNF repair
      (moving the attribute to `hdb_building`) would change the flat key and CSVs, so it is
-     **[team decision]**.
+     a team decision (HE, LI, Sun) if the probe confirms the dependency.
   2. **(latitude, longitude) → town_name.** This is harmless while each coordinate pair identifies
      one building. A shared pair would indicate a geocoding defect.
 - `validate_loaded_data.sql` reports both probes on every loaded stage. The accurate claim today
@@ -165,19 +171,26 @@ After a data stage is loaded, `db/schema/validate_loaded_data.sql` (read-only) c
 IS NEAR matrix is complete and that each `distance_m` agrees with the stored coordinates. It also
 reports missing coordinates, unknown leases and the dependency probes from Section 5.
 
-**Still pending real data:** the five resale files and canonical geocoded buildings are needed to
-validate the thresholds, the Section 5 dependencies and the Q1–Q6 results.
+Since 1.0.0 the script also reports how many buildings have their nearest centre, or nearest
+fresh-market centre, beyond 2,000 m. Stage 1 (37,153 transactions, 821,912 building–hawker
+pairs) has been loaded with the HDB and spatial CSVs and passes this check.
+
+**[Pending Validation]** The Section 5 dependency probes still need to be read on the full
+five-file database.
 
 ## 8. Limitations
 
 - The hawker inventory is a static 2016 NEA list, and `hdb.csv` is a historical building snapshot.
-  Neither establishes access at a sale date or a causal price effect.
+  Neither establishes access at a sale date or a causal price effect. Newer estates lose nearby
+  centres that opened after 2016 (decision F-02).
+- About 29% of transactions are beyond the 2,000 m maximum effective distance and have no
+  proximity class.
 - Distances are straight-line, not walking routes.
 - Month markers follow the source: approval month before March 2012, registration month after.
 
 ## 9. Complete database creation SQL
 
-<!-- BEGIN GENERATED SQL: copied byte-for-byte from db/schema; checked by report_sql_matches_source -->
+<!-- BEGIN GENERATED SQL: copied byte-for-byte from db/schema -->
 
 `db/schema/create_database.sql`:
 
@@ -196,11 +209,11 @@ CREATE DATABASE :"database_name" TEMPLATE template0 ENCODING 'UTF8';
 `db/schema/001_schema.sql`:
 
 ```sql
--- Contract 1.0.0-draft.2. PostgreSQL 15+. Intentionally fails if housing exists.
+-- Contract 1.0.0 (Gate 0 freeze). PostgreSQL 15+. Intentionally fails if housing exists.
 -- No extensions, seed data, optional indexes, destructive reset, or ETL required.
 BEGIN;
 CREATE SCHEMA housing;
-COMMENT ON SCHEMA housing IS 'Housing schema contract 1.0.0-draft.2; team review pending';
+COMMENT ON SCHEMA housing IS 'Housing schema contract 1.0.0; frozen at Gate 0 for the Task 3 baseline';
 
 CREATE DOMAIN housing.canonical_text AS text
     CHECK (VALUE = upper(VALUE)
@@ -301,9 +314,11 @@ CREATE TABLE housing.building_hawker (
 COMMENT ON TABLE housing.building_hawker IS
     'Complete geocoded-building x geocoded-prescribed-hawker matrix per frozen snapshot.';
 
+-- near [0,500) | medium [500,1000) | far [1000,2000] metres. Beyond 2,000 m (the
+-- maximum effective distance, decision F-03) there is no proximity level: NULL.
 CREATE FUNCTION housing.proximity_class(distance_m double precision)
 RETURNS text LANGUAGE sql IMMUTABLE STRICT PARALLEL SAFE AS $$
-    SELECT CASE WHEN distance_m < 0 OR distance_m > 20015115 THEN NULL
+    SELECT CASE WHEN distance_m < 0 OR distance_m > 2000 THEN NULL
                 WHEN distance_m < 500 THEN 'near'
                 WHEN distance_m < 1000 THEN 'medium'
                 ELSE 'far' END
@@ -324,19 +339,20 @@ CREATE VIEW housing.building_hawker_proximity AS
 SELECT building_id, hawker_id, distance_m, housing.proximity_class(distance_m) AS proximity_class
 FROM housing.building_hawker;
 
+-- One nearest centre per building; the class is computed after DISTINCT ON, so the
+-- function runs once per building instead of once per pair (same rows, faster).
 CREATE VIEW housing.nearest_hawker AS
-SELECT DISTINCT ON (building_id)
-    building_id, hawker_id, distance_m, housing.proximity_class(distance_m) AS proximity_class
-FROM housing.building_hawker
-ORDER BY building_id, distance_m, hawker_id;
+SELECT building_id, hawker_id, distance_m, housing.proximity_class(distance_m) AS proximity_class
+FROM (SELECT DISTINCT ON (building_id) building_id, hawker_id, distance_m
+      FROM housing.building_hawker
+      ORDER BY building_id, distance_m, hawker_id) AS nearest;
 
 CREATE VIEW housing.nearest_market_hawker AS
-SELECT DISTINCT ON (bh.building_id)
-    bh.building_id, bh.hawker_id, bh.distance_m,
-    housing.proximity_class(bh.distance_m) AS proximity_class
-FROM housing.building_hawker AS bh
-JOIN housing.hawker_centre AS h USING (hawker_id)
-WHERE h.market_produce_stalls > 0
-ORDER BY bh.building_id, bh.distance_m, bh.hawker_id;
+SELECT building_id, hawker_id, distance_m, housing.proximity_class(distance_m) AS proximity_class
+FROM (SELECT DISTINCT ON (bh.building_id) bh.building_id, bh.hawker_id, bh.distance_m
+      FROM housing.building_hawker AS bh
+      JOIN housing.hawker_centre AS h USING (hawker_id)
+      WHERE h.market_produce_stalls > 0
+      ORDER BY bh.building_id, bh.distance_m, bh.hawker_id) AS nearest_market;
 COMMIT;
 ```

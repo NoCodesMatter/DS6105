@@ -1,13 +1,24 @@
-# Proposal F-02: hawker inventory and coverage
+# Decision F-02: hawker inventory and coverage
 
-**Status: PROPOSAL, not adopted.** Contract `1.0.0-draft.2` is unchanged by this document.
-No crosswalk entry is approved, canonical identity is unchanged, and coverage rules are unchanged.
-**Decision owners:** Chen (spatial data), LI (Q4/Q5 semantics). WU implements the DDL/contract
-side after agreement.
+**Status: DECIDED at Gate 0 (2026-10-30): Option A, the NEA-only inventory of 107 centres.**
+Agreed by Chen (spatial data), LI (queries) and WU (schema). It is implemented in contract
+`1.0.0` with no schema change. The analysis below is kept as the decision record.
 
-**Inputs:** `hawker_geo.csv` (NTULearn), the frozen NEA snapshot (107 centres) and the unapproved
-[candidate crosswalk](../verification/hawker_geo_validation_results.crosswalk.csv). The input files
-were not modified.
+**Why Option A, not the earlier recommendation B.** The NEA list is a 2016 snapshot and about
+75% of the transactions are from before 2017 (Chen). Adding the 25 newer centres would make many
+older sales measure distance to centres that did not exist yet. That is a larger distortion than
+the coverage gap in post-2016 estates.
+
+**Consequences:**
+- The 25 geo-only centres are reported, not loaded.
+- The 3 NEA centres without a match keep NULL coordinates.
+- Chen approved the 104 matches (2026-10-23).
+- The final report must state the reduced coverage for 2017+ sales in newer estates
+  (Section 1 table) as a limitation.
+
+**Inputs:** `hawker_geo.csv` (NTULearn), the frozen NEA snapshot (107 centres) and the
+[crosswalk](../verification/hawker_geo_validation_results.crosswalk.csv). 104 of its matches were approved by Chen on
+2026-10-23. The input files were not modified.
 
 ## 1. Figures
 
@@ -148,7 +159,7 @@ the approval itself is Chen's.
 
 This proposal suggests (i).
 
-## 4. What is needed to adopt Option B (not done)
+## 4. What Option B would have required (not adopted)
 
 1. Chen/LI decision recorded in `design_decisions.md`.
 2. DDL:
