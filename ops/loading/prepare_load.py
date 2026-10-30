@@ -44,6 +44,7 @@ def prepare(hdb_stage, spatial_stage, output):
         require(manifest["contract_version"] == contract.VERSION, "Stage contract version mismatch")
     require(hdb["status"] == "ready_for_hdb_handoff", "HDB stage is not ready")
     require(spatial["status"] == "ready_for_integration", "Spatial stage is not ready")
+    # Bind spatial outputs to the exact HDB export, not just its stage name.
     require(spatial["hdb_stage"]["manifest_sha256"] == sha256(hdb_manifest),
             "Spatial outputs belong to a different HDB stage")
     require(hdb["fatal_records"] == hdb["dropped_records"] == 0,
@@ -53,6 +54,7 @@ def prepare(hdb_stage, spatial_stage, output):
 
     checks, copies, summary = [], [], []
     tables = ", ".join("housing." + t for t in contract.LOAD_ORDER)
+    # The spatial building CSV supplies coordinates missing from the HDB export.
     for table in contract.LOAD_ORDER:
         directory, manifest = (spatial_stage, spatial) if table in SPATIAL_TABLES else (hdb_stage, hdb)
         path = directory / (table + ".csv")

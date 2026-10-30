@@ -52,6 +52,7 @@ def check_metadata(actual, reference, selected, database):
     common.require(actual["database"] == database, "Wrong indexed experiment database")
     for field in ("server_version", "settings", "schema_comment", "table_counts", "source_counts", "views", "functions"):
         common.require(actual[field] == reference[field], f"Task 3/4 metadata mismatch: {field}")
+    # Constraint indexes are part of the baseline and must remain present.
     original = set(reference["indexes"])
     current = set(actual["indexes"])
     common.require(original <= current, "A baseline constraint index changed or disappeared")
@@ -196,6 +197,7 @@ def collect(output):
                            metadata["settings"]["jit"], "task4_control" if not selected else "task4_indexed")))
                 (measured if selected else controls).append(row)
     common.require(len(measured) == 180 and len(controls) == 30, "Incomplete indexed experiment")
+    # Reuse the original baseline; keep fresh control measurements separate.
     for row in official:
         row["measurement_origin"] = "original_task3_baseline"
     for filename, rows in (("task4_raw.csv", official + measured), ("control_raw.csv", controls)):

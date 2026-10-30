@@ -180,6 +180,7 @@ def collect(output):
                 "Unexpected database contract")
         require(metadata["settings"]["work_mem"] == "65536" and metadata["settings"]["jit"] == "off",
                 "Measurement settings changed")
+        # Keep schema and settings identical; only the loaded data should change.
         comparable = {k: metadata[k] for k in ("server_version", "settings", "views", "functions", "indexes")}
         require(reference is None or comparable == reference, "Database definitions or settings differ across stages")
         reference = comparable
@@ -202,6 +203,7 @@ def collect(output):
                         runtime, plan["Plan"]["Actual Rows"], "", manifest["query_sha256"][qid],
                         metadata["settings"]["work_mem"], metadata["settings"]["jit"]))))
     require(len(rows) == len(manifest["stages"]) * 30, "Incomplete measurements")
+    # Do not publish a partial CSV if any run failed validation.
     with (output / "task3_raw.csv").open("x", encoding="utf-8", newline="") as destination:
         writer = csv.DictWriter(destination, fieldnames=fields)
         writer.writeheader()
