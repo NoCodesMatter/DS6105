@@ -1,0 +1,5 @@
+# Generated SQL and verbose duplicate psql output are reproducible from the runners.
+benchmark/results/**/run.sql
+benchmark/results/**/psql.log
+# This preparation-only attempt contains no measurements. Preserve locally.
+benchmark/results/task4_indexes_01/

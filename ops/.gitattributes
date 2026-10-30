@@ -1,0 +1,7 @@
+# Keep executable source consistent across Windows and Linux.
+*.py text eol=lf
+*.sql text eol=lf
+# Experiment manifests contain byte-exact hashes of frozen SQL and CSV files.
+benchmark/results/** -text whitespace=cr-at-eol
+# Preserve original mixed-line-ending/locale psql logs; summaries remain readable JSON.
+evidence/*.log -text -diff
