@@ -1,0 +1,117 @@
+{
+  "status": "verified",
+  "snapshot_date": "2026-10-18",
+  "verified_utc": "2026-10-30T03:57:49.951733+00:00",
+  "release_tag": "hdb-snapshot-2026-10-18",
+  "release_url": "https://github.com/Junde-W/SD6103_PROJECT/releases/tag/hdb-snapshot-2026-10-18",
+  "source_manifest": "data/manifests/hdb_sources.json",
+  "total_source_rows": 989158,
+  "sources": [
+    {
+      "dataset_id": "d_ebc5ab87086db484f88045b47411ebc5",
+      "label": "1990_1999",
+      "path": "data/raw/hdb/d_ebc5ab87086db484f88045b47411ebc5.csv",
+      "sha256": "2e064923f41cc96536db04c978901695aa0191022829895cf4ce177e42afad57",
+      "bytes": 22635623,
+      "rows": 287196,
+      "snapshot_utc": "2026-10-18T11:59:28.757700+00:00",
+      "source_url": "https://data.gov.sg/datasets/d_ebc5ab87086db484f88045b47411ebc5/view"
+    },
+    {
+      "dataset_id": "d_43f493c6c50d54243cc1eab0df142d6a",
+      "label": "2000_2012_02",
+      "path": "data/raw/hdb/d_43f493c6c50d54243cc1eab0df142d6a.csv",
+      "sha256": "5f6a72bd7b9120281863beb1fc4c89aa5f4923f00b0f6c52494c4347363f2c36",
+      "bytes": 29369945,
+      "rows": 369651,
+      "snapshot_utc": "2026-10-18T12:00:05.029925+00:00",
+      "source_url": "https://data.gov.sg/datasets/d_43f493c6c50d54243cc1eab0df142d6a/view"
+    },
+    {
+      "dataset_id": "d_2d5ff9ea31397b66239f245f57751537",
+      "label": "2012_03_2014",
+      "path": "data/raw/hdb/d_2d5ff9ea31397b66239f245f57751537.csv",
+      "sha256": "6a16e2dc78f70048ec1a522b59a9727581c36e45e02022641c53e755a7657c72",
+      "bytes": 4160771,
+      "rows": 52203,
+      "snapshot_utc": "2026-10-18T12:00:42.864523+00:00",
+      "source_url": "https://data.gov.sg/datasets/d_2d5ff9ea31397b66239f245f57751537/view"
+    },
+    {
+      "dataset_id": "d_ea9ed51da2787afaf8e51f827c304208",
+      "label": "2015_2016",
+      "path": "data/raw/hdb/d_ea9ed51da2787afaf8e51f827c304208.csv",
+      "sha256": "4ff7ce4a4f642fb384d2b75a42e75b0477e50005f4aaa9989591a7a92507d185",
+      "bytes": 3070924,
+      "rows": 37153,
+      "snapshot_utc": "2026-10-18T12:01:21.815933+00:00",
+      "source_url": "https://data.gov.sg/datasets/d_ea9ed51da2787afaf8e51f827c304208/view"
+    },
+    {
+      "dataset_id": "d_8b84c4ee58e3cfc0ece0d773c8ca6abc",
+      "label": "2017_onwards",
+      "path": "data/raw/hdb/d_8b84c4ee58e3cfc0ece0d773c8ca6abc.csv",
+      "sha256": "d401fc2e7d2a083576dd388b5ea3d170c2027d2503542de32a84656651ebe947",
+      "bytes": 24032414,
+      "rows": 242955,
+      "snapshot_utc": "2026-10-18T12:02:02.095869+00:00",
+      "source_url": "https://data.gov.sg/datasets/d_8b84c4ee58e3cfc0ece0d773c8ca6abc/view"
+    }
+  ],
+  "archives": [
+    {
+      "name": "hdb-raw-2026-10-18.zip",
+      "bytes": 10300103,
+      "sha256": "8e67768f306b9ed4b02f25b7c87b077198027595c952ddbb6e667d432368f13f",
+      "source_rows": 989158,
+      "files": [
+        "data/raw/hdb/d_ebc5ab87086db484f88045b47411ebc5.csv",
+        "data/raw/hdb/d_43f493c6c50d54243cc1eab0df142d6a.csv",
+        "data/raw/hdb/d_2d5ff9ea31397b66239f245f57751537.csv",
+        "data/raw/hdb/d_ea9ed51da2787afaf8e51f827c304208.csv",
+        "data/raw/hdb/d_8b84c4ee58e3cfc0ece0d773c8ca6abc.csv"
+      ],
+      "archive_crc": "passed",
+      "extracted_source_hashes": "passed"
+    },
+    {
+      "name": "hdb-2017-onwards-2026-10-18.zip",
+      "bytes": 2886871,
+      "sha256": "074ee2d30f24ab3336c5dc8f613425818d0d4a9fee50d379d6aed4dc510eafa6",
+      "source_rows": 242955,
+      "files": [
+        "data/raw/hdb/d_8b84c4ee58e3cfc0ece0d773c8ca6abc.csv"
+      ],
+      "archive_crc": "passed",
+      "extracted_source_hashes": "passed"
+    }
+  ],
+  "download_assets": [
+    {
+      "name": "hdb-raw-2026-10-18.zip",
+      "bytes": 10300103,
+      "sha256": "8e67768f306b9ed4b02f25b7c87b077198027595c952ddbb6e667d432368f13f"
+    },
+    {
+      "name": "hdb-2017-onwards-2026-10-18.zip",
+      "bytes": 2886871,
+      "sha256": "074ee2d30f24ab3336c5dc8f613425818d0d4a9fee50d379d6aed4dc510eafa6"
+    },
+    {
+      "name": "hdb_sources.json",
+      "bytes": 33581,
+      "sha256": "fce46444c1e87b5479141860dff8e367deaa06c01b851bbdc1a43efdd471c786"
+    },
+    {
+      "name": "HDB_SNAPSHOT_README.md",
+      "bytes": 3838,
+      "sha256": "a056b355c07185e7a6d2b5b602aa72d90b9da0eb9a21b975281b309ac239cc44"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 363,
+      "sha256": "c5d9e5fc77e3cad4496e6954d023b19c19936d166278a988700288e702d9ffbe"
+    }
+  ],
+  "clean_extraction_and_existing_downloader_validation": "passed_without_network_requests"
+}

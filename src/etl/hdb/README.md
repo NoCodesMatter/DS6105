@@ -30,9 +30,12 @@ The stage is an HDB handoff, not the completed six-table database.
 - Raw source lock: `data/manifests/hdb_sources.json`
 - Local first-stage output: `data/processed/hdb/stage1_2015_2016/`
 
-The evidence above records completed runs on the frozen 2026-10-18 snapshot. A fresh clone
-contains code, the source manifest and compact evidence; it does **not** contain raw CSVs,
-processed CSVs or a PostgreSQL installation/database. Recreate those locally with the steps below.
+The evidence above records completed runs on the frozen 2026-10-18 snapshot.
+Download the [frozen CSVs from the GitHub Release](https://github.com/Junde-W/SD6103_PROJECT/releases/tag/hdb-snapshot-2026-10-18):
+choose the full five-file ZIP, or the `2017_onwards` ZIP to complete an existing snapshot.
+The [snapshot guide](../../../data/snapshots/README.md) gives the extraction steps, counts and checksums.
+A fresh clone contains the code, source manifest and verification evidence; extract the CSVs and
+use the commands below to generate the processed tables.
 
 ## Runtime and inputs
 
@@ -61,12 +64,10 @@ restoration must match the frozen hash. Network/stream interruptions and tempora
 have bounded retries; interrupted temporary downloads are cleaned up. Invalid manifests are
 rejected before acquisition, and restoring a snapshot does not change its original manifest.
 
-**Freeze the source bytes for experiments.** The current source manifest describes the snapshot
-downloaded on 2026-10-18. If a live dataset changes, the downloader refuses to overwrite or
-silently replace a locked snapshot. A teammate who needs these exact outputs must obtain the
-matching raw files; if they are no longer available from the source, use an agreed NEW snapshot
-root with `download.py --root PATH`, profile it again, and regenerate all dependent stages.
-Do not mix two snapshots for the same dataset ID.
+**Use the 2026-10-18 snapshot for the group experiments.** The release supplies the exact bytes
+listed in `data/manifests/hdb_sources.json`, including the 242,955-row `2017_onwards` file.
+Once extracted, `download.py` checks and reuses all five files. For a separately agreed new data
+snapshot, use `download.py --root PATH`, profile it and rebuild the dependent stages together.
 
 ## Build and verify one file
 
@@ -221,5 +222,5 @@ correctly failed with `No geocoded hawkers: Q4/Q5 cannot be accepted`; the summa
 remaining integration requirement. No schema, spatial pipeline, queries, indexes
 or benchmarking files were modified.
 
-Large raw/processed CSVs and local QA reruns are ignored by Git. Source metadata, code and compact
-evidence remain reviewable. Agree on transfer/storage of the frozen raw files before team integration.
+Frozen raw CSVs are distributed through the linked GitHub Release. Source metadata, code and
+compact evidence are versioned in Git; processed stages are generated locally from those inputs.
