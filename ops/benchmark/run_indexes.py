@@ -23,6 +23,7 @@ FIELDS = ["experiment_utc", "database", "dataset_stage", "server_version", "tran
 
 
 def load_indexes(path):
+    # Accept the reviewed CREATE INDEX format rather than arbitrary SQL.
     sql = re.sub(r"--[^\n]*", "", path.read_text(encoding="utf-8"))
     indexes = {}
     for statement in (s.strip() for s in sql.split(";")):
@@ -38,6 +39,7 @@ def load_indexes(path):
 
 
 def plan_indexes(value):
+    # Index scans may be nested below parallel or bitmap plan nodes.
     if isinstance(value, dict):
         found = {value["Index Name"]} if "Index Name" in value else set()
         for nested in value.values():
@@ -63,6 +65,7 @@ def check_metadata(actual, reference, selected, database):
 
 
 def official_rows(baseline, manifest):
+    # Task 4 compares against the original size-5 samples from Task 3.
     with (baseline / "task3_raw.csv").open(encoding="utf-8", newline="") as source:
         rows = [r for r in csv.DictReader(source) if r["dataset_stage"] == "stage5" and r["index_config"] == "baseline"]
     groups = collections.defaultdict(list)
@@ -80,10 +83,12 @@ def prepare(output, baseline, database):
     accepted = common.read_json(baseline / "manifest.json")
     common.require(accepted.get("status") == "complete" and accepted.get("measurement_count") == 150,
                    "Task 3 baseline is not complete")
+    # Index DDL is allowed only on a separate experiment copy.
     common.require(database not in {stage["database"] for stage in accepted["stages"]},
                    "Use a dedicated copy; refusing to modify a baseline database")
     official_rows(baseline, accepted)
     queries = {}
+    # Preserve query bytes so their hashes match the accepted baseline.
     for i in range(1, 7):
         path = baseline / "queries" / f"q{i}.sql"
         common.require(common.digest(path) == accepted["query_sha256"][f"Q{i}"], "Frozen baseline SQL changed")
@@ -98,6 +103,7 @@ def prepare(output, baseline, database):
     (output / "candidate_indexes.sql").write_bytes(index_file.read_bytes())
     reference = common.read_json(baseline / "stage5/metadata.json")
     common.write_json(output / "baseline_metadata.json", reference)
+    # Compare a fresh control, each index alone, then the combined index set.
     configurations = [{"name": "baseline_control", "indexes": []}] + [
         {"name": name, "indexes": [name]} for name in indexes] + [{"name": "all_indexes", "indexes": list(indexes)}]
     stage5 = next(stage for stage in accepted["stages"] if stage["stage"] == "stage5")
@@ -128,6 +134,7 @@ def prepare(output, baseline, database):
         directory.mkdir()
         script += [f"\\echo Configuration: {name}"]
         script += [indexes[index] for index in selected]
+        # Refresh planner statistics after index changes, outside timed queries.
         script += analyze
         script += ["BEGIN;", "LOCK TABLE " + ", ".join("housing." + t for t in common.TABLES) + " IN SHARE MODE;",
                    "\\o " + common.quote((directory / "metadata.json").as_posix()), common.metadata_sql(), "\\o"]
@@ -146,6 +153,7 @@ def prepare(output, baseline, database):
                        "md5(COALESCE(jsonb_agg(to_jsonb(checked_result) ORDER BY to_jsonb(checked_result)::text COLLATE \"C\"), "
                        "'[]'::jsonb)::text)) FROM checked_result;", "\\o"]
         script += ["COMMIT;"]
+        # Remove candidates between configurations to isolate each index's effect.
         script += [f"DROP INDEX housing.{index};" for index in selected]
         script += analyze
         script.append(f"\\echo {name} completed")
@@ -174,6 +182,7 @@ def collect(output):
         check_metadata(metadata, reference, selected, manifest["database"])
         for i in range(1, 7):
             qid = f"Q{i}"
+            # Result digests detect changed values as well as missing rows.
             fingerprint = common.read_json(directory / f"q{i}_result.json")
             common.require(fingerprint["rows"] == manifest["query_rows"][i - 1], "Query output count changed")
             if not selected:
@@ -187,6 +196,7 @@ def collect(output):
                 common.require(isinstance(runtime, (int, float)) and math.isfinite(runtime) and runtime > 0,
                                f"Invalid runtime: {name} {filename}")
                 common.require(plan["Plan"]["Actual Rows"] == manifest["query_rows"][i - 1], "Plan row count changed")
+                # Ignore constraint indexes when reporting candidate-index usage.
                 used = plan_indexes(plan) & candidates
                 common.require(used <= set(selected), "Plan uses an unexpected candidate index")
                 if not run:

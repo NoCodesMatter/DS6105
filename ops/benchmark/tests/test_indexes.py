@@ -10,6 +10,7 @@ import run_indexes as runner
 
 class IndexExperimentTests(unittest.TestCase):
     def test_finds_indexes_in_nested_parallel_and_bitmap_plans(self):
+        # Inspecting only the root node would miss this bitmap index scan.
         plan = {"Plan": {"Node Type": "Gather", "Plans": [
             {"Node Type": "Bitmap Heap Scan", "Plans": [
                 {"Node Type": "Bitmap Index Scan", "Index Name": "idx_selected"}]}]}}

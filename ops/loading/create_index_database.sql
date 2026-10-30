@@ -9,12 +9,14 @@ DO $$ BEGIN
     IF EXISTS (
         SELECT FROM pg_index i JOIN pg_class t ON t.oid=i.indrelid
         JOIN pg_namespace n ON n.oid=t.relnamespace
+        -- The baseline permits indexes backed by constraints only.
         LEFT JOIN pg_constraint c ON c.conindid=i.indexrelid
         WHERE n.nspname='housing' AND c.oid IS NULL
     ) THEN
         RAISE EXCEPTION 'Source contains optional indexes; expected the clean baseline';
     END IF;
 END $$;
+-- Leave the template database before asking PostgreSQL to copy it.
 \connect postgres
 CREATE DATABASE sd6105_stage5_indexed TEMPLATE sd6105_stage5;
 \connect sd6105_stage5_indexed

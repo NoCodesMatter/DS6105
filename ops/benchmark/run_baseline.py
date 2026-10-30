@@ -59,6 +59,7 @@ def client_environment():
     if os.name == "nt":
         import ctypes
 
+        # Match the Windows API layout to read RAM without an extra dependency.
         class MemoryStatus(ctypes.Structure):
             _fields_ = [("length", ctypes.c_ulong), ("load", ctypes.c_ulong)] + [
                 (name, ctypes.c_ulonglong) for name in (
@@ -73,6 +74,7 @@ def client_environment():
 
 
 def metadata_sql():
+    # Actual definitions expose schema drift that file versions alone cannot detect.
     settings = ",".join(quote(name) for name in SETTINGS)
     counts = " UNION ALL ".join(
         f"SELECT '{table}' AS name, count(*) AS rows FROM housing.{table}" for table in TABLES)
@@ -119,6 +121,7 @@ def prepare(output, selected):
         stage["spatial_manifest_sha256"] = digest(spatial_path)
         stage["hdb_manifest"] = hdb
         stage["spatial_manifest"] = spatial
+    # Freeze SQL and provenance before any database execution begins.
     output.mkdir(parents=True)
     (output / "queries").mkdir()
     for qid, body in queries.items():
@@ -139,6 +142,7 @@ def prepare(output, selected):
     for stage in stages:
         directory = output / stage["stage"]
         directory.mkdir()
+        # Reapply session settings after each database connection change.
         script += [f"\\connect {stage['database']}", "SET client_encoding = 'UTF8';",
                    "SET work_mem = '64MB';", "SET jit = off;", "SET statement_timeout = '10min';",
                    # Block writes while checking and measuring each stage, keeping
@@ -155,6 +159,7 @@ def prepare(output, selected):
         script += ["\\o " + quote((directory / "metadata.json").as_posix()), metadata_sql(), "\\o"]
         for qid, body in queries.items():
             script.append(f"\\echo {stage['stage']} {qid}: warm-up then 5 measured runs")
+            # Run 0 warms caches; only runs 1-5 become CSV observations.
             for run in range(6):
                 filename = f"{qid.lower()}_warmup.json" if run == 0 else f"{qid.lower()}_run{run}.json"
                 script += ["\\o " + quote((directory / filename).as_posix()),
@@ -191,6 +196,7 @@ def collect(output):
             for run in range(6):
                 filename = f"q{i}_warmup.json" if run == 0 else f"q{i}_run{run}.json"
                 plan = read_json(directory / filename)[0]
+                # Server execution time excludes planning and client transfer.
                 runtime = plan["Execution Time"]
                 require(isinstance(runtime, (int, float)) and math.isfinite(runtime) and runtime > 0,
                         f"Invalid runtime: {filename}")
@@ -227,6 +233,7 @@ def main():
     parser.add_argument("--collect-only", action="store_true", help="Validate and collect an existing completed SQL run")
     args = parser.parse_args()
     output = args.out.resolve()
+    # Recovery collects saved plans without running the queries again.
     if args.collect_only:
         require(not args.prepare_only, "Choose prepare-only or collect-only")
         collect(output)

@@ -12,6 +12,7 @@ spec.loader.exec_module(runner)
 
 class CollectionTests(unittest.TestCase):
     def fixture(self, directory, stage_count=1):
+        # Synthetic plans test validation without PostgreSQL or real timing data.
         (directory / "queries").mkdir()
         hashes = {}
         for i in range(1, 7):
