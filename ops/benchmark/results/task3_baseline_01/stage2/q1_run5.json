@@ -1,0 +1,164 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Sort",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 5901.66,
+      "Total Cost": 5902.11,
+      "Plan Rows": 182,
+      "Plan Width": 89,
+      "Actual Rows": 52,
+      "Actual Loops": 1,
+      "Sort Key": ["b.town_name", "f.flat_type"],
+      "Sort Method": "quicksort",
+      "Sort Space Used": 28,
+      "Sort Space Type": "Memory",
+      "Plans": [
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Hashed",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 5890.28,
+          "Total Cost": 5894.83,
+          "Plan Rows": 182,
+          "Plan Width": 89,
+          "Actual Rows": 52,
+          "Actual Loops": 1,
+          "Group Key": ["b.town_name", "f.flat_type"],
+          "Planned Partitions": 0,
+          "HashAgg Batches": 1,
+          "Peak Memory Usage": 96,
+          "Disk Usage": 0,
+          "Plans": [
+            {
+              "Node Type": "Hash Join",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Join Type": "Inner",
+              "Startup Cost": 2200.18,
+              "Total Cost": 5247.85,
+              "Plan Rows": 36710,
+              "Plan Width": 28,
+              "Actual Rows": 33724,
+              "Actual Loops": 1,
+              "Inner Unique": true,
+              "Hash Cond": "(f.building_id = b.building_id)",
+              "Plans": [
+                {
+                  "Node Type": "Hash Join",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 1914.49,
+                  "Total Cost": 4865.75,
+                  "Plan Rows": 36710,
+                  "Plan Width": 34,
+                  "Actual Rows": 33724,
+                  "Actual Loops": 1,
+                  "Inner Unique": true,
+                  "Hash Cond": "(r.flat_id = f.flat_id)",
+                  "Plans": [
+                    {
+                      "Node Type": "Seq Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Relation Name": "resale_transaction",
+                      "Alias": "r",
+                      "Startup Cost": 0.00,
+                      "Total Cost": 2812.34,
+                      "Plan Rows": 52917,
+                      "Plan Width": 22,
+                      "Actual Rows": 53249,
+                      "Actual Loops": 1,
+                      "Filter": "((sale_month >= '2014-01-01'::date) AND (sale_month <= '2016-12-01'::date))",
+                      "Rows Removed by Filter": 36107
+                    },
+                    {
+                      "Node Type": "Hash",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 1418.69,
+                      "Total Cost": 1418.69,
+                      "Plan Rows": 39664,
+                      "Plan Width": 44,
+                      "Actual Rows": 39717,
+                      "Actual Loops": 1,
+                      "Hash Buckets": 65536,
+                      "Original Hash Buckets": 65536,
+                      "Hash Batches": 1,
+                      "Original Hash Batches": 1,
+                      "Peak Memory Usage": 3460,
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Relation Name": "hdb_flat",
+                          "Alias": "f",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 1418.69,
+                          "Plan Rows": 39664,
+                          "Plan Width": 44,
+                          "Actual Rows": 39717,
+                          "Actual Loops": 1,
+                          "Filter": "((flat_type)::text = ANY ('{\"4 ROOM\",\"5 ROOM\"}'::text[]))",
+                          "Rows Removed by Filter": 17458
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Hash",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 180.31,
+                  "Total Cost": 180.31,
+                  "Plan Rows": 8431,
+                  "Plan Width": 26,
+                  "Actual Rows": 8431,
+                  "Actual Loops": 1,
+                  "Hash Buckets": 16384,
+                  "Original Hash Buckets": 16384,
+                  "Hash Batches": 1,
+                  "Original Hash Batches": 1,
+                  "Peak Memory Usage": 607,
+                  "Plans": [
+                    {
+                      "Node Type": "Seq Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Relation Name": "hdb_building",
+                      "Alias": "b",
+                      "Startup Cost": 0.00,
+                      "Total Cost": 180.31,
+                      "Plan Rows": 8431,
+                      "Plan Width": 26,
+                      "Actual Rows": 8431,
+                      "Actual Loops": 1
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Planning Time": 0.236,
+    "Triggers": [
+    ],
+    "Execution Time": 34.209
+  }
+]

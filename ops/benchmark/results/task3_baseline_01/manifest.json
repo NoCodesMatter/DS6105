@@ -1,0 +1,1079 @@
+{
+  "status": "complete",
+  "created_utc": "2026-10-30T10:44:32.614094+00:00",
+  "contract_version": "1.0.0",
+  "client_environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "logical_cpus": 20,
+    "physical_memory_bytes": 16962281472
+  },
+  "method": "EXPLAIN (ANALYZE, TIMING OFF, FORMAT JSON): Execution Time",
+  "cache_protocol": "one warm-up before five recorded runs per query; no OS/database cache reset",
+  "runs": 5,
+  "warmups": 1,
+  "query_order": [
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6"
+  ],
+  "stages": [
+    {
+      "stage": "stage1",
+      "database": "sd6105_housing",
+      "directory": "stage1_2015_2016",
+      "transaction_count": 37153,
+      "query_rows": [
+        52,
+        53,
+        20,
+        43,
+        22,
+        55
+      ],
+      "table_counts": {
+        "town": 26,
+        "hdb_building": 7921,
+        "hdb_flat": 28725,
+        "resale_transaction": 37153,
+        "hawker_centre": 107,
+        "building_hawker": 821912
+      },
+      "source_counts": {
+        "d_ea9ed51da2787afaf8e51f827c304208": 37153
+      },
+      "hdb_manifest_sha256": "80ce7821e4ea8bd446ecc1de037c7d7bac9eb96d4a8c72cc36af1920665bf44c",
+      "spatial_manifest_sha256": "0392c1fb8fc178b3f0ac53ee5975aacb3828413722ec57701417140868a6a936",
+      "hdb_manifest": {
+        "accepted_records": 37153,
+        "building_coordinate_status": "All NULL pairs; awaiting Chen enrichment",
+        "buildings_with_multiple_lease_years": [],
+        "code_hash_mode": "utf8-lf-v1",
+        "code_sha256": {
+          "db/schema/001_schema.sql": "a56a96fca8fee7af0b94a7a2f4c01b224816db7ed23c6c20245a6ccc4301358f",
+          "db/schema/contract.py": "0f17aa5dffe723dfe29e072d1bb31afe7609ab8c5648543d131773a4523a2edc",
+          "src/etl/hdb/core.py": "b6c7b0918a7980120aa0578b1e54c7c856d84b7d8bfaafaa84ecc8794ca43cc5",
+          "src/etl/hdb/pipeline.py": "52f6fd5b1f7fe40482e6865c88bd3dcc8ba7759dce2ace47e627e5569d12fe5e"
+        },
+        "contract_version": "1.0.0",
+        "created_utc": "2026-10-30T10:10:03.744213+00:00",
+        "diagnostics_sha256": "7edac81ff1bc216a68cb9043fa6c4d48a41b79a164c8293f248b346c6c32287f",
+        "dropped_records": 0,
+        "fatal_records": 0,
+        "input_records": 37153,
+        "source_counts": [
+          {
+            "accepted": 37153,
+            "dataset_id": "d_ea9ed51da2787afaf8e51f827c304208",
+            "fatal_records": 0,
+            "input": 37153
+          }
+        ],
+        "sources": [
+          {
+            "dataset_id": "d_ea9ed51da2787afaf8e51f827c304208",
+            "label": "2015_2016",
+            "path": "data/raw/hdb/d_ea9ed51da2787afaf8e51f827c304208.csv",
+            "rows": 37153,
+            "sha256": "4ff7ce4a4f642fb384d2b75a42e75b0477e50005f4aaa9989591a7a92507d185",
+            "snapshot_utc": "2026-10-18T12:01:21.815933+00:00",
+            "source_url": "https://data.gov.sg/datasets/d_ea9ed51da2787afaf8e51f827c304208/view"
+          }
+        ],
+        "stage": "stage1_2015_2016",
+        "status": "ready_for_hdb_handoff",
+        "tables": {
+          "hdb_building": {
+            "bytes": 540236,
+            "rows": 7921,
+            "sha256": "30e1e9c1d418c43cf786d648efd76945143856a56d93777bc4e287187641e333"
+          },
+          "hdb_flat": {
+            "bytes": 3107487,
+            "rows": 28725,
+            "sha256": "feb83c8a4cb25e244b6ade41c40fd262d48e15a22e696def33da99399af605be"
+          },
+          "resale_transaction": {
+            "bytes": 5756270,
+            "rows": 37153,
+            "sha256": "1608c4bed95dc9b6fbe4c3d22b884deefe5e34fcdcbd0019dc4aca3cc411d890"
+          },
+          "town": {
+            "bytes": 284,
+            "rows": 26,
+            "sha256": "8322af7c5649eba646c5e2fa87718c4712ef443d949ca38d3a92c4661817b6d4"
+          }
+        },
+        "transformations": {
+          "canonicalized_flat_model": 36948,
+          "formatted_floor_area_sqm": 37153,
+          "formatted_resale_price": 37144,
+          "lease_reported_years": 37153,
+          "mapped_MULTI-GENERATION": 5,
+          "month_to_first_day_marker": 37153,
+          "storey_range_split": 37153
+        },
+        "warnings": {}
+      },
+      "spatial_manifest": {
+        "code_hash_mode": "utf8-lf-v1",
+        "code_sha256": {
+          "db/schema/contract.py": "0f17aa5dffe723dfe29e072d1bb31afe7609ab8c5648543d131773a4523a2edc",
+          "src/etl/spatial/core.py": "07a2c96b115cfc51a497c637a4ff5092f9853cab39853b296a2761d63955e2f0",
+          "src/etl/spatial/pipeline.py": "039a5b636645cbbe2d4d12a2f5f806e62715baf6ec94a9a0dfa4eb4e99118c73"
+        },
+        "contract_version": "1.0.0",
+        "counts": {
+          "building_hawker": 821912,
+          "buildings_geocoded": 7903,
+          "buildings_isolated_warning": 2,
+          "buildings_without_coordinates": {
+            "geocoded_to_other_address": 16,
+            "rejected_by_coordinate_review": 2
+          },
+          "fresh_market_hawkers": 81,
+          "fresh_market_hawkers_geocoded": 81,
+          "hawker_centre": 107,
+          "hawker_geo_records": 129,
+          "hawker_geo_records_not_in_inventory": 25,
+          "hawkers_geocoded": 104,
+          "hdb_building": 7921
+        },
+        "created_utc": "2026-10-30T10:14:04.512585+00:00",
+        "diagnostics_sha256": "82138fe8d2cc7467595dee83e21a291cfc0babe93836cfa1fcea6bc96147b202",
+        "hdb_stage": {
+          "hdb_building_sha256": "30e1e9c1d418c43cf786d648efd76945143856a56d93777bc4e287187641e333",
+          "manifest_sha256": "80ce7821e4ea8bd446ecc1de037c7d7bac9eb96d4a8c72cc36af1920665bf44c",
+          "stage": "stage1_2015_2016"
+        },
+        "load_note": "Load town, hdb_flat and resale_transaction from the HDB stage; hdb_building, hawker_centre and building_hawker from this stage, in contract LOAD_ORDER",
+        "reviews": {
+          "coordinate_review.csv": "7a3d8fd6a050b298cc8cf807ad91f2c75284ee06e43629bef516d893f4b68eaf",
+          "hawker_geo_validation_results.crosswalk.csv": "865c8203182c6b63c368307e276a98d95521bf56e7d3b2ad325c8415feeb5169"
+        },
+        "sources": {
+          "hawker_geo": "c04a56cea3dc39fdb66b998242f7ead00c4c3c05b19eff4b66b57f779ebba166",
+          "hdb_geo": "451c4fc467e32d8fc0663ecfbc290a58382a9f7134b60b935ca76676afeea8be",
+          "nea_hawker_centres": "12e9eb62bff4869f5e9aa93c99a859d9eeb22bb55086a8c546e17e2128effcd6"
+        },
+        "stage": "stage1_2015_2016",
+        "status": "ready_for_integration",
+        "tables": {
+          "building_hawker": {
+            "bytes": 75986257,
+            "rows": 821912,
+            "sha256": "5e8785fcf39f6535dba2cf41dcc95ee1494c733f6dd54f3a0cb843d225328ba4"
+          },
+          "hawker_centre": {
+            "bytes": 15139,
+            "rows": 107,
+            "sha256": "603a92ec0bf4e0d3d2623928b5a4a494a5ffda5930e4cc29476f0c13d9630d7d"
+          },
+          "hdb_building": {
+            "bytes": 791365,
+            "rows": 7921,
+            "sha256": "c965b20036026fd5ceffec80c51b8b50c838e3c0edb77b119f9729c9352ef3d8"
+          }
+        }
+      }
+    },
+    {
+      "stage": "stage2",
+      "database": "sd6105_stage2",
+      "directory": "stage2",
+      "transaction_count": 89356,
+      "query_rows": [
+        52,
+        53,
+        50,
+        45,
+        28,
+        55
+      ],
+      "table_counts": {
+        "town": 26,
+        "hdb_building": 8431,
+        "hdb_flat": 57175,
+        "resale_transaction": 89356,
+        "hawker_centre": 107,
+        "building_hawker": 874640
+      },
+      "source_counts": {
+        "d_2d5ff9ea31397b66239f245f57751537": 52203,
+        "d_ea9ed51da2787afaf8e51f827c304208": 37153
+      },
+      "hdb_manifest_sha256": "7af44b06f62de76a8cc04655c1f6cc0968ceff7a5166903995f12dc90b4260f2",
+      "spatial_manifest_sha256": "f403a56822a07afff02b6e2e0aa5b0dd26953334be9e9e13bf302d19a0c3fa48",
+      "hdb_manifest": {
+        "accepted_records": 89356,
+        "building_coordinate_status": "All NULL pairs; awaiting Chen enrichment",
+        "buildings_with_multiple_lease_years": [
+          {
+            "building_id": "99c844f2-6f9c-5bad-b318-c88b0c879939",
+            "lease_commence_years": [
+              1981,
+              1982
+            ]
+          }
+        ],
+        "code_hash_mode": "utf8-lf-v1",
+        "code_sha256": {
+          "db/schema/001_schema.sql": "a56a96fca8fee7af0b94a7a2f4c01b224816db7ed23c6c20245a6ccc4301358f",
+          "db/schema/contract.py": "0f17aa5dffe723dfe29e072d1bb31afe7609ab8c5648543d131773a4523a2edc",
+          "src/etl/hdb/core.py": "b6c7b0918a7980120aa0578b1e54c7c856d84b7d8bfaafaa84ecc8794ca43cc5",
+          "src/etl/hdb/pipeline.py": "52f6fd5b1f7fe40482e6865c88bd3dcc8ba7759dce2ace47e627e5569d12fe5e"
+        },
+        "contract_version": "1.0.0",
+        "created_utc": "2026-10-30T10:21:01.450362+00:00",
+        "diagnostics_sha256": "7edac81ff1bc216a68cb9043fa6c4d48a41b79a164c8293f248b346c6c32287f",
+        "dropped_records": 0,
+        "fatal_records": 0,
+        "input_records": 89356,
+        "source_counts": [
+          {
+            "accepted": 52203,
+            "dataset_id": "d_2d5ff9ea31397b66239f245f57751537",
+            "fatal_records": 0,
+            "input": 52203
+          },
+          {
+            "accepted": 37153,
+            "dataset_id": "d_ea9ed51da2787afaf8e51f827c304208",
+            "fatal_records": 0,
+            "input": 37153
+          }
+        ],
+        "sources": [
+          {
+            "dataset_id": "d_2d5ff9ea31397b66239f245f57751537",
+            "label": "2012_03_2014",
+            "path": "data/raw/hdb/d_2d5ff9ea31397b66239f245f57751537.csv",
+            "rows": 52203,
+            "sha256": "6a16e2dc78f70048ec1a522b59a9727581c36e45e02022641c53e755a7657c72",
+            "snapshot_utc": "2026-10-18T12:00:42.864523+00:00",
+            "source_url": "https://data.gov.sg/datasets/d_2d5ff9ea31397b66239f245f57751537/view"
+          },
+          {
+            "dataset_id": "d_ea9ed51da2787afaf8e51f827c304208",
+            "label": "2015_2016",
+            "path": "data/raw/hdb/d_ea9ed51da2787afaf8e51f827c304208.csv",
+            "rows": 37153,
+            "sha256": "4ff7ce4a4f642fb384d2b75a42e75b0477e50005f4aaa9989591a7a92507d185",
+            "snapshot_utc": "2026-10-18T12:01:21.815933+00:00",
+            "source_url": "https://data.gov.sg/datasets/d_ea9ed51da2787afaf8e51f827c304208/view"
+          }
+        ],
+        "stage": "stage2",
+        "status": "ready_for_hdb_handoff",
+        "tables": {
+          "hdb_building": {
+            "bytes": 575059,
+            "rows": 8431,
+            "sha256": "28f94085c1209fe5b5d044af5efd9c2377ba6c9b6ad1d0a1c088796cda9a6193"
+          },
+          "hdb_flat": {
+            "bytes": 6187198,
+            "rows": 57175,
+            "sha256": "c877322e06786d4604c0e096914f143d111ef4002bc02740b5070b5e72b14a34"
+          },
+          "resale_transaction": {
+            "bytes": 13903992,
+            "rows": 89356,
+            "sha256": "278b8db1fe224c7ebdf53cf67d804a357e21f53fc9b7546fec10f194bb4e3838"
+          },
+          "town": {
+            "bytes": 284,
+            "rows": 26,
+            "sha256": "8322af7c5649eba646c5e2fa87718c4712ef443d949ca38d3a92c4661817b6d4"
+          }
+        },
+        "transformations": {
+          "canonicalized_flat_model": 89079,
+          "formatted_floor_area_sqm": 89356,
+          "formatted_resale_price": 89335,
+          "lease_estimated_years": 52203,
+          "lease_reported_years": 37153,
+          "mapped_MULTI-GENERATION": 26,
+          "month_to_first_day_marker": 89356,
+          "storey_range_split": 89356
+        },
+        "warnings": {}
+      },
+      "spatial_manifest": {
+        "code_hash_mode": "utf8-lf-v1",
+        "code_sha256": {
+          "db/schema/contract.py": "0f17aa5dffe723dfe29e072d1bb31afe7609ab8c5648543d131773a4523a2edc",
+          "src/etl/spatial/core.py": "07a2c96b115cfc51a497c637a4ff5092f9853cab39853b296a2761d63955e2f0",
+          "src/etl/spatial/pipeline.py": "039a5b636645cbbe2d4d12a2f5f806e62715baf6ec94a9a0dfa4eb4e99118c73"
+        },
+        "contract_version": "1.0.0",
+        "counts": {
+          "building_hawker": 874640,
+          "buildings_geocoded": 8410,
+          "buildings_isolated_warning": 2,
+          "buildings_without_coordinates": {
+            "geocoded_to_other_address": 17,
+            "no_hdb_geo_record": 2,
+            "rejected_by_coordinate_review": 2
+          },
+          "fresh_market_hawkers": 81,
+          "fresh_market_hawkers_geocoded": 81,
+          "hawker_centre": 107,
+          "hawker_geo_records": 129,
+          "hawker_geo_records_not_in_inventory": 25,
+          "hawkers_geocoded": 104,
+          "hdb_building": 8431
+        },
+        "created_utc": "2026-10-30T10:21:33.147809+00:00",
+        "diagnostics_sha256": "54987f312ece27532ae5ecbfbdb08f662b6ba3754f86bc7322b71e11ef45c773",
+        "hdb_stage": {
+          "hdb_building_sha256": "28f94085c1209fe5b5d044af5efd9c2377ba6c9b6ad1d0a1c088796cda9a6193",
+          "manifest_sha256": "7af44b06f62de76a8cc04655c1f6cc0968ceff7a5166903995f12dc90b4260f2",
+          "stage": "stage2"
+        },
+        "load_note": "Load town, hdb_flat and resale_transaction from the HDB stage; hdb_building, hawker_centre and building_hawker from this stage, in contract LOAD_ORDER",
+        "reviews": {
+          "coordinate_review.csv": "7a3d8fd6a050b298cc8cf807ad91f2c75284ee06e43629bef516d893f4b68eaf",
+          "hawker_geo_validation_results.crosswalk.csv": "865c8203182c6b63c368307e276a98d95521bf56e7d3b2ad325c8415feeb5169"
+        },
+        "sources": {
+          "hawker_geo": "c04a56cea3dc39fdb66b998242f7ead00c4c3c05b19eff4b66b57f779ebba166",
+          "hdb_geo": "451c4fc467e32d8fc0663ecfbc290a58382a9f7134b60b935ca76676afeea8be",
+          "nea_hawker_centres": "12e9eb62bff4869f5e9aa93c99a859d9eeb22bb55086a8c546e17e2128effcd6"
+        },
+        "stage": "stage2",
+        "status": "ready_for_integration",
+        "tables": {
+          "building_hawker": {
+            "bytes": 80860756,
+            "rows": 874640,
+            "sha256": "fd0895badf7fa76d53d2131c5d5109df54f32313fe786c9933d306f923b95447"
+          },
+          "hawker_centre": {
+            "bytes": 15139,
+            "rows": 107,
+            "sha256": "603a92ec0bf4e0d3d2623928b5a4a494a5ffda5930e4cc29476f0c13d9630d7d"
+          },
+          "hdb_building": {
+            "bytes": 842323,
+            "rows": 8431,
+            "sha256": "73ad50d62dea4820f106de668bc09478c1ab909cbb7c1c2344dc19f381e09a2f"
+          }
+        }
+      }
+    },
+    {
+      "stage": "stage3",
+      "database": "sd6105_stage3",
+      "directory": "stage3",
+      "transaction_count": 332311,
+      "query_rows": [
+        52,
+        63,
+        150,
+        48,
+        52,
+        55
+      ],
+      "table_counts": {
+        "town": 26,
+        "hdb_building": 9827,
+        "hdb_flat": 116466,
+        "resale_transaction": 332311,
+        "hawker_centre": 107,
+        "building_hawker": 1019616
+      },
+      "source_counts": {
+        "d_2d5ff9ea31397b66239f245f57751537": 52203,
+        "d_8b84c4ee58e3cfc0ece0d773c8ca6abc": 242955,
+        "d_ea9ed51da2787afaf8e51f827c304208": 37153
+      },
+      "hdb_manifest_sha256": "fd4edad8056a979cb4b9120b592dbb32310b6afa8ece8653571eaa5d5d38347f",
+      "spatial_manifest_sha256": "eadae34e0cb127a2f5d4ff3576e03af2deeac3e658d9e2513ee373a9861998eb",
+      "hdb_manifest": {
+        "accepted_records": 332311,
+        "building_coordinate_status": "All NULL pairs; awaiting Chen enrichment",
+        "buildings_with_multiple_lease_years": [
+          {
+            "building_id": "09882439-2721-5c74-a7a6-27d6a89daf50",
+            "lease_commence_years": [
+              1966,
+              1981
+            ]
+          },
+          {
+            "building_id": "99c844f2-6f9c-5bad-b318-c88b0c879939",
+            "lease_commence_years": [
+              1981,
+              1982
+            ]
+          }
+        ],
+        "code_hash_mode": "utf8-lf-v1",
+        "code_sha256": {
+          "db/schema/001_schema.sql": "a56a96fca8fee7af0b94a7a2f4c01b224816db7ed23c6c20245a6ccc4301358f",
+          "db/schema/contract.py": "0f17aa5dffe723dfe29e072d1bb31afe7609ab8c5648543d131773a4523a2edc",
+          "src/etl/hdb/core.py": "b6c7b0918a7980120aa0578b1e54c7c856d84b7d8bfaafaa84ecc8794ca43cc5",
+          "src/etl/hdb/pipeline.py": "52f6fd5b1f7fe40482e6865c88bd3dcc8ba7759dce2ace47e627e5569d12fe5e"
+        },
+        "contract_version": "1.0.0",
+        "created_utc": "2026-10-30T10:25:45.114387+00:00",
+        "diagnostics_sha256": "7edac81ff1bc216a68cb9043fa6c4d48a41b79a164c8293f248b346c6c32287f",
+        "dropped_records": 0,
+        "fatal_records": 0,
+        "input_records": 332311,
+        "source_counts": [
+          {
+            "accepted": 52203,
+            "dataset_id": "d_2d5ff9ea31397b66239f245f57751537",
+            "fatal_records": 0,
+            "input": 52203
+          },
+          {
+            "accepted": 242955,
+            "dataset_id": "d_8b84c4ee58e3cfc0ece0d773c8ca6abc",
+            "fatal_records": 0,
+            "input": 242955
+          },
+          {
+            "accepted": 37153,
+            "dataset_id": "d_ea9ed51da2787afaf8e51f827c304208",
+            "fatal_records": 0,
+            "input": 37153
+          }
+        ],
+        "sources": [
+          {
+            "dataset_id": "d_2d5ff9ea31397b66239f245f57751537",
+            "label": "2012_03_2014",
+            "path": "data/raw/hdb/d_2d5ff9ea31397b66239f245f57751537.csv",
+            "rows": 52203,
+            "sha256": "6a16e2dc78f70048ec1a522b59a9727581c36e45e02022641c53e755a7657c72",
+            "snapshot_utc": "2026-10-18T12:00:42.864523+00:00",
+            "source_url": "https://data.gov.sg/datasets/d_2d5ff9ea31397b66239f245f57751537/view"
+          },
+          {
+            "dataset_id": "d_8b84c4ee58e3cfc0ece0d773c8ca6abc",
+            "label": "2017_onwards",
+            "path": "data/raw/hdb/d_8b84c4ee58e3cfc0ece0d773c8ca6abc.csv",
+            "rows": 242955,
+            "sha256": "d401fc2e7d2a083576dd388b5ea3d170c2027d2503542de32a84656651ebe947",
+            "snapshot_utc": "2026-10-18T12:02:02.095869+00:00",
+            "source_url": "https://data.gov.sg/datasets/d_8b84c4ee58e3cfc0ece0d773c8ca6abc/view"
+          },
+          {
+            "dataset_id": "d_ea9ed51da2787afaf8e51f827c304208",
+            "label": "2015_2016",
+            "path": "data/raw/hdb/d_ea9ed51da2787afaf8e51f827c304208.csv",
+            "rows": 37153,
+            "sha256": "4ff7ce4a4f642fb384d2b75a42e75b0477e50005f4aaa9989591a7a92507d185",
+            "snapshot_utc": "2026-10-18T12:01:21.815933+00:00",
+            "source_url": "https://data.gov.sg/datasets/d_ea9ed51da2787afaf8e51f827c304208/view"
+          }
+        ],
+        "stage": "stage3",
+        "status": "ready_for_hdb_handoff",
+        "tables": {
+          "hdb_building": {
+            "bytes": 670006,
+            "rows": 9827,
+            "sha256": "157a1cf327309533f66db86a47056788f795d8e016bce4e8e34af200b43127b7"
+          },
+          "hdb_flat": {
+            "bytes": 12585813,
+            "rows": 116466,
+            "sha256": "c37e83310b20fe277ac132825055a1f9a98a8759e24cd5ab5f62922bc595cec2"
+          },
+          "resale_transaction": {
+            "bytes": 52016771,
+            "rows": 332311,
+            "sha256": "c3b62473e1673b0da9073e045437d4f30defcd61a521219f576e1fc3ba41ffe8"
+          },
+          "town": {
+            "bytes": 284,
+            "rows": 26,
+            "sha256": "8322af7c5649eba646c5e2fa87718c4712ef443d949ca38d3a92c4661817b6d4"
+          }
+        },
+        "transformations": {
+          "canonicalized_flat_model": 328186,
+          "formatted_floor_area_sqm": 206032,
+          "formatted_resale_price": 332226,
+          "lease_estimated_years": 52203,
+          "lease_reported_months": 242955,
+          "lease_reported_years": 37153,
+          "mapped_MULTI-GENERATION": 118,
+          "month_to_first_day_marker": 332311,
+          "storey_range_split": 332311
+        },
+        "warnings": {}
+      },
+      "spatial_manifest": {
+        "code_hash_mode": "utf8-lf-v1",
+        "code_sha256": {
+          "db/schema/contract.py": "0f17aa5dffe723dfe29e072d1bb31afe7609ab8c5648543d131773a4523a2edc",
+          "src/etl/spatial/core.py": "07a2c96b115cfc51a497c637a4ff5092f9853cab39853b296a2761d63955e2f0",
+          "src/etl/spatial/pipeline.py": "039a5b636645cbbe2d4d12a2f5f806e62715baf6ec94a9a0dfa4eb4e99118c73"
+        },
+        "contract_version": "1.0.0",
+        "counts": {
+          "building_hawker": 1019616,
+          "buildings_geocoded": 9804,
+          "buildings_isolated_warning": 2,
+          "buildings_without_coordinates": {
+            "geocoded_to_other_address": 18,
+            "no_hdb_geo_record": 3,
+            "rejected_by_coordinate_review": 2
+          },
+          "fresh_market_hawkers": 81,
+          "fresh_market_hawkers_geocoded": 81,
+          "hawker_centre": 107,
+          "hawker_geo_records": 129,
+          "hawker_geo_records_not_in_inventory": 25,
+          "hawkers_geocoded": 104,
+          "hdb_building": 9827
+        },
+        "created_utc": "2026-10-30T10:26:18.267580+00:00",
+        "diagnostics_sha256": "2c90060afea881505f01e19a3b3e432c386a70d778ab9beb618961dd334be14c",
+        "hdb_stage": {
+          "hdb_building_sha256": "157a1cf327309533f66db86a47056788f795d8e016bce4e8e34af200b43127b7",
+          "manifest_sha256": "fd4edad8056a979cb4b9120b592dbb32310b6afa8ece8653571eaa5d5d38347f",
+          "stage": "stage3"
+        },
+        "load_note": "Load town, hdb_flat and resale_transaction from the HDB stage; hdb_building, hawker_centre and building_hawker from this stage, in contract LOAD_ORDER",
+        "reviews": {
+          "coordinate_review.csv": "7a3d8fd6a050b298cc8cf807ad91f2c75284ee06e43629bef516d893f4b68eaf",
+          "hawker_geo_validation_results.crosswalk.csv": "865c8203182c6b63c368307e276a98d95521bf56e7d3b2ad325c8415feeb5169"
+        },
+        "sources": {
+          "hawker_geo": "c04a56cea3dc39fdb66b998242f7ead00c4c3c05b19eff4b66b57f779ebba166",
+          "hdb_geo": "451c4fc467e32d8fc0663ecfbc290a58382a9f7134b60b935ca76676afeea8be",
+          "nea_hawker_centres": "12e9eb62bff4869f5e9aa93c99a859d9eeb22bb55086a8c546e17e2128effcd6"
+        },
+        "stage": "stage3",
+        "status": "ready_for_integration",
+        "tables": {
+          "building_hawker": {
+            "bytes": 94266942,
+            "rows": 1019616,
+            "sha256": "ec50b49e89e627ccd5b7afba7c68cd2e7945824fc8d7fd548b7b5ee49fd3e31c"
+          },
+          "hawker_centre": {
+            "bytes": 15139,
+            "rows": 107,
+            "sha256": "603a92ec0bf4e0d3d2623928b5a4a494a5ffda5930e4cc29476f0c13d9630d7d"
+          },
+          "hdb_building": {
+            "bytes": 981559,
+            "rows": 9827,
+            "sha256": "b2269527bdc3c57160949ec7255dedb67277f3b66191fc46ff2d551f31aa1995"
+          }
+        }
+      }
+    },
+    {
+      "stage": "stage4",
+      "database": "sd6105_stage4",
+      "directory": "stage4",
+      "transaction_count": 619507,
+      "query_rows": [
+        52,
+        76,
+        250,
+        48,
+        7,
+        55
+      ],
+      "table_counts": {
+        "town": 27,
+        "hdb_building": 10018,
+        "hdb_flat": 134795,
+        "resale_transaction": 619507,
+        "hawker_centre": 107,
+        "building_hawker": 1021800
+      },
+      "source_counts": {
+        "d_2d5ff9ea31397b66239f245f57751537": 52203,
+        "d_8b84c4ee58e3cfc0ece0d773c8ca6abc": 242955,
+        "d_ea9ed51da2787afaf8e51f827c304208": 37153,
+        "d_ebc5ab87086db484f88045b47411ebc5": 287196
+      },
+      "hdb_manifest_sha256": "35797d9a9aced898d416cbd91bb2e21a64ff84c50aa1d7fa896224f4aebb064a",
+      "spatial_manifest_sha256": "30223a466208bd12e371e8fc9600745e341274b25a57907783fe9f7d6480b387",
+      "hdb_manifest": {
+        "accepted_records": 619507,
+        "building_coordinate_status": "All NULL pairs; awaiting Chen enrichment",
+        "buildings_with_multiple_lease_years": [
+          {
+            "building_id": "09882439-2721-5c74-a7a6-27d6a89daf50",
+            "lease_commence_years": [
+              1966,
+              1981
+            ]
+          },
+          {
+            "building_id": "71838fd0-f97e-52e8-b050-b34ec72df2ea",
+            "lease_commence_years": [
+              1978,
+              2013
+            ]
+          },
+          {
+            "building_id": "99c844f2-6f9c-5bad-b318-c88b0c879939",
+            "lease_commence_years": [
+              1981,
+              1982
+            ]
+          }
+        ],
+        "code_hash_mode": "utf8-lf-v1",
+        "code_sha256": {
+          "db/schema/001_schema.sql": "a56a96fca8fee7af0b94a7a2f4c01b224816db7ed23c6c20245a6ccc4301358f",
+          "db/schema/contract.py": "0f17aa5dffe723dfe29e072d1bb31afe7609ab8c5648543d131773a4523a2edc",
+          "src/etl/hdb/core.py": "b6c7b0918a7980120aa0578b1e54c7c856d84b7d8bfaafaa84ecc8794ca43cc5",
+          "src/etl/hdb/pipeline.py": "52f6fd5b1f7fe40482e6865c88bd3dcc8ba7759dce2ace47e627e5569d12fe5e"
+        },
+        "contract_version": "1.0.0",
+        "created_utc": "2026-10-30T10:28:59.474532+00:00",
+        "diagnostics_sha256": "e14e08f5b9bab00d5556a63bc218ff8751951c137327ab18e1065241860c042e",
+        "dropped_records": 0,
+        "fatal_records": 0,
+        "input_records": 619507,
+        "source_counts": [
+          {
+            "accepted": 52203,
+            "dataset_id": "d_2d5ff9ea31397b66239f245f57751537",
+            "fatal_records": 0,
+            "input": 52203
+          },
+          {
+            "accepted": 242955,
+            "dataset_id": "d_8b84c4ee58e3cfc0ece0d773c8ca6abc",
+            "fatal_records": 0,
+            "input": 242955
+          },
+          {
+            "accepted": 37153,
+            "dataset_id": "d_ea9ed51da2787afaf8e51f827c304208",
+            "fatal_records": 0,
+            "input": 37153
+          },
+          {
+            "accepted": 287196,
+            "dataset_id": "d_ebc5ab87086db484f88045b47411ebc5",
+            "fatal_records": 0,
+            "input": 287196
+          }
+        ],
+        "sources": [
+          {
+            "dataset_id": "d_2d5ff9ea31397b66239f245f57751537",
+            "label": "2012_03_2014",
+            "path": "data/raw/hdb/d_2d5ff9ea31397b66239f245f57751537.csv",
+            "rows": 52203,
+            "sha256": "6a16e2dc78f70048ec1a522b59a9727581c36e45e02022641c53e755a7657c72",
+            "snapshot_utc": "2026-10-18T12:00:42.864523+00:00",
+            "source_url": "https://data.gov.sg/datasets/d_2d5ff9ea31397b66239f245f57751537/view"
+          },
+          {
+            "dataset_id": "d_8b84c4ee58e3cfc0ece0d773c8ca6abc",
+            "label": "2017_onwards",
+            "path": "data/raw/hdb/d_8b84c4ee58e3cfc0ece0d773c8ca6abc.csv",
+            "rows": 242955,
+            "sha256": "d401fc2e7d2a083576dd388b5ea3d170c2027d2503542de32a84656651ebe947",
+            "snapshot_utc": "2026-10-18T12:02:02.095869+00:00",
+            "source_url": "https://data.gov.sg/datasets/d_8b84c4ee58e3cfc0ece0d773c8ca6abc/view"
+          },
+          {
+            "dataset_id": "d_ea9ed51da2787afaf8e51f827c304208",
+            "label": "2015_2016",
+            "path": "data/raw/hdb/d_ea9ed51da2787afaf8e51f827c304208.csv",
+            "rows": 37153,
+            "sha256": "4ff7ce4a4f642fb384d2b75a42e75b0477e50005f4aaa9989591a7a92507d185",
+            "snapshot_utc": "2026-10-18T12:01:21.815933+00:00",
+            "source_url": "https://data.gov.sg/datasets/d_ea9ed51da2787afaf8e51f827c304208/view"
+          },
+          {
+            "dataset_id": "d_ebc5ab87086db484f88045b47411ebc5",
+            "label": "1990_1999",
+            "path": "data/raw/hdb/d_ebc5ab87086db484f88045b47411ebc5.csv",
+            "rows": 287196,
+            "sha256": "2e064923f41cc96536db04c978901695aa0191022829895cf4ce177e42afad57",
+            "snapshot_utc": "2026-10-18T11:59:28.757700+00:00",
+            "source_url": "https://data.gov.sg/datasets/d_ebc5ab87086db484f88045b47411ebc5/view"
+          }
+        ],
+        "stage": "stage4",
+        "status": "ready_for_hdb_handoff",
+        "tables": {
+          "hdb_building": {
+            "bytes": 682721,
+            "rows": 10018,
+            "sha256": "5083178495ef702d2aca6dd40fdb7ca069164cbf4d0e549d322e8b65cd2a6e64"
+          },
+          "hdb_flat": {
+            "bytes": 14562190,
+            "rows": 134795,
+            "sha256": "a0eb0247498b18080f6903a8c519f4e52d4f6e649616c465199e3a8a3029f7a8"
+          },
+          "resale_transaction": {
+            "bytes": 97147638,
+            "rows": 619507,
+            "sha256": "7f3c7c9078de12e892e9542ee11dfb0a27ac855ea368736fe73932cfef12b70a"
+          },
+          "town": {
+            "bytes": 297,
+            "rows": 27,
+            "sha256": "9a2e9b193ccb127dbe1fbb76065699f086cd5ee3372a5a2684bf26e1f9515b46"
+          }
+        },
+        "transformations": {
+          "canonicalized_flat_model": 328186,
+          "formatted_floor_area_sqm": 493228,
+          "formatted_resale_price": 619422,
+          "lease_estimated_years": 339363,
+          "lease_reported_months": 242955,
+          "lease_reported_years": 37153,
+          "lease_unknown": 36,
+          "mapped_MULTI-GENERATION": 118,
+          "month_to_first_day_marker": 619507,
+          "storey_range_split": 619507
+        },
+        "warnings": {
+          "estimated_lease_out_of_range": 36,
+          "transaction_before_lease_commencement_year": 36
+        }
+      },
+      "spatial_manifest": {
+        "code_hash_mode": "utf8-lf-v1",
+        "code_sha256": {
+          "db/schema/contract.py": "0f17aa5dffe723dfe29e072d1bb31afe7609ab8c5648543d131773a4523a2edc",
+          "src/etl/spatial/core.py": "07a2c96b115cfc51a497c637a4ff5092f9853cab39853b296a2761d63955e2f0",
+          "src/etl/spatial/pipeline.py": "039a5b636645cbbe2d4d12a2f5f806e62715baf6ec94a9a0dfa4eb4e99118c73"
+        },
+        "contract_version": "1.0.0",
+        "counts": {
+          "building_hawker": 1021800,
+          "buildings_geocoded": 9825,
+          "buildings_isolated_warning": 2,
+          "buildings_without_coordinates": {
+            "geocoded_to_other_address": 19,
+            "no_hdb_geo_record": 172,
+            "rejected_by_coordinate_review": 2
+          },
+          "fresh_market_hawkers": 81,
+          "fresh_market_hawkers_geocoded": 81,
+          "hawker_centre": 107,
+          "hawker_geo_records": 129,
+          "hawker_geo_records_not_in_inventory": 25,
+          "hawkers_geocoded": 104,
+          "hdb_building": 10018
+        },
+        "created_utc": "2026-10-30T10:29:40.812488+00:00",
+        "diagnostics_sha256": "b31d8c21e9774eb3982a6441ecb7513a2e95aa0f2069992270694167122283a1",
+        "hdb_stage": {
+          "hdb_building_sha256": "5083178495ef702d2aca6dd40fdb7ca069164cbf4d0e549d322e8b65cd2a6e64",
+          "manifest_sha256": "35797d9a9aced898d416cbd91bb2e21a64ff84c50aa1d7fa896224f4aebb064a",
+          "stage": "stage4"
+        },
+        "load_note": "Load town, hdb_flat and resale_transaction from the HDB stage; hdb_building, hawker_centre and building_hawker from this stage, in contract LOAD_ORDER",
+        "reviews": {
+          "coordinate_review.csv": "7a3d8fd6a050b298cc8cf807ad91f2c75284ee06e43629bef516d893f4b68eaf",
+          "hawker_geo_validation_results.crosswalk.csv": "865c8203182c6b63c368307e276a98d95521bf56e7d3b2ad325c8415feeb5169"
+        },
+        "sources": {
+          "hawker_geo": "c04a56cea3dc39fdb66b998242f7ead00c4c3c05b19eff4b66b57f779ebba166",
+          "hdb_geo": "451c4fc467e32d8fc0663ecfbc290a58382a9f7134b60b935ca76676afeea8be",
+          "nea_hawker_centres": "12e9eb62bff4869f5e9aa93c99a859d9eeb22bb55086a8c546e17e2128effcd6"
+        },
+        "stage": "stage4",
+        "status": "ready_for_integration",
+        "tables": {
+          "building_hawker": {
+            "bytes": 94468725,
+            "rows": 1021800,
+            "sha256": "3cceeef2de175ebc2b713c96f74f664f1954ed7a988c54c94ad8339bf1894e8e"
+          },
+          "hawker_centre": {
+            "bytes": 15139,
+            "rows": 107,
+            "sha256": "603a92ec0bf4e0d3d2623928b5a4a494a5ffda5930e4cc29476f0c13d9630d7d"
+          },
+          "hdb_building": {
+            "bytes": 994940,
+            "rows": 10018,
+            "sha256": "aad14cb46e2d7af4a8a9fc038f21a2008800aeb4ce31f0ae647dca02f042b66c"
+          }
+        }
+      }
+    },
+    {
+      "stage": "stage5",
+      "database": "sd6105_stage5",
+      "directory": "stage5",
+      "transaction_count": 989158,
+      "query_rows": [
+        52,
+        77,
+        370,
+        48,
+        2,
+        55
+      ],
+      "table_counts": {
+        "town": 27,
+        "hdb_building": 10024,
+        "hdb_flat": 147045,
+        "resale_transaction": 989158,
+        "hawker_centre": 107,
+        "building_hawker": 1022424
+      },
+      "source_counts": {
+        "d_2d5ff9ea31397b66239f245f57751537": 52203,
+        "d_43f493c6c50d54243cc1eab0df142d6a": 369651,
+        "d_8b84c4ee58e3cfc0ece0d773c8ca6abc": 242955,
+        "d_ea9ed51da2787afaf8e51f827c304208": 37153,
+        "d_ebc5ab87086db484f88045b47411ebc5": 287196
+      },
+      "hdb_manifest_sha256": "0e5811ef00971f657ea5175acbdfd326176fe4cbf09bc7a8ec0e140258d803d1",
+      "spatial_manifest_sha256": "cdd7175efe309b2dd5733b5888de4c269f28884a9e2f12702038a885f0b85f46",
+      "hdb_manifest": {
+        "accepted_records": 989158,
+        "building_coordinate_status": "All NULL pairs; awaiting Chen enrichment",
+        "buildings_with_multiple_lease_years": [
+          {
+            "building_id": "09882439-2721-5c74-a7a6-27d6a89daf50",
+            "lease_commence_years": [
+              1966,
+              1981
+            ]
+          },
+          {
+            "building_id": "71838fd0-f97e-52e8-b050-b34ec72df2ea",
+            "lease_commence_years": [
+              1978,
+              2013
+            ]
+          },
+          {
+            "building_id": "99c844f2-6f9c-5bad-b318-c88b0c879939",
+            "lease_commence_years": [
+              1981,
+              1982
+            ]
+          }
+        ],
+        "code_hash_mode": "utf8-lf-v1",
+        "code_sha256": {
+          "db/schema/001_schema.sql": "a56a96fca8fee7af0b94a7a2f4c01b224816db7ed23c6c20245a6ccc4301358f",
+          "db/schema/contract.py": "0f17aa5dffe723dfe29e072d1bb31afe7609ab8c5648543d131773a4523a2edc",
+          "src/etl/hdb/core.py": "b6c7b0918a7980120aa0578b1e54c7c856d84b7d8bfaafaa84ecc8794ca43cc5",
+          "src/etl/hdb/pipeline.py": "52f6fd5b1f7fe40482e6865c88bd3dcc8ba7759dce2ace47e627e5569d12fe5e"
+        },
+        "contract_version": "1.0.0",
+        "created_utc": "2026-10-30T10:32:53.169403+00:00",
+        "diagnostics_sha256": "79fce2af32a16d2af7aeb261fd1ea4f79ffbd733c525fe5e698f0910b99ee622",
+        "dropped_records": 0,
+        "fatal_records": 0,
+        "input_records": 989158,
+        "source_counts": [
+          {
+            "accepted": 52203,
+            "dataset_id": "d_2d5ff9ea31397b66239f245f57751537",
+            "fatal_records": 0,
+            "input": 52203
+          },
+          {
+            "accepted": 369651,
+            "dataset_id": "d_43f493c6c50d54243cc1eab0df142d6a",
+            "fatal_records": 0,
+            "input": 369651
+          },
+          {
+            "accepted": 242955,
+            "dataset_id": "d_8b84c4ee58e3cfc0ece0d773c8ca6abc",
+            "fatal_records": 0,
+            "input": 242955
+          },
+          {
+            "accepted": 37153,
+            "dataset_id": "d_ea9ed51da2787afaf8e51f827c304208",
+            "fatal_records": 0,
+            "input": 37153
+          },
+          {
+            "accepted": 287196,
+            "dataset_id": "d_ebc5ab87086db484f88045b47411ebc5",
+            "fatal_records": 0,
+            "input": 287196
+          }
+        ],
+        "sources": [
+          {
+            "dataset_id": "d_2d5ff9ea31397b66239f245f57751537",
+            "label": "2012_03_2014",
+            "path": "data/raw/hdb/d_2d5ff9ea31397b66239f245f57751537.csv",
+            "rows": 52203,
+            "sha256": "6a16e2dc78f70048ec1a522b59a9727581c36e45e02022641c53e755a7657c72",
+            "snapshot_utc": "2026-10-18T12:00:42.864523+00:00",
+            "source_url": "https://data.gov.sg/datasets/d_2d5ff9ea31397b66239f245f57751537/view"
+          },
+          {
+            "dataset_id": "d_43f493c6c50d54243cc1eab0df142d6a",
+            "label": "2000_2012_02",
+            "path": "data/raw/hdb/d_43f493c6c50d54243cc1eab0df142d6a.csv",
+            "rows": 369651,
+            "sha256": "5f6a72bd7b9120281863beb1fc4c89aa5f4923f00b0f6c52494c4347363f2c36",
+            "snapshot_utc": "2026-10-18T12:00:05.029925+00:00",
+            "source_url": "https://data.gov.sg/datasets/d_43f493c6c50d54243cc1eab0df142d6a/view"
+          },
+          {
+            "dataset_id": "d_8b84c4ee58e3cfc0ece0d773c8ca6abc",
+            "label": "2017_onwards",
+            "path": "data/raw/hdb/d_8b84c4ee58e3cfc0ece0d773c8ca6abc.csv",
+            "rows": 242955,
+            "sha256": "d401fc2e7d2a083576dd388b5ea3d170c2027d2503542de32a84656651ebe947",
+            "snapshot_utc": "2026-10-18T12:02:02.095869+00:00",
+            "source_url": "https://data.gov.sg/datasets/d_8b84c4ee58e3cfc0ece0d773c8ca6abc/view"
+          },
+          {
+            "dataset_id": "d_ea9ed51da2787afaf8e51f827c304208",
+            "label": "2015_2016",
+            "path": "data/raw/hdb/d_ea9ed51da2787afaf8e51f827c304208.csv",
+            "rows": 37153,
+            "sha256": "4ff7ce4a4f642fb384d2b75a42e75b0477e50005f4aaa9989591a7a92507d185",
+            "snapshot_utc": "2026-10-18T12:01:21.815933+00:00",
+            "source_url": "https://data.gov.sg/datasets/d_ea9ed51da2787afaf8e51f827c304208/view"
+          },
+          {
+            "dataset_id": "d_ebc5ab87086db484f88045b47411ebc5",
+            "label": "1990_1999",
+            "path": "data/raw/hdb/d_ebc5ab87086db484f88045b47411ebc5.csv",
+            "rows": 287196,
+            "sha256": "2e064923f41cc96536db04c978901695aa0191022829895cf4ce177e42afad57",
+            "snapshot_utc": "2026-10-18T11:59:28.757700+00:00",
+            "source_url": "https://data.gov.sg/datasets/d_ebc5ab87086db484f88045b47411ebc5/view"
+          }
+        ],
+        "stage": "stage5",
+        "status": "ready_for_hdb_handoff",
+        "tables": {
+          "hdb_building": {
+            "bytes": 683147,
+            "rows": 10024,
+            "sha256": "c5b633a4a1d07113ce072a9f6eb9d34a33268f20dbd00e6735eb13f3ac2722a1"
+          },
+          "hdb_flat": {
+            "bytes": 15888814,
+            "rows": 147045,
+            "sha256": "eb2049d1a9f53ba8cbc1b9497afa47d622d84c2d8963952dd2d3db18493045c1"
+          },
+          "resale_transaction": {
+            "bytes": 155233168,
+            "rows": 989158,
+            "sha256": "13499076a9ee124176c2912bf251cf84fa8d6443223b670b5ce0200261b27e7f"
+          },
+          "town": {
+            "bytes": 297,
+            "rows": 27,
+            "sha256": "9a2e9b193ccb127dbe1fbb76065699f086cd5ee3372a5a2684bf26e1f9515b46"
+          }
+        },
+        "transformations": {
+          "canonicalized_flat_model": 697837,
+          "formatted_floor_area_sqm": 862879,
+          "formatted_resale_price": 989007,
+          "lease_estimated_years": 708999,
+          "lease_reported_months": 242955,
+          "lease_reported_years": 37153,
+          "lease_unknown": 51,
+          "mapped_MULTI-GENERATION": 278,
+          "month_to_first_day_marker": 989158,
+          "storey_range_split": 989158
+        },
+        "warnings": {
+          "estimated_lease_out_of_range": 51,
+          "transaction_before_lease_commencement_year": 51
+        }
+      },
+      "spatial_manifest": {
+        "code_hash_mode": "utf8-lf-v1",
+        "code_sha256": {
+          "db/schema/contract.py": "0f17aa5dffe723dfe29e072d1bb31afe7609ab8c5648543d131773a4523a2edc",
+          "src/etl/spatial/core.py": "07a2c96b115cfc51a497c637a4ff5092f9853cab39853b296a2761d63955e2f0",
+          "src/etl/spatial/pipeline.py": "039a5b636645cbbe2d4d12a2f5f806e62715baf6ec94a9a0dfa4eb4e99118c73"
+        },
+        "contract_version": "1.0.0",
+        "counts": {
+          "building_hawker": 1022424,
+          "buildings_geocoded": 9831,
+          "buildings_isolated_warning": 2,
+          "buildings_without_coordinates": {
+            "geocoded_to_other_address": 19,
+            "no_hdb_geo_record": 172,
+            "rejected_by_coordinate_review": 2
+          },
+          "fresh_market_hawkers": 81,
+          "fresh_market_hawkers_geocoded": 81,
+          "hawker_centre": 107,
+          "hawker_geo_records": 129,
+          "hawker_geo_records_not_in_inventory": 25,
+          "hawkers_geocoded": 104,
+          "hdb_building": 10024
+        },
+        "created_utc": "2026-10-30T10:33:47.301527+00:00",
+        "diagnostics_sha256": "b31d8c21e9774eb3982a6441ecb7513a2e95aa0f2069992270694167122283a1",
+        "hdb_stage": {
+          "hdb_building_sha256": "c5b633a4a1d07113ce072a9f6eb9d34a33268f20dbd00e6735eb13f3ac2722a1",
+          "manifest_sha256": "0e5811ef00971f657ea5175acbdfd326176fe4cbf09bc7a8ec0e140258d803d1",
+          "stage": "stage5"
+        },
+        "load_note": "Load town, hdb_flat and resale_transaction from the HDB stage; hdb_building, hawker_centre and building_hawker from this stage, in contract LOAD_ORDER",
+        "reviews": {
+          "coordinate_review.csv": "7a3d8fd6a050b298cc8cf807ad91f2c75284ee06e43629bef516d893f4b68eaf",
+          "hawker_geo_validation_results.crosswalk.csv": "865c8203182c6b63c368307e276a98d95521bf56e7d3b2ad325c8415feeb5169"
+        },
+        "sources": {
+          "hawker_geo": "c04a56cea3dc39fdb66b998242f7ead00c4c3c05b19eff4b66b57f779ebba166",
+          "hdb_geo": "451c4fc467e32d8fc0663ecfbc290a58382a9f7134b60b935ca76676afeea8be",
+          "nea_hawker_centres": "12e9eb62bff4869f5e9aa93c99a859d9eeb22bb55086a8c546e17e2128effcd6"
+        },
+        "stage": "stage5",
+        "status": "ready_for_integration",
+        "tables": {
+          "building_hawker": {
+            "bytes": 94526354,
+            "rows": 1022424,
+            "sha256": "6dff6b7fdb5be3b7ef34e1e5de75c72922b3f68fd5ecde9352b18972facc81cf"
+          },
+          "hawker_centre": {
+            "bytes": 15139,
+            "rows": 107,
+            "sha256": "603a92ec0bf4e0d3d2623928b5a4a494a5ffda5930e4cc29476f0c13d9630d7d"
+          },
+          "hdb_building": {
+            "bytes": 995552,
+            "rows": 10024,
+            "sha256": "ce72aef061f95f96e59ef41b189832138f0a0663dc014dbd4131baf0118965f0"
+          }
+        }
+      }
+    }
+  ],
+  "query_sha256": {
+    "Q1": "f156b75ee2b556459f4852dd68c69b2e980d9462dcd7c5dbf2a31faf0e41aa06",
+    "Q2": "c3bd03bdc2cc1351b4e9d3fb78146433a33fdbeca9d50138731fafb0ed3a1b91",
+    "Q3": "f80e6f44becf6196036d2cbdcf41cc7032fb88a84aad2f7eeff08b97acab7f35",
+    "Q4": "80fb03a0740a12522f3574eb6d5cbb5c681db40857a5f4d1285cf7de38ec9c74",
+    "Q5": "3787c04ce765e19828996b407a417df0a5d06ab2ead311d1f07b5d65ec6ef53d",
+    "Q6": "739bfaa2f6028e0ed4b72b2195bc0d47c7b8872f43b920e9c4b2a9d2c44fb34b"
+  },
+  "schema_file_sha256": "89580ae6173322fc82007a52275192680f7732618d4b2b9385e4745df840d93b",
+  "runner_sha256": "06a3b51a936953675af26e407b2a6e67a5326e7fd5bb7d9f539649488c827b47",
+  "server_hardware_note": "Client CPU/RAM describe the server only when using the same physical machine.",
+  "measurement_count": 150,
+  "completed_utc": "2026-10-30T10:46:48.369237+00:00"
+}

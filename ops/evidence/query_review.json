@@ -1,0 +1,137 @@
+{
+  "scope": "Operational query acceptance; does not replace LI semantic review",
+  "contract_version": "1.0.0",
+  "stages": {
+    "stage1": {
+      "database_import_committed": true,
+      "query_result_rows": {
+        "Q1": 52,
+        "Q2": 53,
+        "Q3": 20,
+        "Q4": 43,
+        "Q5": 22,
+        "Q6": 55
+      },
+      "q2_transaction_total": 37153,
+      "q2_unknown_lease_transactions": 0,
+      "q5_selected_town_count": 9,
+      "total_towns": 26,
+      "q5_towns": [
+        "BISHAN",
+        "BUKIT MERAH",
+        "BUKIT TIMAH",
+        "CENTRAL AREA",
+        "KALLANG/WHAMPOA",
+        "MARINE PARADE",
+        "QUEENSTOWN",
+        "SERANGOON",
+        "TAMPINES"
+      ]
+    },
+    "stage2": {
+      "database_import_committed": true,
+      "query_result_rows": {
+        "Q1": 52,
+        "Q2": 53,
+        "Q3": 50,
+        "Q4": 45,
+        "Q5": 28,
+        "Q6": 55
+      },
+      "q2_transaction_total": 89356,
+      "q2_unknown_lease_transactions": 0,
+      "q5_selected_town_count": 11,
+      "total_towns": 26,
+      "q5_towns": [
+        "BISHAN",
+        "BUKIT MERAH",
+        "BUKIT TIMAH",
+        "CENTRAL AREA",
+        "CLEMENTI",
+        "KALLANG/WHAMPOA",
+        "MARINE PARADE",
+        "QUEENSTOWN",
+        "SERANGOON",
+        "TAMPINES",
+        "TOA PAYOH"
+      ]
+    },
+    "stage3": {
+      "database_import_committed": true,
+      "query_result_rows": {
+        "Q1": 52,
+        "Q2": 63,
+        "Q3": 150,
+        "Q4": 48,
+        "Q5": 52,
+        "Q6": 55
+      },
+      "q2_transaction_total": 332311,
+      "q2_unknown_lease_transactions": 0,
+      "q5_selected_town_count": 20,
+      "total_towns": 26,
+      "q5_towns": [
+        "ANG MO KIO",
+        "BEDOK",
+        "BISHAN",
+        "BUKIT BATOK",
+        "BUKIT MERAH",
+        "BUKIT TIMAH",
+        "CENTRAL AREA",
+        "CLEMENTI",
+        "GEYLANG",
+        "HOUGANG",
+        "JURONG EAST",
+        "JURONG WEST",
+        "KALLANG/WHAMPOA",
+        "MARINE PARADE",
+        "QUEENSTOWN",
+        "SEMBAWANG",
+        "SERANGOON",
+        "TAMPINES",
+        "TOA PAYOH",
+        "WOODLANDS"
+      ]
+    },
+    "stage4": {
+      "database_import_committed": true,
+      "query_result_rows": {
+        "Q1": 52,
+        "Q2": 76,
+        "Q3": 250,
+        "Q4": 48,
+        "Q5": 7,
+        "Q6": 55
+      },
+      "q2_transaction_total": 619507,
+      "q2_unknown_lease_transactions": 36,
+      "q5_selected_town_count": 4,
+      "total_towns": 27,
+      "q5_towns": [
+        "BISHAN",
+        "BUKIT TIMAH",
+        "CENTRAL AREA",
+        "SEMBAWANG"
+      ]
+    },
+    "stage5": {
+      "database_import_committed": true,
+      "query_result_rows": {
+        "Q1": 52,
+        "Q2": 77,
+        "Q3": 370,
+        "Q4": 48,
+        "Q5": 2,
+        "Q6": 55
+      },
+      "q2_transaction_total": 989158,
+      "q2_unknown_lease_transactions": 51,
+      "q5_selected_town_count": 2,
+      "total_towns": 27,
+      "q5_towns": [
+        "BUKIT TIMAH",
+        "SEMBAWANG"
+      ]
+    }
+  }
+}

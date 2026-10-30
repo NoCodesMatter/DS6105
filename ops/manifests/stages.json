@@ -1,0 +1,272 @@
+{
+  "contract_version": "1.0.0",
+  "snapshot": "2026-10-18",
+  "path_base": "repository root",
+  "stages": [
+    {
+      "stage": "stage1",
+      "database": "sd6105_housing",
+      "directory": "stage1_2015_2016",
+      "transaction_count": 37153,
+      "table_counts": {
+        "town": 26,
+        "hdb_building": 7921,
+        "hdb_flat": 28725,
+        "resale_transaction": 37153,
+        "hawker_centre": 107,
+        "building_hawker": 821912
+      },
+      "source_counts": {
+        "d_ea9ed51da2787afaf8e51f827c304208": 37153
+      },
+      "hdb_manifest_sha256": "80ce7821e4ea8bd446ecc1de037c7d7bac9eb96d4a8c72cc36af1920665bf44c",
+      "spatial_manifest_sha256": "0392c1fb8fc178b3f0ac53ee5975aacb3828413722ec57701417140868a6a936",
+      "sources": [
+        {
+          "dataset_id": "d_ea9ed51da2787afaf8e51f827c304208",
+          "label": "2015_2016",
+          "path": "data/raw/hdb/d_ea9ed51da2787afaf8e51f827c304208.csv",
+          "rows": 37153,
+          "sha256": "4ff7ce4a4f642fb384d2b75a42e75b0477e50005f4aaa9989591a7a92507d185",
+          "snapshot_utc": "2026-10-18T12:01:21.815933+00:00",
+          "source_url": "https://data.gov.sg/datasets/d_ea9ed51da2787afaf8e51f827c304208/view"
+        }
+      ],
+      "database_size_bytes": 121902771,
+      "load_log": "ops/evidence/stage1_load.log",
+      "query_log": "ops/evidence/stage1_queries.log"
+    },
+    {
+      "stage": "stage2",
+      "database": "sd6105_stage2",
+      "directory": "stage2",
+      "transaction_count": 89356,
+      "table_counts": {
+        "town": 26,
+        "hdb_building": 8431,
+        "hdb_flat": 57175,
+        "resale_transaction": 89356,
+        "hawker_centre": 107,
+        "building_hawker": 874640
+      },
+      "source_counts": {
+        "d_2d5ff9ea31397b66239f245f57751537": 52203,
+        "d_ea9ed51da2787afaf8e51f827c304208": 37153
+      },
+      "hdb_manifest_sha256": "7af44b06f62de76a8cc04655c1f6cc0968ceff7a5166903995f12dc90b4260f2",
+      "spatial_manifest_sha256": "f403a56822a07afff02b6e2e0aa5b0dd26953334be9e9e13bf302d19a0c3fa48",
+      "sources": [
+        {
+          "dataset_id": "d_2d5ff9ea31397b66239f245f57751537",
+          "label": "2012_03_2014",
+          "path": "data/raw/hdb/d_2d5ff9ea31397b66239f245f57751537.csv",
+          "rows": 52203,
+          "sha256": "6a16e2dc78f70048ec1a522b59a9727581c36e45e02022641c53e755a7657c72",
+          "snapshot_utc": "2026-10-18T12:00:42.864523+00:00",
+          "source_url": "https://data.gov.sg/datasets/d_2d5ff9ea31397b66239f245f57751537/view"
+        },
+        {
+          "dataset_id": "d_ea9ed51da2787afaf8e51f827c304208",
+          "label": "2015_2016",
+          "path": "data/raw/hdb/d_ea9ed51da2787afaf8e51f827c304208.csv",
+          "rows": 37153,
+          "sha256": "4ff7ce4a4f642fb384d2b75a42e75b0477e50005f4aaa9989591a7a92507d185",
+          "snapshot_utc": "2026-10-18T12:01:21.815933+00:00",
+          "source_url": "https://data.gov.sg/datasets/d_ea9ed51da2787afaf8e51f827c304208/view"
+        }
+      ],
+      "database_size_bytes": 146822835,
+      "load_log": "ops/evidence/stage2_load.log",
+      "query_log": "ops/evidence/stage2_queries.log"
+    },
+    {
+      "stage": "stage3",
+      "database": "sd6105_stage3",
+      "directory": "stage3",
+      "transaction_count": 332311,
+      "table_counts": {
+        "town": 26,
+        "hdb_building": 9827,
+        "hdb_flat": 116466,
+        "resale_transaction": 332311,
+        "hawker_centre": 107,
+        "building_hawker": 1019616
+      },
+      "source_counts": {
+        "d_2d5ff9ea31397b66239f245f57751537": 52203,
+        "d_8b84c4ee58e3cfc0ece0d773c8ca6abc": 242955,
+        "d_ea9ed51da2787afaf8e51f827c304208": 37153
+      },
+      "hdb_manifest_sha256": "fd4edad8056a979cb4b9120b592dbb32310b6afa8ece8653571eaa5d5d38347f",
+      "spatial_manifest_sha256": "eadae34e0cb127a2f5d4ff3576e03af2deeac3e658d9e2513ee373a9861998eb",
+      "sources": [
+        {
+          "dataset_id": "d_2d5ff9ea31397b66239f245f57751537",
+          "label": "2012_03_2014",
+          "path": "data/raw/hdb/d_2d5ff9ea31397b66239f245f57751537.csv",
+          "rows": 52203,
+          "sha256": "6a16e2dc78f70048ec1a522b59a9727581c36e45e02022641c53e755a7657c72",
+          "snapshot_utc": "2026-10-18T12:00:42.864523+00:00",
+          "source_url": "https://data.gov.sg/datasets/d_2d5ff9ea31397b66239f245f57751537/view"
+        },
+        {
+          "dataset_id": "d_8b84c4ee58e3cfc0ece0d773c8ca6abc",
+          "label": "2017_onwards",
+          "path": "data/raw/hdb/d_8b84c4ee58e3cfc0ece0d773c8ca6abc.csv",
+          "rows": 242955,
+          "sha256": "d401fc2e7d2a083576dd388b5ea3d170c2027d2503542de32a84656651ebe947",
+          "snapshot_utc": "2026-10-18T12:02:02.095869+00:00",
+          "source_url": "https://data.gov.sg/datasets/d_8b84c4ee58e3cfc0ece0d773c8ca6abc/view"
+        },
+        {
+          "dataset_id": "d_ea9ed51da2787afaf8e51f827c304208",
+          "label": "2015_2016",
+          "path": "data/raw/hdb/d_ea9ed51da2787afaf8e51f827c304208.csv",
+          "rows": 37153,
+          "sha256": "4ff7ce4a4f642fb384d2b75a42e75b0477e50005f4aaa9989591a7a92507d185",
+          "snapshot_utc": "2026-10-18T12:01:21.815933+00:00",
+          "source_url": "https://data.gov.sg/datasets/d_ea9ed51da2787afaf8e51f827c304208/view"
+        }
+      ],
+      "database_size_bytes": 233543347,
+      "load_log": "ops/evidence/stage3_load.log",
+      "query_log": "ops/evidence/stage3_queries.log"
+    },
+    {
+      "stage": "stage4",
+      "database": "sd6105_stage4",
+      "directory": "stage4",
+      "transaction_count": 619507,
+      "table_counts": {
+        "town": 27,
+        "hdb_building": 10018,
+        "hdb_flat": 134795,
+        "resale_transaction": 619507,
+        "hawker_centre": 107,
+        "building_hawker": 1021800
+      },
+      "source_counts": {
+        "d_2d5ff9ea31397b66239f245f57751537": 52203,
+        "d_8b84c4ee58e3cfc0ece0d773c8ca6abc": 242955,
+        "d_ea9ed51da2787afaf8e51f827c304208": 37153,
+        "d_ebc5ab87086db484f88045b47411ebc5": 287196
+      },
+      "hdb_manifest_sha256": "35797d9a9aced898d416cbd91bb2e21a64ff84c50aa1d7fa896224f4aebb064a",
+      "spatial_manifest_sha256": "30223a466208bd12e371e8fc9600745e341274b25a57907783fe9f7d6480b387",
+      "sources": [
+        {
+          "dataset_id": "d_2d5ff9ea31397b66239f245f57751537",
+          "label": "2012_03_2014",
+          "path": "data/raw/hdb/d_2d5ff9ea31397b66239f245f57751537.csv",
+          "rows": 52203,
+          "sha256": "6a16e2dc78f70048ec1a522b59a9727581c36e45e02022641c53e755a7657c72",
+          "snapshot_utc": "2026-10-18T12:00:42.864523+00:00",
+          "source_url": "https://data.gov.sg/datasets/d_2d5ff9ea31397b66239f245f57751537/view"
+        },
+        {
+          "dataset_id": "d_8b84c4ee58e3cfc0ece0d773c8ca6abc",
+          "label": "2017_onwards",
+          "path": "data/raw/hdb/d_8b84c4ee58e3cfc0ece0d773c8ca6abc.csv",
+          "rows": 242955,
+          "sha256": "d401fc2e7d2a083576dd388b5ea3d170c2027d2503542de32a84656651ebe947",
+          "snapshot_utc": "2026-10-18T12:02:02.095869+00:00",
+          "source_url": "https://data.gov.sg/datasets/d_8b84c4ee58e3cfc0ece0d773c8ca6abc/view"
+        },
+        {
+          "dataset_id": "d_ea9ed51da2787afaf8e51f827c304208",
+          "label": "2015_2016",
+          "path": "data/raw/hdb/d_ea9ed51da2787afaf8e51f827c304208.csv",
+          "rows": 37153,
+          "sha256": "4ff7ce4a4f642fb384d2b75a42e75b0477e50005f4aaa9989591a7a92507d185",
+          "snapshot_utc": "2026-10-18T12:01:21.815933+00:00",
+          "source_url": "https://data.gov.sg/datasets/d_ea9ed51da2787afaf8e51f827c304208/view"
+        },
+        {
+          "dataset_id": "d_ebc5ab87086db484f88045b47411ebc5",
+          "label": "1990_1999",
+          "path": "data/raw/hdb/d_ebc5ab87086db484f88045b47411ebc5.csv",
+          "rows": 287196,
+          "sha256": "2e064923f41cc96536db04c978901695aa0191022829895cf4ce177e42afad57",
+          "snapshot_utc": "2026-10-18T11:59:28.757700+00:00",
+          "source_url": "https://data.gov.sg/datasets/d_ebc5ab87086db484f88045b47411ebc5/view"
+        }
+      ],
+      "database_size_bytes": 303937203,
+      "load_log": "ops/evidence/stage4_load.log",
+      "query_log": "ops/evidence/stage4_queries.log"
+    },
+    {
+      "stage": "stage5",
+      "database": "sd6105_stage5",
+      "directory": "stage5",
+      "transaction_count": 989158,
+      "table_counts": {
+        "town": 27,
+        "hdb_building": 10024,
+        "hdb_flat": 147045,
+        "resale_transaction": 989158,
+        "hawker_centre": 107,
+        "building_hawker": 1022424
+      },
+      "source_counts": {
+        "d_2d5ff9ea31397b66239f245f57751537": 52203,
+        "d_43f493c6c50d54243cc1eab0df142d6a": 369651,
+        "d_8b84c4ee58e3cfc0ece0d773c8ca6abc": 242955,
+        "d_ea9ed51da2787afaf8e51f827c304208": 37153,
+        "d_ebc5ab87086db484f88045b47411ebc5": 287196
+      },
+      "hdb_manifest_sha256": "0e5811ef00971f657ea5175acbdfd326176fe4cbf09bc7a8ec0e140258d803d1",
+      "spatial_manifest_sha256": "cdd7175efe309b2dd5733b5888de4c269f28884a9e2f12702038a885f0b85f46",
+      "sources": [
+        {
+          "dataset_id": "d_2d5ff9ea31397b66239f245f57751537",
+          "label": "2012_03_2014",
+          "path": "data/raw/hdb/d_2d5ff9ea31397b66239f245f57751537.csv",
+          "rows": 52203,
+          "sha256": "6a16e2dc78f70048ec1a522b59a9727581c36e45e02022641c53e755a7657c72",
+          "snapshot_utc": "2026-10-18T12:00:42.864523+00:00",
+          "source_url": "https://data.gov.sg/datasets/d_2d5ff9ea31397b66239f245f57751537/view"
+        },
+        {
+          "dataset_id": "d_43f493c6c50d54243cc1eab0df142d6a",
+          "label": "2000_2012_02",
+          "path": "data/raw/hdb/d_43f493c6c50d54243cc1eab0df142d6a.csv",
+          "rows": 369651,
+          "sha256": "5f6a72bd7b9120281863beb1fc4c89aa5f4923f00b0f6c52494c4347363f2c36",
+          "snapshot_utc": "2026-10-18T12:00:05.029925+00:00",
+          "source_url": "https://data.gov.sg/datasets/d_43f493c6c50d54243cc1eab0df142d6a/view"
+        },
+        {
+          "dataset_id": "d_8b84c4ee58e3cfc0ece0d773c8ca6abc",
+          "label": "2017_onwards",
+          "path": "data/raw/hdb/d_8b84c4ee58e3cfc0ece0d773c8ca6abc.csv",
+          "rows": 242955,
+          "sha256": "d401fc2e7d2a083576dd388b5ea3d170c2027d2503542de32a84656651ebe947",
+          "snapshot_utc": "2026-10-18T12:02:02.095869+00:00",
+          "source_url": "https://data.gov.sg/datasets/d_8b84c4ee58e3cfc0ece0d773c8ca6abc/view"
+        },
+        {
+          "dataset_id": "d_ea9ed51da2787afaf8e51f827c304208",
+          "label": "2015_2016",
+          "path": "data/raw/hdb/d_ea9ed51da2787afaf8e51f827c304208.csv",
+          "rows": 37153,
+          "sha256": "4ff7ce4a4f642fb384d2b75a42e75b0477e50005f4aaa9989591a7a92507d185",
+          "snapshot_utc": "2026-10-18T12:01:21.815933+00:00",
+          "source_url": "https://data.gov.sg/datasets/d_ea9ed51da2787afaf8e51f827c304208/view"
+        },
+        {
+          "dataset_id": "d_ebc5ab87086db484f88045b47411ebc5",
+          "label": "1990_1999",
+          "path": "data/raw/hdb/d_ebc5ab87086db484f88045b47411ebc5.csv",
+          "rows": 287196,
+          "sha256": "2e064923f41cc96536db04c978901695aa0191022829895cf4ce177e42afad57",
+          "snapshot_utc": "2026-10-18T11:59:28.757700+00:00",
+          "source_url": "https://data.gov.sg/datasets/d_ebc5ab87086db484f88045b47411ebc5/view"
+        }
+      ],
+      "database_size_bytes": 391894707,
+      "load_log": "ops/evidence/stage5_load.log",
+      "query_log": "ops/evidence/stage5_queries.log"
+    }
+  ]
+}
