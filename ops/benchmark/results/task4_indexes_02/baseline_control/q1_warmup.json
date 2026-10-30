@@ -1,0 +1,239 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Aggregate",
+      "Strategy": "Sorted",
+      "Partial Mode": "Finalize",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 27764.85,
+      "Total Cost": 27822.18,
+      "Plan Rows": 189,
+      "Plan Width": 89,
+      "Actual Rows": 52,
+      "Actual Loops": 1,
+      "Group Key": ["b.town_name", "f.flat_type"],
+      "Plans": [
+        {
+          "Node Type": "Gather Merge",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 27764.85,
+          "Total Cost": 27808.95,
+          "Plan Rows": 378,
+          "Plan Width": 121,
+          "Actual Rows": 156,
+          "Actual Loops": 1,
+          "Workers Planned": 2,
+          "Workers Launched": 2,
+          "Plans": [
+            {
+              "Node Type": "Sort",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 26764.83,
+              "Total Cost": 26765.30,
+              "Plan Rows": 189,
+              "Plan Width": 121,
+              "Actual Rows": 52,
+              "Actual Loops": 3,
+              "Sort Key": ["b.town_name", "f.flat_type"],
+              "Sort Method": "quicksort",
+              "Sort Space Used": 37,
+              "Sort Space Type": "Memory",
+              "Workers": [
+                {
+                  "Worker Number": 0,
+                  "Sort Method": "quicksort",
+                  "Sort Space Used": 37,
+                  "Sort Space Type": "Memory"
+                },
+                {
+                  "Worker Number": 1,
+                  "Sort Method": "quicksort",
+                  "Sort Space Used": 37,
+                  "Sort Space Type": "Memory"
+                }
+              ],
+              "Plans": [
+                {
+                  "Node Type": "Aggregate",
+                  "Strategy": "Hashed",
+                  "Partial Mode": "Partial",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 26754.37,
+                  "Total Cost": 26757.68,
+                  "Plan Rows": 189,
+                  "Plan Width": 121,
+                  "Actual Rows": 52,
+                  "Actual Loops": 3,
+                  "Group Key": ["b.town_name", "f.flat_type"],
+                  "Planned Partitions": 0,
+                  "HashAgg Batches": 1,
+                  "Peak Memory Usage": 96,
+                  "Disk Usage": 0,
+                  "Workers": [
+                    {
+                      "Worker Number": 0,
+                      "HashAgg Batches": 1,
+                      "Peak Memory Usage": 96,
+                      "Disk Usage": 0
+                    },
+                    {
+                      "Worker Number": 1,
+                      "HashAgg Batches": 1,
+                      "Peak Memory Usage": 96,
+                      "Disk Usage": 0
+                    }
+                  ],
+                  "Plans": [
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 3938.25,
+                      "Total Cost": 26475.60,
+                      "Plan Rows": 15930,
+                      "Plan Width": 28,
+                      "Actual Rows": 11241,
+                      "Actual Loops": 3,
+                      "Inner Unique": true,
+                      "Hash Cond": "(f.building_id = b.building_id)",
+                      "Workers": [
+                      ],
+                      "Plans": [
+                        {
+                          "Node Type": "Hash Join",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": true,
+                          "Async Capable": false,
+                          "Join Type": "Inner",
+                          "Startup Cost": 3598.71,
+                          "Total Cost": 26094.22,
+                          "Plan Rows": 15930,
+                          "Plan Width": 34,
+                          "Actual Rows": 11241,
+                          "Actual Loops": 3,
+                          "Inner Unique": true,
+                          "Hash Cond": "(r.flat_id = f.flat_id)",
+                          "Workers": [
+                          ],
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": true,
+                              "Async Capable": false,
+                              "Relation Name": "resale_transaction",
+                              "Alias": "r",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 22438.24,
+                              "Plan Rows": 21816,
+                              "Plan Width": 22,
+                              "Actual Rows": 17750,
+                              "Actual Loops": 3,
+                              "Filter": "((sale_month >= '2014-01-01'::date) AND (sale_month <= '2016-12-01'::date))",
+                              "Rows Removed by Filter": 311970,
+                              "Workers": [
+                              ]
+                            },
+                            {
+                              "Node Type": "Hash",
+                              "Parent Relationship": "Inner",
+                              "Parallel Aware": true,
+                              "Async Capable": false,
+                              "Startup Cost": 2809.21,
+                              "Total Cost": 2809.21,
+                              "Plan Rows": 63160,
+                              "Plan Width": 44,
+                              "Actual Rows": 35498,
+                              "Actual Loops": 3,
+                              "Hash Buckets": 131072,
+                              "Original Hash Buckets": 131072,
+                              "Hash Batches": 1,
+                              "Original Hash Batches": 1,
+                              "Peak Memory Usage": 9376,
+                              "Workers": [
+                              ],
+                              "Plans": [
+                                {
+                                  "Node Type": "Seq Scan",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": true,
+                                  "Async Capable": false,
+                                  "Relation Name": "hdb_flat",
+                                  "Alias": "f",
+                                  "Startup Cost": 0.00,
+                                  "Total Cost": 2809.21,
+                                  "Plan Rows": 63160,
+                                  "Plan Width": 44,
+                                  "Actual Rows": 106494,
+                                  "Actual Loops": 1,
+                                  "Filter": "((flat_type)::text = ANY ('{\"4 ROOM\",\"5 ROOM\"}'::text[]))",
+                                  "Rows Removed by Filter": 40551,
+                                  "Workers": [
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Startup Cost": 214.24,
+                          "Total Cost": 214.24,
+                          "Plan Rows": 10024,
+                          "Plan Width": 26,
+                          "Actual Rows": 10024,
+                          "Actual Loops": 3,
+                          "Hash Buckets": 16384,
+                          "Original Hash Buckets": 16384,
+                          "Hash Batches": 1,
+                          "Original Hash Batches": 1,
+                          "Peak Memory Usage": 697,
+                          "Workers": [
+                          ],
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Relation Name": "hdb_building",
+                              "Alias": "b",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 214.24,
+                              "Plan Rows": 10024,
+                              "Plan Width": 26,
+                              "Actual Rows": 10024,
+                              "Actual Loops": 3,
+                              "Workers": [
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Planning Time": 1.185,
+    "Triggers": [
+    ],
+    "Execution Time": 145.261
+  }
+]

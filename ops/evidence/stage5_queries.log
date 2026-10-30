@@ -1,0 +1,872 @@
+/******** QUERY *********/
+SELECT
+    b.town_name AS town,
+    f.flat_type,
+    COUNT(*) AS transaction_count,
+    ROUND(AVG(r.resale_price / f.floor_area_sqm), 2) AS avg_price_per_sqm,
+    ROUND(SUM(r.resale_price) / SUM(f.floor_area_sqm), 2) AS area_weighted_price_per_sqm
+FROM housing.resale_transaction AS r
+JOIN housing.hdb_flat AS f
+    USING (flat_id)
+JOIN housing.hdb_building AS b
+    USING (building_id)
+WHERE f.flat_type IN ('4 ROOM', '5 ROOM')
+  AND r.sale_month >= DATE '2014-01-01'
+  AND r.sale_month <= DATE '2016-12-01'
+GROUP BY
+    b.town_name,
+    f.flat_type
+ORDER BY
+    b.town_name ASC,
+    f.flat_type ASC;
+/************************/
+
+      town       | flat_type | transaction_count | avg_price_per_sqm | area_weighted_price_per_sqm 
+-----------------+-----------+-------------------+-------------------+-----------------------------
+ ANG MO KIO      | 4 ROOM    |               667 |           5143.88 |                     5138.65
+ ANG MO KIO      | 5 ROOM    |               288 |           5616.14 |                     5580.38
+ BEDOK           | 4 ROOM    |              1181 |           4714.80 |                     4710.31
+ BEDOK           | 5 ROOM    |               533 |           4763.98 |                     4751.30
+ BISHAN          | 4 ROOM    |               490 |           5577.95 |                     5549.00
+ BISHAN          | 5 ROOM    |               234 |           5914.31 |                     5905.55
+ BUKIT BATOK     | 4 ROOM    |               844 |           4238.22 |                     4229.33
+ BUKIT BATOK     | 5 ROOM    |               234 |           4548.95 |                     4537.73
+ BUKIT MERAH     | 4 ROOM    |               692 |           6823.50 |                     6804.04
+ BUKIT MERAH     | 5 ROOM    |               399 |           6429.46 |                     6399.69
+ BUKIT PANJANG   | 4 ROOM    |               930 |           3921.57 |                     3901.34
+ BUKIT PANJANG   | 5 ROOM    |               567 |           4080.11 |                     4068.09
+ BUKIT TIMAH     | 4 ROOM    |                37 |           6488.07 |                     6492.19
+ BUKIT TIMAH     | 5 ROOM    |                30 |           6654.35 |                     6651.17
+ CENTRAL AREA    | 4 ROOM    |               229 |           8180.39 |                     8230.54
+ CENTRAL AREA    | 5 ROOM    |                62 |           8961.03 |                     8913.02
+ CHOA CHU KANG   | 4 ROOM    |              1210 |           3573.70 |                     3568.02
+ CHOA CHU KANG   | 5 ROOM    |               725 |           3600.16 |                     3598.84
+ CLEMENTI        | 4 ROOM    |               367 |           5660.85 |                     5658.91
+ CLEMENTI        | 5 ROOM    |               128 |           5796.20 |                     5774.99
+ GEYLANG         | 4 ROOM    |               481 |           5324.25 |                     5320.26
+ GEYLANG         | 5 ROOM    |               166 |           5501.42 |                     5478.17
+ HOUGANG         | 4 ROOM    |              1251 |           4136.94 |                     4126.77
+ HOUGANG         | 5 ROOM    |               504 |           4250.49 |                     4257.07
+ JURONG EAST     | 4 ROOM    |               351 |           4376.92 |                     4371.53
+ JURONG EAST     | 5 ROOM    |               267 |           4533.91 |                     4531.78
+ JURONG WEST     | 4 ROOM    |              1603 |           4014.38 |                     3983.92
+ JURONG WEST     | 5 ROOM    |              1314 |           4025.41 |                     4005.67
+ KALLANG/WHAMPOA | 4 ROOM    |               499 |           6036.98 |                     6009.21
+ KALLANG/WHAMPOA | 5 ROOM    |               261 |           6171.73 |                     6124.30
+ MARINE PARADE   | 4 ROOM    |                95 |           6286.23 |                     6285.58
+ MARINE PARADE   | 5 ROOM    |                94 |           6667.81 |                     6663.24
+ PASIR RIS       | 4 ROOM    |               736 |           3915.68 |                     3912.97
+ PASIR RIS       | 5 ROOM    |               531 |           3839.22 |                     3836.10
+ PUNGGOL         | 4 ROOM    |               972 |           4777.65 |                     4782.70
+ PUNGGOL         | 5 ROOM    |               874 |           4186.13 |                     4189.00
+ QUEENSTOWN      | 4 ROOM    |               456 |           7332.08 |                     7309.10
+ QUEENSTOWN      | 5 ROOM    |               178 |           7143.54 |                     7113.89
+ SEMBAWANG       | 4 ROOM    |               626 |           4024.23 |                     4018.21
+ SEMBAWANG       | 5 ROOM    |               550 |           3800.75 |                     3797.28
+ SENGKANG        | 4 ROOM    |              1878 |           4647.95 |                     4638.47
+ SENGKANG        | 5 ROOM    |              1245 |           4127.47 |                     4122.37
+ SERANGOON       | 4 ROOM    |               542 |           4900.08 |                     4877.36
+ SERANGOON       | 5 ROOM    |               174 |           4651.31 |                     4642.64
+ TAMPINES        | 4 ROOM    |              1619 |           4339.10 |                     4324.22
+ TAMPINES        | 5 ROOM    |              1023 |           4498.17 |                     4464.24
+ TOA PAYOH       | 4 ROOM    |               451 |           5902.44 |                     5847.10
+ TOA PAYOH       | 5 ROOM    |               206 |           5747.56 |                     5720.84
+ WOODLANDS       | 4 ROOM    |              1707 |           3756.58 |                     3749.16
+ WOODLANDS       | 5 ROOM    |              1244 |           3618.25 |                     3612.40
+ YISHUN          | 4 ROOM    |              1607 |           3932.31 |                     3918.59
+ YISHUN          | 5 ROOM    |               372 |           3774.39 |                     3768.19
+(52 行记录)
+
+/******** QUERY *********/
+WITH categorized_sales AS (
+    SELECT
+        b.town_name AS town,
+        CASE
+            WHEN r.remaining_lease_months IS NULL THEN 'unknown'
+            WHEN r.remaining_lease_months < 600 THEN 'less_than_50_years'
+            WHEN r.remaining_lease_months <= 840 THEN 'between_50_and_70_years'
+            ELSE 'more_than_70_years'
+        END AS remaining_lease_bucket,
+        r.resale_price,
+        r.resale_price / f.floor_area_sqm AS price_per_sqm
+    FROM housing.resale_transaction AS r
+    JOIN housing.hdb_flat AS f
+        USING (flat_id)
+    JOIN housing.hdb_building AS b
+        USING (building_id)
+)
+SELECT
+    town,
+    remaining_lease_bucket,
+    ROUND(
+        PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY resale_price)::numeric,
+        2
+    ) AS median_resale_price,
+    ROUND(AVG(price_per_sqm), 2) AS avg_price_per_sqm,
+    COUNT(*) AS total_transaction_volume
+FROM categorized_sales
+GROUP BY
+    town,
+    remaining_lease_bucket
+ORDER BY
+    town ASC,
+    CASE remaining_lease_bucket
+        WHEN 'less_than_50_years' THEN 1
+        WHEN 'between_50_and_70_years' THEN 2
+        WHEN 'more_than_70_years' THEN 3
+        ELSE 4
+    END ASC;
+/************************/
+
+      town       | remaining_lease_bucket  | median_resale_price | avg_price_per_sqm | total_transaction_volume 
+-----------------+-------------------------+---------------------+-------------------+--------------------------
+ ANG MO KIO      | less_than_50_years      |           431444.00 |           5941.60 |                       62
+ ANG MO KIO      | between_50_and_70_years |           355000.00 |           4700.71 |                    16386
+ ANG MO KIO      | more_than_70_years      |           177000.00 |           2617.79 |                    37955
+ ANG MO KIO      | unknown                 |           324000.00 |           3492.22 |                        6
+ BEDOK           | less_than_50_years      |           385000.00 |           5752.72 |                      207
+ BEDOK           | between_50_and_70_years |           360000.00 |           4620.49 |                    19447
+ BEDOK           | more_than_70_years      |           205000.00 |           2687.58 |                    50081
+ BEDOK           | unknown                 |           575000.00 |           4166.67 |                        1
+ BISHAN          | less_than_50_years      |           368000.00 |           5353.66 |                       57
+ BISHAN          | between_50_and_70_years |           658000.00 |           6313.07 |                     3758
+ BISHAN          | more_than_70_years      |           377000.00 |           3666.62 |                    18420
+ BISHAN          | unknown                 |           135000.00 |           1310.68 |                        1
+ BUKIT BATOK     | between_50_and_70_years |           384000.00 |           4559.21 |                     7082
+ BUKIT BATOK     | more_than_70_years      |           238000.00 |           3008.21 |                    40803
+ BUKIT MERAH     | less_than_50_years      |           355000.00 |           6038.40 |                     1051
+ BUKIT MERAH     | between_50_and_70_years |           330000.00 |           4634.78 |                    10950
+ BUKIT MERAH     | more_than_70_years      |           310000.00 |           4246.25 |                    24650
+ BUKIT MERAH     | unknown                 |           380000.00 |           3390.17 |                        9
+ BUKIT PANJANG   | between_50_and_70_years |           432000.00 |           4502.11 |                     2312
+ BUKIT PANJANG   | more_than_70_years      |           318000.00 |           3324.62 |                    27349
+ BUKIT PANJANG   | unknown                 |           530000.00 |           3732.39 |                        1
+ BUKIT TIMAH     | less_than_50_years      |           600000.00 |           7186.19 |                       62
+ BUKIT TIMAH     | between_50_and_70_years |           600000.00 |           6175.16 |                      814
+ BUKIT TIMAH     | more_than_70_years      |           387000.00 |           3404.91 |                     1777
+ CENTRAL AREA    | less_than_50_years      |           412944.00 |           6795.03 |                       98
+ CENTRAL AREA    | between_50_and_70_years |           420000.00 |           6082.99 |                     2404
+ CENTRAL AREA    | more_than_70_years      |           210000.00 |           4095.41 |                     5075
+ CHOA CHU KANG   | between_50_and_70_years |           490000.00 |           4483.26 |                     2779
+ CHOA CHU KANG   | more_than_70_years      |           340000.00 |           3188.01 |                    38165
+ CHOA CHU KANG   | unknown                 |           350000.00 |           2453.15 |                        3
+ CLEMENTI        | between_50_and_70_years |           384444.00 |           4993.27 |                     8024
+ CLEMENTI        | more_than_70_years      |           193000.00 |           2983.71 |                    21299
+ GEYLANG         | less_than_50_years      |           295000.00 |           5088.28 |                     1269
+ GEYLANG         | between_50_and_70_years |           280000.00 |           4100.93 |                    10330
+ GEYLANG         | more_than_70_years      |           223000.00 |           3064.62 |                    18184
+ HOUGANG         | less_than_50_years      |           368000.00 |           5583.11 |                       38
+ HOUGANG         | between_50_and_70_years |           420000.00 |           4826.16 |                     8463
+ HOUGANG         | more_than_70_years      |           280000.00 |           3099.82 |                    45397
+ JURONG EAST     | less_than_50_years      |           250000.00 |           4038.49 |                       24
+ JURONG EAST     | between_50_and_70_years |           380000.00 |           4434.00 |                     5324
+ JURONG EAST     | more_than_70_years      |           230000.00 |           2672.10 |                    20644
+ JURONG WEST     | less_than_50_years      |           319000.00 |           4700.40 |                      264
+ JURONG WEST     | between_50_and_70_years |           320000.00 |           3874.01 |                    10532
+ JURONG WEST     | more_than_70_years      |           282000.00 |           2911.93 |                    59809
+ JURONG WEST     | unknown                 |           270000.00 |           2168.02 |                        2
+ KALLANG/WHAMPOA | less_than_50_years      |           368000.00 |           5790.31 |                      940
+ KALLANG/WHAMPOA | between_50_and_70_years |           330000.00 |           4585.00 |                     9376
+ KALLANG/WHAMPOA | more_than_70_years      |           257500.00 |           3756.58 |                    18858
+ KALLANG/WHAMPOA | unknown                 |           395000.00 |           3110.24 |                        1
+ LIM CHU KANG    | more_than_70_years      |            61750.00 |            931.82 |                       64
+ MARINE PARADE   | less_than_50_years      |           520000.00 |           7260.51 |                      310
+ MARINE PARADE   | between_50_and_70_years |           420000.00 |           5321.87 |                     3569
+ MARINE PARADE   | more_than_70_years      |           220000.00 |           2824.49 |                     4520
+ PASIR RIS       | between_50_and_70_years |           641500.00 |           5351.68 |                     2694
+ PASIR RIS       | more_than_70_years      |           385000.00 |           3275.14 |                    32173
+ PASIR RIS       | unknown                 |           340000.00 |           2552.33 |                       11
+ PUNGGOL         | more_than_70_years      |           500000.00 |           5355.09 |                    24775
+ QUEENSTOWN      | less_than_50_years      |           340000.00 |           5560.69 |                     1411
+ QUEENSTOWN      | between_50_and_70_years |           226000.00 |           3921.90 |                    11794
+ QUEENSTOWN      | more_than_70_years      |           190000.00 |           4180.11 |                    17242
+ QUEENSTOWN      | unknown                 |           532000.00 |           4492.87 |                        3
+ SEMBAWANG       | more_than_70_years      |           398000.00 |           4202.50 |                    16327
+ SENGKANG        | more_than_70_years      |           453000.00 |           4654.80 |                    37112
+ SERANGOON       | between_50_and_70_years |           485000.00 |           5650.72 |                     4223
+ SERANGOON       | more_than_70_years      |           272000.00 |           2961.69 |                    19577
+ TAMPINES        | between_50_and_70_years |           480000.00 |           5124.66 |                    12145
+ TAMPINES        | more_than_70_years      |           300000.00 |           3136.74 |                    72617
+ TAMPINES        | unknown                 |           356000.00 |           2694.60 |                        7
+ TOA PAYOH       | less_than_50_years      |           331944.00 |           5086.62 |                     2084
+ TOA PAYOH       | between_50_and_70_years |           266000.00 |           3960.23 |                    11709
+ TOA PAYOH       | more_than_70_years      |           263000.00 |           3735.13 |                    20123
+ WOODLANDS       | less_than_50_years      |           356500.00 |           4831.55 |                      112
+ WOODLANDS       | between_50_and_70_years |           320000.00 |           4005.10 |                     5885
+ WOODLANDS       | more_than_70_years      |           305000.00 |           3037.58 |                    64005
+ WOODLANDS       | unknown                 |           307500.00 |           1977.29 |                        6
+ YISHUN          | between_50_and_70_years |           390000.00 |           4548.76 |                    12259
+ YISHUN          | more_than_70_years      |           230000.00 |           2783.76 |                    61858
+(77 行记录)
+
+/******** QUERY *********/
+WITH top_10_large_3room_towns AS (
+    SELECT
+        b.town_name AS town,
+        ROUND(AVG(f.floor_area_sqm), 2) AS avg_3room_floor_area_sqm
+    FROM housing.hdb_flat AS f
+    JOIN housing.hdb_building AS b
+        USING (building_id)
+    WHERE f.flat_type = '3 ROOM'
+    GROUP BY
+        b.town_name
+    ORDER BY
+        AVG(f.floor_area_sqm) DESC,
+        b.town_name ASC
+    LIMIT 10
+)
+SELECT
+    t10.town,
+    t10.avg_3room_floor_area_sqm,
+    EXTRACT(YEAR FROM r.sale_month)::integer AS transaction_year,
+    MAX(r.resale_price) AS highest_resale_price,
+    COUNT(*) AS transaction_count
+FROM top_10_large_3room_towns AS t10
+JOIN housing.hdb_building AS b
+    ON b.town_name = t10.town
+JOIN housing.hdb_flat AS f
+    USING (building_id)
+JOIN housing.resale_transaction AS r
+    USING (flat_id)
+WHERE f.flat_type = '3 ROOM'
+GROUP BY
+    t10.town,
+    t10.avg_3room_floor_area_sqm,
+    EXTRACT(YEAR FROM r.sale_month)::integer
+ORDER BY
+    t10.avg_3room_floor_area_sqm DESC,
+    t10.town ASC,
+    transaction_year ASC;
+/************************/
+
+      town       | avg_3room_floor_area_sqm | transaction_year | highest_resale_price | transaction_count 
+-----------------+--------------------------+------------------+----------------------+-------------------
+ KALLANG/WHAMPOA |                    76.83 |             1990 |            120000.00 |               364
+ KALLANG/WHAMPOA |                    76.83 |             1991 |            130000.00 |               352
+ KALLANG/WHAMPOA |                    76.83 |             1992 |            205000.00 |               370
+ KALLANG/WHAMPOA |                    76.83 |             1993 |            305000.00 |               347
+ KALLANG/WHAMPOA |                    76.83 |             1994 |            458000.00 |               462
+ KALLANG/WHAMPOA |                    76.83 |             1995 |            488000.00 |               431
+ KALLANG/WHAMPOA |                    76.83 |             1996 |            745000.00 |               567
+ KALLANG/WHAMPOA |                    76.83 |             1997 |            663388.00 |               438
+ KALLANG/WHAMPOA |                    76.83 |             1998 |            555000.00 |               719
+ KALLANG/WHAMPOA |                    76.83 |             1999 |            660000.00 |               842
+ KALLANG/WHAMPOA |                    76.83 |             2000 |            590000.00 |               512
+ KALLANG/WHAMPOA |                    76.83 |             2001 |            658000.00 |               567
+ KALLANG/WHAMPOA |                    76.83 |             2002 |            565000.00 |               577
+ KALLANG/WHAMPOA |                    76.83 |             2003 |            550000.00 |               481
+ KALLANG/WHAMPOA |                    76.83 |             2004 |            570000.00 |               486
+ KALLANG/WHAMPOA |                    76.83 |             2005 |            595000.00 |               427
+ KALLANG/WHAMPOA |                    76.83 |             2006 |            580000.00 |               433
+ KALLANG/WHAMPOA |                    76.83 |             2007 |            700000.00 |               397
+ KALLANG/WHAMPOA |                    76.83 |             2008 |            623333.00 |               386
+ KALLANG/WHAMPOA |                    76.83 |             2009 |            818000.00 |               485
+ KALLANG/WHAMPOA |                    76.83 |             2010 |            888000.00 |               541
+ KALLANG/WHAMPOA |                    76.83 |             2011 |            899000.00 |               332
+ KALLANG/WHAMPOA |                    76.83 |             2012 |            988888.00 |               354
+ KALLANG/WHAMPOA |                    76.83 |             2013 |           1020000.00 |               239
+ KALLANG/WHAMPOA |                    76.83 |             2014 |            940000.00 |               267
+ KALLANG/WHAMPOA |                    76.83 |             2015 |           1060000.00 |               249
+ KALLANG/WHAMPOA |                    76.83 |             2016 |           1150000.00 |               299
+ KALLANG/WHAMPOA |                    76.83 |             2017 |           1053888.00 |               298
+ KALLANG/WHAMPOA |                    76.83 |             2018 |           1185000.00 |               292
+ KALLANG/WHAMPOA |                    76.83 |             2019 |            975000.00 |               246
+ KALLANG/WHAMPOA |                    76.83 |             2020 |           1000000.00 |               254
+ KALLANG/WHAMPOA |                    76.83 |             2021 |           1268000.00 |               383
+ KALLANG/WHAMPOA |                    76.83 |             2022 |            958000.00 |               346
+ KALLANG/WHAMPOA |                    76.83 |             2023 |           1200000.00 |               356
+ KALLANG/WHAMPOA |                    76.83 |             2024 |           1568000.00 |               415
+ KALLANG/WHAMPOA |                    76.83 |             2025 |           1398888.00 |               330
+ KALLANG/WHAMPOA |                    76.83 |             2026 |           1108000.00 |               242
+ ANG MO KIO      |                    75.32 |             1990 |             73000.00 |              1096
+ ANG MO KIO      |                    75.32 |             1991 |             82000.00 |              1299
+ ANG MO KIO      |                    75.32 |             1992 |            106000.00 |               882
+ ANG MO KIO      |                    75.32 |             1993 |            167000.00 |               947
+ ANG MO KIO      |                    75.32 |             1994 |            185000.00 |              1295
+ ANG MO KIO      |                    75.32 |             1995 |            225000.00 |              1264
+ ANG MO KIO      |                    75.32 |             1996 |            298000.00 |              1590
+ ANG MO KIO      |                    75.32 |             1997 |            318000.00 |              1037
+ ANG MO KIO      |                    75.32 |             1998 |            260000.00 |              1874
+ ANG MO KIO      |                    75.32 |             1999 |            250000.00 |              2137
+ ANG MO KIO      |                    75.32 |             2000 |            250000.00 |              1491
+ ANG MO KIO      |                    75.32 |             2001 |            250000.00 |              1399
+ ANG MO KIO      |                    75.32 |             2002 |            253000.00 |              1171
+ ANG MO KIO      |                    75.32 |             2003 |            268000.00 |              1041
+ ANG MO KIO      |                    75.32 |             2004 |            260000.00 |              1047
+ ANG MO KIO      |                    75.32 |             2005 |            249000.00 |              1086
+ ANG MO KIO      |                    75.32 |             2006 |            286000.00 |               951
+ ANG MO KIO      |                    75.32 |             2007 |            348000.00 |               800
+ ANG MO KIO      |                    75.32 |             2008 |            370000.00 |               879
+ ANG MO KIO      |                    75.32 |             2009 |            378000.00 |               941
+ ANG MO KIO      |                    75.32 |             2010 |            430000.00 |              1069
+ ANG MO KIO      |                    75.32 |             2011 |            465000.00 |               737
+ ANG MO KIO      |                    75.32 |             2012 |            490000.00 |               680
+ ANG MO KIO      |                    75.32 |             2013 |            485000.00 |               480
+ ANG MO KIO      |                    75.32 |             2014 |            480000.00 |               505
+ ANG MO KIO      |                    75.32 |             2015 |            488000.00 |               554
+ ANG MO KIO      |                    75.32 |             2016 |            570000.00 |               549
+ ANG MO KIO      |                    75.32 |             2017 |            510000.00 |               521
+ ANG MO KIO      |                    75.32 |             2018 |            519000.00 |               549
+ ANG MO KIO      |                    75.32 |             2019 |            500000.00 |               523
+ ANG MO KIO      |                    75.32 |             2020 |            510000.00 |               503
+ ANG MO KIO      |                    75.32 |             2021 |            543000.00 |               564
+ ANG MO KIO      |                    75.32 |             2022 |            710000.00 |               528
+ ANG MO KIO      |                    75.32 |             2023 |            777888.00 |               539
+ ANG MO KIO      |                    75.32 |             2024 |            780000.00 |               571
+ ANG MO KIO      |                    75.32 |             2025 |            794500.00 |               535
+ ANG MO KIO      |                    75.32 |             2026 |            800000.00 |               330
+ JURONG EAST     |                    73.57 |             1990 |             63000.00 |               252
+ JURONG EAST     |                    73.57 |             1991 |             65000.00 |               233
+ JURONG EAST     |                    73.57 |             1992 |             87000.00 |               247
+ JURONG EAST     |                    73.57 |             1993 |            123000.00 |               230
+ JURONG EAST     |                    73.57 |             1994 |            140000.00 |               415
+ JURONG EAST     |                    73.57 |             1995 |            175000.00 |               357
+ JURONG EAST     |                    73.57 |             1996 |            245000.00 |               464
+ JURONG EAST     |                    73.57 |             1997 |            255000.00 |               411
+ JURONG EAST     |                    73.57 |             1998 |            225000.00 |               717
+ JURONG EAST     |                    73.57 |             1999 |            210000.00 |               648
+ JURONG EAST     |                    73.57 |             2000 |            235000.00 |               473
+ JURONG EAST     |                    73.57 |             2001 |            195000.00 |               389
+ JURONG EAST     |                    73.57 |             2002 |            194000.00 |               361
+ JURONG EAST     |                    73.57 |             2003 |            218000.00 |               304
+ JURONG EAST     |                    73.57 |             2004 |            235000.00 |               374
+ JURONG EAST     |                    73.57 |             2005 |            220000.00 |               317
+ JURONG EAST     |                    73.57 |             2006 |            198000.00 |               264
+ JURONG EAST     |                    73.57 |             2007 |            220000.00 |               291
+ JURONG EAST     |                    73.57 |             2008 |            282000.00 |               247
+ JURONG EAST     |                    73.57 |             2009 |            305000.00 |               275
+ JURONG EAST     |                    73.57 |             2010 |            363000.00 |               309
+ JURONG EAST     |                    73.57 |             2011 |            379000.00 |               161
+ JURONG EAST     |                    73.57 |             2012 |            395000.00 |               241
+ JURONG EAST     |                    73.57 |             2013 |            420000.00 |               165
+ JURONG EAST     |                    73.57 |             2014 |            410000.00 |               188
+ JURONG EAST     |                    73.57 |             2015 |            422000.00 |               160
+ JURONG EAST     |                    73.57 |             2016 |            380000.00 |               172
+ JURONG EAST     |                    73.57 |             2017 |            410000.00 |               178
+ JURONG EAST     |                    73.57 |             2018 |            450000.00 |               162
+ JURONG EAST     |                    73.57 |             2019 |            410000.00 |               156
+ JURONG EAST     |                    73.57 |             2020 |            428000.00 |               154
+ JURONG EAST     |                    73.57 |             2021 |            450000.00 |               162
+ JURONG EAST     |                    73.57 |             2022 |            445000.00 |               178
+ JURONG EAST     |                    73.57 |             2023 |            495000.00 |               163
+ JURONG EAST     |                    73.57 |             2024 |            565000.00 |               230
+ JURONG EAST     |                    73.57 |             2025 |            558000.00 |               182
+ JURONG EAST     |                    73.57 |             2026 |            565000.00 |               153
+ CLEMENTI        |                    73.40 |             1990 |             73000.00 |               420
+ CLEMENTI        |                    73.40 |             1991 |             79000.00 |               431
+ CLEMENTI        |                    73.40 |             1992 |             92000.00 |               453
+ CLEMENTI        |                    73.40 |             1993 |            135000.00 |               474
+ CLEMENTI        |                    73.40 |             1994 |            160000.00 |               756
+ CLEMENTI        |                    73.40 |             1995 |            190000.00 |               622
+ CLEMENTI        |                    73.40 |             1996 |            300000.00 |               823
+ CLEMENTI        |                    73.40 |             1997 |            290000.00 |               706
+ CLEMENTI        |                    73.40 |             1998 |            260000.00 |              1074
+ CLEMENTI        |                    73.40 |             1999 |            253000.00 |              1155
+ CLEMENTI        |                    73.40 |             2000 |            247000.00 |               813
+ CLEMENTI        |                    73.40 |             2001 |            240000.00 |               670
+ CLEMENTI        |                    73.40 |             2002 |            255000.00 |               567
+ CLEMENTI        |                    73.40 |             2003 |            254000.00 |               540
+ CLEMENTI        |                    73.40 |             2004 |            262000.00 |               546
+ CLEMENTI        |                    73.40 |             2005 |            255000.00 |               556
+ CLEMENTI        |                    73.40 |             2006 |            250000.00 |               483
+ CLEMENTI        |                    73.40 |             2007 |            301888.00 |               435
+ CLEMENTI        |                    73.40 |             2008 |            349000.00 |               398
+ CLEMENTI        |                    73.40 |             2009 |            367000.00 |               443
+ CLEMENTI        |                    73.40 |             2010 |            435000.00 |               512
+ CLEMENTI        |                    73.40 |             2011 |            465000.00 |               301
+ CLEMENTI        |                    73.40 |             2012 |            515000.00 |               343
+ CLEMENTI        |                    73.40 |             2013 |            518000.00 |               233
+ CLEMENTI        |                    73.40 |             2014 |            498000.00 |               232
+ CLEMENTI        |                    73.40 |             2015 |            455000.00 |               268
+ CLEMENTI        |                    73.40 |             2016 |            680000.00 |               298
+ CLEMENTI        |                    73.40 |             2017 |            618000.00 |               218
+ CLEMENTI        |                    73.40 |             2018 |            565000.00 |               239
+ CLEMENTI        |                    73.40 |             2019 |            565000.00 |               237
+ CLEMENTI        |                    73.40 |             2020 |            623888.00 |               265
+ CLEMENTI        |                    73.40 |             2021 |            660000.00 |               265
+ CLEMENTI        |                    73.40 |             2022 |            696000.00 |               276
+ CLEMENTI        |                    73.40 |             2023 |            790000.00 |               257
+ CLEMENTI        |                    73.40 |             2024 |            840000.00 |               270
+ CLEMENTI        |                    73.40 |             2025 |            740188.00 |               242
+ CLEMENTI        |                    73.40 |             2026 |            896000.00 |               176
+ TAMPINES        |                    72.57 |             1990 |             67000.00 |               310
+ TAMPINES        |                    72.57 |             1991 |             72000.00 |               232
+ TAMPINES        |                    72.57 |             1992 |             83000.00 |               523
+ TAMPINES        |                    72.57 |             1993 |            121000.00 |               642
+ TAMPINES        |                    72.57 |             1994 |            143000.00 |               839
+ TAMPINES        |                    72.57 |             1995 |            180000.00 |               930
+ TAMPINES        |                    72.57 |             1996 |            265000.00 |              1187
+ TAMPINES        |                    72.57 |             1997 |            290000.00 |               844
+ TAMPINES        |                    72.57 |             1998 |            243000.00 |              1289
+ TAMPINES        |                    72.57 |             1999 |            245000.00 |              1325
+ TAMPINES        |                    72.57 |             2000 |            265000.00 |               855
+ TAMPINES        |                    72.57 |             2001 |            230000.00 |               877
+ TAMPINES        |                    72.57 |             2002 |            233000.00 |               836
+ TAMPINES        |                    72.57 |             2003 |            238000.00 |               695
+ TAMPINES        |                    72.57 |             2004 |            250000.00 |               581
+ TAMPINES        |                    72.57 |             2005 |            250000.00 |               583
+ TAMPINES        |                    72.57 |             2006 |            235000.00 |               509
+ TAMPINES        |                    72.57 |             2007 |            290000.00 |               399
+ TAMPINES        |                    72.57 |             2008 |            295000.00 |               448
+ TAMPINES        |                    72.57 |             2009 |            322000.00 |               515
+ TAMPINES        |                    72.57 |             2010 |            398000.00 |               594
+ TAMPINES        |                    72.57 |             2011 |            428000.00 |               393
+ TAMPINES        |                    72.57 |             2012 |            450000.00 |               391
+ TAMPINES        |                    72.57 |             2013 |            440000.00 |               289
+ TAMPINES        |                    72.57 |             2014 |            445000.00 |               339
+ TAMPINES        |                    72.57 |             2015 |            416000.00 |               332
+ TAMPINES        |                    72.57 |             2016 |            395000.00 |               325
+ TAMPINES        |                    72.57 |             2017 |            422000.00 |               270
+ TAMPINES        |                    72.57 |             2018 |            399999.00 |               265
+ TAMPINES        |                    72.57 |             2019 |            510000.00 |               320
+ TAMPINES        |                    72.57 |             2020 |            505000.00 |               331
+ TAMPINES        |                    72.57 |             2021 |            550000.00 |               414
+ TAMPINES        |                    72.57 |             2022 |            570000.00 |               385
+ TAMPINES        |                    72.57 |             2023 |            620000.00 |               400
+ TAMPINES        |                    72.57 |             2024 |            640000.00 |               421
+ TAMPINES        |                    72.57 |             2025 |            698000.00 |               352
+ TAMPINES        |                    72.57 |             2026 |            715000.00 |               327
+ BEDOK           |                    72.23 |             1990 |             77000.00 |               612
+ BEDOK           |                    72.23 |             1991 |             74000.00 |               605
+ BEDOK           |                    72.23 |             1992 |             90000.00 |               915
+ BEDOK           |                    72.23 |             1993 |            140000.00 |              1048
+ BEDOK           |                    72.23 |             1994 |            152000.00 |              1298
+ BEDOK           |                    72.23 |             1995 |            185000.00 |              1366
+ BEDOK           |                    72.23 |             1996 |            292000.00 |              1802
+ BEDOK           |                    72.23 |             1997 |            270000.00 |               969
+ BEDOK           |                    72.23 |             1998 |            238000.00 |              1663
+ BEDOK           |                    72.23 |             1999 |            250000.00 |              2130
+ BEDOK           |                    72.23 |             2000 |            278000.00 |              1218
+ BEDOK           |                    72.23 |             2001 |            227000.00 |              1152
+ BEDOK           |                    72.23 |             2002 |            225000.00 |              1115
+ BEDOK           |                    72.23 |             2003 |            238000.00 |               979
+ BEDOK           |                    72.23 |             2004 |            255000.00 |              1086
+ BEDOK           |                    72.23 |             2005 |            240000.00 |               967
+ BEDOK           |                    72.23 |             2006 |            238000.00 |               924
+ BEDOK           |                    72.23 |             2007 |            277000.00 |               746
+ BEDOK           |                    72.23 |             2008 |            300000.00 |               692
+ BEDOK           |                    72.23 |             2009 |            328000.00 |               802
+ BEDOK           |                    72.23 |             2010 |            395000.00 |              1021
+ BEDOK           |                    72.23 |             2011 |            455000.00 |               639
+ BEDOK           |                    72.23 |             2012 |            520000.00 |               627
+ BEDOK           |                    72.23 |             2013 |            520000.00 |               524
+ BEDOK           |                    72.23 |             2014 |            500000.00 |               545
+ BEDOK           |                    72.23 |             2015 |            500000.00 |               583
+ BEDOK           |                    72.23 |             2016 |            498000.00 |               528
+ BEDOK           |                    72.23 |             2017 |            510000.00 |               489
+ BEDOK           |                    72.23 |             2018 |            490000.00 |               490
+ BEDOK           |                    72.23 |             2019 |            508000.00 |               512
+ BEDOK           |                    72.23 |             2020 |            515000.00 |               551
+ BEDOK           |                    72.23 |             2021 |            565000.00 |               562
+ BEDOK           |                    72.23 |             2022 |            590000.00 |               552
+ BEDOK           |                    72.23 |             2023 |            620000.00 |               566
+ BEDOK           |                    72.23 |             2024 |            663000.00 |               536
+ BEDOK           |                    72.23 |             2025 |            740888.00 |               498
+ BEDOK           |                    72.23 |             2026 |            720000.00 |               412
+ JURONG WEST     |                    71.01 |             1990 |             68000.00 |               672
+ JURONG WEST     |                    71.01 |             1991 |             70000.00 |               337
+ JURONG WEST     |                    71.01 |             1992 |             80000.00 |               404
+ JURONG WEST     |                    71.01 |             1993 |            110000.00 |               465
+ JURONG WEST     |                    71.01 |             1994 |            125000.00 |               712
+ JURONG WEST     |                    71.01 |             1995 |            170000.00 |               691
+ JURONG WEST     |                    71.01 |             1996 |            235000.00 |               768
+ JURONG WEST     |                    71.01 |             1997 |            238000.00 |               872
+ JURONG WEST     |                    71.01 |             1998 |            200000.00 |              1184
+ JURONG WEST     |                    71.01 |             1999 |            190000.00 |              1158
+ JURONG WEST     |                    71.01 |             2000 |            190000.00 |               702
+ JURONG WEST     |                    71.01 |             2001 |            178500.00 |               624
+ JURONG WEST     |                    71.01 |             2002 |            208000.00 |               575
+ JURONG WEST     |                    71.01 |             2003 |            218000.00 |               620
+ JURONG WEST     |                    71.01 |             2004 |            235000.00 |               721
+ JURONG WEST     |                    71.01 |             2005 |            225000.00 |               608
+ JURONG WEST     |                    71.01 |             2006 |            200000.00 |               525
+ JURONG WEST     |                    71.01 |             2007 |            232000.00 |               505
+ JURONG WEST     |                    71.01 |             2008 |            300000.00 |               452
+ JURONG WEST     |                    71.01 |             2009 |            301000.00 |               515
+ JURONG WEST     |                    71.01 |             2010 |            370000.00 |               587
+ JURONG WEST     |                    71.01 |             2011 |            395000.00 |               367
+ JURONG WEST     |                    71.01 |             2012 |            415000.00 |               394
+ JURONG WEST     |                    71.01 |             2013 |            418000.00 |               304
+ JURONG WEST     |                    71.01 |             2014 |            400000.00 |               312
+ JURONG WEST     |                    71.01 |             2015 |            375000.00 |               296
+ JURONG WEST     |                    71.01 |             2016 |            370000.00 |               288
+ JURONG WEST     |                    71.01 |             2017 |            368000.00 |               309
+ JURONG WEST     |                    71.01 |             2018 |            367000.00 |               307
+ JURONG WEST     |                    71.01 |             2019 |            455000.00 |               331
+ JURONG WEST     |                    71.01 |             2020 |            475000.00 |               219
+ JURONG WEST     |                    71.01 |             2021 |            490000.00 |               262
+ JURONG WEST     |                    71.01 |             2022 |            510000.00 |               321
+ JURONG WEST     |                    71.01 |             2023 |            525000.00 |               337
+ JURONG WEST     |                    71.01 |             2024 |            585000.00 |               397
+ JURONG WEST     |                    71.01 |             2025 |            608888.00 |               353
+ JURONG WEST     |                    71.01 |             2026 |            628000.00 |               236
+ CHOA CHU KANG   |                    70.99 |             1990 |             58000.00 |                60
+ CHOA CHU KANG   |                    70.99 |             1991 |             57500.00 |                41
+ CHOA CHU KANG   |                    70.99 |             1992 |             70000.00 |                59
+ CHOA CHU KANG   |                    70.99 |             1993 |             92000.00 |                33
+ CHOA CHU KANG   |                    70.99 |             1994 |            110000.00 |                64
+ CHOA CHU KANG   |                    70.99 |             1995 |            139800.00 |                76
+ CHOA CHU KANG   |                    70.99 |             1996 |            208000.00 |                96
+ CHOA CHU KANG   |                    70.99 |             1997 |            205000.00 |               106
+ CHOA CHU KANG   |                    70.99 |             1998 |            190000.00 |               159
+ CHOA CHU KANG   |                    70.99 |             1999 |            180000.00 |               118
+ CHOA CHU KANG   |                    70.99 |             2000 |            183500.00 |                97
+ CHOA CHU KANG   |                    70.99 |             2001 |            156000.00 |               106
+ CHOA CHU KANG   |                    70.99 |             2002 |            149000.00 |                80
+ CHOA CHU KANG   |                    70.99 |             2003 |            175000.00 |                65
+ CHOA CHU KANG   |                    70.99 |             2004 |            210000.00 |                94
+ CHOA CHU KANG   |                    70.99 |             2005 |            210000.00 |                56
+ CHOA CHU KANG   |                    70.99 |             2006 |            168000.00 |                46
+ CHOA CHU KANG   |                    70.99 |             2007 |            192000.00 |                64
+ CHOA CHU KANG   |                    70.99 |             2008 |            238000.00 |                52
+ CHOA CHU KANG   |                    70.99 |             2009 |            249000.00 |                73
+ CHOA CHU KANG   |                    70.99 |             2010 |            300000.00 |                58
+ CHOA CHU KANG   |                    70.99 |             2011 |            350000.00 |                52
+ CHOA CHU KANG   |                    70.99 |             2012 |            360000.00 |                48
+ CHOA CHU KANG   |                    70.99 |             2013 |            372000.00 |                31
+ CHOA CHU KANG   |                    70.99 |             2014 |            339000.00 |                29
+ CHOA CHU KANG   |                    70.99 |             2015 |            320000.00 |                35
+ CHOA CHU KANG   |                    70.99 |             2016 |            320000.00 |                53
+ CHOA CHU KANG   |                    70.99 |             2017 |            340000.00 |                58
+ CHOA CHU KANG   |                    70.99 |             2018 |            326000.00 |                58
+ CHOA CHU KANG   |                    70.99 |             2019 |            330000.00 |                49
+ CHOA CHU KANG   |                    70.99 |             2020 |            360000.00 |                64
+ CHOA CHU KANG   |                    70.99 |             2021 |            439888.00 |               115
+ CHOA CHU KANG   |                    70.99 |             2022 |            463000.00 |               100
+ CHOA CHU KANG   |                    70.99 |             2023 |            475000.00 |                69
+ CHOA CHU KANG   |                    70.99 |             2024 |            490888.00 |                85
+ CHOA CHU KANG   |                    70.99 |             2025 |            530000.00 |                60
+ CHOA CHU KANG   |                    70.99 |             2026 |            540000.00 |                63
+ HOUGANG         |                    70.51 |             1990 |             77000.00 |               252
+ HOUGANG         |                    70.51 |             1991 |             67000.00 |               305
+ HOUGANG         |                    70.51 |             1992 |             80000.00 |               233
+ HOUGANG         |                    70.51 |             1993 |            123000.00 |               247
+ HOUGANG         |                    70.51 |             1994 |            133000.00 |               365
+ HOUGANG         |                    70.51 |             1995 |            182000.00 |               327
+ HOUGANG         |                    70.51 |             1996 |            295000.00 |               493
+ HOUGANG         |                    70.51 |             1997 |            246000.00 |               427
+ HOUGANG         |                    70.51 |             1998 |            220000.00 |               914
+ HOUGANG         |                    70.51 |             1999 |            210000.00 |               916
+ HOUGANG         |                    70.51 |             2000 |            210000.00 |               550
+ HOUGANG         |                    70.51 |             2001 |            188000.00 |               557
+ HOUGANG         |                    70.51 |             2002 |            188000.00 |               531
+ HOUGANG         |                    70.51 |             2003 |            200800.00 |               447
+ HOUGANG         |                    70.51 |             2004 |            235000.00 |               469
+ HOUGANG         |                    70.51 |             2005 |            225000.00 |               465
+ HOUGANG         |                    70.51 |             2006 |            202000.00 |               391
+ HOUGANG         |                    70.51 |             2007 |            230000.00 |               284
+ HOUGANG         |                    70.51 |             2008 |            285500.00 |               311
+ HOUGANG         |                    70.51 |             2009 |            295000.00 |               340
+ HOUGANG         |                    70.51 |             2010 |            343000.00 |               391
+ HOUGANG         |                    70.51 |             2011 |            400000.00 |               266
+ HOUGANG         |                    70.51 |             2012 |            420000.00 |               265
+ HOUGANG         |                    70.51 |             2013 |            465000.00 |               196
+ HOUGANG         |                    70.51 |             2014 |            410000.00 |               229
+ HOUGANG         |                    70.51 |             2015 |            396000.00 |               252
+ HOUGANG         |                    70.51 |             2016 |            355000.00 |               215
+ HOUGANG         |                    70.51 |             2017 |            362000.00 |               200
+ HOUGANG         |                    70.51 |             2018 |            346000.00 |               191
+ HOUGANG         |                    70.51 |             2019 |            392888.00 |               211
+ HOUGANG         |                    70.51 |             2020 |            483000.00 |               257
+ HOUGANG         |                    70.51 |             2021 |            535000.00 |               274
+ HOUGANG         |                    70.51 |             2022 |            568000.00 |               302
+ HOUGANG         |                    70.51 |             2023 |            540888.00 |               305
+ HOUGANG         |                    70.51 |             2024 |            590000.00 |               308
+ HOUGANG         |                    70.51 |             2025 |            640000.00 |               326
+ HOUGANG         |                    70.51 |             2026 |            660000.00 |               210
+ WOODLANDS       |                    70.18 |             1990 |             55000.00 |               193
+ WOODLANDS       |                    70.18 |             1991 |             55000.00 |               173
+ WOODLANDS       |                    70.18 |             1992 |             66000.00 |               174
+ WOODLANDS       |                    70.18 |             1993 |             95000.00 |               190
+ WOODLANDS       |                    70.18 |             1994 |            103000.00 |               192
+ WOODLANDS       |                    70.18 |             1995 |            134000.00 |               220
+ WOODLANDS       |                    70.18 |             1996 |            210000.00 |               499
+ WOODLANDS       |                    70.18 |             1997 |            210000.00 |               423
+ WOODLANDS       |                    70.18 |             1998 |            208000.00 |               636
+ WOODLANDS       |                    70.18 |             1999 |            178000.00 |               569
+ WOODLANDS       |                    70.18 |             2000 |            192000.00 |               315
+ WOODLANDS       |                    70.18 |             2001 |            185000.00 |               320
+ WOODLANDS       |                    70.18 |             2002 |            185000.00 |               346
+ WOODLANDS       |                    70.18 |             2003 |            190000.00 |               447
+ WOODLANDS       |                    70.18 |             2004 |            205000.00 |               383
+ WOODLANDS       |                    70.18 |             2005 |            210000.00 |               324
+ WOODLANDS       |                    70.18 |             2006 |            188800.00 |               266
+ WOODLANDS       |                    70.18 |             2007 |            193000.00 |               244
+ WOODLANDS       |                    70.18 |             2008 |            253000.00 |               287
+ WOODLANDS       |                    70.18 |             2009 |            268000.00 |               298
+ WOODLANDS       |                    70.18 |             2010 |            323000.00 |               373
+ WOODLANDS       |                    70.18 |             2011 |            353000.00 |               242
+ WOODLANDS       |                    70.18 |             2012 |            387000.00 |               274
+ WOODLANDS       |                    70.18 |             2013 |            393000.00 |               199
+ WOODLANDS       |                    70.18 |             2014 |            361000.00 |               165
+ WOODLANDS       |                    70.18 |             2015 |            340000.00 |               144
+ WOODLANDS       |                    70.18 |             2016 |            320000.00 |               148
+ WOODLANDS       |                    70.18 |             2017 |            342000.00 |               154
+ WOODLANDS       |                    70.18 |             2018 |            350000.00 |               206
+ WOODLANDS       |                    70.18 |             2019 |            345000.00 |               226
+ WOODLANDS       |                    70.18 |             2020 |            378888.00 |               161
+ WOODLANDS       |                    70.18 |             2021 |            468000.00 |               191
+ WOODLANDS       |                    70.18 |             2022 |            490000.00 |               243
+ WOODLANDS       |                    70.18 |             2023 |            505000.00 |               273
+ WOODLANDS       |                    70.18 |             2024 |            555888.00 |               271
+ WOODLANDS       |                    70.18 |             2025 |            588000.00 |               201
+ WOODLANDS       |                    70.18 |             2026 |            600000.00 |               175
+(370 行记录)
+
+/******** QUERY *********/
+WITH town_flat_proximity_prices AS (
+    SELECT
+        b.town_name AS town,
+        f.flat_type,
+        AVG(r.resale_price) FILTER (WHERE nh.proximity_class = 'near') AS raw_avg_near,
+        AVG(r.resale_price) FILTER (WHERE nh.proximity_class = 'far') AS raw_avg_far
+    FROM housing.resale_transaction AS r
+    JOIN housing.hdb_flat AS f
+        USING (flat_id)
+    JOIN housing.hdb_building AS b
+        USING (building_id)
+    JOIN housing.nearest_hawker AS nh
+        USING (building_id)
+    WHERE nh.proximity_class IN ('near', 'far')
+    GROUP BY
+        b.town_name,
+        f.flat_type
+)
+SELECT
+    town,
+    flat_type,
+    ROUND(raw_avg_near, 2) AS avg_price_near_hawker,
+    ROUND(raw_avg_far, 2) AS avg_price_far_hawker,
+    ROUND(
+        (raw_avg_near - raw_avg_far) * 100.0 / NULLIF(raw_avg_far, 0),
+        2
+    ) AS price_diff_percentage
+FROM town_flat_proximity_prices
+WHERE raw_avg_near IS NOT NULL
+  AND raw_avg_far IS NOT NULL
+ORDER BY
+    town ASC,
+    flat_type ASC;
+/************************/
+
+      town       | flat_type | avg_price_near_hawker | avg_price_far_hawker | price_diff_percentage 
+-----------------+-----------+-----------------------+----------------------+-----------------------
+ BEDOK           | EXECUTIVE |             545374.57 |            564371.39 |                 -3.37
+ BISHAN          | 3 ROOM    |             219917.38 |            261703.88 |                -15.97
+ BISHAN          | 4 ROOM    |             345023.61 |            390140.12 |                -11.56
+ BISHAN          | 5 ROOM    |             482322.36 |            530231.68 |                 -9.04
+ BISHAN          | EXECUTIVE |             639376.87 |            670860.04 |                 -4.69
+ BUKIT BATOK     | 3 ROOM    |             183830.57 |            209189.66 |                -12.12
+ BUKIT BATOK     | 4 ROOM    |             291168.34 |            368176.06 |                -20.92
+ BUKIT BATOK     | 5 ROOM    |             395925.04 |            518774.12 |                -23.68
+ BUKIT MERAH     | 5 ROOM    |             622710.64 |            492955.87 |                 26.32
+ CLEMENTI        | 3 ROOM    |             212552.90 |            600676.47 |                -64.61
+ CLEMENTI        | 4 ROOM    |             357460.07 |            405707.16 |                -11.89
+ CLEMENTI        | 5 ROOM    |             492472.90 |            555572.90 |                -11.36
+ CLEMENTI        | EXECUTIVE |             566417.75 |            577817.50 |                 -1.97
+ GEYLANG         | 3 ROOM    |             206197.60 |            268827.03 |                -23.30
+ GEYLANG         | 4 ROOM    |             428261.53 |            277179.26 |                 54.51
+ GEYLANG         | 5 ROOM    |             501505.00 |            351970.67 |                 42.48
+ HOUGANG         | 3 ROOM    |             205060.11 |            207862.72 |                 -1.35
+ HOUGANG         | 4 ROOM    |             307506.33 |            301494.34 |                  1.99
+ HOUGANG         | 5 ROOM    |             458074.80 |            415936.41 |                 10.13
+ HOUGANG         | EXECUTIVE |             565149.29 |            536167.43 |                  5.41
+ JURONG EAST     | 4 ROOM    |             279888.93 |            347778.35 |                -19.52
+ JURONG EAST     | 5 ROOM    |             374543.59 |            480826.27 |                -22.10
+ JURONG EAST     | EXECUTIVE |             450141.16 |            633337.81 |                -28.93
+ JURONG WEST     | 4 ROOM    |             295844.35 |            317985.20 |                 -6.96
+ JURONG WEST     | 5 ROOM    |             367089.60 |            410934.43 |                -10.67
+ JURONG WEST     | EXECUTIVE |             456433.15 |            515075.18 |                -11.39
+ KALLANG/WHAMPOA | 4 ROOM    |             473267.30 |            305644.40 |                 54.84
+ KALLANG/WHAMPOA | 5 ROOM    |             559612.28 |            473155.63 |                 18.27
+ QUEENSTOWN      | 2 ROOM    |             109488.96 |            626000.00 |                -82.51
+ QUEENSTOWN      | 3 ROOM    |             216804.37 |            278522.90 |                -22.16
+ QUEENSTOWN      | 4 ROOM    |             529201.55 |            956680.86 |                -44.68
+ QUEENSTOWN      | 5 ROOM    |             637834.61 |           1037198.79 |                -38.50
+ TAMPINES        | 3 ROOM    |             219410.45 |            229554.74 |                 -4.42
+ TAMPINES        | 4 ROOM    |             320068.63 |            339278.50 |                 -5.66
+ TAMPINES        | 5 ROOM    |             411932.80 |            442563.31 |                 -6.92
+ TAMPINES        | EXECUTIVE |             540976.97 |            542829.61 |                 -0.34
+ TOA PAYOH       | 3 ROOM    |             210313.33 |            272873.28 |                -22.93
+ TOA PAYOH       | 4 ROOM    |             460088.22 |            514352.65 |                -10.55
+ TOA PAYOH       | 5 ROOM    |             597048.07 |            495387.98 |                 20.52
+ TOA PAYOH       | EXECUTIVE |             634217.36 |            594400.00 |                  6.70
+ WOODLANDS       | 3 ROOM    |             169565.65 |            221968.42 |                -23.61
+ WOODLANDS       | 4 ROOM    |             242572.23 |            286553.88 |                -15.35
+ WOODLANDS       | 5 ROOM    |             302861.09 |            379526.05 |                -20.20
+ WOODLANDS       | EXECUTIVE |             405583.33 |            528759.37 |                -23.30
+ YISHUN          | 3 ROOM    |             196323.07 |            210737.01 |                 -6.84
+ YISHUN          | 4 ROOM    |             263802.30 |            276594.27 |                 -4.62
+ YISHUN          | 5 ROOM    |             367012.07 |            390218.97 |                 -5.95
+ YISHUN          | EXECUTIVE |             600112.50 |            491179.89 |                 22.18
+(48 行记录)
+
+/******** QUERY *********/
+WITH fresh_market_sales AS (
+    SELECT
+        b.town_name AS town,
+        nmh.proximity_class,
+        r.resale_price
+    FROM housing.resale_transaction AS r
+    JOIN housing.hdb_flat AS f
+        USING (flat_id)
+    JOIN housing.hdb_building AS b
+        USING (building_id)
+    JOIN housing.nearest_market_hawker AS nmh
+        USING (building_id)
+    WHERE nmh.proximity_class IS NOT NULL
+),
+qualifying_towns AS (
+    SELECT
+        town,
+        ROUND(AVG(resale_price), 2) AS town_avg_resale_price
+    FROM fresh_market_sales
+    GROUP BY
+        town
+    HAVING AVG(resale_price) > 450000.00
+)
+SELECT
+    fms.town,
+    fms.proximity_class,
+    ROUND(AVG(fms.resale_price), 2) AS avg_resale_price,
+    COUNT(*) AS transaction_count,
+    qt.town_avg_resale_price
+FROM fresh_market_sales AS fms
+JOIN qualifying_towns AS qt
+    USING (town)
+GROUP BY
+    fms.town,
+    fms.proximity_class,
+    qt.town_avg_resale_price
+ORDER BY
+    qt.town_avg_resale_price DESC,
+    fms.town ASC,
+    CASE fms.proximity_class
+        WHEN 'near' THEN 1
+        WHEN 'medium' THEN 2
+        WHEN 'far' THEN 3
+    END ASC;
+/************************/
+
+    town     | proximity_class | avg_resale_price | transaction_count | town_avg_resale_price 
+-------------+-----------------+------------------+-------------------+-----------------------
+ BUKIT TIMAH | near            |        480056.25 |              2653 |             480056.25
+ SEMBAWANG   | far             |        464010.39 |              3980 |             464010.39
+(2 行记录)
+
+/******** QUERY *********/
+WITH building_amenity_profile AS (
+    SELECT
+        bh.building_id,
+        MIN(bh.distance_m) AS nearest_hawker_distance_m,
+        housing.proximity_class(MIN(bh.distance_m)) AS nearest_proximity_class,
+        COUNT(*) FILTER (WHERE bh.distance_m < 1000.0) AS hawkers_within_1km,
+        COUNT(*) FILTER (
+            WHERE bh.distance_m < 1000.0 AND h.market_produce_stalls > 0
+        ) AS fresh_market_hawkers_within_1km,
+        COALESCE(
+            SUM(h.market_produce_stalls) FILTER (WHERE bh.distance_m < 1000.0),
+            0
+        ) AS market_stalls_within_1km
+    FROM housing.building_hawker AS bh
+    JOIN housing.hawker_centre AS h
+        USING (hawker_id)
+    GROUP BY
+        bh.building_id
+)
+SELECT
+    t.town_name AS town,
+    bap.nearest_proximity_class AS proximity_class,
+    COUNT(r.transaction_id) AS transaction_volume,
+    COUNT(DISTINCT b.building_id) AS geocoded_buildings_sold,
+    ROUND(AVG(r.resale_price), 2) AS avg_resale_price,
+    ROUND(
+        PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY r.resale_price)::numeric,
+        2
+    ) AS median_resale_price,
+    ROUND(AVG(r.resale_price / f.floor_area_sqm), 2) AS avg_price_per_sqm,
+    ROUND(AVG(r.remaining_lease_months / 12.0), 1) AS avg_remaining_lease_years,
+    ROUND(AVG(bap.hawkers_within_1km), 2) AS avg_hawkers_within_1km,
+    ROUND(AVG(bap.fresh_market_hawkers_within_1km), 2) AS avg_fresh_market_hawkers_within_1km,
+    ROUND(AVG(bap.market_stalls_within_1km), 1) AS avg_market_stalls_within_1km
+FROM housing.town AS t
+JOIN housing.hdb_building AS b
+    ON b.town_name = t.town_name
+JOIN building_amenity_profile AS bap
+    ON bap.building_id = b.building_id
+JOIN housing.hdb_flat AS f
+    ON f.building_id = b.building_id
+JOIN housing.resale_transaction AS r
+    ON r.flat_id = f.flat_id
+WHERE bap.nearest_proximity_class IS NOT NULL
+GROUP BY
+    t.town_name,
+    bap.nearest_proximity_class
+ORDER BY
+    t.town_name ASC,
+    CASE bap.nearest_proximity_class
+        WHEN 'near' THEN 1
+        WHEN 'medium' THEN 2
+        WHEN 'far' THEN 3
+    END ASC;
+/************************/
+
+      town       | proximity_class | transaction_volume | geocoded_buildings_sold | avg_resale_price | median_resale_price | avg_price_per_sqm | avg_remaining_lease_years | avg_hawkers_within_1km | avg_fresh_market_hawkers_within_1km | avg_market_stalls_within_1km 
+-----------------+-----------------+--------------------+-------------------------+------------------+---------------------+-------------------+---------------------------+------------------------+-------------------------------------+------------------------------
+ ANG MO KIO      | near            |              50070 |                     350 |        275869.81 |           237000.00 |           3281.62 |                      75.1 |                   3.64 |                                3.20 |                        353.0
+ ANG MO KIO      | medium          |               3369 |                      20 |        271247.33 |           213000.00 |           3170.01 |                      75.6 |                   3.10 |                                2.44 |                        261.9
+ BEDOK           | near            |              51923 |                     335 |        269276.93 |           235000.00 |           3169.14 |                      75.1 |                   3.29 |                                2.83 |                        313.1
+ BEDOK           | medium          |              16802 |                     170 |        353200.59 |           320000.00 |           3457.57 |                      79.5 |                   1.71 |                                1.52 |                        144.4
+ BEDOK           | far             |                518 |                       9 |        564371.39 |           507000.00 |           3920.07 |                      85.7 |                   0.00 |                                0.00 |                          0.0
+ BISHAN          | near            |               2650 |                      24 |        332543.30 |           285000.00 |           3605.41 |                      78.0 |                   1.52 |                                1.28 |                         72.6
+ BISHAN          | medium          |              16529 |                     170 |        458020.43 |           417000.00 |           4185.41 |                      82.6 |                   1.77 |                                1.54 |                        113.6
+ BISHAN          | far             |               3057 |                      34 |        449926.47 |           418500.00 |           4198.60 |                      81.7 |                   0.00 |                                0.00 |                          0.0
+ BUKIT BATOK     | near            |               1219 |                       8 |        279147.89 |           260000.00 |           2762.79 |                      79.4 |                   1.46 |                                1.46 |                        165.5
+ BUKIT BATOK     | medium          |               4636 |                      44 |        307718.77 |           265000.00 |           3279.02 |                      81.3 |                   1.01 |                                1.01 |                         88.6
+ BUKIT BATOK     | far             |              18045 |                     180 |        356459.39 |           317000.00 |           3647.06 |                      82.9 |                   0.00 |                                0.00 |                          0.0
+ BUKIT MERAH     | near            |              29781 |                     317 |        398646.24 |           340000.00 |           4646.01 |                      75.0 |                   4.61 |                                3.12 |                        301.0
+ BUKIT MERAH     | medium          |               4234 |                      48 |        394077.90 |           365000.00 |           4099.30 |                      77.4 |                   3.47 |                                2.23 |                        179.0
+ BUKIT MERAH     | far             |                122 |                       1 |        492955.87 |           423000.00 |           4041.81 |                      73.4 |                   0.00 |                                0.00 |                          0.0
+ BUKIT TIMAH     | near            |               2653 |                      26 |        480056.25 |           426000.00 |           4343.25 |                      76.1 |                   1.15 |                                1.00 |                         85.1
+ CENTRAL AREA    | near            |               6931 |                      64 |        393722.73 |           311500.00 |           4987.36 |                      74.8 |                   4.60 |                                2.97 |                        521.4
+ CLEMENTI        | near            |              18627 |                     133 |        288973.25 |           246000.00 |           3429.94 |                      74.8 |                   3.08 |                                2.47 |                        203.3
+ CLEMENTI        | medium          |               8415 |                      60 |        338506.57 |           265000.00 |           3930.03 |                      77.6 |                   2.04 |                                1.87 |                        150.8
+ CLEMENTI        | far             |                849 |                       7 |        489315.19 |           450000.00 |           3997.62 |                      79.3 |                   0.00 |                                0.00 |                          0.0
+ GEYLANG         | near            |              23650 |                     202 |        299268.00 |           255000.00 |           3658.66 |                      71.9 |                   3.56 |                                2.90 |                        258.3
+ GEYLANG         | medium          |               4815 |                      43 |        289691.99 |           255000.00 |           2955.99 |                      80.1 |                   1.19 |                                1.17 |                         93.7
+ GEYLANG         | far             |                669 |                       8 |        278814.25 |           280000.00 |           3542.47 |                      80.6 |                   0.00 |                                0.00 |                          0.0
+ HOUGANG         | near            |               6116 |                      57 |        312791.35 |           270350.00 |           3113.65 |                      78.9 |                   1.95 |                                1.95 |                        233.6
+ HOUGANG         | medium          |               7609 |                      62 |        285225.33 |           250000.00 |           2956.50 |                      77.1 |                   1.42 |                                1.42 |                        170.2
+ HOUGANG         | far             |              26169 |                     277 |        321276.40 |           290000.00 |           3240.20 |                      81.6 |                   0.00 |                                0.00 |                          0.0
+ JURONG EAST     | near            |              13290 |                     113 |        264797.25 |           240000.00 |           2895.87 |                      78.0 |                   1.63 |                                1.63 |                        191.4
+ JURONG EAST     | medium          |              10701 |                      97 |        322947.44 |           300000.00 |           3168.60 |                      79.2 |                   1.09 |                                1.09 |                        101.8
+ JURONG EAST     | far             |               1462 |                      17 |        446855.98 |           414000.00 |           3900.48 |                      87.2 |                   0.00 |                                0.00 |                          0.0
+ JURONG WEST     | near            |              22355 |                     179 |        250305.15 |           228000.00 |           2789.36 |                      76.7 |                   1.59 |                                1.59 |                        168.5
+ JURONG WEST     | medium          |              17389 |                     188 |        327337.33 |           303000.00 |           3229.61 |                      83.0 |                   1.36 |                                1.36 |                        164.8
+ JURONG WEST     | far             |              17983 |                     224 |        380333.37 |           375000.00 |           3481.84 |                      86.1 |                   0.00 |                                0.00 |                          0.0
+ KALLANG/WHAMPOA | near            |              22341 |                     190 |        342514.63 |           290000.00 |           4024.96 |                      74.0 |                   2.99 |                                2.87 |                        246.6
+ KALLANG/WHAMPOA | medium          |               5144 |                      72 |        400439.11 |           362000.00 |           4445.08 |                      76.7 |                   3.57 |                                3.22 |                        254.4
+ KALLANG/WHAMPOA | far             |                378 |                       5 |        428840.49 |           402500.00 |           3806.54 |                      75.3 |                   0.00 |                                0.00 |                          0.0
+ MARINE PARADE   | near            |               7270 |                      51 |        366183.32 |           330000.00 |           4098.14 |                      69.5 |                   1.79 |                                1.70 |                        187.1
+ MARINE PARADE   | medium          |               1129 |                       4 |        264072.90 |           235000.00 |           3735.82 |                      69.8 |                   2.00 |                                2.00 |                        230.0
+ PASIR RIS       | near            |                184 |                       3 |        231609.63 |           180000.00 |           3429.92 |                      67.4 |                   1.00 |                                1.00 |                         42.0
+ QUEENSTOWN      | near            |              22192 |                     162 |        281875.46 |           200000.00 |           3770.59 |                      69.8 |                   3.36 |                                3.17 |                        238.4
+ QUEENSTOWN      | medium          |               4735 |                      65 |        625341.77 |           650000.00 |           6674.96 |                      83.8 |                   1.92 |                                1.66 |                        150.1
+ QUEENSTOWN      | far             |                754 |                       8 |        442220.78 |           310000.00 |           5759.38 |                      77.2 |                   0.00 |                                0.00 |                          0.0
+ SEMBAWANG       | far             |               3980 |                      76 |        464010.39 |           437500.00 |           4780.02 |                      89.9 |                   0.00 |                                0.00 |                          0.0
+ SERANGOON       | medium          |               8631 |                      67 |        282463.43 |           250000.00 |           3126.21 |                      79.7 |                   1.74 |                                0.95 |                         34.2
+ SERANGOON       | far             |              15056 |                     161 |        379111.80 |           348000.00 |           3613.07 |                      81.6 |                   0.00 |                                0.00 |                          0.0
+ TAMPINES        | near            |               4462 |                      33 |        309619.90 |           281250.00 |           3046.44 |                      78.8 |                   1.00 |                                1.00 |                         99.0
+ TAMPINES        | medium          |              19375 |                     126 |        324722.50 |           296000.00 |           3153.91 |                      80.3 |                   1.00 |                                1.00 |                         99.0
+ TAMPINES        | far             |              51276 |                     507 |        359760.85 |           335000.00 |           3476.80 |                      82.9 |                   0.00 |                                0.00 |                          0.0
+ TOA PAYOH       | near            |              23252 |                     193 |        343395.13 |           280000.00 |           3981.34 |                      71.9 |                   4.84 |                                3.90 |                        271.1
+ TOA PAYOH       | medium          |               5979 |                      53 |        287537.35 |           245000.00 |           3380.66 |                      72.9 |                   2.58 |                                2.19 |                        154.9
+ TOA PAYOH       | far             |               4235 |                      63 |        392517.25 |           301000.00 |           4306.62 |                      79.3 |                   0.00 |                                0.00 |                          0.0
+ WOODLANDS       | near            |               6668 |                      33 |        199110.02 |           174000.00 |           2539.10 |                      72.5 |                   1.00 |                                1.00 |                        112.0
+ WOODLANDS       | medium          |               8036 |                      79 |        274593.72 |           247000.00 |           2790.33 |                      79.0 |                   1.00 |                                1.00 |                        112.0
+ WOODLANDS       | far             |              23877 |                     246 |        351841.03 |           320000.00 |           3038.88 |                      85.8 |                   0.00 |                                0.00 |                          0.0
+ YISHUN          | near            |              12107 |                      70 |        220869.87 |           195000.00 |           2833.08 |                      78.1 |                   1.00 |                                1.00 |                        123.0
+ YISHUN          | medium          |              14749 |                      99 |        250196.12 |           228000.00 |           2841.26 |                      80.5 |                   1.00 |                                1.00 |                        123.0
+ YISHUN          | far             |              34611 |                     311 |        303343.80 |           273000.00 |           3029.01 |                      82.4 |                   0.00 |                                0.00 |                          0.0
+(55 行记录)
+

@@ -1,0 +1,87 @@
+{
+  "status": "complete",
+  "created_utc": "2026-10-30T11:02:59.647067+00:00",
+  "baseline_directory": "E:\\NTU\\DataSystem\\project\\SD6105_PROJECT\\ops\\benchmark\\results\\task3_baseline_01",
+  "baseline_manifest_sha256": "27d4bb7f7a7bcfdba3449185992ceda5c9a648362c9628f9d778f726bc66400b",
+  "database": "sd6105_stage5_indexed",
+  "query_sha256": {
+    "Q1": "f156b75ee2b556459f4852dd68c69b2e980d9462dcd7c5dbf2a31faf0e41aa06",
+    "Q2": "c3bd03bdc2cc1351b4e9d3fb78146433a33fdbeca9d50138731fafb0ed3a1b91",
+    "Q3": "f80e6f44becf6196036d2cbdcf41cc7032fb88a84aad2f7eeff08b97acab7f35",
+    "Q4": "80fb03a0740a12522f3574eb6d5cbb5c681db40857a5f4d1285cf7de38ec9c74",
+    "Q5": "3787c04ce765e19828996b407a417df0a5d06ab2ead311d1f07b5d65ec6ef53d",
+    "Q6": "739bfaa2f6028e0ed4b72b2195bc0d47c7b8872f43b920e9c4b2a9d2c44fb34b"
+  },
+  "query_rows": [
+    52,
+    77,
+    370,
+    48,
+    2,
+    55
+  ],
+  "candidate_indexes_sha256": "e9e5ad593610798d801bcf1b129987c017ed10468fa2ec0d8e6d84091a9c83f7",
+  "configurations": [
+    {
+      "name": "baseline_control",
+      "indexes": []
+    },
+    {
+      "name": "idx_rt_sale_month",
+      "indexes": [
+        "idx_rt_sale_month"
+      ]
+    },
+    {
+      "name": "idx_rt_flat_id",
+      "indexes": [
+        "idx_rt_flat_id"
+      ]
+    },
+    {
+      "name": "idx_flat_type_building",
+      "indexes": [
+        "idx_flat_type_building"
+      ]
+    },
+    {
+      "name": "idx_bh_building_distance",
+      "indexes": [
+        "idx_bh_building_distance"
+      ]
+    },
+    {
+      "name": "idx_building_town",
+      "indexes": [
+        "idx_building_town"
+      ]
+    },
+    {
+      "name": "all_indexes",
+      "indexes": [
+        "idx_rt_sale_month",
+        "idx_rt_flat_id",
+        "idx_flat_type_building",
+        "idx_bh_building_distance",
+        "idx_building_town"
+      ]
+    }
+  ],
+  "runs": 5,
+  "warmups": 1,
+  "method": "EXPLAIN (ANALYZE, TIMING OFF, FORMAT JSON): Execution Time",
+  "cache_protocol": "one warm-up before five recorded runs per query; no OS/database cache reset",
+  "client_environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "logical_cpus": 20,
+    "physical_memory_bytes": 16962281472
+  },
+  "runner_sha256": "559b82f943fc687b59d8ee0f4acb6e42e5cb5d9ee70791f9c374d3ed43ff60c1",
+  "shared_helpers_sha256": "06a3b51a936953675af26e407b2a6e67a5326e7fd5bb7d9f539649488c827b47",
+  "indexed_measurement_count": 180,
+  "control_measurement_count": 30,
+  "comparison_csv_rows": 210,
+  "query_results_equal": true,
+  "completed_utc": "2026-10-30T11:11:10.592705+00:00"
+}

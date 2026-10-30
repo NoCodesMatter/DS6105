@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "contract_version": "1.0.0",
+  "new_task3_observations": 150,
+  "new_indexed_observations": 180,
+  "new_control_observations": 30,
+  "reused_task3_rows_in_task4": 30,
+  "total_new_timing_observations": 360,
+  "query_results_equal_across_index_configurations": true,
+  "checks": [
+    "all five load logs end in COMMIT",
+    "Q2 conserves each stage transaction count",
+    "Q5 retains a nonempty proper subset at every stage",
+    "each query/configuration has run numbers 1-5",
+    "each exported timing and row count matches its saved execution plan"
+  ],
+  "files": [
+    {
+      "path": "ops/benchmark/results/task3_baseline_01/task3_raw.csv",
+      "rows": 150,
+      "sha256": "ef72310bb9859718b5a7466d658264891fa76ccbd7225934e4cd15ce236ff299"
+    },
+    {
+      "path": "ops/benchmark/results/task4_indexes_02/task4_raw.csv",
+      "rows": 210,
+      "sha256": "88dd2765c4a0ce7aedb540ed79fb37a6bd143c74f1b9bde1d89bb7a05aa51430"
+    },
+    {
+      "path": "ops/benchmark/results/task4_indexes_02/control_raw.csv",
+      "rows": 30,
+      "sha256": "780a4e2501636afe698fb101d5fedae94c78ba0df73f59960f70e6758b967cd5"
+    }
+  ]
+}

@@ -1,0 +1,243 @@
+/******** QUERY *********/
+BEGIN;
+/************************/
+
+BEGIN
+/******** QUERY *********/
+SET LOCAL standard_conforming_strings = on;
+/************************/
+
+SET
+/******** QUERY *********/
+SET LOCAL client_encoding = 'UTF8';
+/************************/
+
+SET
+/******** QUERY *********/
+LOCK TABLE housing.town, housing.hdb_building, housing.hdb_flat, housing.resale_transaction, housing.hawker_centre, housing.building_hawker IN ACCESS EXCLUSIVE MODE;
+/************************/
+
+LOCK TABLE
+/******** QUERY *********/
+DO $$ BEGIN IF EXISTS (SELECT FROM housing.town) OR EXISTS (SELECT FROM housing.hdb_building) OR EXISTS (SELECT FROM housing.hdb_flat) OR EXISTS (SELECT FROM housing.resale_transaction) OR EXISTS (SELECT FROM housing.hawker_centre) OR EXISTS (SELECT FROM housing.building_hawker) THEN RAISE EXCEPTION 'Target tables are not empty; use a new stage database'; END IF; END $$;
+/************************/
+
+DO
+/******** QUERY *********/
+COPY  housing.town ( town_name ) FROM STDIN WITH (FORMAT csv, HEADER MATCH, NULL '', ENCODING 'UTF8')
+/************************/
+
+COPY 26
+/******** QUERY *********/
+COPY  housing.hdb_building ( building_id, town_name, block, street_name, latitude, longitude ) FROM STDIN WITH (FORMAT csv, HEADER MATCH, NULL '', ENCODING 'UTF8')
+/************************/
+
+COPY 8431
+/******** QUERY *********/
+COPY  housing.hdb_flat ( flat_id, building_id, flat_type, storey_lower, storey_upper, floor_area_sqm, flat_model, lease_commence_year ) FROM STDIN WITH (FORMAT csv, HEADER MATCH, NULL '', ENCODING 'UTF8')
+/************************/
+
+COPY 57175
+/******** QUERY *********/
+COPY  housing.resale_transaction ( transaction_id, flat_id, sale_month, resale_price, remaining_lease_months, lease_basis, source_dataset, source_row ) FROM STDIN WITH (FORMAT csv, HEADER MATCH, NULL '', ENCODING 'UTF8')
+/************************/
+
+COPY 89356
+/******** QUERY *********/
+COPY  housing.hawker_centre ( hawker_id, centre_name, address, market_produce_stalls, latitude, longitude ) FROM STDIN WITH (FORMAT csv, HEADER MATCH, NULL '', ENCODING 'UTF8')
+/************************/
+
+COPY 107
+/******** QUERY *********/
+COPY  housing.building_hawker ( building_id, hawker_id, distance_m ) FROM STDIN WITH (FORMAT csv, HEADER MATCH, NULL '', ENCODING 'UTF8')
+/************************/
+
+COPY 874640
+/******** QUERY *********/
+DO $$ BEGIN
+IF (SELECT count(*) FROM housing.town) <> 26 THEN RAISE EXCEPTION 'Unexpected row count: town (expected 26)'; END IF;
+IF (SELECT count(*) FROM housing.hdb_building) <> 8431 THEN RAISE EXCEPTION 'Unexpected row count: hdb_building (expected 8431)'; END IF;
+IF (SELECT count(*) FROM housing.hdb_flat) <> 57175 THEN RAISE EXCEPTION 'Unexpected row count: hdb_flat (expected 57175)'; END IF;
+IF (SELECT count(*) FROM housing.resale_transaction) <> 89356 THEN RAISE EXCEPTION 'Unexpected row count: resale_transaction (expected 89356)'; END IF;
+IF (SELECT count(*) FROM housing.hawker_centre) <> 107 THEN RAISE EXCEPTION 'Unexpected row count: hawker_centre (expected 107)'; END IF;
+IF (SELECT count(*) FROM housing.building_hawker) <> 874640 THEN RAISE EXCEPTION 'Unexpected row count: building_hawker (expected 874640)'; END IF;
+END $$;
+/************************/
+
+DO
+/******** QUERY *********/
+SELECT 'buildings_without_coordinates' AS diagnostic, count(*) AS count
+FROM housing.hdb_building WHERE latitude IS NULL
+UNION ALL
+SELECT 'hawkers_without_coordinates', count(*) FROM housing.hawker_centre WHERE latitude IS NULL
+UNION ALL
+SELECT 'transactions_without_spatial_coverage', count(*)
+FROM housing.resale_transaction r JOIN housing.hdb_flat f USING (flat_id)
+JOIN housing.hdb_building b USING (building_id) WHERE b.latitude IS NULL
+UNION ALL
+SELECT 'transactions_with_unknown_lease', count(*) FROM housing.resale_transaction WHERE lease_basis='unknown'
+-- Pending-validation dependency probes (reported, never fatal). A nonzero count is
+-- evidence AGAINST the dependency; zero on all five files is evidence FOR it.
+UNION ALL
+SELECT 'fd_probe_buildings_with_multiple_lease_years', count(*)
+FROM (SELECT building_id FROM housing.hdb_flat GROUP BY building_id
+      HAVING count(DISTINCT lease_commence_year) > 1) AS multi_lease
+UNION ALL
+SELECT 'fd_probe_coordinate_pairs_shared_by_buildings', count(*)
+FROM (SELECT latitude, longitude FROM housing.hdb_building WHERE latitude IS NOT NULL
+      GROUP BY latitude, longitude HAVING count(*) > 1) AS shared_location
+UNION ALL
+SELECT 'transactions_before_lease_commencement_year', count(*)
+FROM housing.resale_transaction r JOIN housing.hdb_flat f USING (flat_id)
+WHERE extract(year FROM r.sale_month) < f.lease_commence_year
+-- Beyond the 2,000 m maximum effective distance: no proximity level (reported).
+UNION ALL
+SELECT 'buildings_nearest_hawker_beyond_2000m', count(*)
+FROM housing.nearest_hawker WHERE proximity_class IS NULL
+UNION ALL
+SELECT 'buildings_nearest_market_beyond_2000m', count(*)
+FROM housing.nearest_market_hawker WHERE proximity_class IS NULL;
+/************************/
+
+                  diagnostic                   | count 
+-----------------------------------------------+-------
+ hawkers_without_coordinates                   |     3
+ buildings_without_coordinates                 |    21
+ fd_probe_coordinate_pairs_shared_by_buildings |     0
+ transactions_with_unknown_lease               |     0
+ transactions_without_spatial_coverage         |   213
+ transactions_before_lease_commencement_year   |     0
+ fd_probe_buildings_with_multiple_lease_years  |     1
+ buildings_nearest_hawker_beyond_2000m         |  2870
+ buildings_nearest_market_beyond_2000m         |  2875
+(9 行记录)
+
+/******** QUERY *********/
+DO $$
+DECLARE expected bigint; actual bigint;
+BEGIN
+    IF NOT EXISTS (SELECT FROM housing.resale_transaction) THEN
+        RAISE EXCEPTION 'No transactions loaded: integration gate cannot pass';
+    END IF;
+    IF NOT EXISTS (SELECT FROM housing.hawker_centre WHERE latitude IS NOT NULL) THEN
+        RAISE EXCEPTION 'No geocoded hawkers: Q4/Q5 cannot be accepted';
+    END IF;
+    IF NOT EXISTS (SELECT FROM housing.hawker_centre
+                   WHERE latitude IS NOT NULL AND market_produce_stalls > 0) THEN
+        RAISE EXCEPTION 'No geocoded fresh-market hawkers: Q5 cannot be accepted';
+    END IF;
+    SELECT (SELECT count(*) FROM housing.hdb_building WHERE latitude IS NOT NULL)
+         * (SELECT count(*) FROM housing.hawker_centre WHERE latitude IS NOT NULL) INTO expected;
+    SELECT count(*) INTO actual FROM housing.building_hawker;
+    IF expected = 0 OR actual <> expected THEN
+        RAISE EXCEPTION 'Spatial matrix incomplete: expected %, found %', expected, actual;
+    END IF;
+    IF EXISTS (
+        SELECT FROM housing.building_hawker bh
+        JOIN housing.hdb_building b USING (building_id)
+        JOIN housing.hawker_centre h USING (hawker_id)
+        WHERE b.latitude IS NULL OR h.latitude IS NULL
+           OR abs(bh.distance_m - housing.haversine_m(b.latitude,b.longitude,h.latitude,h.longitude)) > 0.01
+    ) THEN RAISE EXCEPTION 'Spatial row references unmatched location or distance differs by >0.01 m'; END IF;
+    IF EXISTS (
+        SELECT FROM housing.resale_transaction r JOIN housing.hdb_flat f USING (flat_id)
+        WHERE r.lease_basis='estimated_years'
+          AND r.remaining_lease_months <> 12*(99-(extract(year FROM r.sale_month)::integer-f.lease_commence_year))
+    ) THEN RAISE EXCEPTION 'Estimated lease does not follow the declared year-resolution formula'; END IF;
+END $$;
+/************************/
+
+DO
+/******** QUERY *********/
+SELECT proximity_class, count(*) AS buildings FROM housing.nearest_hawker GROUP BY proximity_class;
+/************************/
+
+ proximity_class | buildings 
+-----------------+-----------
+ far             |      1845
+ medium          |      1321
+ near            |      2374
+                 |      2870
+(4 行记录)
+
+/******** QUERY *********/
+SELECT proximity_class, count(*) AS buildings FROM housing.nearest_market_hawker GROUP BY proximity_class;
+/************************/
+
+ proximity_class | buildings 
+-----------------+-----------
+ far             |      1846
+ medium          |      1349
+ near            |      2340
+                 |      2875
+(4 行记录)
+
+/******** QUERY *********/
+SELECT count(*) AS transactions, min(sale_month) AS first_month, max(sale_month) AS last_month
+FROM housing.resale_transaction;
+/************************/
+
+ transactions | first_month | last_month 
+--------------+-------------+------------
+        89356 | 2012-03-01  | 2016-12-01
+(1 行记录)
+
+/******** QUERY *********/
+ANALYZE housing.town;
+/************************/
+
+ANALYZE
+/******** QUERY *********/
+ANALYZE housing.hdb_building;
+/************************/
+
+ANALYZE
+/******** QUERY *********/
+ANALYZE housing.hdb_flat;
+/************************/
+
+ANALYZE
+/******** QUERY *********/
+ANALYZE housing.resale_transaction;
+/************************/
+
+ANALYZE
+/******** QUERY *********/
+ANALYZE housing.hawker_centre;
+/************************/
+
+ANALYZE
+/******** QUERY *********/
+ANALYZE housing.building_hawker;
+/************************/
+
+ANALYZE
+/******** QUERY *********/
+SELECT 'town' AS table_name, count(*) AS rows FROM housing.town
+UNION ALL
+SELECT 'hdb_building' AS table_name, count(*) AS rows FROM housing.hdb_building
+UNION ALL
+SELECT 'hdb_flat' AS table_name, count(*) AS rows FROM housing.hdb_flat
+UNION ALL
+SELECT 'resale_transaction' AS table_name, count(*) AS rows FROM housing.resale_transaction
+UNION ALL
+SELECT 'hawker_centre' AS table_name, count(*) AS rows FROM housing.hawker_centre
+UNION ALL
+SELECT 'building_hawker' AS table_name, count(*) AS rows FROM housing.building_hawker;
+/************************/
+
+     table_name     |  rows  
+--------------------+--------
+ town               |     26
+ hdb_building       |   8431
+ hdb_flat           |  57175
+ resale_transaction |  89356
+ hawker_centre      |    107
+ building_hawker    | 874640
+(6 行记录)
+
+/******** QUERY *********/
+COMMIT;
+/************************/
+
+COMMIT

@@ -1,0 +1,180 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Incremental Sort",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 12978.20,
+      "Total Cost": 14798.63,
+      "Plan Rows": 1300,
+      "Plan Width": 118,
+      "Actual Rows": 53,
+      "Actual Loops": 1,
+      "Sort Key": ["b.town_name", "(CASE (CASE WHEN (r.remaining_lease_months IS NULL) THEN 'unknown'::text WHEN (r.remaining_lease_months < 600) THEN 'less_than_50_years'::text WHEN (r.remaining_lease_months <= 840) THEN 'between_50_and_70_years'::text ELSE 'more_than_70_years'::text END) WHEN 'less_than_50_years'::text THEN 1 WHEN 'between_50_and_70_years'::text THEN 2 WHEN 'more_than_70_years'::text THEN 3 ELSE 4 END)"],
+      "Presorted Key": ["b.town_name"],
+      "Full-sort Groups": {
+        "Group Count": 2,
+        "Sort Methods Used": ["quicksort"],
+        "Sort Space Memory": {
+          "Average Sort Space Used": 27,
+          "Peak Sort Space Used": 27
+        }
+      },
+      "Plans": [
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Sorted",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 12906.05,
+          "Total Cost": 14745.17,
+          "Plan Rows": 1300,
+          "Plan Width": 118,
+          "Actual Rows": 53,
+          "Actual Loops": 1,
+          "Group Key": ["b.town_name", "(CASE WHEN (r.remaining_lease_months IS NULL) THEN 'unknown'::text WHEN (r.remaining_lease_months < 600) THEN 'less_than_50_years'::text WHEN (r.remaining_lease_months <= 840) THEN 'between_50_and_70_years'::text ELSE 'more_than_70_years'::text END)"],
+          "Plans": [
+            {
+              "Node Type": "Sort",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 12906.05,
+              "Total Cost": 13129.44,
+              "Plan Rows": 89356,
+              "Plan Width": 55,
+              "Actual Rows": 89356,
+              "Actual Loops": 1,
+              "Sort Key": ["b.town_name", "(CASE WHEN (r.remaining_lease_months IS NULL) THEN 'unknown'::text WHEN (r.remaining_lease_months < 600) THEN 'less_than_50_years'::text WHEN (r.remaining_lease_months <= 840) THEN 'between_50_and_70_years'::text ELSE 'more_than_70_years'::text END)"],
+              "Sort Method": "quicksort",
+              "Sort Space Used": 8651,
+              "Sort Space Type": "Memory",
+              "Plans": [
+                {
+                  "Node Type": "Hash Join",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 2276.13,
+                  "Total Cost": 5557.74,
+                  "Plan Rows": 89356,
+                  "Plan Width": 55,
+                  "Actual Rows": 89356,
+                  "Actual Loops": 1,
+                  "Inner Unique": true,
+                  "Hash Cond": "(f.building_id = b.building_id)",
+                  "Plans": [
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 1990.44,
+                      "Total Cost": 4590.58,
+                      "Plan Rows": 89356,
+                      "Plan Width": 29,
+                      "Actual Rows": 89356,
+                      "Actual Loops": 1,
+                      "Inner Unique": true,
+                      "Hash Cond": "(r.flat_id = f.flat_id)",
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Relation Name": "resale_transaction",
+                          "Alias": "r",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 2365.56,
+                          "Plan Rows": 89356,
+                          "Plan Width": 24,
+                          "Actual Rows": 89356,
+                          "Actual Loops": 1
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Startup Cost": 1275.75,
+                          "Total Cost": 1275.75,
+                          "Plan Rows": 57175,
+                          "Plan Width": 37,
+                          "Actual Rows": 57175,
+                          "Actual Loops": 1,
+                          "Hash Buckets": 65536,
+                          "Original Hash Buckets": 65536,
+                          "Hash Batches": 1,
+                          "Original Hash Batches": 1,
+                          "Peak Memory Usage": 4365,
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Relation Name": "hdb_flat",
+                              "Alias": "f",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 1275.75,
+                              "Plan Rows": 57175,
+                              "Plan Width": 37,
+                              "Actual Rows": 57175,
+                              "Actual Loops": 1
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Hash",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 180.31,
+                      "Total Cost": 180.31,
+                      "Plan Rows": 8431,
+                      "Plan Width": 26,
+                      "Actual Rows": 8431,
+                      "Actual Loops": 1,
+                      "Hash Buckets": 16384,
+                      "Original Hash Buckets": 16384,
+                      "Hash Batches": 1,
+                      "Original Hash Batches": 1,
+                      "Peak Memory Usage": 607,
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Relation Name": "hdb_building",
+                          "Alias": "b",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 180.31,
+                          "Plan Rows": 8431,
+                          "Plan Width": 26,
+                          "Actual Rows": 8431,
+                          "Actual Loops": 1
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Planning Time": 0.262,
+    "Triggers": [
+    ],
+    "Execution Time": 121.242
+  }
+]

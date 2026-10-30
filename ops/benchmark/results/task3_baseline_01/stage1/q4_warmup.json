@@ -1,0 +1,256 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Subquery Scan",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Alias": "town_flat_proximity_prices",
+      "Startup Cost": 92208.04,
+      "Total Cost": 92405.91,
+      "Plan Rows": 180,
+      "Plan Width": 113,
+      "Actual Rows": 43,
+      "Actual Loops": 1,
+      "Plans": [
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Sorted",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "Subquery",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 92208.04,
+          "Total Cost": 92402.76,
+          "Plan Rows": 180,
+          "Plan Width": 81,
+          "Actual Rows": 43,
+          "Actual Loops": 1,
+          "Group Key": ["b.town_name", "f.flat_type"],
+          "Filter": "((avg(r.resale_price) FILTER (WHERE (housing.proximity_class(nearest.distance_m) = 'near'::text)) IS NOT NULL) AND (avg(r.resale_price) FILTER (WHERE (housing.proximity_class(nearest.distance_m) = 'far'::text)) IS NOT NULL))",
+          "Rows Removed by Filter": 54,
+          "Plans": [
+            {
+              "Node Type": "Sort",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 92208.04,
+              "Total Cost": 92208.97,
+              "Plan Rows": 371,
+              "Plan Width": 31,
+              "Actual Rows": 18531,
+              "Actual Loops": 1,
+              "Sort Key": ["b.town_name", "f.flat_type"],
+              "Sort Method": "quicksort",
+              "Sort Space Used": 1684,
+              "Sort Space Type": "Memory",
+              "Plans": [
+                {
+                  "Node Type": "Hash Join",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 1486.52,
+                  "Total Cost": 92192.21,
+                  "Plan Rows": 371,
+                  "Plan Width": 31,
+                  "Actual Rows": 18531,
+                  "Actual Loops": 1,
+                  "Inner Unique": false,
+                  "Hash Cond": "(f.flat_id = r.flat_id)",
+                  "Plans": [
+                    {
+                      "Node Type": "Nested Loop",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 10.58,
+                      "Total Cost": 90707.92,
+                      "Plan Rows": 286,
+                      "Plan Width": 41,
+                      "Actual Rows": 13968,
+                      "Actual Loops": 1,
+                      "Inner Unique": false,
+                      "Plans": [
+                        {
+                          "Node Type": "Nested Loop",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Join Type": "Inner",
+                          "Startup Cost": 10.29,
+                          "Total Cost": 90653.37,
+                          "Plan Rows": 79,
+                          "Plan Width": 50,
+                          "Actual Rows": 3936,
+                          "Actual Loops": 1,
+                          "Inner Unique": true,
+                          "Plans": [
+                            {
+                              "Node Type": "Subquery Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Alias": "nearest",
+                              "Startup Cost": 10.01,
+                              "Total Cost": 90249.67,
+                              "Plan Rows": 79,
+                              "Plan Width": 24,
+                              "Actual Rows": 3936,
+                              "Actual Loops": 1,
+                              "Filter": "(housing.proximity_class(nearest.distance_m) = ANY ('{near,far}'::text[]))",
+                              "Rows Removed by Filter": 3967,
+                              "Plans": [
+                                {
+                                  "Node Type": "Unique",
+                                  "Parent Relationship": "Subquery",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "Startup Cost": 10.01,
+                                  "Total Cost": 88177.24,
+                                  "Plan Rows": 7895,
+                                  "Plan Width": 40,
+                                  "Actual Rows": 7903,
+                                  "Actual Loops": 1,
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Incremental Sort",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Startup Cost": 10.01,
+                                      "Total Cost": 86122.46,
+                                      "Plan Rows": 821912,
+                                      "Plan Width": 40,
+                                      "Actual Rows": 821912,
+                                      "Actual Loops": 1,
+                                      "Sort Key": ["building_hawker.building_id", "building_hawker.distance_m", "building_hawker.hawker_id"],
+                                      "Presorted Key": ["building_hawker.building_id"],
+                                      "Full-sort Groups": {
+                                        "Group Count": 7903,
+                                        "Sort Methods Used": ["quicksort"],
+                                        "Sort Space Memory": {
+                                          "Average Sort Space Used": 28,
+                                          "Peak Sort Space Used": 28
+                                        }
+                                      },
+                                      "Pre-sorted Groups": {
+                                        "Group Count": 7903,
+                                        "Sort Methods Used": ["quicksort"],
+                                        "Sort Space Memory": {
+                                          "Average Sort Space Used": 30,
+                                          "Peak Sort Space Used": 30
+                                        }
+                                      },
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Index Scan",
+                                          "Parent Relationship": "Outer",
+                                          "Parallel Aware": false,
+                                          "Async Capable": false,
+                                          "Scan Direction": "Forward",
+                                          "Index Name": "building_hawker_pkey",
+                                          "Relation Name": "building_hawker",
+                                          "Alias": "building_hawker",
+                                          "Startup Cost": 0.42,
+                                          "Total Cost": 48148.79,
+                                          "Plan Rows": 821912,
+                                          "Plan Width": 40,
+                                          "Actual Rows": 821912,
+                                          "Actual Loops": 1
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "Node Type": "Index Scan",
+                              "Parent Relationship": "Inner",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Scan Direction": "Forward",
+                              "Index Name": "hdb_building_pkey",
+                              "Relation Name": "hdb_building",
+                              "Alias": "b",
+                              "Startup Cost": 0.28,
+                              "Total Cost": 5.11,
+                              "Plan Rows": 1,
+                              "Plan Width": 26,
+                              "Actual Rows": 1,
+                              "Actual Loops": 3936,
+                              "Index Cond": "(building_id = nearest.building_id)",
+                              "Rows Removed by Index Recheck": 0
+                            }
+                          ]
+                        },
+                        {
+                          "Node Type": "Index Scan",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Scan Direction": "Forward",
+                          "Index Name": "flat_profile_key",
+                          "Relation Name": "hdb_flat",
+                          "Alias": "f",
+                          "Startup Cost": 0.29,
+                          "Total Cost": 0.65,
+                          "Plan Rows": 4,
+                          "Plan Width": 39,
+                          "Actual Rows": 4,
+                          "Actual Loops": 3936,
+                          "Index Cond": "(building_id = b.building_id)",
+                          "Rows Removed by Index Recheck": 0
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Hash",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 1011.53,
+                      "Total Cost": 1011.53,
+                      "Plan Rows": 37153,
+                      "Plan Width": 22,
+                      "Actual Rows": 37153,
+                      "Actual Loops": 1,
+                      "Hash Buckets": 65536,
+                      "Original Hash Buckets": 65536,
+                      "Hash Batches": 1,
+                      "Original Hash Batches": 1,
+                      "Peak Memory Usage": 2479,
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Relation Name": "resale_transaction",
+                          "Alias": "r",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 1011.53,
+                          "Plan Rows": 37153,
+                          "Plan Width": 22,
+                          "Actual Rows": 37153,
+                          "Actual Loops": 1
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Planning Time": 0.587,
+    "Triggers": [
+    ],
+    "Execution Time": 483.691
+  }
+]

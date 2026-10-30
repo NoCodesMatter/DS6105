@@ -1,0 +1,551 @@
+/******** QUERY *********/
+SELECT
+    b.town_name AS town,
+    f.flat_type,
+    COUNT(*) AS transaction_count,
+    ROUND(AVG(r.resale_price / f.floor_area_sqm), 2) AS avg_price_per_sqm,
+    ROUND(SUM(r.resale_price) / SUM(f.floor_area_sqm), 2) AS area_weighted_price_per_sqm
+FROM housing.resale_transaction AS r
+JOIN housing.hdb_flat AS f
+    USING (flat_id)
+JOIN housing.hdb_building AS b
+    USING (building_id)
+WHERE f.flat_type IN ('4 ROOM', '5 ROOM')
+  AND r.sale_month >= DATE '2014-01-01'
+  AND r.sale_month <= DATE '2016-12-01'
+GROUP BY
+    b.town_name,
+    f.flat_type
+ORDER BY
+    b.town_name ASC,
+    f.flat_type ASC;
+/************************/
+
+      town       | flat_type | transaction_count | avg_price_per_sqm | area_weighted_price_per_sqm 
+-----------------+-----------+-------------------+-------------------+-----------------------------
+ ANG MO KIO      | 4 ROOM    |               667 |           5143.88 |                     5138.65
+ ANG MO KIO      | 5 ROOM    |               288 |           5616.14 |                     5580.38
+ BEDOK           | 4 ROOM    |              1181 |           4714.80 |                     4710.31
+ BEDOK           | 5 ROOM    |               533 |           4763.98 |                     4751.30
+ BISHAN          | 4 ROOM    |               490 |           5577.95 |                     5549.00
+ BISHAN          | 5 ROOM    |               234 |           5914.31 |                     5905.55
+ BUKIT BATOK     | 4 ROOM    |               844 |           4238.22 |                     4229.33
+ BUKIT BATOK     | 5 ROOM    |               234 |           4548.95 |                     4537.73
+ BUKIT MERAH     | 4 ROOM    |               692 |           6823.50 |                     6804.04
+ BUKIT MERAH     | 5 ROOM    |               399 |           6429.46 |                     6399.69
+ BUKIT PANJANG   | 4 ROOM    |               930 |           3921.57 |                     3901.34
+ BUKIT PANJANG   | 5 ROOM    |               567 |           4080.11 |                     4068.09
+ BUKIT TIMAH     | 4 ROOM    |                37 |           6488.07 |                     6492.19
+ BUKIT TIMAH     | 5 ROOM    |                30 |           6654.35 |                     6651.17
+ CENTRAL AREA    | 4 ROOM    |               229 |           8180.39 |                     8230.54
+ CENTRAL AREA    | 5 ROOM    |                62 |           8961.03 |                     8913.02
+ CHOA CHU KANG   | 4 ROOM    |              1210 |           3573.70 |                     3568.02
+ CHOA CHU KANG   | 5 ROOM    |               725 |           3600.16 |                     3598.84
+ CLEMENTI        | 4 ROOM    |               367 |           5660.85 |                     5658.91
+ CLEMENTI        | 5 ROOM    |               128 |           5796.20 |                     5774.99
+ GEYLANG         | 4 ROOM    |               481 |           5324.25 |                     5320.26
+ GEYLANG         | 5 ROOM    |               166 |           5501.42 |                     5478.17
+ HOUGANG         | 4 ROOM    |              1251 |           4136.94 |                     4126.77
+ HOUGANG         | 5 ROOM    |               504 |           4250.49 |                     4257.07
+ JURONG EAST     | 4 ROOM    |               351 |           4376.92 |                     4371.53
+ JURONG EAST     | 5 ROOM    |               267 |           4533.91 |                     4531.78
+ JURONG WEST     | 4 ROOM    |              1603 |           4014.38 |                     3983.92
+ JURONG WEST     | 5 ROOM    |              1314 |           4025.41 |                     4005.67
+ KALLANG/WHAMPOA | 4 ROOM    |               499 |           6036.98 |                     6009.21
+ KALLANG/WHAMPOA | 5 ROOM    |               261 |           6171.73 |                     6124.30
+ MARINE PARADE   | 4 ROOM    |                95 |           6286.23 |                     6285.58
+ MARINE PARADE   | 5 ROOM    |                94 |           6667.81 |                     6663.24
+ PASIR RIS       | 4 ROOM    |               736 |           3915.68 |                     3912.97
+ PASIR RIS       | 5 ROOM    |               531 |           3839.22 |                     3836.10
+ PUNGGOL         | 4 ROOM    |               972 |           4777.65 |                     4782.70
+ PUNGGOL         | 5 ROOM    |               874 |           4186.13 |                     4189.00
+ QUEENSTOWN      | 4 ROOM    |               456 |           7332.08 |                     7309.10
+ QUEENSTOWN      | 5 ROOM    |               178 |           7143.54 |                     7113.89
+ SEMBAWANG       | 4 ROOM    |               626 |           4024.23 |                     4018.21
+ SEMBAWANG       | 5 ROOM    |               550 |           3800.75 |                     3797.28
+ SENGKANG        | 4 ROOM    |              1878 |           4647.95 |                     4638.47
+ SENGKANG        | 5 ROOM    |              1245 |           4127.47 |                     4122.37
+ SERANGOON       | 4 ROOM    |               542 |           4900.08 |                     4877.36
+ SERANGOON       | 5 ROOM    |               174 |           4651.31 |                     4642.64
+ TAMPINES        | 4 ROOM    |              1619 |           4339.10 |                     4324.22
+ TAMPINES        | 5 ROOM    |              1023 |           4498.17 |                     4464.24
+ TOA PAYOH       | 4 ROOM    |               451 |           5902.44 |                     5847.10
+ TOA PAYOH       | 5 ROOM    |               206 |           5747.56 |                     5720.84
+ WOODLANDS       | 4 ROOM    |              1707 |           3756.58 |                     3749.16
+ WOODLANDS       | 5 ROOM    |              1244 |           3618.25 |                     3612.40
+ YISHUN          | 4 ROOM    |              1607 |           3932.31 |                     3918.59
+ YISHUN          | 5 ROOM    |               372 |           3774.39 |                     3768.19
+(52 行记录)
+
+/******** QUERY *********/
+WITH categorized_sales AS (
+    SELECT
+        b.town_name AS town,
+        CASE
+            WHEN r.remaining_lease_months IS NULL THEN 'unknown'
+            WHEN r.remaining_lease_months < 600 THEN 'less_than_50_years'
+            WHEN r.remaining_lease_months <= 840 THEN 'between_50_and_70_years'
+            ELSE 'more_than_70_years'
+        END AS remaining_lease_bucket,
+        r.resale_price,
+        r.resale_price / f.floor_area_sqm AS price_per_sqm
+    FROM housing.resale_transaction AS r
+    JOIN housing.hdb_flat AS f
+        USING (flat_id)
+    JOIN housing.hdb_building AS b
+        USING (building_id)
+)
+SELECT
+    town,
+    remaining_lease_bucket,
+    ROUND(
+        PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY resale_price)::numeric,
+        2
+    ) AS median_resale_price,
+    ROUND(AVG(price_per_sqm), 2) AS avg_price_per_sqm,
+    COUNT(*) AS total_transaction_volume
+FROM categorized_sales
+GROUP BY
+    town,
+    remaining_lease_bucket
+ORDER BY
+    town ASC,
+    CASE remaining_lease_bucket
+        WHEN 'less_than_50_years' THEN 1
+        WHEN 'between_50_and_70_years' THEN 2
+        WHEN 'more_than_70_years' THEN 3
+        ELSE 4
+    END ASC;
+/************************/
+
+      town       | remaining_lease_bucket  | median_resale_price | avg_price_per_sqm | total_transaction_volume 
+-----------------+-------------------------+---------------------+-------------------+--------------------------
+ ANG MO KIO      | between_50_and_70_years |           365000.00 |           4953.33 |                     3895
+ ANG MO KIO      | more_than_70_years      |           602000.00 |           6004.77 |                      509
+ BEDOK           | between_50_and_70_years |           362000.00 |           4763.81 |                     4438
+ BEDOK           | more_than_70_years      |           522000.00 |           5157.63 |                     1440
+ BISHAN          | between_50_and_70_years |           485000.00 |           5623.78 |                      357
+ BISHAN          | more_than_70_years      |           588000.00 |           5634.85 |                     1260
+ BUKIT BATOK     | between_50_and_70_years |           338800.00 |           4218.11 |                     1425
+ BUKIT BATOK     | more_than_70_years      |           411000.00 |           4642.81 |                     2218
+ BUKIT MERAH     | less_than_50_years      |           260000.00 |           5394.80 |                        3
+ BUKIT MERAH     | between_50_and_70_years |           395000.00 |           5843.14 |                     2040
+ BUKIT MERAH     | more_than_70_years      |           710000.00 |           7240.38 |                     1455
+ BUKIT PANJANG   | between_50_and_70_years |           316500.00 |           3750.86 |                       92
+ BUKIT PANJANG   | more_than_70_years      |           425000.00 |           4200.24 |                     3043
+ BUKIT TIMAH     | between_50_and_70_years |           529000.00 |           6396.06 |                       80
+ BUKIT TIMAH     | more_than_70_years      |           750000.00 |           6261.44 |                      107
+ CENTRAL AREA    | between_50_and_70_years |           450000.00 |           6707.02 |                      455
+ CENTRAL AREA    | more_than_70_years      |           855000.00 |           8361.14 |                      270
+ CHOA CHU KANG   | between_50_and_70_years |           326500.00 |           3856.68 |                      228
+ CHOA CHU KANG   | more_than_70_years      |           420888.00 |           3861.86 |                     3585
+ CLEMENTI        | between_50_and_70_years |           395000.00 |           5265.29 |                     2040
+ CLEMENTI        | more_than_70_years      |           690000.00 |           6833.79 |                      199
+ GEYLANG         | less_than_50_years      |           257000.00 |           4478.88 |                       34
+ GEYLANG         | between_50_and_70_years |           328000.00 |           5072.15 |                     1844
+ GEYLANG         | more_than_70_years      |           543888.00 |           5814.92 |                      673
+ HOUGANG         | between_50_and_70_years |           362000.00 |           4396.30 |                     1663
+ HOUGANG         | more_than_70_years      |           448000.00 |           4506.39 |                     2913
+ JURONG EAST     | less_than_50_years      |           250000.00 |           3731.34 |                        1
+ JURONG EAST     | between_50_and_70_years |           355000.00 |           4471.00 |                     1480
+ JURONG EAST     | more_than_70_years      |           518000.00 |           4787.19 |                      589
+ JURONG WEST     | between_50_and_70_years |           322000.00 |           4270.91 |                     1815
+ JURONG WEST     | more_than_70_years      |           448000.00 |           4230.97 |                     5464
+ KALLANG/WHAMPOA | between_50_and_70_years |           368000.00 |           5398.13 |                     1802
+ KALLANG/WHAMPOA | more_than_70_years      |           630000.00 |           6488.12 |                      873
+ MARINE PARADE   | between_50_and_70_years |           495000.00 |           6381.54 |                      628
+ PASIR RIS       | between_50_and_70_years |           302500.00 |           4547.03 |                       28
+ PASIR RIS       | more_than_70_years      |           480000.00 |           4100.52 |                     2934
+ PUNGGOL         | more_than_70_years      |           475000.00 |           4713.30 |                     2988
+ QUEENSTOWN      | less_than_50_years      |           320000.00 |           5349.81 |                       43
+ QUEENSTOWN      | between_50_and_70_years |           375000.00 |           6038.88 |                     1561
+ QUEENSTOWN      | more_than_70_years      |           719000.00 |           7569.70 |                      837
+ SEMBAWANG       | more_than_70_years      |           430000.00 |           4095.48 |                     2231
+ SENGKANG        | more_than_70_years      |           470000.00 |           4652.17 |                     5713
+ SERANGOON       | between_50_and_70_years |           390000.00 |           5081.81 |                      752
+ SERANGOON       | more_than_70_years      |           500000.00 |           5002.29 |                     1208
+ TAMPINES        | between_50_and_70_years |           395000.00 |           4555.26 |                     2101
+ TAMPINES        | more_than_70_years      |           481000.00 |           4586.26 |                     4386
+ TOA PAYOH       | less_than_50_years      |           259000.00 |           4835.22 |                        8
+ TOA PAYOH       | between_50_and_70_years |           346000.00 |           5055.04 |                     1937
+ TOA PAYOH       | more_than_70_years      |           670000.00 |           6410.61 |                      868
+ WOODLANDS       | between_50_and_70_years |           310000.00 |           3989.47 |                     1011
+ WOODLANDS       | more_than_70_years      |           420000.00 |           3935.93 |                     6090
+ YISHUN          | between_50_and_70_years |           328000.00 |           4156.69 |                     2018
+ YISHUN          | more_than_70_years      |           380000.00 |           4278.65 |                     3724
+(53 行记录)
+
+/******** QUERY *********/
+WITH top_10_large_3room_towns AS (
+    SELECT
+        b.town_name AS town,
+        ROUND(AVG(f.floor_area_sqm), 2) AS avg_3room_floor_area_sqm
+    FROM housing.hdb_flat AS f
+    JOIN housing.hdb_building AS b
+        USING (building_id)
+    WHERE f.flat_type = '3 ROOM'
+    GROUP BY
+        b.town_name
+    ORDER BY
+        AVG(f.floor_area_sqm) DESC,
+        b.town_name ASC
+    LIMIT 10
+)
+SELECT
+    t10.town,
+    t10.avg_3room_floor_area_sqm,
+    EXTRACT(YEAR FROM r.sale_month)::integer AS transaction_year,
+    MAX(r.resale_price) AS highest_resale_price,
+    COUNT(*) AS transaction_count
+FROM top_10_large_3room_towns AS t10
+JOIN housing.hdb_building AS b
+    ON b.town_name = t10.town
+JOIN housing.hdb_flat AS f
+    USING (building_id)
+JOIN housing.resale_transaction AS r
+    USING (flat_id)
+WHERE f.flat_type = '3 ROOM'
+GROUP BY
+    t10.town,
+    t10.avg_3room_floor_area_sqm,
+    EXTRACT(YEAR FROM r.sale_month)::integer
+ORDER BY
+    t10.avg_3room_floor_area_sqm DESC,
+    t10.town ASC,
+    transaction_year ASC;
+/************************/
+
+     town      | avg_3room_floor_area_sqm | transaction_year | highest_resale_price | transaction_count 
+---------------+--------------------------+------------------+----------------------+-------------------
+ CHOA CHU KANG |                    73.15 |             2012 |            360000.00 |                43
+ CHOA CHU KANG |                    73.15 |             2013 |            372000.00 |                31
+ CHOA CHU KANG |                    73.15 |             2014 |            339000.00 |                29
+ CHOA CHU KANG |                    73.15 |             2015 |            320000.00 |                35
+ CHOA CHU KANG |                    73.15 |             2016 |            320000.00 |                53
+ ANG MO KIO    |                    72.71 |             2012 |            490000.00 |               592
+ ANG MO KIO    |                    72.71 |             2013 |            485000.00 |               480
+ ANG MO KIO    |                    72.71 |             2014 |            480000.00 |               505
+ ANG MO KIO    |                    72.71 |             2015 |            488000.00 |               554
+ ANG MO KIO    |                    72.71 |             2016 |            570000.00 |               549
+ TAMPINES      |                    72.62 |             2012 |            450000.00 |               332
+ TAMPINES      |                    72.62 |             2013 |            440000.00 |               289
+ TAMPINES      |                    72.62 |             2014 |            445000.00 |               339
+ TAMPINES      |                    72.62 |             2015 |            416000.00 |               332
+ TAMPINES      |                    72.62 |             2016 |            395000.00 |               325
+ BUKIT PANJANG |                    72.02 |             2012 |            396000.00 |                80
+ BUKIT PANJANG |                    72.02 |             2013 |            372000.00 |                51
+ BUKIT PANJANG |                    72.02 |             2014 |            350000.00 |                69
+ BUKIT PANJANG |                    72.02 |             2015 |            332000.00 |                75
+ BUKIT PANJANG |                    72.02 |             2016 |            330000.00 |               100
+ JURONG EAST   |                    71.64 |             2012 |            395000.00 |               208
+ JURONG EAST   |                    71.64 |             2013 |            420000.00 |               165
+ JURONG EAST   |                    71.64 |             2014 |            410000.00 |               188
+ JURONG EAST   |                    71.64 |             2015 |            422000.00 |               160
+ JURONG EAST   |                    71.64 |             2016 |            380000.00 |               172
+ CLEMENTI      |                    71.43 |             2012 |            515000.00 |               291
+ CLEMENTI      |                    71.43 |             2013 |            518000.00 |               233
+ CLEMENTI      |                    71.43 |             2014 |            498000.00 |               232
+ CLEMENTI      |                    71.43 |             2015 |            455000.00 |               268
+ CLEMENTI      |                    71.43 |             2016 |            680000.00 |               298
+ WOODLANDS     |                    70.59 |             2012 |            387000.00 |               230
+ WOODLANDS     |                    70.59 |             2013 |            393000.00 |               199
+ WOODLANDS     |                    70.59 |             2014 |            361000.00 |               165
+ WOODLANDS     |                    70.59 |             2015 |            340000.00 |               144
+ WOODLANDS     |                    70.59 |             2016 |            320000.00 |               148
+ JURONG WEST   |                    70.31 |             2012 |            415000.00 |               324
+ JURONG WEST   |                    70.31 |             2013 |            418000.00 |               304
+ JURONG WEST   |                    70.31 |             2014 |            400000.00 |               312
+ JURONG WEST   |                    70.31 |             2015 |            375000.00 |               296
+ JURONG WEST   |                    70.31 |             2016 |            370000.00 |               288
+ BEDOK         |                    70.16 |             2012 |            520000.00 |               542
+ BEDOK         |                    70.16 |             2013 |            520000.00 |               524
+ BEDOK         |                    70.16 |             2014 |            500000.00 |               545
+ BEDOK         |                    70.16 |             2015 |            500000.00 |               583
+ BEDOK         |                    70.16 |             2016 |            498000.00 |               528
+ SENGKANG      |                    70.01 |             2012 |            430000.00 |                 5
+ SENGKANG      |                    70.01 |             2013 |            443000.00 |                17
+ SENGKANG      |                    70.01 |             2014 |            410000.00 |                20
+ SENGKANG      |                    70.01 |             2015 |            390000.00 |                33
+ SENGKANG      |                    70.01 |             2016 |            385000.00 |                53
+(50 行记录)
+
+/******** QUERY *********/
+WITH town_flat_proximity_prices AS (
+    SELECT
+        b.town_name AS town,
+        f.flat_type,
+        AVG(r.resale_price) FILTER (WHERE nh.proximity_class = 'near') AS raw_avg_near,
+        AVG(r.resale_price) FILTER (WHERE nh.proximity_class = 'far') AS raw_avg_far
+    FROM housing.resale_transaction AS r
+    JOIN housing.hdb_flat AS f
+        USING (flat_id)
+    JOIN housing.hdb_building AS b
+        USING (building_id)
+    JOIN housing.nearest_hawker AS nh
+        USING (building_id)
+    WHERE nh.proximity_class IN ('near', 'far')
+    GROUP BY
+        b.town_name,
+        f.flat_type
+)
+SELECT
+    town,
+    flat_type,
+    ROUND(raw_avg_near, 2) AS avg_price_near_hawker,
+    ROUND(raw_avg_far, 2) AS avg_price_far_hawker,
+    ROUND(
+        (raw_avg_near - raw_avg_far) * 100.0 / NULLIF(raw_avg_far, 0),
+        2
+    ) AS price_diff_percentage
+FROM town_flat_proximity_prices
+WHERE raw_avg_near IS NOT NULL
+  AND raw_avg_far IS NOT NULL
+ORDER BY
+    town ASC,
+    flat_type ASC;
+/************************/
+
+      town       | flat_type | avg_price_near_hawker | avg_price_far_hawker | price_diff_percentage 
+-----------------+-----------+-----------------------+----------------------+-----------------------
+ BEDOK           | EXECUTIVE |             701527.36 |            687302.74 |                  2.07
+ BISHAN          | 3 ROOM    |             370208.99 |            413500.00 |                -10.47
+ BISHAN          | 4 ROOM    |             498875.00 |            531011.38 |                 -6.05
+ BISHAN          | 5 ROOM    |             683921.78 |            733689.39 |                 -6.78
+ BISHAN          | EXECUTIVE |             836311.11 |            890179.27 |                 -6.05
+ BUKIT BATOK     | 3 ROOM    |             308623.65 |            316985.17 |                 -2.64
+ BUKIT BATOK     | 4 ROOM    |             411439.96 |            447641.41 |                 -8.09
+ BUKIT BATOK     | 5 ROOM    |             565782.61 |            611822.14 |                 -7.52
+ BUKIT MERAH     | 5 ROOM    |             780382.09 |            695788.80 |                 12.16
+ CLEMENTI        | 4 ROOM    |             522072.84 |            627543.38 |                -16.81
+ CLEMENTI        | 5 ROOM    |             694566.83 |            859700.00 |                -19.21
+ CLEMENTI        | EXECUTIVE |             792000.00 |            853636.75 |                 -7.22
+ GEYLANG         | 3 ROOM    |             319722.56 |            312670.69 |                  2.26
+ GEYLANG         | 4 ROOM    |             547047.18 |            403649.93 |                 35.53
+ GEYLANG         | 5 ROOM    |             693766.89 |            515000.00 |                 34.71
+ HOUGANG         | 3 ROOM    |             330366.16 |            323690.32 |                  2.06
+ HOUGANG         | 4 ROOM    |             438805.69 |            414445.04 |                  5.88
+ HOUGANG         | 5 ROOM    |             635403.90 |            527815.45 |                 20.38
+ HOUGANG         | EXECUTIVE |             765635.62 |            676167.57 |                 13.23
+ JURONG EAST     | 4 ROOM    |             417505.00 |            484496.77 |                -13.83
+ JURONG EAST     | 5 ROOM    |             542196.75 |            605893.41 |                -10.51
+ JURONG EAST     | EXECUTIVE |             640521.95 |            761029.63 |                -15.83
+ JURONG WEST     | 4 ROOM    |             414743.60 |            408126.62 |                  1.62
+ JURONG WEST     | 5 ROOM    |             483675.99 |            474268.09 |                  1.98
+ JURONG WEST     | EXECUTIVE |             611160.22 |            568983.09 |                  7.41
+ KALLANG/WHAMPOA | 4 ROOM    |             571640.89 |            472500.00 |                 20.98
+ KALLANG/WHAMPOA | 5 ROOM    |             723121.85 |            649214.29 |                 11.38
+ QUEENSTOWN      | 3 ROOM    |             384248.34 |            376912.50 |                  1.95
+ QUEENSTOWN      | 5 ROOM    |             843296.40 |            790000.00 |                  6.75
+ TAMPINES        | 3 ROOM    |             353992.33 |            344638.81 |                  2.71
+ TAMPINES        | 4 ROOM    |             466349.07 |            447098.55 |                  4.31
+ TAMPINES        | 5 ROOM    |             542620.68 |            556423.01 |                 -2.48
+ TAMPINES        | EXECUTIVE |             703272.00 |            667101.36 |                  5.42
+ TOA PAYOH       | 3 ROOM    |             332986.93 |            377282.68 |                -11.74
+ TOA PAYOH       | 4 ROOM    |             571069.40 |            479817.42 |                 19.02
+ TOA PAYOH       | 5 ROOM    |             708619.42 |            620370.00 |                 14.23
+ TOA PAYOH       | EXECUTIVE |             812962.26 |            900000.00 |                 -9.67
+ WOODLANDS       | 3 ROOM    |             286832.68 |            329103.93 |                -12.84
+ WOODLANDS       | 4 ROOM    |             334438.40 |            387577.24 |                -13.71
+ WOODLANDS       | 5 ROOM    |             418484.62 |            464996.89 |                -10.00
+ WOODLANDS       | EXECUTIVE |             610000.00 |            650194.06 |                 -6.18
+ YISHUN          | 3 ROOM    |             310494.01 |            313899.12 |                 -1.08
+ YISHUN          | 4 ROOM    |             391147.34 |            384116.14 |                  1.83
+ YISHUN          | 5 ROOM    |             479789.46 |            480657.21 |                 -0.18
+ YISHUN          | EXECUTIVE |             627750.00 |            609783.83 |                  2.95
+(45 行记录)
+
+/******** QUERY *********/
+WITH fresh_market_sales AS (
+    SELECT
+        b.town_name AS town,
+        nmh.proximity_class,
+        r.resale_price
+    FROM housing.resale_transaction AS r
+    JOIN housing.hdb_flat AS f
+        USING (flat_id)
+    JOIN housing.hdb_building AS b
+        USING (building_id)
+    JOIN housing.nearest_market_hawker AS nmh
+        USING (building_id)
+    WHERE nmh.proximity_class IS NOT NULL
+),
+qualifying_towns AS (
+    SELECT
+        town,
+        ROUND(AVG(resale_price), 2) AS town_avg_resale_price
+    FROM fresh_market_sales
+    GROUP BY
+        town
+    HAVING AVG(resale_price) > 450000.00
+)
+SELECT
+    fms.town,
+    fms.proximity_class,
+    ROUND(AVG(fms.resale_price), 2) AS avg_resale_price,
+    COUNT(*) AS transaction_count,
+    qt.town_avg_resale_price
+FROM fresh_market_sales AS fms
+JOIN qualifying_towns AS qt
+    USING (town)
+GROUP BY
+    fms.town,
+    fms.proximity_class,
+    qt.town_avg_resale_price
+ORDER BY
+    qt.town_avg_resale_price DESC,
+    fms.town ASC,
+    CASE fms.proximity_class
+        WHEN 'near' THEN 1
+        WHEN 'medium' THEN 2
+        WHEN 'far' THEN 3
+    END ASC;
+/************************/
+
+      town       | proximity_class | avg_resale_price | transaction_count | town_avg_resale_price 
+-----------------+-----------------+------------------+-------------------+-----------------------
+ BUKIT TIMAH     | near            |        680944.66 |               187 |             680944.66
+ BISHAN          | near            |        485778.74 |               184 |             591613.26
+ BISHAN          | medium          |        601036.00 |              1229 |             591613.26
+ BISHAN          | far             |        630304.46 |               204 |             591613.26
+ CENTRAL AREA    | near            |        621610.73 |               603 |             586148.96
+ CENTRAL AREA    | medium          |        410874.84 |               122 |             586148.96
+ MARINE PARADE   | near            |        565399.12 |               553 |             550101.69
+ MARINE PARADE   | medium          |        437308.69 |                75 |             550101.69
+ BUKIT MERAH     | near            |        542248.71 |              3067 |             547726.31
+ BUKIT MERAH     | medium          |        585090.17 |               410 |             547726.31
+ BUKIT MERAH     | far             |        695788.80 |                10 |             547726.31
+ QUEENSTOWN      | near            |        471096.99 |              1840 |             516734.82
+ QUEENSTOWN      | medium          |        684579.25 |               532 |             516734.82
+ QUEENSTOWN      | far             |        386987.80 |                41 |             516734.82
+ SERANGOON       | medium          |        411195.90 |               664 |             482242.18
+ SERANGOON       | far             |        518896.98 |              1287 |             482242.18
+ KALLANG/WHAMPOA | near            |        471645.82 |              2084 |             478782.58
+ KALLANG/WHAMPOA | medium          |        504634.01 |               484 |             478782.58
+ KALLANG/WHAMPOA | far             |        609944.44 |                18 |             478782.58
+ TAMPINES        | near            |        437709.76 |               307 |             467914.13
+ TAMPINES        | medium          |        469689.36 |              1357 |             467914.13
+ TAMPINES        | far             |        469621.96 |              4019 |             467914.13
+ TOA PAYOH       | near            |        470865.86 |              2015 |             457213.30
+ TOA PAYOH       | medium          |        414690.44 |               517 |             457213.30
+ TOA PAYOH       | far             |        437549.34 |               281 |             457213.30
+ CLEMENTI        | near            |        442071.80 |              1573 |             452539.58
+ CLEMENTI        | medium          |        457131.61 |               614 |             452539.58
+ CLEMENTI        | far             |        714968.77 |                52 |             452539.58
+(28 行记录)
+
+/******** QUERY *********/
+WITH building_amenity_profile AS (
+    SELECT
+        bh.building_id,
+        MIN(bh.distance_m) AS nearest_hawker_distance_m,
+        housing.proximity_class(MIN(bh.distance_m)) AS nearest_proximity_class,
+        COUNT(*) FILTER (WHERE bh.distance_m < 1000.0) AS hawkers_within_1km,
+        COUNT(*) FILTER (
+            WHERE bh.distance_m < 1000.0 AND h.market_produce_stalls > 0
+        ) AS fresh_market_hawkers_within_1km,
+        COALESCE(
+            SUM(h.market_produce_stalls) FILTER (WHERE bh.distance_m < 1000.0),
+            0
+        ) AS market_stalls_within_1km
+    FROM housing.building_hawker AS bh
+    JOIN housing.hawker_centre AS h
+        USING (hawker_id)
+    GROUP BY
+        bh.building_id
+)
+SELECT
+    t.town_name AS town,
+    bap.nearest_proximity_class AS proximity_class,
+    COUNT(r.transaction_id) AS transaction_volume,
+    COUNT(DISTINCT b.building_id) AS geocoded_buildings_sold,
+    ROUND(AVG(r.resale_price), 2) AS avg_resale_price,
+    ROUND(
+        PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY r.resale_price)::numeric,
+        2
+    ) AS median_resale_price,
+    ROUND(AVG(r.resale_price / f.floor_area_sqm), 2) AS avg_price_per_sqm,
+    ROUND(AVG(r.remaining_lease_months / 12.0), 1) AS avg_remaining_lease_years,
+    ROUND(AVG(bap.hawkers_within_1km), 2) AS avg_hawkers_within_1km,
+    ROUND(AVG(bap.fresh_market_hawkers_within_1km), 2) AS avg_fresh_market_hawkers_within_1km,
+    ROUND(AVG(bap.market_stalls_within_1km), 1) AS avg_market_stalls_within_1km
+FROM housing.town AS t
+JOIN housing.hdb_building AS b
+    ON b.town_name = t.town_name
+JOIN building_amenity_profile AS bap
+    ON bap.building_id = b.building_id
+JOIN housing.hdb_flat AS f
+    ON f.building_id = b.building_id
+JOIN housing.resale_transaction AS r
+    ON r.flat_id = f.flat_id
+WHERE bap.nearest_proximity_class IS NOT NULL
+GROUP BY
+    t.town_name,
+    bap.nearest_proximity_class
+ORDER BY
+    t.town_name ASC,
+    CASE bap.nearest_proximity_class
+        WHEN 'near' THEN 1
+        WHEN 'medium' THEN 2
+        WHEN 'far' THEN 3
+    END ASC;
+/************************/
+
+      town       | proximity_class | transaction_volume | geocoded_buildings_sold | avg_resale_price | median_resale_price | avg_price_per_sqm | avg_remaining_lease_years | avg_hawkers_within_1km | avg_fresh_market_hawkers_within_1km | avg_market_stalls_within_1km 
+-----------------+-----------------+--------------------+-------------------------+------------------+---------------------+-------------------+---------------------------+------------------------+-------------------------------------+------------------------------
+ ANG MO KIO      | near            |               4140 |                     325 |        418191.98 |           375000.00 |           5090.03 |                      66.5 |                   3.65 |                                3.21 |                        352.1
+ ANG MO KIO      | medium          |                264 |                      18 |        398825.39 |           370000.00 |           4836.86 |                      65.3 |                   2.91 |                                2.38 |                        260.6
+ BEDOK           | near            |               4436 |                     315 |        404006.09 |           373000.00 |           4903.12 |                      66.7 |                   3.35 |                                2.88 |                        321.5
+ BEDOK           | medium          |               1399 |                     149 |        469598.59 |           448000.00 |           4727.09 |                      71.2 |                   1.79 |                                1.58 |                        151.6
+ BEDOK           | far             |                 43 |                       9 |        687302.74 |           686000.00 |           4775.53 |                      78.4 |                   0.00 |                                0.00 |                          0.0
+ BISHAN          | near            |                184 |                      24 |        485778.74 |           435000.00 |           5549.04 |                      67.7 |                   1.49 |                                1.27 |                         69.8
+ BISHAN          | medium          |               1229 |                     165 |        601036.00 |           580000.00 |           5594.52 |                      74.5 |                   1.76 |                                1.52 |                        113.6
+ BISHAN          | far             |                204 |                      32 |        630304.46 |           579000.00 |           5935.88 |                      72.5 |                   0.00 |                                0.00 |                          0.0
+ BUKIT BATOK     | near            |                 94 |                       8 |        398890.29 |           355444.00 |           4255.95 |                      69.7 |                   1.40 |                                1.40 |                        155.3
+ BUKIT BATOK     | medium          |                366 |                      37 |        391106.02 |           350000.00 |           4383.47 |                      72.1 |                   1.00 |                                1.00 |                         87.0
+ BUKIT BATOK     | far             |               1145 |                     115 |        448630.24 |           418000.00 |           4607.31 |                      72.0 |                   0.00 |                                0.00 |                          0.0
+ BUKIT MERAH     | near            |               3095 |                     288 |        543252.56 |           530000.00 |           6481.75 |                      71.8 |                   4.83 |                                3.25 |                        329.5
+ BUKIT MERAH     | medium          |                382 |                      43 |        580097.07 |           591500.00 |           5990.03 |                      73.9 |                   3.76 |                                2.27 |                        169.0
+ BUKIT MERAH     | far             |                 10 |                       1 |        695788.80 |           690000.00 |           5750.91 |                      63.3 |                   0.00 |                                0.00 |                          0.0
+ BUKIT TIMAH     | near            |                187 |                      26 |        680944.66 |           680000.00 |           6319.03 |                      67.5 |                   1.17 |                                1.00 |                         84.5
+ CENTRAL AREA    | near            |                725 |                      63 |        586148.96 |           495000.00 |           7323.03 |                      73.0 |                   4.76 |                                3.07 |                        531.0
+ CLEMENTI        | near            |               1602 |                     121 |        440107.26 |           400000.00 |           5376.61 |                      66.1 |                   3.13 |                                2.51 |                        208.6
+ CLEMENTI        | medium          |                585 |                      51 |        463257.98 |           405000.00 |           5435.73 |                      66.4 |                   2.01 |                                1.83 |                        148.8
+ CLEMENTI        | far             |                 52 |                       6 |        714968.77 |           660000.00 |           5920.54 |                      68.8 |                   0.00 |                                0.00 |                          0.0
+ GEYLANG         | near            |               2110 |                     185 |        420873.42 |           352500.00 |           5411.83 |                      64.8 |                   3.55 |                                2.91 |                        259.7
+ GEYLANG         | medium          |                349 |                      42 |        415380.61 |           398000.00 |           4430.39 |                      69.5 |                   1.17 |                                1.14 |                         93.5
+ GEYLANG         | far             |                 86 |                       8 |        346760.30 |           323500.00 |           4769.92 |                      79.3 |                   0.00 |                                0.00 |                          0.0
+ HOUGANG         | near            |                536 |                      57 |        450341.76 |           408000.00 |           4616.72 |                      71.0 |                   1.93 |                                1.93 |                        231.5
+ HOUGANG         | medium          |                632 |                      58 |        417340.57 |           389500.00 |           4413.53 |                      68.5 |                   1.42 |                                1.42 |                        170.9
+ HOUGANG         | far             |               2216 |                     255 |        432095.23 |           410000.00 |           4511.56 |                      73.6 |                   0.00 |                                0.00 |                          0.0
+ JURONG EAST     | near            |               1078 |                     108 |        389125.00 |           354000.00 |           4452.52 |                      68.8 |                   1.62 |                                1.62 |                        190.0
+ JURONG EAST     | medium          |                869 |                      92 |        458630.09 |           422000.00 |           4621.14 |                      71.4 |                   1.08 |                                1.08 |                         99.5
+ JURONG EAST     | far             |                123 |                      17 |        578755.90 |           540000.00 |           5080.34 |                      83.0 |                   0.00 |                                0.00 |                          0.0
+ JURONG WEST     | near            |               1891 |                     163 |        371394.44 |           354000.00 |           4349.75 |                      69.0 |                   1.53 |                                1.53 |                        157.8
+ JURONG WEST     | medium          |               1561 |                     151 |        442119.05 |           435500.00 |           4287.44 |                      77.3 |                   1.30 |                                1.30 |                        152.8
+ JURONG WEST     | far             |               2607 |                     223 |        464579.18 |           457000.00 |           4250.87 |                      84.1 |                   0.00 |                                0.00 |                          0.0
+ KALLANG/WHAMPOA | near            |               2084 |                     175 |        471645.82 |           410000.00 |           5730.79 |                      68.2 |                   2.96 |                                2.84 |                        246.7
+ KALLANG/WHAMPOA | medium          |                484 |                      61 |        504634.01 |           488000.00 |           5784.27 |                      71.8 |                   3.47 |                                3.15 |                        260.1
+ KALLANG/WHAMPOA | far             |                 18 |                       5 |        609944.44 |           620000.00 |           5393.75 |                      66.1 |                   0.00 |                                0.00 |                          0.0
+ MARINE PARADE   | near            |                553 |                      49 |        565399.12 |           520000.00 |           6399.88 |                      60.3 |                   1.80 |                                1.71 |                        189.1
+ MARINE PARADE   | medium          |                 75 |                       4 |        437308.69 |           438000.00 |           6246.32 |                      59.7 |                   2.00 |                                2.00 |                        230.0
+ PASIR RIS       | near            |                 26 |                       3 |        302423.08 |           301500.00 |           4574.14 |                      65.9 |                   1.00 |                                1.00 |                         42.0
+ QUEENSTOWN      | near            |               1840 |                     153 |        471096.99 |           401500.00 |           6380.45 |                      64.5 |                   3.40 |                                3.21 |                        241.3
+ QUEENSTOWN      | medium          |                532 |                      44 |        684579.25 |           704444.00 |           7185.87 |                      84.0 |                   2.08 |                                1.69 |                        150.8
+ QUEENSTOWN      | far             |                 41 |                       3 |        386987.80 |           368000.00 |           5701.37 |                      59.4 |                   0.00 |                                0.00 |                          0.0
+ SEMBAWANG       | far             |                311 |                      28 |        446938.80 |           441000.00 |           3911.93 |                      83.5 |                   0.00 |                                0.00 |                          0.0
+ SERANGOON       | medium          |                698 |                      67 |        409023.86 |           388000.00 |           4753.59 |                      70.0 |                   1.76 |                                0.95 |                         34.2
+ SERANGOON       | far             |               1253 |                     161 |        523029.40 |           503000.00 |           5184.67 |                      73.8 |                   0.00 |                                0.00 |                          0.0
+ TAMPINES        | near            |                307 |                      32 |        437709.76 |           438000.00 |           4536.03 |                      68.5 |                   1.00 |                                1.00 |                         99.0
+ TAMPINES        | medium          |               1357 |                     124 |        469689.36 |           456000.00 |           4683.51 |                      70.2 |                   1.00 |                                1.00 |                         99.0
+ TAMPINES        | far             |               4019 |                     450 |        469621.96 |           457000.00 |           4624.16 |                      74.6 |                   0.00 |                                0.00 |                          0.0
+ TOA PAYOH       | near            |               2015 |                     179 |        470865.86 |           382000.00 |           5633.35 |                      66.8 |                   4.95 |                                3.99 |                        278.7
+ TOA PAYOH       | medium          |                533 |                      51 |        410919.25 |           358000.00 |           5066.04 |                      64.3 |                   2.58 |                                2.20 |                        157.0
+ TOA PAYOH       | far             |                265 |                      35 |        446514.58 |           420000.00 |           5069.09 |                      67.6 |                   0.00 |                                0.00 |                          0.0
+ WOODLANDS       | near            |                629 |                      30 |        306733.00 |           300000.00 |           4062.40 |                      63.8 |                   1.00 |                                1.00 |                        112.0
+ WOODLANDS       | medium          |                596 |                      65 |        371658.71 |           345000.00 |           4027.38 |                      69.7 |                   1.00 |                                1.00 |                        112.0
+ WOODLANDS       | far             |               2204 |                     234 |        451822.86 |           425000.00 |           3952.75 |                      79.3 |                   0.00 |                                0.00 |                          0.0
+ YISHUN          | near            |               1166 |                      70 |        337670.24 |           322000.00 |           4404.04 |                      69.6 |                   1.00 |                                1.00 |                        123.0
+ YISHUN          | medium          |               1174 |                      99 |        374820.66 |           360000.00 |           4437.66 |                      71.2 |                   1.00 |                                1.00 |                        123.0
+ YISHUN          | far             |               2566 |                     263 |        399993.39 |           378000.00 |           4148.82 |                      72.2 |                   0.00 |                                0.00 |                          0.0
+(55 行记录)
+
