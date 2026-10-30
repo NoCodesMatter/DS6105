@@ -4,7 +4,17 @@ The [Task 2 report](report.md) presents the HDB methods, findings and PostgreSQL
 results in assignment-report form. An [editable Word version](report.docx) is available for
 integration into the final group report.
 
-## Implemented work
+## Gate 0 follow-up on 30 October 2026
+
+The five frozen HDB files and Chen's spatial outputs have been imported into a new PostgreSQL
+database using contract 1.0.0. All 989,158 transactions are present, and the complete shared
+validator passes. The requested dependency probe counts are **3, 0 and 51** in the order
+listed in WU's handover. The [Gate 0 evidence](evidence/gate0_1_0_0/README.md) contains the
+three addresses, lease years, coordinate coverage, source breakdown and executable detail queries.
+The frozen 2017 onwards file is available in the
+[HDB source release](https://github.com/Junde-W/SD6103_PROJECT/releases/tag/hdb-snapshot-2026-10-18).
+
+## Initial HDB implementation and verification on 18 October 2026
 
 The HDB processing module acquires the five prescribed resale datasets, freezes their original
 bytes and source metadata, profiles every record, and produces the four HDB-side CSVs under
@@ -128,6 +138,7 @@ the earlier 40-test review before the PostgreSQL runner was added;
 See `evidence/review_three_source_validation.json` for the three-source integration result.
 
 The 2017-onwards source changes over time. All experimental stages must reuse the same frozen
-source bytes and manifest; a new snapshot requires a full rebuild. The contract remains a draft
-pending team agreement. AI-assisted coding and documentation were used and should be declared
+source bytes and manifest; a new snapshot requires a full rebuild. The initial validation used
+draft contract 1.0.0-draft.2; the Gate 0 check above uses frozen contract 1.0.0.
+AI-assisted coding and documentation were used and should be declared
 in the final team report according to the course requirements.

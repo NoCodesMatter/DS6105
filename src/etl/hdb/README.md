@@ -1,8 +1,15 @@
 # HDB data processing - HE RUOYUN
 
 Transforms the five HDB resale CSVs in [data.gov.sg collection 189](https://data.gov.sg/collections/189/view)
-into the four HDB-side CSVs required by the existing schema contract **1.0.0-draft.2**.
-The shared schema and ID helper are reused unchanged. Team approval of the contract remains pending.
+into the four HDB-side CSVs required by schema contract **1.0.0**, frozen at Gate 0 on
+2026-10-30. The shared schema and ID helper are reused unchanged.
+
+The [Gate 0 full-snapshot check](evidence/gate0_1_0_0/README.md) loads all 989,158 transactions
+with Chen's spatial outputs under the 1.0.0 DDL. The complete SQL validator passes; the three
+dependency probes return **3 buildings with multiple lease years, 0 shared coordinate pairs,
+and 51 transactions before lease commencement**. The four HDB CSVs are byte-identical to the
+previous frozen-snapshot output. The original first-stage evidence below records the earlier
+1.0.0-draft.2 runs.
 
 ## First completed stage
 
