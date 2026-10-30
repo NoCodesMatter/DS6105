@@ -1,5 +1,9 @@
 # HDB ETL: first-stage handoff and report material
 
+The [Task 2 report](report.md) presents the HDB methods, findings and PostgreSQL validation
+results in assignment-report form. An [editable Word version](report.docx) is available for
+integration into the final group report.
+
 ## Implemented work
 
 The HDB processing module acquires the five prescribed resale datasets, freezes their original
