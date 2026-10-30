@@ -7,14 +7,17 @@ transaction counts and reviewed result row counts are recorded in [stages.json](
 
 ## Run from the repository root
 
-```powershell
-python ops/benchmark/run_baseline.py --psql 'E:\NTU\DataSystem\project\PostgreSQL\17\bin\psql.exe' --out ops/benchmark/results/task3_baseline_01
+```sh
+python ops/benchmark/run_baseline.py --out ops/benchmark/results/my_task3_run
 ```
 
 Enter the PostgreSQL password at the console. psql reuses connection parameters when switching
 between databases on the same server. No password is stored in files or passed on the command line.
 Defaults: localhost, port 5432, user postgres. Override with `--host`, `--port`, `--user`.
 Use a new output name for a rerun: previous runs are never overwritten.
+These examples assume `psql` is on PATH. If necessary, add `--psql "path/to/psql"`
+(`psql.exe` on Windows). For a complete setup and loading example, see the
+[step-by-step guide](../README.md#run-the-project-step-by-step).
 
 ## Protocol
 
@@ -55,17 +58,19 @@ For a new measurement series, choose a new `--out` directory. `--stage stage1` r
 
 ## Preparation and recovery
 
-```powershell
+```sh
 # Generate and inspect all input snapshots and SQL, without connecting or measuring:
 python ops/benchmark/run_baseline.py --out .hdb-qa/baseline_preflight_01 --prepare-only
 
 # Validate and collect a complete SQL run if Python was interrupted after psql finished:
-python ops/benchmark/run_baseline.py --out <existing-experiment-directory> --collect-only
+python ops/benchmark/run_baseline.py --out ops/benchmark/results/my_task3_run --collect-only
 
 python -m unittest discover -s ops/benchmark/tests -v
 ```
 
 Do not use `--collect-only` to reuse partial observations across different measurement series.
+The collection example assumes psql finished successfully and collection was interrupted before
+writing the final CSV. It is not a command to repeat after a normally completed run.
 The raw plans must form one complete, unchanged experiment. The collection tests use temporary
 synthetic fixtures only; those fixtures are not experimental evidence.
 
@@ -76,8 +81,8 @@ Task 4's indexed measurements and Lu's charts follow after the 150-row baseline 
 First create the dedicated `sd6105_stage5_indexed` database using
 [create_index_database.sql](../loading/create_index_database.sql). Then run:
 
-```powershell
-python ops/benchmark/run_indexes.py --psql 'E:\NTU\DataSystem\project\PostgreSQL\17\bin\psql.exe' --out ops/benchmark/results/task4_indexes_01
+```sh
+python ops/benchmark/run_indexes.py --baseline ops/benchmark/results/my_task3_run --out ops/benchmark/results/my_task4_run
 ```
 
 This uses Lu's existing [candidate_indexes.sql](../../sql/indexes/candidate_indexes.sql) without

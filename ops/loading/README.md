@@ -8,7 +8,7 @@ Use the frozen [schema contract](../../docs/architecture/schema_contract.md) 1.0
 Start with a new database created by [create_database.sql](../../db/schema/create_database.sql).
 Run the upstream HDB and spatial verifiers on the selected stage first. Then generate the import:
 
-```powershell
+```sh
 python ops/loading/prepare_load.py --hdb-stage data/processed/hdb/stage1_2015_2016 --spatial-stage data/processed/spatial/stage1_2015_2016 --output .hdb-qa/stage1_load.sql
 ```
 
@@ -19,11 +19,13 @@ It does not itself connect to PostgreSQL or import records.
 
 ## Import
 
-```powershell
-& 'E:\NTU\DataSystem\project\PostgreSQL\17\bin\psql.exe' -X -h localhost -p 5432 -U postgres -d sd6105_housing -v ON_ERROR_STOP=1 -f .hdb-qa/stage1_load.sql
+```sh
+psql -X -h localhost -p 5432 -U postgres -d sd6105_housing -v ON_ERROR_STOP=1 -f .hdb-qa/stage1_load.sql
 ```
 
-Passwords are entered in psql, never in scripts or Git. Other machines can use their own psql path.
+These examples assume `psql` is on PATH. Change the host, port or user to match your server.
+Passwords are entered in psql, never in scripts or Git. A complete worked example, including
+database creation, is in the [step-by-step guide](../README.md#3-create-and-load-the-first-database).
 
 The import locks and requires all six tables to be empty, then bulk-loads in FK-safe order:
 town, hdb_building, hdb_flat, resale_transaction, hawker_centre, building_hawker.
