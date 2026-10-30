@@ -1,0 +1,10 @@
+{
+  "contract_version": "1.0.0",
+  "stages": [
+    {"stage": "stage1", "database": "sd6105_housing", "directory": "stage1_2015_2016", "transaction_count": 37153, "query_rows": [52, 53, 20, 43, 22, 55]},
+    {"stage": "stage2", "database": "sd6105_stage2", "directory": "stage2", "transaction_count": 89356, "query_rows": [52, 53, 50, 45, 28, 55]},
+    {"stage": "stage3", "database": "sd6105_stage3", "directory": "stage3", "transaction_count": 332311, "query_rows": [52, 63, 150, 48, 52, 55]},
+    {"stage": "stage4", "database": "sd6105_stage4", "directory": "stage4", "transaction_count": 619507, "query_rows": [52, 76, 250, 48, 7, 55]},
+    {"stage": "stage5", "database": "sd6105_stage5", "directory": "stage5", "transaction_count": 989158, "query_rows": [52, 77, 370, 48, 2, 55]}
+  ]
+}
