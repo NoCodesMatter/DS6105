@@ -26,7 +26,8 @@ The stage is an HDB handoff, not the completed six-table database.
 - [Review regression summary](evidence/review_validation.json), [three-source integration check](evidence/review_three_source_validation.json)
 - [PostgreSQL first-stage import](evidence/postgres_stage1_validation.json), [all-five-source import](evidence/postgres_all_five_validation.json)
 - [PostgreSQL verification summary and remaining integration scope](evidence/postgres_validation_summary.json)
-- [Report text and handoff](handoff.md)
+- [Task 2 report](report.md), [editable Word version](report.docx)
+- [Technical handoff](handoff.md)
 - Raw source lock: `data/manifests/hdb_sources.json`
 - Local first-stage output: `data/processed/hdb/stage1_2015_2016/`
 
