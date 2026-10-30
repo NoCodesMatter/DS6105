@@ -1,0 +1,263 @@
+{
+  "status": "passed",
+  "checked_utc": "2026-10-30T06:39:36.054754+00:00",
+  "contract_version": "1.0.0",
+  "repository_commit": "057bc7324048e7964d9440bc1f654a037583082e",
+  "database": "hdb_gate0_100_all_five_20261030",
+  "server_version": "15.19",
+  "schema_comment": "Housing schema contract 1.0.0; frozen at Gate 0 for the Task 3 baseline",
+  "snapshot": "2026-10-18 frozen HDB snapshot",
+  "probe_counts": {
+    "fd_probe_buildings_with_multiple_lease_years": 3,
+    "fd_probe_coordinate_pairs_shared_by_buildings": 0,
+    "transactions_before_lease_commencement_year": 51
+  },
+  "acceptance": {
+    "script": "db/schema/validate_loaded_data.sql",
+    "exit_code": 0,
+    "output": "validate_loaded_data.txt",
+    "diagnostics": {
+      "hawkers_without_coordinates": 3,
+      "buildings_without_coordinates": 193,
+      "fd_probe_coordinate_pairs_shared_by_buildings": 0,
+      "fd_probe_buildings_with_multiple_lease_years": 3,
+      "transactions_with_unknown_lease": 51,
+      "buildings_nearest_hawker_beyond_2000m": 3687,
+      "transactions_without_spatial_coverage": 15451,
+      "buildings_nearest_market_beyond_2000m": 3692,
+      "transactions_before_lease_commencement_year": 51
+    }
+  },
+  "load": {
+    "new_database": true,
+    "one_transaction": true,
+    "header_match": true,
+    "load_order": [
+      "town",
+      "hdb_building",
+      "hdb_flat",
+      "resale_transaction",
+      "hawker_centre",
+      "building_hawker"
+    ],
+    "table_sources": {
+      "town": "data/processed/hdb/gate0_all_five/town.csv",
+      "hdb_building": "data/processed/spatial/gate0_all_five/hdb_building.csv",
+      "hdb_flat": "data/processed/hdb/gate0_all_five/hdb_flat.csv",
+      "resale_transaction": "data/processed/hdb/gate0_all_five/resale_transaction.csv",
+      "hawker_centre": "data/processed/spatial/gate0_all_five/hawker_centre.csv",
+      "building_hawker": "data/processed/spatial/gate0_all_five/building_hawker.csv"
+    }
+  },
+  "tables": {
+    "town": {
+      "bytes": 297,
+      "rows": 27,
+      "sha256": "9a2e9b193ccb127dbe1fbb76065699f086cd5ee3372a5a2684bf26e1f9515b46"
+    },
+    "hdb_building": {
+      "bytes": 995552,
+      "rows": 10024,
+      "sha256": "ce72aef061f95f96e59ef41b189832138f0a0663dc014dbd4131baf0118965f0"
+    },
+    "hdb_flat": {
+      "bytes": 15888814,
+      "rows": 147045,
+      "sha256": "eb2049d1a9f53ba8cbc1b9497afa47d622d84c2d8963952dd2d3db18493045c1"
+    },
+    "resale_transaction": {
+      "bytes": 155233168,
+      "rows": 989158,
+      "sha256": "13499076a9ee124176c2912bf251cf84fa8d6443223b670b5ce0200261b27e7f"
+    },
+    "hawker_centre": {
+      "bytes": 15139,
+      "rows": 107,
+      "sha256": "603a92ec0bf4e0d3d2623928b5a4a494a5ffda5930e4cc29476f0c13d9630d7d"
+    },
+    "building_hawker": {
+      "bytes": 94526389,
+      "rows": 1022424,
+      "sha256": "096244acbe5e6af1fce551aeea3357cf2d1c7c13b9f09281e948ab8a145ace89"
+    }
+  },
+  "hdb_csvs_identical_to_previous_frozen_output": {
+    "hdb_building": true,
+    "hdb_flat": true,
+    "resale_transaction": true,
+    "town": true
+  },
+  "source_files": [
+    {
+      "dataset_id": "d_2d5ff9ea31397b66239f245f57751537",
+      "label": "2012_03_2014",
+      "path": "data/raw/hdb/d_2d5ff9ea31397b66239f245f57751537.csv",
+      "rows": 52203,
+      "sha256": "6a16e2dc78f70048ec1a522b59a9727581c36e45e02022641c53e755a7657c72",
+      "snapshot_utc": "2026-10-18T12:00:42.864523+00:00",
+      "source_url": "https://data.gov.sg/datasets/d_2d5ff9ea31397b66239f245f57751537/view"
+    },
+    {
+      "dataset_id": "d_43f493c6c50d54243cc1eab0df142d6a",
+      "label": "2000_2012_02",
+      "path": "data/raw/hdb/d_43f493c6c50d54243cc1eab0df142d6a.csv",
+      "rows": 369651,
+      "sha256": "5f6a72bd7b9120281863beb1fc4c89aa5f4923f00b0f6c52494c4347363f2c36",
+      "snapshot_utc": "2026-10-18T12:00:05.029925+00:00",
+      "source_url": "https://data.gov.sg/datasets/d_43f493c6c50d54243cc1eab0df142d6a/view"
+    },
+    {
+      "dataset_id": "d_8b84c4ee58e3cfc0ece0d773c8ca6abc",
+      "label": "2017_onwards",
+      "path": "data/raw/hdb/d_8b84c4ee58e3cfc0ece0d773c8ca6abc.csv",
+      "rows": 242955,
+      "sha256": "d401fc2e7d2a083576dd388b5ea3d170c2027d2503542de32a84656651ebe947",
+      "snapshot_utc": "2026-10-18T12:02:02.095869+00:00",
+      "source_url": "https://data.gov.sg/datasets/d_8b84c4ee58e3cfc0ece0d773c8ca6abc/view"
+    },
+    {
+      "dataset_id": "d_ea9ed51da2787afaf8e51f827c304208",
+      "label": "2015_2016",
+      "path": "data/raw/hdb/d_ea9ed51da2787afaf8e51f827c304208.csv",
+      "rows": 37153,
+      "sha256": "4ff7ce4a4f642fb384d2b75a42e75b0477e50005f4aaa9989591a7a92507d185",
+      "snapshot_utc": "2026-10-18T12:01:21.815933+00:00",
+      "source_url": "https://data.gov.sg/datasets/d_ea9ed51da2787afaf8e51f827c304208/view"
+    },
+    {
+      "dataset_id": "d_ebc5ab87086db484f88045b47411ebc5",
+      "label": "1990_1999",
+      "path": "data/raw/hdb/d_ebc5ab87086db484f88045b47411ebc5.csv",
+      "rows": 287196,
+      "sha256": "2e064923f41cc96536db04c978901695aa0191022829895cf4ce177e42afad57",
+      "snapshot_utc": "2026-10-18T11:59:28.757700+00:00",
+      "source_url": "https://data.gov.sg/datasets/d_ebc5ab87086db484f88045b47411ebc5/view"
+    }
+  ],
+  "spatial_source_sha256": {
+    "hawker_geo": "c04a56cea3dc39fdb66b998242f7ead00c4c3c05b19eff4b66b57f779ebba166",
+    "hdb_geo": "451c4fc467e32d8fc0663ecfbc290a58382a9f7134b60b935ca76676afeea8be",
+    "nea_hawker_centres": "12e9eb62bff4869f5e9aa93c99a859d9eeb22bb55086a8c546e17e2128effcd6"
+  },
+  "spatial_review_sha256": {
+    "coordinate_review.csv": "7a3d8fd6a050b298cc8cf807ad91f2c75284ee06e43629bef516d893f4b68eaf",
+    "hawker_geo_validation_results.crosswalk.csv": "865c8203182c6b63c368307e276a98d95521bf56e7d3b2ad325c8415feeb5169"
+  },
+  "source_code_hash_mode": "utf8-lf-v1",
+  "source_code_sha256": {
+    "db/schema/001_schema.sql": "a56a96fca8fee7af0b94a7a2f4c01b224816db7ed23c6c20245a6ccc4301358f",
+    "db/schema/contract.py": "0f17aa5dffe723dfe29e072d1bb31afe7609ab8c5648543d131773a4523a2edc",
+    "db/schema/validate_loaded_data.sql": "b04972bf8f91621e6a94b6e8f7a30b7ebe872de3f4f0764f50f62d6e4ff4660c",
+    "src/etl/hdb/evidence/gate0_1_0_0/probe_details.sql": "b9d35e58bc345bea89c75949483bccfdf65e9d757af696a24aa34f68c4e4963c"
+  },
+  "stage_manifests": {
+    "hdb": {
+      "path": "data/processed/hdb/gate0_all_five/manifest.json",
+      "sha256": "8f8f01ff088dae43011c605da31082466e333fc0476263d48490f7ab7547a1a7"
+    },
+    "spatial": {
+      "path": "data/processed/spatial/gate0_all_five/manifest.json",
+      "sha256": "cd99ac09e4c90431731aa3bffde32cc59872476f9b3fb97f60e5f489b4fa9289"
+    }
+  },
+  "details": {
+    "table_counts": {
+      "town": 27,
+      "hdb_building": 10024,
+      "hdb_flat": 147045,
+      "resale_transaction": 989158,
+      "hawker_centre": 107,
+      "building_hawker": 1022424
+    },
+    "source_counts": [
+      {
+        "source_dataset": "d_2d5ff9ea31397b66239f245f57751537",
+        "transactions": 52203,
+        "first_month": "2012-03-01",
+        "last_month": "2014-12-01"
+      },
+      {
+        "source_dataset": "d_43f493c6c50d54243cc1eab0df142d6a",
+        "transactions": 369651,
+        "first_month": "2000-01-01",
+        "last_month": "2012-02-01"
+      },
+      {
+        "source_dataset": "d_8b84c4ee58e3cfc0ece0d773c8ca6abc",
+        "transactions": 242955,
+        "first_month": "2017-01-01",
+        "last_month": "2026-10-01"
+      },
+      {
+        "source_dataset": "d_ea9ed51da2787afaf8e51f827c304208",
+        "transactions": 37153,
+        "first_month": "2015-01-01",
+        "last_month": "2016-12-01"
+      },
+      {
+        "source_dataset": "d_ebc5ab87086db484f88045b47411ebc5",
+        "transactions": 287196,
+        "first_month": "1990-01-01",
+        "last_month": "1999-12-01"
+      }
+    ],
+    "coordinate_coverage": {
+      "buildings_with_coordinates": 9831,
+      "buildings_without_coordinates": 193,
+      "hawkers_with_coordinates": 104,
+      "hawkers_without_coordinates": 3
+    },
+    "buildings_with_multiple_lease_years": [
+      {
+        "building_id": "99c844f2-6f9c-5bad-b318-c88b0c879939",
+        "block": "114",
+        "street_name": "JURONG EAST ST 13",
+        "town_name": "JURONG EAST",
+        "lease_years": [
+          1981,
+          1982
+        ]
+      },
+      {
+        "building_id": "71838fd0-f97e-52e8-b050-b34ec72df2ea",
+        "block": "21",
+        "street_name": "TEBAN GDNS RD",
+        "town_name": "JURONG EAST",
+        "lease_years": [
+          1978,
+          2013
+        ]
+      },
+      {
+        "building_id": "09882439-2721-5c74-a7a6-27d6a89daf50",
+        "block": "37",
+        "street_name": "TEBAN GDNS RD",
+        "town_name": "JURONG EAST",
+        "lease_years": [
+          1966,
+          1981
+        ]
+      }
+    ],
+    "coordinate_pairs_shared_by_buildings": [],
+    "transactions_before_lease_commencement_by_source": [
+      {
+        "source_dataset": "d_43f493c6c50d54243cc1eab0df142d6a",
+        "transactions": 15,
+        "unknown_lease_transactions": 15
+      },
+      {
+        "source_dataset": "d_ebc5ab87086db484f88045b47411ebc5",
+        "transactions": 36,
+        "unknown_lease_transactions": 36
+      }
+    ],
+    "proximity_boundary_checks": {
+      "at_0m": "near",
+      "at_500m": "medium",
+      "at_1000m": "far",
+      "at_2000m": "far",
+      "above_2000m": null
+    }
+  }
+}
