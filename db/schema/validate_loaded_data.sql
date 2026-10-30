@@ -25,7 +25,14 @@ FROM (SELECT latitude, longitude FROM housing.hdb_building WHERE latitude IS NOT
 UNION ALL
 SELECT 'transactions_before_lease_commencement_year', count(*)
 FROM housing.resale_transaction r JOIN housing.hdb_flat f USING (flat_id)
-WHERE extract(year FROM r.sale_month) < f.lease_commence_year;
+WHERE extract(year FROM r.sale_month) < f.lease_commence_year
+-- Beyond the 2,000 m maximum effective distance: no proximity level (reported).
+UNION ALL
+SELECT 'buildings_nearest_hawker_beyond_2000m', count(*)
+FROM housing.nearest_hawker WHERE proximity_class IS NULL
+UNION ALL
+SELECT 'buildings_nearest_market_beyond_2000m', count(*)
+FROM housing.nearest_market_hawker WHERE proximity_class IS NULL;
 
 DO $$
 DECLARE expected bigint; actual bigint;

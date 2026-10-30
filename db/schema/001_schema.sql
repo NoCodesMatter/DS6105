@@ -1,8 +1,8 @@
--- Contract 1.0.0-draft.2. PostgreSQL 15+. Intentionally fails if housing exists.
+-- Contract 1.0.0 (Gate 0 freeze). PostgreSQL 15+. Intentionally fails if housing exists.
 -- No extensions, seed data, optional indexes, destructive reset, or ETL required.
 BEGIN;
 CREATE SCHEMA housing;
-COMMENT ON SCHEMA housing IS 'Housing schema contract 1.0.0-draft.2; team review pending';
+COMMENT ON SCHEMA housing IS 'Housing schema contract 1.0.0; frozen at Gate 0 for the Task 3 baseline';
 
 CREATE DOMAIN housing.canonical_text AS text
     CHECK (VALUE = upper(VALUE)
@@ -103,9 +103,11 @@ CREATE TABLE housing.building_hawker (
 COMMENT ON TABLE housing.building_hawker IS
     'Complete geocoded-building x geocoded-prescribed-hawker matrix per frozen snapshot.';
 
+-- near [0,500) | medium [500,1000) | far [1000,2000] metres. Beyond 2,000 m (the
+-- maximum effective distance, decision F-03) there is no proximity level: NULL.
 CREATE FUNCTION housing.proximity_class(distance_m double precision)
 RETURNS text LANGUAGE sql IMMUTABLE STRICT PARALLEL SAFE AS $$
-    SELECT CASE WHEN distance_m < 0 OR distance_m > 20015115 THEN NULL
+    SELECT CASE WHEN distance_m < 0 OR distance_m > 2000 THEN NULL
                 WHEN distance_m < 500 THEN 'near'
                 WHEN distance_m < 1000 THEN 'medium'
                 ELSE 'far' END
@@ -126,18 +128,19 @@ CREATE VIEW housing.building_hawker_proximity AS
 SELECT building_id, hawker_id, distance_m, housing.proximity_class(distance_m) AS proximity_class
 FROM housing.building_hawker;
 
+-- One nearest centre per building; the class is computed after DISTINCT ON, so the
+-- function runs once per building instead of once per pair (same rows, faster).
 CREATE VIEW housing.nearest_hawker AS
-SELECT DISTINCT ON (building_id)
-    building_id, hawker_id, distance_m, housing.proximity_class(distance_m) AS proximity_class
-FROM housing.building_hawker
-ORDER BY building_id, distance_m, hawker_id;
+SELECT building_id, hawker_id, distance_m, housing.proximity_class(distance_m) AS proximity_class
+FROM (SELECT DISTINCT ON (building_id) building_id, hawker_id, distance_m
+      FROM housing.building_hawker
+      ORDER BY building_id, distance_m, hawker_id) AS nearest;
 
 CREATE VIEW housing.nearest_market_hawker AS
-SELECT DISTINCT ON (bh.building_id)
-    bh.building_id, bh.hawker_id, bh.distance_m,
-    housing.proximity_class(bh.distance_m) AS proximity_class
-FROM housing.building_hawker AS bh
-JOIN housing.hawker_centre AS h USING (hawker_id)
-WHERE h.market_produce_stalls > 0
-ORDER BY bh.building_id, bh.distance_m, bh.hawker_id;
+SELECT building_id, hawker_id, distance_m, housing.proximity_class(distance_m) AS proximity_class
+FROM (SELECT DISTINCT ON (bh.building_id) bh.building_id, bh.hawker_id, bh.distance_m
+      FROM housing.building_hawker AS bh
+      JOIN housing.hawker_centre AS h USING (hawker_id)
+      WHERE h.market_produce_stalls > 0
+      ORDER BY bh.building_id, bh.distance_m, bh.hawker_id) AS nearest_market;
 COMMIT;

@@ -5,7 +5,7 @@ import re
 import unicodedata
 import uuid
 
-VERSION = "1.0.0-draft.2"
+VERSION = "1.0.0"
 NAMESPACE = uuid.uuid5(uuid.NAMESPACE_URL, "urn:sd6105:housing:schema:1")
 CSV_COLUMNS = {
     "town": ("town_name",),

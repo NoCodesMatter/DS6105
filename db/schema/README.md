@@ -1,6 +1,6 @@
 # Database schema
 
-PostgreSQL schema for Task 1, contract **1.0.0-draft.2** (pending team approval at Gate 0).
+PostgreSQL schema for Task 1, contract **1.0.0** (frozen at Gate 0, 2026-10-30).
 The interface specification (tables, CSV headers, ID rules, load order) is
 [docs/architecture/schema_contract.md](../../docs/architecture/schema_contract.md).
 
@@ -65,6 +65,7 @@ It **reports, without failing**:
 - missing coordinates and unknown leases;
 - three dependency probes (`fd_probe_buildings_with_multiple_lease_years`,
   `fd_probe_coordinate_pairs_shared_by_buildings`, `transactions_before_lease_commencement_year`);
+- buildings whose nearest centre, or nearest fresh-market centre, is beyond 2,000 m;
 - nearest-class counts.
 
 Run it outside timed experiments, because the full distance check takes several seconds at full
@@ -72,8 +73,12 @@ size. Passing it does not prove that source matching is correct or that query re
 
 ## Status and open decisions
 
-- **Final for use now:** table structure, CSV headers, ID serialisation, load order, constraints.
-- **Pending team decisions:** see
+- **Frozen in 1.0.0:**
+  - table structure, CSV headers, ID serialisation, load order and constraints;
+  - NEA-only hawker inventory (F-02);
+  - proximity classes near [0,500), medium [500,1000), far [1000,2000] m, with NULL beyond
+    2,000 m (F-03);
+  - nearest views that compute the class after `DISTINCT ON`.
+- **Rebuild the database with this version before official Task 3 timing.**
+- Decisions and remaining open items:
   [docs/architecture/completion_report.md](../../docs/architecture/completion_report.md).
-  - Hawker inventory (proposal F-02) and the bounded proximity class (proposal F-03): **not adopted**.
-  - Approval of the hawker crosswalk (Chen).
