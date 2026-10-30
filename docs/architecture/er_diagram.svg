@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1190" viewBox="0 0 1700 1190" role="img">
-<title>Logical relational schema, contract 1.0.0-draft.2</title>
+<title>Logical relational schema, contract 1.0.0</title>
 <rect width="100%" height="100%" fill="#f5f7fb"/>
 <text x="40" y="43" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700" fill="#1b2d45" text-anchor="start">HDB resale and hawker centres - logical relational schema</text>
-<text x="40" y="78" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="400" fill="#1b2d45" text-anchor="start">Contract 1.0.0-draft.2 | six base tables mapped from the conceptual ER | 3NF; BCNF subject to pending FD checks</text>
+<text x="40" y="78" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="400" fill="#1b2d45" text-anchor="start">Contract 1.0.0 | six base tables mapped from the conceptual ER | 3NF; BCNF subject to pending FD checks</text>
 <polyline points="380,248 540,248" fill="none" stroke="#667a94" stroke-width="3"/>
 <text x="392" y="228" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" fill="#1b2d45" text-anchor="start">(0,N)</text>
 <text x="475" y="278" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" fill="#1b2d45" text-anchor="start">(1,1)</text>
