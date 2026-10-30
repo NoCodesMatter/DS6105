@@ -5,8 +5,7 @@
 **Status:**
 - The conceptual ER, the relational schema and the DDL describe the same model; the mapping
   is in Section 4.
-- Facts that still need confirmation on the full five-file data are marked
-  **[Pending Validation]**.
+- The normal-form claim was checked on the full five-file database (Section 5).
 
 ## 1. Modelling assumptions
 
@@ -126,20 +125,22 @@ The full IS NEAR population (every geocoded building × every geocoded centre) a
 ## 5. Normalisation
 
 All dependencies are classified in [design_decisions.md §D2](design_decisions.md) as
-**semantic**, **code-enforced** or **Pending Validation**.
+**semantic**, **code-enforced** or **validated on data**.
 
-- Under the declared keys, all six relations are in **BCNF, hence 3NF**. Every non-trivial
-  determinant is a candidate key.
-- Two plausible extra dependencies are **[Pending Validation]** against the five resale files and
-  hdb.csv:
-  1. **building → lease_commence_year.** If it holds, `hdb_flat` is **3NF but not BCNF**. It stays
-     3NF because `lease_commence_year` is part of the profile key, so it is prime. The BCNF repair
-     (moving the attribute to `hdb_building`) would change the flat key and CSVs, so it is
-     a team decision (HE, LI, Sun) if the probe confirms the dependency.
-  2. **(latitude, longitude) → town_name.** This is harmless while each coordinate pair identifies
-     one building. A shared pair would indicate a geocoding defect.
-- `validate_loaded_data.sql` reports both probes on every loaded stage. The accurate claim today
-  is therefore **"3NF; BCNF under stated assumptions (Pending Validation)"**.
+**All six relations are in BCNF, hence 3NF**, on the frozen 1990–2026 snapshot (989,158
+transactions). Under the declared keys, every non-trivial determinant is a candidate key. Two
+plausible extra dependencies were tested with the probes in `validate_loaded_data.sql` on the
+five-file database ([HE's evidence](../../src/etl/hdb/evidence/gate0_1_0_0/README.md)):
+
+1. **building → lease_commence_year does not hold.** Three buildings have two lease commencement
+   years (114 Jurong East St 13; 21 and 37 Teban Gdns Rd). The year therefore stays in `hdb_flat`
+   as part of the profile key; moving it to `hdb_building` would reject those buildings.
+2. **(latitude, longitude) → town_name causes no violation.** No coordinate pair is shared by two
+   of the 9,831 geocoded buildings, so a pair determines one building. This uniqueness is a
+   validated property of the snapshot, not a UNIQUE constraint. A new geocoding run must pass the
+   probe again.
+
+No schema change was needed.
 
 Derived values (proximity class, fresh-market eligibility) are not stored. Town, address and
 coordinates are not repeated in flats or sales. Distance is stored once per building–centre pair,
@@ -175,8 +176,9 @@ Since 1.0.0 the script also reports how many buildings have their nearest centre
 fresh-market centre, beyond 2,000 m. Stage 1 (37,153 transactions, 821,912 building–hawker
 pairs) has been loaded with the HDB and spatial CSVs and passes this check.
 
-**[Pending Validation]** The Section 5 dependency probes still need to be read on the full
-five-file database.
+The full five-file database (989,158 transactions, 1,022,424 building–hawker pairs) was loaded
+under contract 1.0.0 and passes the complete script. Its dependency probes give the Section 5
+result: 3 buildings with multiple lease years, 0 shared coordinate pairs.
 
 ## 8. Limitations
 
@@ -187,6 +189,8 @@ five-file database.
   proximity class.
 - Distances are straight-line, not walking routes.
 - Month markers follow the source: approval month before March 2012, registration month after.
+- 51 sales (all before March 2012) are dated before their lease commencement year. They are kept
+  as recorded, with an unknown remaining lease.
 
 ## 9. Complete database creation SQL
 

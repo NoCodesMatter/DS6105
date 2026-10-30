@@ -11,8 +11,8 @@ The interface specification (tables, CSV headers, ID rules, load order) is
 | `contract.py` | Shared Python helpers: canonical text, deterministic UUIDv5 IDs, exact CSV column order and load order (Python 3.10+, standard library only) | HE, Chen |
 | `validate_loaded_data.sql` | Read-only acceptance checks after a data stage is loaded | Sun |
 
-Normal form: 3NF; BCNF under stated assumptions. Two dependencies are Pending Validation on real
-data; see [design_decisions.md §D2](../../docs/architecture/design_decisions.md).
+Normal form: BCNF (hence 3NF), confirmed by the dependency probes on the five-file database; see
+[design_decisions.md §D2](../../docs/architecture/design_decisions.md).
 No optional indexes and no extensions (no PostGIS).
 
 ## Create the database

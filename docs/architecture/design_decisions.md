@@ -26,53 +26,52 @@ flats” admits profile-weighted or transaction-weighted interpretations. Propos
 ranking uses observed profiles once each and clearly states that profiles are not
 dwelling counts. LI must review this choice; both variants remain expressible.
 
-## D2: dependencies, 3NF and BCNF (revised in 1.0.0-draft.2)
+## D2: dependencies, 3NF and BCNF (revised in 1.0.0-draft.2; concluded at Gate 0)
 
-The earlier text stated "BCNF" unconditionally. That claim depends on dependencies
-that real HDB data has not yet confirmed or refuted. This section therefore separates
+The earlier text stated "BCNF" unconditionally. That claim depended on dependencies
+that only real HDB data could confirm or refute. This section therefore separates
 three kinds of dependency:
 
 - **(S) business semantics:** the dependency follows from what the data means.
 - **(C) enforced or assumed by code:** a key or ID rule makes it hold.
-- **(V) Pending Validation:** plausible, but must be confirmed or refuted against the
-  five resale files and hdb.csv. None of these are in the repository.
+- **(V) validated on data:** checked by the probes in `validate_loaded_data.sql` on the
+  five-file database (HE, 2026-10-30;
+  [evidence](../../src/etl/hdb/evidence/gate0_1_0_0/README.md)). One counterexample
+  refutes a dependency. Zero counterexamples make it a validated property of the frozen
+  snapshot, not an enforced rule.
 
 | Relation | Dependency | Kind | Status |
 |---|---|---|---|
 | town | town_name is the only attribute | S | Holds |
 | hdb_building | building_id <-> (block, street_name) -> town_name, latitude, longitude | C (UUIDv5 of address; UNIQUE) | Holds by construction. If a real address appears in two towns, the load **fails** rather than silently picking one. |
-| hdb_building | (latitude, longitude) -> town_name | S (a point lies in one town) | **Pending Validation.** Harmless if each coordinate pair identifies one building (it is then a candidate key). Probe: `fd_probe_coordinate_pairs_shared_by_buildings`. |
+| hdb_building | (latitude, longitude) -> town_name | S (a point lies in one town); V | **No violation (validated).** `fd_probe_coordinate_pairs_shared_by_buildings` = 0 over the 9,831 geocoded buildings, so each pair identifies one building and the determinant is a key of the geocoded rows. The 193 buildings with NULL coordinates are outside the dependency. Not enforced by a constraint. |
 | hdb_flat | flat_id <-> (building_id, flat_type, storey_lower, storey_upper, floor_area_sqm, flat_model, lease_commence_year) | C | Holds by construction |
-| hdb_flat | **building_id -> lease_commence_year** | S (HDB leases normally start per block) | **Pending Validation.** Probe: `fd_probe_buildings_with_multiple_lease_years` |
+| hdb_flat | **building_id -> lease_commence_year** | S (HDB leases normally start per block); V | **Refuted.** `fd_probe_buildings_with_multiple_lease_years` = 3: 114 Jurong East St 13 (1981, 1982), 21 Teban Gdns Rd (1978, 2013), 37 Teban Gdns Rd (1966, 1981). Not an FD, so the year stays in the flat profile. |
 | resale_transaction | transaction_id <-> (source_dataset, source_row) -> all other attributes | C | Holds by construction |
 | resale_transaction | (flat, year of sale_month) -> remaining_lease_months for `estimated_years` | C (derivation formula), cross-relation | Not an FD inside the relation, because reported values do not follow the formula. Consistency is checked by `validate_loaded_data.sql`. |
 | hawker_centre | hawker_id <-> (centre_name, address) -> stalls, coordinates | C | Holds. In the frozen NEA snapshot, name alone and address alone are also unique (verified on all 107 rows). Both are then candidate keys, so neither creates a violation. |
 | hawker_centre | (latitude, longitude) -> centre | S | Verified on hawker_geo.csv: 129 distinct coordinate pairs |
 | building_hawker | (building_id, hawker_id) -> distance_m | S | Holds. The distance is also derived from coordinates in two other relations; `validate_loaded_data.sql` checks it to 0.01 m. |
 
-**What is proved now.** Under the declared keys and dependencies (S and C rows), all six
-relations are BCNF and therefore 3NF.
+**Conclusion (Gate 0).** All six relations are in **BCNF, and therefore 3NF**, on the
+frozen 1990–2026 snapshot (989,158 transactions, 10,024 buildings, 147,045 flat profiles):
 
-**What depends on validation.** Two cases could change that:
+- Under the declared keys and dependencies (S and C rows), every non-trivial determinant
+  is a candidate key.
+- `building_id -> lease_commence_year` does not hold (3 counterexamples). The year
+  correctly stays in `hdb_flat` as part of the profile key. Moving it to `hdb_building`
+  would make the load fail for those 3 buildings. No schema change is needed.
+- `(latitude, longitude) -> town_name` causes no violation, because no coordinate pair is
+  shared by two buildings. This is a validated property of the snapshot, not a UNIQUE
+  constraint. A new geocoding run must pass the probe again; a shared pair would be a
+  geocoding defect for Chen to fix, not a schema change.
 
-1. **If `building_id -> lease_commence_year` holds** (zero counterexamples in all five
-   files), `hdb_flat` is **3NF but not BCNF**.
-   - It stays 3NF because `lease_commence_year` belongs to the seven-attribute candidate
-     key, which makes it a prime attribute.
-   - The BCNF repair would be to move `lease_commence_year` to `hdb_building`. That changes
-     the flat key, the flat UUID input and both HE's CSV and Sun's CSV, so it is a team
-     decision (HE, LI, Sun).
-   - If counterexamples exist, the attribute genuinely varies within a block, and the
-     current placement is required.
-2. **If two buildings share a coordinate pair**, `(latitude, longitude) -> town_name`
-   makes `hdb_building` violate 3NF formally. In practice that means a geocoding defect,
-   so Chen should fix the coordinates rather than the schema change.
+`transactions_before_lease_commencement_year` = 51 (36 from 1990–1999, 15 from
+2000–February 2012) is a data-quality finding, not a dependency. All 51 keep their source
+attributes with `lease_basis = unknown` and a NULL remaining lease.
 
-`validate_loaded_data.sql` now reports both probes on every loaded stage, plus
-`transactions_before_lease_commencement_year`. A nonzero count is reported, never fatal.
-
-Until the probes run on real stages, the report must say: **"3NF; BCNF under stated
-assumptions (Pending Validation)"**. It must not say "BCNF" unconditionally.
+`validate_loaded_data.sql` keeps reporting the three probes on every loaded stage. A
+nonzero count is reported, never fatal.
 
 Class is a deterministic function of distance, and fresh-market eligibility is a function
 of the produce-stall count. Both are **derived** (function and views), not stored, so they
@@ -171,7 +170,7 @@ reject valid historical rows. Candidate bounds, to be checked against the staged
 | `floor_area_sqm` ≤ observed maximum | None local | `min/max(floor_area_sqm)` | HE → WU |
 | `resale_price` ≥ observed minimum | None local | `min(resale_price)` per file | HE → WU |
 | Singapore envelope lat [1.15, 1.50], lon [103.5, 104.1] | hdb.csv and hawker_geo.csv both lie inside | Chen's coordinate QA | Chen |
-| Sale year ≥ lease commencement year | Cannot be a CHECK (cross-table) | Reported by `transactions_before_lease_commencement_year` | HE |
+| Sale year ≥ lease commencement year | Cannot be a CHECK (cross-table) | Reported by `transactions_before_lease_commencement_year`: 51 on the five-file database, all with `lease_basis = unknown` | HE |
 | `HEADER MATCH` in the loader | PostgreSQL ≥ 15 is already required | — | Sun |
 
 Local checks cannot validate actual
@@ -187,7 +186,7 @@ are ETL/loader reconciliation obligations, not guarantees claimed for the DDL.
 | Market-produce count -> fresh market, source/geolocation crosswalk | Chen | Adopted. 104 matches approved by Chen (2026-10-23); 3 unmatched. |
 | Hawker inventory (25 geo-only centres, 3 NEA centres without coordinates) | Chen, LI, WU | **Decided: Option A** (NEA 107 only). See [F-02](proposals/F02_hawker_coverage.md). |
 | Bounded third proximity class / maximum effective distance | Chen, LI, WU | **Decided: Option B, D_max = 2,000 m.** See [F-03](proposals/F03_proximity_semantics.md). |
-| building -> lease_commence_year (BCNF of hdb_flat) | HE (data), WU | Pending Validation; probe in validate_loaded_data.sql |
+| building -> lease_commence_year; coordinate uniqueness (BCNF) | HE (data), WU | **Concluded: BCNF.** The lease dependency is refuted (3 buildings); 0 shared coordinate pairs. No schema change. See §D2. |
 | Q3 profile weighting; Q4 nearest; Q5 nearest eligible and budget meaning | LI | Adopted in LI's frozen `sql/queries/` (Q3 profile-weighted; Q4 near vs far; Q5 excludes NULL class). The Q5 budget must be checked at every stage. |
 | Final building CSV enrichment handoff and six-table load order | HE, Chen, Sun | Working: Stage 1 loaded with Chen's geocoded `hdb_building.csv`. Sun's official loader is pending. |
 | Nearest-view rewrite (class computed after `DISTINCT ON`) | Lu, WU | **Adopted in 1.0.0**, before the Task 3 baseline |

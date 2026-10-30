@@ -27,6 +27,7 @@ After the freeze, a change also invalidates Task 3/4 measurements taken on the o
 | 500 m / 1000 m thresholds | Kept; checked against real nearest distances | Chen |
 | Nearest-view definition | Lu's rewrite adopted: the class is computed after `DISTINCT ON` (identical rows, faster) | Lu, WU |
 | Q3 / Q4 / Q5 semantics | As in LI's frozen `sql/queries/`: Q3 profile-weighted, Q4 near vs far of the nearest centre, Q5 nearest fresh-market centre with NULL classes excluded | LI |
+| Normal form | **BCNF (hence 3NF)** on the five-file database. building → lease_commence_year is refuted by 3 buildings; no coordinate pair is shared. No schema change. ([HE's evidence](../../src/etl/hdb/evidence/gate0_1_0_0/README.md)) | HE (data), WU |
 
 Details: [decision F-02](proposals/F02_hawker_coverage.md),
 [decision F-03](proposals/F03_proximity_semantics.md), [design_decisions.md](design_decisions.md).
@@ -35,7 +36,6 @@ Details: [decision F-02](proposals/F02_hawker_coverage.md),
 
 | Item | State | Owner |
 |---|---|---|
-| building → lease_commence_year; coordinate uniqueness (BCNF of `hdb_flat` / `hdb_building`) | Pending Validation. Read the probes in `validate_loaded_data.sql` on the five-file database. | HE / Sun (run), WU (conclude) |
 | Candidate value bounds (dates, storeys, area, price, Singapore envelope) | Not enforced; listed in design_decisions.md §D5 | HE, Chen |
 
 ## 4. Hand-off per member
@@ -46,8 +46,8 @@ Details: [decision F-02](proposals/F02_hawker_coverage.md),
 | LI | Re-run Q1–Q6 on 1.0.0. Check that the Q5 budget leaves some but not all towns at **every** stage: it returns 0 rows on the 1990–2016 database. Align the hand-off text with the SQL (Q5 filters on the town average; Q1/Q3 field names). |
 | Lu | Task 4 compares against the 1.0.0 baseline. The view rewrite is already in the schema; the candidate index `building_hawker(building_id, distance_m, hawker_id)` is not. |
 | Chen | No schema action. Keep the approved crosswalk and the 2,000 m rule in the spatial README. |
-| HE | Send the frozen 2017-onwards file to Lu. Report the FD probe counts once the five files are loaded. |
-| WU | Review end-to-end consistency before the final report; finalise the normal-form statement from the probe results. |
+| HE | Send the frozen 2017-onwards file to Lu. (Probe counts delivered 2026-10-30.) |
+| WU | Review end-to-end consistency before the final report. |
 
 ## 5. Known limitations
 
